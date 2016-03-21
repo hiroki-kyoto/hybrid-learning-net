@@ -38,8 +38,8 @@ input patter [x] </span>
 <span> [Statement] </span>
 <p> This project contains algorithm and model design that only belongs to author,
 and these code come from project that accompanies a published paper. If you
-want to use it, please contact the auther first at : 
-[xiangchao215 at mails dot ucas dot ac dot cn]
+want to use it, please contact the auther first at : <br/>
+[xiangchao215 at mails dot ucas dot ac dot cn] <br/>
 (please translate into normal email address by yourself, escape for mail address
 spider to avoid spam, thanks!)
 </p>

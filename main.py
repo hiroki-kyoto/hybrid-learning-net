@@ -3,5 +3,4 @@ def main() :
 	print 'HLNN Instance Running Test'
 	net = HLNN();
 	
-main()
-	
+main()	
