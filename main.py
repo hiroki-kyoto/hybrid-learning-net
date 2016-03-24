@@ -4,5 +4,6 @@ from hlnn import HLNN
 def main():
 	print 'HLNN Instance Running Test'
 	net = HLNN()
+        print net.ready
 	
 main()	
