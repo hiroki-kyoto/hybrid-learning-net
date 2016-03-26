@@ -27,7 +27,7 @@ class HLNN:
 			return False
 		else:
 			return True
-    def set_model(self, net_dim):
+    def set_net_dim(self, net_dim):
         self.net_dim = net_dim
     def set_som_eta(self, som_eta):
         self.som_eta = som_eta
@@ -40,8 +40,26 @@ class HLNN:
     def set_bp_coe(self, bp_coe):
         self.bp_coe = bp_coe
     def build_model(self):
-        self.inputlayer = np.arange(self.dim[0]);
-
+        # check if the dim is legal
+        layers = len(net_dim)
+        if layers<3:
+            print "Network Model Configuration Parameter is ILLEGAL!!!"
+            print "Net layers should be no less than 3"
+            return
+        self.inputlayer = np.zeros(self.dim[0])
+        self.outputlayer = np.zeros(self.dim[layers-1])
+        # hidden layers
+        for i in range(1:layers-1):
+            self.hiddenlayer[i-1] = np.zeros(self.net_dim[i])
+        # build connections
+        # SOM connections
+        self.somnet = np.random.rand(self.net_dim[0], self.net_dim[1])
+        for i in range(1:layers):
+            self.bpnet[i-1] = np.random.rand(self.net_dim[i-1], self.net_dim[i])
+    def drive_model(self, data):
+        # if input data has label then it is feedback training
+        # else it should be unsupervised learning on SOM model
+        
 
 
 
