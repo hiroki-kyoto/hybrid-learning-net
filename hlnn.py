@@ -56,11 +56,14 @@ class HLNN:
         self.somnet = np.random.rand(self.net_dim[0], self.net_dim[1])
         for i in range(1:layers):
             self.bpnet[i-1] = np.random.rand(self.net_dim[i-1], self.net_dim[i])
-    def drive_model(self, data):
+    def drive_model(self, data, feedback):
         # if input data has label then it is feedback training
         # else it should be unsupervised learning on SOM model
-        
-
+        if len(data) != self.net_dim[0]:
+            print "Error: input data dimension is ILLEGAL!"
+            return
+        # run unsupervised learning first
+        self.inputlayer = data
 
 
 
