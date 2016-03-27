@@ -14,6 +14,7 @@ import numpy as np
 
 class HLNN:
     def __init__(self):
+        self.layers = 0
         self.net_dim = []
         self.som_eta = 0.2
         self.som_rad = 3
@@ -21,12 +22,14 @@ class HLNN:
         self.bp_eta = 0.2
         self.bp_coe = 0.5
         print 'Creating new instance of HLNN model'
+
     @property
     def ready(self):
 		if self.net_dim==[]:
 			return False
 		else:
 			return True
+
     def set_net_dim(self, net_dim):
         self.net_dim = net_dim
     def set_som_eta(self, som_eta):
@@ -39,31 +42,48 @@ class HLNN:
         self.bp_eta = bp_eta
     def set_bp_coe(self, bp_coe):
         self.bp_coe = bp_coe
+
     def build_model(self):
         # check if the dim is legal
-        layers = len(net_dim)
-        if layers<3:
+        self.layers = len(self.net_dim)
+        if self.layers<3:
             print "Network Model Configuration Parameter is ILLEGAL!!!"
             print "Net layers should be no less than 3"
             return
-        self.inputlayer = np.zeros(self.dim[0])
-        self.outputlayer = np.zeros(self.dim[layers-1])
+        self.inputlayer = np.zeros([1, self.net_dim[0]])
+        self.somlayer = np.zeros([1, self.net_dim[1]])
+        self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
         # hidden layers
-        for i in range(1:layers-1):
-            self.hiddenlayer[i-1] = np.zeros(self.net_dim[i])
+        self.hiddenlayer = range(1:self.layers-1)
+        for i in range(1:self.layers-1):
+            self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
         # build connections
         # SOM connections
-        self.somnet = np.random.rand(self.net_dim[0], self.net_dim[1])
-        for i in range(1:layers):
-            self.bpnet[i-1] = np.random.rand(self.net_dim[i-1], self.net_dim[i])
+        self.som_conn = np.random.rand(self.net_dim[0], self.net_dim[1])
+        self.bp_conn = range(1:self.layers)
+        for i in range(1:self.layers):
+            self.bp_conn[i-1] = np.random.rand(self.net_dim[i-1], self.net_dim[i])
+
+    # this method only work on single row training
     def drive_model(self, data, feedback):
+        # check if model is built
+        if self.layers<1:
+            print "Error: Model is not built yet!"
+            return
         # if input data has label then it is feedback training
         # else it should be unsupervised learning on SOM model
         if len(data) != self.net_dim[0]:
             print "Error: input data dimension is ILLEGAL!"
             return
         # run unsupervised learning first
-        self.inputlayer = data
+        for i in range(1:size[0]):
+            self.inputlayer = data[i]
+            
+            self.somlayer = self.inputlayer.dot(self.hiddenlayer[0])
+
+
+
+
 
 
 
