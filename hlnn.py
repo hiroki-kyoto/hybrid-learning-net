@@ -12,6 +12,18 @@
 
 import numpy as np
 
+
+
+# helper methods
+def normalize(x):
+    x = 1/(1+ np.exp(-x))
+    s = x.sum()
+    if s==0:
+        return x
+    else:
+        return x/s
+
+
 class HLNN:
     def __init__(self):
         self.layers = 0
@@ -64,7 +76,8 @@ class HLNN:
         for i in range(1:self.layers):
             self.bp_conn[i-1] = np.random.rand(self.net_dim[i-1], self.net_dim[i])
 
-    # this method only work on single row training
+    # this method only work on single row training or predicting
+    # training or predicting is unified as only one API
     def drive_model(self, data, feedback):
         # check if model is built
         if self.layers<1:
@@ -76,10 +89,18 @@ class HLNN:
             print "Error: input data dimension is ILLEGAL!"
             return
         # run unsupervised learning first
-        for i in range(1:size[0]):
-            self.inputlayer = data[i]
-            
-            self.somlayer = self.inputlayer.dot(self.hiddenlayer[0])
+        self.inputlayer = normalize(data)
+        self.somlayer = self.inputlayer.dot(self.hiddenlayer[0])
+
+        # check if to do feedback procedure
+        if feedback==[]:
+            print "Model output finished!"
+            return self.outputlayer
+        # feedback part
+        if len(feedback) != self.net_dim[self.layers-1]:
+            print "feedback is of wrong dimension!"
+            return
+        # back-propagation
 
 
 
