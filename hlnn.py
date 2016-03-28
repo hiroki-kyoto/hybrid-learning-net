@@ -14,14 +14,6 @@ import numpy as np
 
 
 # helper methods
-def normalize(x):
-    x = 1/(1+ np.exp(-x))
-    s = x.sum()
-    if s==0:
-        return x
-    else:
-        return x/s
-
 def sigmoid(x):
     return 1/(1+np.exp(-x))
 
@@ -31,7 +23,6 @@ def unify(x):
         return x
     else:
         return x/s
-
 
 class HLNN:
     def __init__(self):
@@ -80,12 +71,13 @@ class HLNN:
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
         # build connections
         # SOM connections
-        self.som_conn = unify(np.random.rand(self.net_dim[0], 
-            self.net_dim[1]))
+        self.som_conn = np.random.rand(self.net_dim[0], self.net_dim[1])
         self.bp_conn = range(1, self.layers)
         for i in range(1, self.layers):
-            self.bp_conn[i-1] = unify(np.random.rand(
-                self.net_dim[i-1], self.net_dim[i]))
+            self.bp_conn[i-1] = np.random.rand(
+                self.net_dim[i-1], self.net_dim[i])
+        # bias for network
+        self.bp_bias = np.random.rand(1, self.layers-1)
 
     # this method only work on single row training or predicting     
     # training or predicting is unified as only one API     
@@ -100,36 +92,33 @@ class HLNN:
             print "Error: input data dimension is ILLEGAL!"             
             return         
         # run unsupervised learning first         
-        self.inputlayer[0] = normalize(data)
-        self.somlayer = self.inputlayer.dot(self.som_conn)         
-        mid = self.somlayer[0].argmax()         
+        self.inputlayer[0] = sigmoid(data)
+        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
+        mid = self.somlayer.argmax()
+        self.somlayer = unify(self.somlayer)
         self.som_conn[:,mid] += self.som_eta*(
             self.inputlayer[0]-self.som_conn[:,mid])
-        self.som_conn[:,mid] = unify(self.som_conn[:,mid])         
         # circle model updating
         decline = 1.0
-        for i in range(1, self.som_rad):             
+        for i in range(1, self.som_rad):  
             decline *= self.som_dec
             self.som_conn[:,(mid-i)%self.net_dim[1]] += \
             self.som_eta*decline*( \
                 self.inputlayer[0]-self.som_conn[:,(mid-i)%self.net_dim[1]])
-            self.som_conn[:,(mid-i)%self.net_dim[1]] = unify(
-                self.som_conn[:,(mid-i)%self.net_dim[1]])
             self.som_conn[:,(mid+i)%self.net_dim[1]] += \
             self.som_eta*decline*( \
                 self.inputlayer[0]-self.som_conn[:,(mid+i)%self.net_dim[1]])
-            self.som_conn[:,(mid+i)%self.net_dim[1]] = unify( \
-                self.som_conn[:,(mid+i)%self.net_dim[1]])
         # feedforward computing
-        self.hiddenlayer[0] = self.inputlayer.dot(self.bp_conn[0])
-        self.hiddenlayer[0] = sigmoid(self.hiddenlayer[0])
+        self.hiddenlayer[0] = sigmoid(
+            self.inputlayer.dot(
+                self.somlayer*self.bp_conn[0]) + self.bias[0])
         for i in range(2, self.layers-1):
-            self.hiddenlayer[i-1] = self.hiddenlayer[i-2].dot(
-                self.bp_conn[i-1])
-            self.hiddenlayer[i-1] = sigmoid(self.hiddenlayer[i-1])
-        self.outputlayer = self.hiddenlayer[self.layers-3].dot(
-            self.bp_conn[self.layers-2])
-        self.outputlayer = sigmoid(self.outputlayer)
+            self.hiddenlayer[i-1] = sigmoid(
+                self.hiddenlayer[i-2].dot(
+                    self.bp_conn[i-1]) + self.bias[i-1])
+        self.outputlayer = sigmoid(
+            self.hiddenlayer[self.layers-3].dot(
+                self.bp_conn[self.layers-2]) + self.bias[self.layers-2])
         # check if to do feedback procedure
         if feedback==[]:
             print "Model output finished!"
