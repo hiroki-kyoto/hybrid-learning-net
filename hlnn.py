@@ -15,14 +15,14 @@ import numpy as np
 
 # helper methods
 def sigmoid(x):
-    return 1/(1+np.exp(-x))
+    return 1.0/(1.0+np.exp(-x))
 
 def unify(x):
     s = x.sum()
     if s==0:
         return x
     else:
-        return x/s
+        return 1.0*x/s
 
 class HLNN:
     def __init__(self):
@@ -65,10 +65,13 @@ class HLNN:
         self.inputlayer = np.zeros([1, self.net_dim[0]])
         self.somlayer = np.zeros([1, self.net_dim[1]])
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
+        self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
         # hidden layers
         self.hiddenlayer = range(1, self.layers-1)
+        self.hlayerbias = range(1, self.layers-1)
         for i in range(1, self.layers-1):
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
+            self.hlayerbias[i-1] = np.random.rand(1, self.net_dim[i])
         # build connections
         # SOM connections
         self.som_conn = np.random.rand(self.net_dim[0], self.net_dim[1])
@@ -76,8 +79,6 @@ class HLNN:
         for i in range(1, self.layers):
             self.bp_conn[i-1] = np.random.rand(
                 self.net_dim[i-1], self.net_dim[i])
-        # bias for network
-        self.bp_bias = np.random.rand(1, self.layers-1)
 
     # this method only work on single row training or predicting     
     # training or predicting is unified as only one API     
@@ -111,14 +112,20 @@ class HLNN:
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
             self.inputlayer.dot(
-                self.somlayer*self.bp_conn[0]) + self.bias[0])
+                self.somlayer*self.bp_conn[0]
+            ) + self.hlayerbias[0]
+        )
         for i in range(2, self.layers-1):
             self.hiddenlayer[i-1] = sigmoid(
                 self.hiddenlayer[i-2].dot(
-                    self.bp_conn[i-1]) + self.bias[i-1])
+                    self.bp_conn[i-1]
+                ) + self.hlayerbias[i-1]
+            )
         self.outputlayer = sigmoid(
             self.hiddenlayer[self.layers-3].dot(
-                self.bp_conn[self.layers-2]) + self.bias[self.layers-2])
+                self.bp_conn[self.layers-2]
+            ) + self.olayerbias
+        )
         # check if to do feedback procedure
         if feedback==[]:
             print "Model output finished!"
@@ -128,8 +135,13 @@ class HLNN:
             print "feedback is of wrong dimension!"
             return
         # back-propagation
-
-
+        # whole error:
+        # convert feedback vector into signal vector
+        feedback = sigmoid(feedback)
+        error = (self.outputlayer-feedback)
+        error = 0.5*(error*error).sum()
+        print "error : ", error
+        
 
 
 
