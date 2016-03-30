@@ -8,7 +8,7 @@
 #   som_dec: decrease rate of correctness
 #   =====================================
 #   bp_eta: BPNN learning reate
-#   bp_coe: BPNN learning rate coefficient as cur*coe+last*(1-coe)
+#   bp_coe: BPNN learning rate coefficient[NOT USED]
 
 import numpy as np
 
@@ -28,11 +28,11 @@ class HLNN:
     def __init__(self):
         self.layers = 0
         self.net_dim = []
-        self.som_eta = 0.2
+        self.som_eta = 0.3
         self.som_rad = 3
         self.som_dec = 0.2
-        self.bp_eta = 0.2
-        self.bp_coe = 0.5
+        self.bp_eta = 0.3
+        #self.bp_coe = 0.5
         print 'Creating new instance of HLNN model'
 
     @property
@@ -52,8 +52,8 @@ class HLNN:
         self.som_dec = som_dec
     def set_bp_eta(self, bp_eta):
         self.bp_eta = bp_eta
-    def set_bp_coe(self, bp_coe):
-        self.bp_coe = bp_coe
+    #def set_bp_coe(self, bp_coe):
+    #    self.bp_coe = bp_coe
 
     def build_model(self):
         # check if the dim is legal
@@ -112,8 +112,8 @@ class HLNN:
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
             self.inputlayer.dot(
-                self.somlayer*self.bp_conn[0]
-            ) + self.hlayerbias[0]
+                self.bp_conn[0]
+            ) * self.somlayer + self.hlayerbias[0]
         )
         for i in range(2, self.layers-1):
             self.hiddenlayer[i-1] = sigmoid(
@@ -141,9 +141,21 @@ class HLNN:
         error = (self.outputlayer-feedback)
         error = 0.5*(error*error).sum()
         print "error : ", error
-        
-
-
+        node_error = range(1, self.layers)
+        for i in range(1, self.layers):
+            node_error[i-1] = np.zeros([1, self.net_dim[i]])
+        # back broadcast error
+        node_error[self.layers-2] = (self.outputlayer-feedback)*(
+            1-self.outputlayer)*self.outputlayer
+        for i in range(self.layer-2, 0, -1):
+            node_error[i-1] = (node_error[i].dot(self.bp_conn[i].T))*(
+                1-self.hiddenlayer[i-1])*self.hiddenlayer[i-1]
+        # correcting weight of connection
+        self.bp_conn[0] += self.eta*self.inputlayer.T.dot(
+            node_error[0])*self.somlayer
+        for i in range(1, self.layers-1):
+            self.bp_conn[i] += self.eta*self.hiddenlayer[i-1].T.dot(
+                node_error[i])
 
 
 
