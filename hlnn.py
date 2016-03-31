@@ -149,14 +149,14 @@ class HLNN:
         # back broadcast error
         node_error[self.layers-2] = (self.outputlayer-feedback)*(
             1-self.outputlayer)*self.outputlayer
-        for i in range(self.layer-2, 0, -1):
+        for i in range(self.layers-2, 0, -1):
             node_error[i-1] = (node_error[i].dot(self.bp_conn[i].T))*(
                 1-self.hiddenlayer[i-1])*self.hiddenlayer[i-1]
         # correcting weight of connection
-        self.bp_conn[0] += self.eta*self.inputlayer.T.dot(
+        self.bp_conn[0] += self.bp_eta*self.inputlayer.T.dot(
             node_error[0])*self.somlayer
         for i in range(1, self.layers-1):
-            self.bp_conn[i] += self.eta*self.hiddenlayer[i-1].T.dot(
+            self.bp_conn[i] += self.bp_eta*self.hiddenlayer[i-1].T.dot(
                 node_error[i])
 
 # END OF FILE

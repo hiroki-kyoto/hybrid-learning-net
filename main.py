@@ -42,19 +42,43 @@ def main():
 	net.set_net_dim([2, 10, len(r)]);
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 300 # unsupervised learning
-	snum = 50  # supervised learning
+	unum = 3000 # unsupervised learning
+	snum = 300  # supervised learning
 	ulbl = np.random.randint(len(r), size=unum)
 	useq = np.random.randint(number, size=unum)
 	for i in xrange(unum):
-		v  = np.array([
+		v = np.array([
 			data[ulbl[i]][0][useq[i]],
 			data[ulbl[i]][1][useq[i]]
 			])
 		net.drive_model(v, []) # feedback=[] means no feedback
 	print "Model unsupervised learning process done!"
-	#for i in xrange(snum):
-		
+	# supervised learning
+	slbl = np.random.randint(len(r), size=snum)
+	sseq = np.random.randint(number, size=snum)
+	for i in xrange(snum):
+		v = np.array([
+			data[slbl[i]][0][sseq[i]],
+			data[slbl[i]][1][sseq[i]]
+			])
+		f = np.zeros(len(r)) + 0.25
+		f[slbl[i]] = 0.75
+		net.drive_model(v, f)
+	# check correctness
+	cnum = 100
+	clbl = np.random.randint(len(r), size=cnum)
+	cseq = np.random.randint(number, size=cnum)
+	crt = 0
+	for i in xrange(cnum):
+		v = np.array([
+			data[clbl[i]][0][cseq[i]],
+			data[clbl[i]][1][cseq[i]]
+			])
+		f = clbl[i]
+		p = np.argmax(net.drive_model(v, []))
+		if p==f:
+			crt += 1
+	print "correctness: ", 1.0*crt/cnum 
 
 
 
