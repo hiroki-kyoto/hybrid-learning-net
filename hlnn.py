@@ -57,6 +57,9 @@ class HLNN:
 
     def build_model(self):
         # check if the dim is legal
+        if self.ready==False:
+            print "Network Model Parameter Not Well Set!"
+            return
         self.layers = len(self.net_dim)
         if self.layers<3:
             print "Network Model Configuration Parameter is ILLEGAL!!!"
@@ -128,7 +131,6 @@ class HLNN:
         )
         # check if to do feedback procedure
         if feedback==[]:
-            print "Model output finished!"
             return self.outputlayer
         # feedback part
         if len(feedback) != self.net_dim[self.layers-1]:
@@ -157,5 +159,4 @@ class HLNN:
             self.bp_conn[i] += self.eta*self.hiddenlayer[i-1].T.dot(
                 node_error[i])
 
-
-
+# END OF FILE
