@@ -17,21 +17,25 @@ import numpy as np
 def sigmoid(x):
     return 1.0/(1.0+np.exp(-x))
 
+def argsig(x):
+    return -1.0*np.log(1.0/x-1)
+
 def unify(x):
-    m = x.max()
-    if m==0:
-        return x
-    else:
-        return 1.0*x/m
+    return np.ones(len(x))
+    #m = x.min()
+    #low =1e-6
+    #return (m+low)/(x+low)
 
 class HLNN:
     def __init__(self):
         self.layers = 0
         self.net_dim = []
-        self.som_eta = 0.5
-        self.som_rad = 3
+        self.som_eta = 0.2
+        self.som_rad = 1
         self.som_dec = 0.2
-        self.bp_eta = 0.5
+        self.bp_eta = 0.3
+        self.inputscale = 1.0
+        self.outputscale = 1.0
         #self.bp_coe = 0.5
         print 'Creating new instance of HLNN model'
 
@@ -52,8 +56,9 @@ class HLNN:
         self.som_dec = som_dec
     def set_bp_eta(self, bp_eta):
         self.bp_eta = bp_eta
-    #def set_bp_coe(self, bp_coe):
-    #    self.bp_coe = bp_coe
+    def set_scale(self, inputscale, outputscale):
+        self.inputscale = inputscale
+        self.outputscale = outputscale
 
     def build_model(self):
         # check if the dim is legal
@@ -95,10 +100,11 @@ class HLNN:
         if len(data) != self.net_dim[0]:
             print "Error: input data dimension is ILLEGAL!"             
             return         
-        # run unsupervised learning first         
-        self.inputlayer[0] = sigmoid(data)
+        # run unsupervised learning first
+        self.inputlayer[0] = data/self.inputscale
         self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
-        mid = self.somlayer.argmax()
+        mid = self.somlayer.argmin()
+        som_error = self.somlayer.min()
         self.somlayer = unify(self.somlayer)
         self.som_conn[:,mid] += self.som_eta*(
             self.inputlayer[0]-self.som_conn[:,mid])
@@ -131,7 +137,8 @@ class HLNN:
         )
         # check if to do feedback procedure
         if feedback==[]:
-            return self.outputlayer
+            #print "output: ", self.outputlayer
+            return (self.outputlayer*self.outputscale, som_error)
         # feedback part
         if len(feedback) != self.net_dim[self.layers-1]:
             print "feedback is of wrong dimension!"
@@ -139,10 +146,9 @@ class HLNN:
         # back-propagation
         # whole error:
         # convert feedback vector into signal vector
-        feedback = sigmoid(feedback)
-        error = (self.outputlayer-feedback)
+        feedback = feedback/self.outputscale
+        error = self.outputlayer-feedback
         error = 0.5*(error*error).sum()
-        
         node_error = range(1, self.layers)
         for i in range(1, self.layers):
             node_error[i-1] = np.zeros([1, self.net_dim[i]])
@@ -153,15 +159,15 @@ class HLNN:
             node_error[i-1] = (node_error[i].dot(self.bp_conn[i].T))*(
                 1-self.hiddenlayer[i-1])*self.hiddenlayer[i-1]
         # correcting weight of connection
-        self.bp_conn[0] += self.bp_eta*self.inputlayer.T.dot(
+        self.bp_conn[0] -= self.bp_eta*self.inputlayer.T.dot(
             node_error[0])*self.somlayer
         for i in range(1, self.layers-1):
-            self.bp_conn[i] += self.bp_eta*self.hiddenlayer[i-1].T.dot(
+            self.bp_conn[i] -= self.bp_eta*self.hiddenlayer[i-1].T.dot(
                 node_error[i])
         # correcting bias of nodes
-        self.olayerbias += self.bp_eta*node_error[self.layers-2]
+        self.olayerbias -= self.bp_eta*node_error[self.layers-2]
         for i in xrange(0, self.layers-2):
-            self.hlayerbias[i] += self.bp_eta*node_error[i]
+            self.hlayerbias[i] -= self.bp_eta*node_error[i]
         return error
 
 # END OF FILE

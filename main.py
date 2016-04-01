@@ -9,7 +9,7 @@ def main():
 	###############################################
 	# generate samples of test
 	###############################################
-	number = 500
+	number = 100
 	r = np.array([10, 10, 10])
 	c = np.array([
 		[16, 45],
@@ -39,19 +39,30 @@ def main():
 	##################################################
 	# applying model to test samples
 	##################################################
-	net.set_net_dim([2, 50, len(r)]);
+	net.set_net_dim([2, 10, 1]);
+	net.set_scale(100, 3)
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 3000 # unsupervised learning
-	snum = 500  # supervised learning
+	unum = 500 # unsupervised learning
+	snum = 200  # supervised learning
 	ulbl = np.random.randint(len(r), size=unum)
 	useq = np.random.randint(number, size=unum)
+	uerr = np.zeros(unum)
 	for i in xrange(unum):
 		v = np.array([
 			data[ulbl[i]][0][useq[i]],
 			data[ulbl[i]][1][useq[i]]
 			])
-		net.drive_model(v, []) # feedback=[] means no feedback
+		[uopt, uerr[i]] = net.drive_model(v, []) # feedback=[] means no feedback
+	# plot unsupervised error level
+	uerrfig = pl.figure()
+	pl.plot(xrange(unum), uerr, "-")
+	pl.xlabel("Iteration Time")
+	pl.ylabel("Unsupervised Error")
+	pl.legend("Unsupervised Learning Error Curve")
+	#pl.show()
+	pl.draw()
+	uerrfig.savefig("uerrfig")
 	print "Model unsupervised learning process done!"
 	# supervised learning
 	slbl = np.random.randint(len(r), size=snum)
@@ -62,32 +73,55 @@ def main():
 			data[slbl[i]][0][sseq[i]],
 			data[slbl[i]][1][sseq[i]]
 			])
-		f = np.zeros(len(r)) + 0.25
-		f[slbl[i]] = 0.75
-		serr[i] = net.drive_model(v, f)
+		serr[i] = net.drive_model(v, np.array([slbl[i]]))
 	# plot error figure
 	fig2 = pl.figure()
-	pl.plot(xrange(snum), serr)
-	pl.show()
+	pl.plot(xrange(snum), serr, "-")
+	#pl.show()
 	pl.draw()
 	fig2.savefig("error")
 	# check correctness
 	cnum = 100
 	clbl = np.random.randint(len(r), size=cnum)
 	cseq = np.random.randint(number, size=cnum)
-	crt = 0
+	plbl = np.random.randint(len(r), size=cnum)
 	for i in xrange(cnum):
 		v = np.array([
 			data[clbl[i]][0][cseq[i]],
 			data[clbl[i]][1][cseq[i]]
 			])
-		f = clbl[i]
-		p = np.argmax(net.drive_model(v, []))
-		if p==f:
-			crt += 1
-	print "correctness: ", 1.0*crt/cnum 
-
+		[opt, err] = net.drive_model(v, [])
+		print opt
+		plbl[i] = np.argmin(np.abs(np.arange(3)-opt))
+	crt = 0
+	cnt = np.zeros(len(r), 'int')
+	for i in xrange(cnum):
+		crt += bool(clbl[i]==plbl[i])
+		for t in xrange(len(r)):
+			cnt[t] += bool(plbl[i]==t)
+	print "correctness: ", 1.0*crt/cnum
+	print "couter: ", cnt
+	# draw preditced points
+	pdata = range(len(r))
+	for i in xrange(len(r)):
+		pdata[i] = np.zeros([2, cnt[i]])
+	cnt = np.zeros(len(r), 'int')
+	for i in xrange(cnum):
+		pdata[plbl[i]][0][cnt[plbl[i]]] = data[clbl[i]][0][cseq[i]]
+		pdata[plbl[i]][1][cnt[plbl[i]]] = data[clbl[i]][1][cseq[i]]
+		cnt[plbl[i]] += 1
+	pfig = pl.figure()
+	pl.plot(pdata[0][0], pdata[0][1], "*")
+	pl.plot(pdata[1][0], pdata[1][1], ".")
+	pl.plot(pdata[2][0], pdata[2][1], "x")
+	pl.legend("Prediction Result")
+	pl.xlabel("x")
+	pl.ylabel("y")
+	pl.draw()
+	pfig.savefig("prediction")
 
 
 if __name__ == '__main__':
 	main()
+
+# END OF FILE
