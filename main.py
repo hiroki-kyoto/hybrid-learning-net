@@ -26,7 +26,7 @@ def main():
 			c[i, 1] + rou*np.sin(theta)
 			])
 	# draw figure to show points of topologies
-	fig1 = pl.gcf()
+	fig1 = pl.figure()
 	pl.plot(data[0][0], data[0][1], "*")
 	pl.plot(data[1][0], data[1][1], ".")
 	pl.plot(data[2][0], data[2][1], "x")
@@ -39,11 +39,11 @@ def main():
 	##################################################
 	# applying model to test samples
 	##################################################
-	net.set_net_dim([2, 10, len(r)]);
+	net.set_net_dim([2, 50, len(r)]);
 	net.build_model()
 	# prepare unsupervised and supervised data
 	unum = 3000 # unsupervised learning
-	snum = 300  # supervised learning
+	snum = 500  # supervised learning
 	ulbl = np.random.randint(len(r), size=unum)
 	useq = np.random.randint(number, size=unum)
 	for i in xrange(unum):
@@ -56,6 +56,7 @@ def main():
 	# supervised learning
 	slbl = np.random.randint(len(r), size=snum)
 	sseq = np.random.randint(number, size=snum)
+	serr = np.zeros(snum)
 	for i in xrange(snum):
 		v = np.array([
 			data[slbl[i]][0][sseq[i]],
@@ -63,7 +64,13 @@ def main():
 			])
 		f = np.zeros(len(r)) + 0.25
 		f[slbl[i]] = 0.75
-		net.drive_model(v, f)
+		serr[i] = net.drive_model(v, f)
+	# plot error figure
+	fig2 = pl.figure()
+	pl.plot(xrange(snum), serr)
+	pl.show()
+	pl.draw()
+	fig2.savefig("error")
 	# check correctness
 	cnum = 100
 	clbl = np.random.randint(len(r), size=cnum)

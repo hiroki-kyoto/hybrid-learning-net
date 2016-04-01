@@ -18,20 +18,20 @@ def sigmoid(x):
     return 1.0/(1.0+np.exp(-x))
 
 def unify(x):
-    s = x.sum()
-    if s==0:
+    m = x.max()
+    if m==0:
         return x
     else:
-        return 1.0*x/s
+        return 1.0*x/m
 
 class HLNN:
     def __init__(self):
         self.layers = 0
         self.net_dim = []
-        self.som_eta = 0.3
+        self.som_eta = 0.5
         self.som_rad = 3
         self.som_dec = 0.2
-        self.bp_eta = 0.3
+        self.bp_eta = 0.5
         #self.bp_coe = 0.5
         print 'Creating new instance of HLNN model'
 
@@ -142,7 +142,7 @@ class HLNN:
         feedback = sigmoid(feedback)
         error = (self.outputlayer-feedback)
         error = 0.5*(error*error).sum()
-        print "error : ", error
+        
         node_error = range(1, self.layers)
         for i in range(1, self.layers):
             node_error[i-1] = np.zeros([1, self.net_dim[i]])
@@ -158,5 +158,10 @@ class HLNN:
         for i in range(1, self.layers-1):
             self.bp_conn[i] += self.bp_eta*self.hiddenlayer[i-1].T.dot(
                 node_error[i])
+        # correcting bias of nodes
+        self.olayerbias += self.bp_eta*node_error[self.layers-2]
+        for i in xrange(0, self.layers-2):
+            self.hlayerbias[i] += self.bp_eta*node_error[i]
+        return error
 
 # END OF FILE
