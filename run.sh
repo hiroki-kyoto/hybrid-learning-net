@@ -1,2 +1,3 @@
 #!/bin/bash
-python main.py
+./bpnn.sh
+./hlnn.sh

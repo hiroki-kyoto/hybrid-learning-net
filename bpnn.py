@@ -21,12 +21,12 @@ def argsig(x):
     return -1.0*np.log(1.0/x-1)
 
 def unify(x):
-    #return np.ones(len(x))
-    m = x.min()
-    low =1e-6
-    return (m+low)/(x+low)
+    return np.ones(len(x))
+    #m = x.min()
+    #low =1e-6
+    #return (m+low)/(x+low)
 
-class HLNN:
+class BPNN:
     def __init__(self):
         self.layers = 0
         self.net_dim = []

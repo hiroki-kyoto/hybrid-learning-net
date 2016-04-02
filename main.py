@@ -2,10 +2,15 @@
 import numpy as np
 import matplotlib.pyplot as pl
 from hlnn import HLNN
+from bpnn import BPNN
+import sys
 
 def main():
-	print 'HLNN Instance Running Test'
-	net = HLNN()
+	#print 'HLNN Instance Running Test'
+	if sys.argv[1]=="HLNN":
+		net = HLNN()
+	else:
+		net = BPNN()
 	###############################################
 	# generate samples of test
 	###############################################
@@ -32,19 +37,23 @@ def main():
 	pl.plot(data[2][0], data[2][1], "x")
 	pl.xlabel('x')
 	pl.ylabel('y')
-	pl.legend('Classification of Random Topologies')
+	pl.title('Classification of Random Topologies')
 	#pl.show()
 	pl.draw()
 	fig1.savefig("test1")
 	##################################################
 	# applying model to test samples
 	##################################################
-	net.set_net_dim([2, 10, 1]);
-	net.set_scale(100, 3)
+	net.set_net_dim([2, 20, len(r)]);
+	net.set_scale(100.0, 1.0)
+	net.set_bp_eta(0.8)
+	net.set_som_rad(3)
+	net.set_som_dec(0.1)
+	net.set_som_eta(0.2)
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 500 # unsupervised learning
-	snum = 200  # supervised learning
+	unum = 5000 # unsupervised learning
+	snum = 3000  # supervised learning
 	ulbl = np.random.randint(len(r), size=unum)
 	useq = np.random.randint(number, size=unum)
 	uerr = np.zeros(unum)
@@ -53,17 +62,17 @@ def main():
 			data[ulbl[i]][0][useq[i]],
 			data[ulbl[i]][1][useq[i]]
 			])
-		[uopt, uerr[i]] = net.drive_model(v, []) # feedback=[] means no feedback
+		(uopt, uerr[i]) = net.drive_model(v, []) # feedback=[] means no feedback
 	# plot unsupervised error level
 	uerrfig = pl.figure()
 	pl.plot(xrange(unum), uerr, "-")
 	pl.xlabel("Iteration Time")
 	pl.ylabel("Unsupervised Error")
-	pl.legend("Unsupervised Learning Error Curve")
+	pl.title("Unsupervised Learning Error Curve")
 	#pl.show()
 	pl.draw()
 	uerrfig.savefig("uerrfig")
-	print "Model unsupervised learning process done!"
+	#print "Model unsupervised learning process done!"
 	# supervised learning
 	slbl = np.random.randint(len(r), size=snum)
 	sseq = np.random.randint(number, size=snum)
@@ -73,13 +82,18 @@ def main():
 			data[slbl[i]][0][sseq[i]],
 			data[slbl[i]][1][sseq[i]]
 			])
-		serr[i] = net.drive_model(v, np.array([slbl[i]]))
+		f = np.zeros(len(r)) + 0.2
+		f[slbl[i]] = 0.8
+		serr[i] = net.drive_model(v, f)
 	# plot error figure
-	fig2 = pl.figure()
+	serrfig = pl.figure()
 	pl.plot(xrange(snum), serr, "-")
+	pl.title("Supervised Learning Error Curve")
+	pl.xlabel("Iteration Time")
+	pl.ylabel("Supervised Error")
 	#pl.show()
 	pl.draw()
-	fig2.savefig("error")
+	serrfig.savefig("serrfig")
 	# check correctness
 	cnum = 100
 	clbl = np.random.randint(len(r), size=cnum)
@@ -90,17 +104,16 @@ def main():
 			data[clbl[i]][0][cseq[i]],
 			data[clbl[i]][1][cseq[i]]
 			])
-		[opt, err] = net.drive_model(v, [])
-		print opt
-		plbl[i] = np.argmin(np.abs(np.arange(3)-opt))
+		(opt, err) = net.drive_model(v, [])
+		plbl[i] = np.argmax(opt)
 	crt = 0
 	cnt = np.zeros(len(r), 'int')
 	for i in xrange(cnum):
 		crt += bool(clbl[i]==plbl[i])
 		for t in xrange(len(r)):
 			cnt[t] += bool(plbl[i]==t)
-	print "correctness: ", 1.0*crt/cnum
-	print "couter: ", cnt
+	print 1.0*crt/cnum
+	#print "couter: ", cnt
 	# draw preditced points
 	pdata = range(len(r))
 	for i in xrange(len(r)):
@@ -114,7 +127,7 @@ def main():
 	pl.plot(pdata[0][0], pdata[0][1], "*")
 	pl.plot(pdata[1][0], pdata[1][1], ".")
 	pl.plot(pdata[2][0], pdata[2][1], "x")
-	pl.legend("Prediction Result")
+	pl.title("Prediction Result")
 	pl.xlabel("x")
 	pl.ylabel("y")
 	pl.draw()

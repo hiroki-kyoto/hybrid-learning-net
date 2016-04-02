@@ -1,7 +1,11 @@
 import string
 import matplotlib.pyplot as plt  
 import numpy as np
-     
+import sys
+
+# show arguments
+print sys.argv[1]
+
 years = range(0,100)
 price = np.random.rand(100)
 plt.plot(years, price, 'b*')
