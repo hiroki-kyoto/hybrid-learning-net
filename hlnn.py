@@ -22,9 +22,11 @@ def argsig(x):
 
 def unify(x):
     #return np.ones(len(x))
-    m = x.min()
-    low =1e-6
-    return (m+low)/(x+low)
+    a = x.min()
+    b = x.max()
+    x = x + 1e-6
+    t = a/(b-a)
+    return b*t/x-t
 
 class HLNN:
     def __init__(self):
@@ -41,10 +43,10 @@ class HLNN:
 
     @property
     def ready(self):
-		if self.net_dim==[]:
-			return False
-		else:
-			return True
+        if self.net_dim==[]:
+            return False
+        else:
+            return True
 
     def set_net_dim(self, net_dim):
         self.net_dim = net_dim
@@ -105,18 +107,23 @@ class HLNN:
         self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
         mid = self.somlayer.argmin()
         som_error = self.somlayer.min()
+        som_flag = (self.somlayer.max()-som_error)/2.0
         self.somlayer = unify(self.somlayer)
-        self.som_conn[:,mid] += self.som_eta*(
+        self.som_conn[:,mid] += som_error*self.som_eta*(
             self.inputlayer[0]-self.som_conn[:,mid])
         # circle model updating
         decline = 1.0
         for i in range(1, self.som_rad):  
             decline *= self.som_dec
-            self.som_conn[:,(mid-i)%self.net_dim[1]] += \
-            self.som_eta*decline*( \
+            self.som_conn[
+                :,
+                (mid-i)%self.net_dim[1]
+            ] += som_error*self.som_eta*decline*(
                 self.inputlayer[0]-self.som_conn[:,(mid-i)%self.net_dim[1]])
-            self.som_conn[:,(mid+i)%self.net_dim[1]] += \
-            self.som_eta*decline*( \
+            self.som_conn[
+                :,
+                (mid+i)%self.net_dim[1]
+            ] += som_error*self.som_eta*decline*(
                 self.inputlayer[0]-self.som_conn[:,(mid+i)%self.net_dim[1]])
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
@@ -138,7 +145,7 @@ class HLNN:
         # check if to do feedback procedure
         if feedback==[]:
             #print "output: ", self.outputlayer
-            return (self.outputlayer*self.outputscale, som_error)
+            return (self.outputlayer*self.outputscale, som_flag)
         # feedback part
         if len(feedback) != self.net_dim[self.layers-1]:
             print "feedback is of wrong dimension!"

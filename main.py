@@ -14,7 +14,9 @@ def main():
 	###############################################
 	# generate samples of test
 	###############################################
-	number = 100
+	total = 200
+	train = total/2
+	test = total - train
 	r = np.array([10, 10, 10])
 	c = np.array([
 		[16, 45],
@@ -24,8 +26,8 @@ def main():
 	# plot them out
 	data = range(3)
 	for i in xrange(0, len(r)):
-		rou = np.random.rand(number)*r[i]
-		theta = np.random.rand(number)*2*np.pi
+		rou = np.random.rand(total)*r[i]
+		theta = np.random.rand(total)*2*np.pi
 		data[i] = np.array([
 			c[i, 0] + rou*np.cos(theta),
 			c[i, 1] + rou*np.sin(theta)
@@ -44,18 +46,18 @@ def main():
 	##################################################
 	# applying model to test samples
 	##################################################
-	net.set_net_dim([2, 20, len(r)]);
+	net.set_net_dim([2, 10, len(r)]);
 	net.set_scale(100.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
-	net.set_som_dec(0.1)
-	net.set_som_eta(0.2)
+	net.set_som_dec(0.2)
+	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data
 	unum = 5000 # unsupervised learning
 	snum = 3000  # supervised learning
-	ulbl = np.random.randint(len(r), size=unum)
-	useq = np.random.randint(number, size=unum)
+	ulbl = np.random.randint(0, len(r), size=unum)
+	useq = np.random.randint(0, train, size=unum)
 	uerr = np.zeros(unum)
 	for i in xrange(unum):
 		v = np.array([
@@ -67,15 +69,16 @@ def main():
 	uerrfig = pl.figure()
 	pl.plot(xrange(unum), uerr, "-")
 	pl.xlabel("Iteration Time")
-	pl.ylabel("Unsupervised Error")
-	pl.title("Unsupervised Learning Error Curve")
+	pl.ylabel("SOM State Flag")
+	pl.title("Unsupervised Learning (SOM)")
+	pl.ylim(0.0, 1.0)
 	#pl.show()
 	pl.draw()
 	uerrfig.savefig("uerrfig")
 	#print "Model unsupervised learning process done!"
 	# supervised learning
-	slbl = np.random.randint(len(r), size=snum)
-	sseq = np.random.randint(number, size=snum)
+	slbl = np.random.randint(0, len(r), size=snum)
+	sseq = np.random.randint(0, train, size=snum)
 	serr = np.zeros(snum)
 	for i in xrange(snum):
 		v = np.array([
@@ -95,10 +98,10 @@ def main():
 	pl.draw()
 	serrfig.savefig("serrfig")
 	# check correctness
-	cnum = 100
-	clbl = np.random.randint(len(r), size=cnum)
-	cseq = np.random.randint(number, size=cnum)
-	plbl = np.random.randint(len(r), size=cnum)
+	cnum = 300
+	clbl = np.random.randint(0, len(r), size=cnum)
+	cseq = np.random.randint(train, train+test, size=cnum)
+	plbl = np.random.randint(0, len(r), size=cnum)
 	for i in xrange(cnum):
 		v = np.array([
 			data[clbl[i]][0][cseq[i]],
