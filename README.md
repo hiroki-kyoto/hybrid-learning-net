@@ -30,11 +30,11 @@ input patter [x] </span>
 
 <div>
 <table>
-	<th>
-		<td>TOPIC ORDER</td>
-		<td>TOPIC CONTENT</td>
-		<td>EXPERIMENT ABSTRACT</td>
-	</th>
+	<tr>
+		<th>TOPIC ORDER</th>
+		<th>TOPIC CONTENT</th>
+		<th>EXPERIMENT ABSTRACT</th>
+	</tr>
 	<tr>
 		<td>001</td>
 		<td>SINGLE-LAYER MODEL</td>
