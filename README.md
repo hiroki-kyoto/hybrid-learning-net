@@ -29,6 +29,36 @@ input patter [x] </span>
 </div>
 
 <div>
+<table>
+	<th>
+		<td>TOPIC ORDER</td>
+		<td>TOPIC CONTENT</td>
+		<td>EXPERIMENT ABSTRACT</td>
+	</th>
+	<tr>
+		<td>001</td>
+		<td>SINGLE-LAYER MODEL</td>
+		<td>CLASSIFICATION OF RANDOMLY GENERATED GRAPH</td>
+	</tr>
+	<tr>
+		<td>002</td>
+		<td>HYBRID LEARNING ON DEEP-NEURAL-NETWORK</td>
+		<td>OBJECT RECOGNITION ON IMAGES USING DHLNN AND DBPNN</td>
+	</tr>
+	<tr>
+		<td>003</td>
+		<td>HLNN APPLICATION ON ROBOTICS CONTROL SYSTEM</td>
+		<td>PATH PLAN APPLICATION USING DHLNN AND DNN WITH THE AID OF SENSOR-ARRAY AND ROTOR-ARRAY</td>
+	</tr>
+	<tr>
+		<td>004</td>
+		<td>HLNN EXTENSION : A SIGNAL ORIENTED MODEL COMPARING WITH LSTM</td>
+		<td>APPLICATION OF SIGNAL-ORIENTED HLNN WORKING ON TEXT UNDERSTANDING COMPARING WITH LSTM MODEL</td>
+	</tr>
+</table>
+</div>
+
+<div>
 <h3> [notice]</h3>
 <p>There're alternatives for this model, we could apply Tree-SOM or Kernel-SOM,
  Neural Gas, to replace SOM, and we could also employ other supervised model
