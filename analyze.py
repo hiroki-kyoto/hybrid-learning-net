@@ -3,11 +3,12 @@ import numpy as np
 import sys
 import os
 
+num = 30
 bf = file('BPNN.LOG')
 hf = file('HLNN.LOG')
-bpnn = np.zeros(10)
-hlnn = np.zeros(10)
-for i in xrange(10):
+bpnn = np.zeros(num)
+hlnn = np.zeros(num)
+for i in xrange(num):
     bpnn[i] = float(bf.readline())
     hlnn[i] = float(hf.readline())
 # print result of each model

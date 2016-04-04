@@ -1,5 +1,8 @@
 #!/bin/bash
 ./bpnn.sh
 ./hlnn.sh
-python analyze.py
+echo "================================================" >> RESULT.LOG
+date >> RESULT.LOG
+echo "================================================" >> RESULT.LOG
+python analyze.py >> RESULT.LOG
 
