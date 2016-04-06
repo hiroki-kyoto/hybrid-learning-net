@@ -226,17 +226,25 @@ class HLNN:
                 1-self.hiddenlayer[i-1]
                 )*self.hiddenlayer[i-1]
         # correcting weight of connection
-        eta = self.bp_eta*(1.0/(1.0+self.eta_coe*self.somflag[]))
-        self.bp_conn[0] -= self.bp_eta*self.inputlayer.T.dot(
+        eta = self.bp_eta*(1.0/(1.0+self.eta_coe*self.somflag[0]))
+        self.bp_conn[0] -= eta*self.inputlayer.T.dot(
             self.node_error[0]
             )*self.somlayer[0]
-        for i in range(1, self.layers-1):
-            self.bp_conn[i] -= self.bp_eta*self.hiddenlayer[i-1].T.dot(
-                node_error[i])
-        # correcting bias of nodes
-        self.olayerbias -= self.bp_eta*node_error[self.layers-2]
-        for i in xrange(0, self.layers-2):
-            self.hlayerbias[i] -= self.bp_eta*node_error[i]
+        self.hlayerbias[0] -= eta*self.node_error[0]
+        for i in range(1, self.layers-2):
+            eta = self.bp_eta*(1.0/(1.0+self.eta_coe*self.somflag[i]))
+            self.bp_conn[i] -= eta*self.hiddenlayer[i-1].T.dot(
+                self.node_error[i])*self.somlayer[i]
+            self.hlayerbias[i] -= eta*self.node_error[i]
+        # for the output layer
+        eta = self.bp_eta
+        self.bp_conn[self.layers-2] -= eta*self.hiddenlayer[
+            self.layers-3].T.dot(
+                self.node_error[self.layer-2]
+            )
+        # correcting bias of output layer
+        self.olayerbias -= eta*node_error[self.layers-2]
+        # return net error
         return error
 
 # END OF FILE
