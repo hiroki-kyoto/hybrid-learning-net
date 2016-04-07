@@ -28,7 +28,7 @@ def unify(x):
     t = a/(b-a)
     return b*t/x-t
 
-class HLNN:
+class DHLNN:
     def __init__(self):
         self.layers = 0
         self.net_dim = []
