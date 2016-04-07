@@ -17,16 +17,17 @@ def main():
 	total = 200
 	train = total/2
 	test = total - train
-	r = np.array([10, 10, 10])
+	d = np.array([3, 4, 3])
+	r = np.array([6, 17, 28])
 	c = np.array([
-		[16, 45],
-		[18, 27],
-		[33, 38]
+		[33, 33],
+		[34, 31],
+		[36, 32]
 		])
 	# plot them out
 	data = range(3)
 	for i in xrange(0, len(r)):
-		rou = np.random.rand(total)*r[i]
+		rou = r[i]-d[i] + 2*d[i]*np.random.rand(total)
 		theta = np.random.rand(total)*2*np.pi
 		data[i] = np.array([
 			c[i, 0] + rou*np.cos(theta),
@@ -40,9 +41,9 @@ def main():
 	pl.xlabel('x')
 	pl.ylabel('y')
 	pl.title('Classification of Random Topologies')
-	#pl.show()
+	pl.show()
 	pl.draw()
-	fig1.savefig("test1")
+	fig1.savefig("test2")
 	##################################################
 	# applying model to test samples
 	##################################################
