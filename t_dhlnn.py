@@ -14,11 +14,11 @@ def main():
 	###############################################
 	# generate samples of test
 	###############################################
-	total = 200
+	total = 400
 	train = total/2
 	test = total - train
-	d = np.array([3, 4, 3])
-	r = np.array([6, 17, 28])
+	d = np.array([2.3, 3.0, 2.5])
+	r = np.array([6.1, 17.3, 28.2])
 	c = np.array([
 		[33, 33],
 		[34, 31],
@@ -41,13 +41,14 @@ def main():
 	pl.xlabel('x')
 	pl.ylabel('y')
 	pl.title('Classification of Random Topologies')
-	pl.show()
+	#pl.show()
 	pl.draw()
 	fig1.savefig("test2")
 	##################################################
 	# applying model to test samples
 	##################################################
-	net.set_net_dim([2, 10, len(r)]);
+	net_dim = [2, 10, 10, 10, len(r)]
+	net.set_net_dim(net_dim);
 	net.set_scale(100.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
@@ -55,20 +56,20 @@ def main():
 	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 5000 # unsupervised learning
-	snum = 3000  # supervised learning
+	unum = 3000 # unsupervised learning
+	snum = 6000  # supervised learning
 	ulbl = np.random.randint(0, len(r), size=unum)
 	useq = np.random.randint(0, train, size=unum)
-	uerr = np.zeros(unum)
+	uerr = np.zeros([len(net_dim)-2, unum])
 	for i in xrange(unum):
 		v = np.array([
 			data[ulbl[i]][0][useq[i]],
 			data[ulbl[i]][1][useq[i]]
 			])
-		(uopt, uerr[i]) = net.drive_model(v, []) # feedback=[] means no feedback
+		(uopt, uerr[:,i]) = net.drive_model(v, []) # feedback=[] means no feedback
 	# plot unsupervised error level
 	uerrfig = pl.figure()
-	pl.plot(xrange(unum), uerr, "-")
+	pl.plot(xrange(unum), uerr[0], "-")
 	pl.xlabel("Iteration Time")
 	pl.ylabel("SOM State Flag")
 	pl.title("Unsupervised Learning (SOM)")
@@ -95,11 +96,12 @@ def main():
 	pl.title("Supervised Learning Error Curve")
 	pl.xlabel("Iteration Time")
 	pl.ylabel("Supervised Error")
+	pl.ylim(0.0, 1.0)
 	#pl.show()
 	pl.draw()
 	serrfig.savefig("serrfig")
 	# check correctness
-	cnum = 300
+	cnum = 800
 	clbl = np.random.randint(0, len(r), size=cnum)
 	cseq = np.random.randint(train, train+test, size=cnum)
 	plbl = np.random.randint(0, len(r), size=cnum)

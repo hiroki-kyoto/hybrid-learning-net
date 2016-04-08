@@ -94,8 +94,9 @@ class DHLNN:
         for i in range(1, self.layers):
             self.bp_conn[i-1] = np.random.rand(
                 self.net_dim[i-1], self.net_dim[i])
-            self.som_conn[i-1] = np.random.rand(
-                self.net_dim[i-1], self.net_dim[i])
+        for i in xrange(self.layers-2):
+            self.som_conn[i] = np.random.rand(
+                self.net_dim[i], self.net_dim[i+1])
         # node error for each node
         self.node_error = range(1, self.layers)
         for i in range(1, self.layers):
@@ -118,30 +119,18 @@ class DHLNN:
         self.somlayer[0] = np.abs(self.som_conn[0]-self.inputlayer.T).sum(axis=0)
         mid = self.somlayer[0].argmin()
         self.somerror[0] = self.somlayer[0].min()
-        self.somflag[0] = (self.somlayer[0].max()-self.someerror[0])/2.0
+        self.somflag[0] = (self.somlayer[0].max()-self.somerror[0])/2.0
         self.somlayer[0] = unify(self.somlayer[0])
         # circle model updating
         decline = 1.0
         for i in range(0, self.som_rad):
-            self.som_conn[0][
-                :,
-                (mid-i)%self.net_dim[1]
-            ] += self.somerror[0]*self.som_eta*decline*(
-                    self.inputlayer[0]-self.som_conn[0][
-                        :,
-                        (mid-i)%self.net_dim[1]
-                    ]
-                )
+            self.som_conn[0][:,(mid-i)%self.net_dim[1]] += \
+            self.somerror[0]*self.som_eta*decline*(
+                    self.inputlayer[0]-self.som_conn[0][:,(mid-i)%self.net_dim[1]])
             if i>0:
-                self.som_conn[0][
-                    :,
-                    (mid+i)%self.net_dim[1]
-                ] += self.somerror[0]*self.som_eta*decline*(
-                        self.inputlayer[0]-self.som_conn[0][
-                            :,
-                            (mid+i)%self.net_dim[1]
-                        ]
-                    )
+                self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
+                self.somerror[0]*self.som_eta*decline*(
+                        self.inputlayer[0]-self.som_conn[0][:,(mid+i)%self.net_dim[1]])
             decline *= self.som_dec
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
@@ -160,24 +149,14 @@ class DHLNN:
             self.somlayer[i-1] = unify(self.somlayer[i-1])
             # circle model updating
             decline = 1.0
-            for i in range(0, self.som_rad):
-                self.som_conn[i-1][
-                    :,
-                    (mid-i)%self.net_dim[1]
-                ] += self.somerror[i-1]*self.som_eta*decline*(
-                    self.hiddenlayer[i-2]-self.som_conn[i-1][
-                        :,
-                        (mid-i)%self.net_dim[1]
-                    ])
-                if i>0:
-                    self.som_conn[i-1][
-                        :,
-                        (mid+i)%self.net_dim[1]
-                    ] += self.somerror[i-1]*self.som_eta*decline*(
-                        self.hiddenlayer[i-2]-self.som_conn[i-1][
-                            :,
-                            (mid+i)%self.net_dim[1]
-                    ])
+            for k in range(0, self.som_rad):
+                self.som_conn[i-1][:,(mid-k)%self.net_dim[i]] += \
+                self.somerror[i-1]*self.som_eta*decline*(
+                    self.hiddenlayer[i-2][0][:]-self.som_conn[i-1][:,(mid-k)%self.net_dim[i]])
+                if k>0:
+                    self.som_conn[i-1][:,(mid+k)%self.net_dim[i]] += \
+                    self.somerror[i-1]*self.som_eta*decline*(
+                        self.hiddenlayer[i-2][0][:]-self.som_conn[i-1][:,(mid+k)%self.net_dim[i]])
                 decline *= self.som_dec
             # update next hidden layer
             self.hiddenlayer[i-1] = sigmoid(
@@ -240,10 +219,10 @@ class DHLNN:
         eta = self.bp_eta
         self.bp_conn[self.layers-2] -= eta*self.hiddenlayer[
             self.layers-3].T.dot(
-                self.node_error[self.layer-2]
+                self.node_error[self.layers-2]
             )
         # correcting bias of output layer
-        self.olayerbias -= eta*node_error[self.layers-2]
+        self.olayerbias -= eta*self.node_error[self.layers-2]
         # return net error
         return error
 
