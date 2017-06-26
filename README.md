@@ -64,12 +64,12 @@ input patter [x] </span>
  Neural Gas, to replace SOM, and we could also employ other supervised model
  to in supervised process.
 </p>
-<span> [Copyright: Xiang Chao (向超)]</span>
+<span> [Copyright: Yamasaki Hiroki(山崎ひろき)</span>
 <span> [Statement] </span>
-<p> This project contains algorithm and model design that only belongs to author,
+<p> This project contains algorithm and model design that only belongs to the author,
 and these code come from project that accompanies a published paper. If you
 want to use it, please contact the auther first at : <br/>
-[xiangchao215 at mails dot ucas dot ac dot cn] <br/>
+[yamasaki\_hiroki\_kyoto at yahoo dot co dot jp] <br/>
 (please translate into normal email address by yourself, escape for mail address
 spider to avoid spam, thanks!)
 </p>
