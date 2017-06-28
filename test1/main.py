@@ -56,7 +56,7 @@ def main():
 	# prepare unsupervised and supervised data
 	# unum = 5000
         unum = 0 # unsupervised learning 
-	snum = 4000 # supervised learning
+	snum = 10000 # supervised learning
 	ulbl = np.random.randint(0, len(r), size=unum)
 	useq = np.random.randint(0, train, size=unum)
 	uerr = np.zeros(unum)
