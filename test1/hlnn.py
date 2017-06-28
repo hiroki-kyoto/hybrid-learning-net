@@ -114,7 +114,7 @@ class HLNN:
         # circle model updating
         decline = 1.0
         for i in range(1, self.som_rad):  
-            decline *= self.som_dec
+            #decline *= self.som_dec
             self.som_conn[
                 :,
                 (mid-i)%self.net_dim[1]
