@@ -50,7 +50,8 @@ def main():
 	net.set_scale(100.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
-	net.set_som_dec(0.2)
+	#net.set_som_dec(0.2)
+        net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data

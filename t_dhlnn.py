@@ -47,16 +47,16 @@ def main():
 	##################################################
 	# applying model to test samples
 	##################################################
-	net_dim = [2, 10, 10, 10, len(r)]
+	net_dim = [2, 10, 10, len(r)]
 	net.set_net_dim(net_dim);
 	net.set_scale(100.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
-	net.set_som_dec(0.2)
+	net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 3000 # unsupervised learning
+	unum = 0 # unsupervised learning
 	snum = 6000  # supervised learning
 	ulbl = np.random.randint(0, len(r), size=unum)
 	useq = np.random.randint(0, train, size=unum)
