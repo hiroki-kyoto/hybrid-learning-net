@@ -82,92 +82,29 @@ def main():
 	h = numRows
 	w = numColumns
 	[ims1,h,w] = max_pool(ims1,h,w,2,2)
-
-	for i in range(10):
-		im = np.array(ims1[i,:])
-		im = im.reshape(h,w)
-		fig = plt.subplot(1,10,i+1)
-		fig.imshow(im , cmap='gray')
-		fig.axis('off')
-		plt.title(str(int(lbs[i])))
-	plt.show()
-	return
-	# deep HLN => DHLN
-
-	#print 'HLNN Instance Running Test'
+        # deep HLN => DHLN
 	if sys.argv[1]=="HLNN":
 		net = HLNN()
 	else:
 		net = BPNN()
-	###############################################
-	# generate samples of test
-	###############################################
-	total = 400
+        return
+	total = 200
 	train = total/2
 	test = total - train
-	d = np.array([2.3, 3.0, 2.5])
-	r = np.array([6.1, 17.3, 28.2])
-	c = np.array([
-		[33, 33],
-		[34, 31],
-		[36, 32]
-		])
-	# plot them out
-	data = range(3)
-	for i in xrange(0, len(r)):
-		rou = r[i]-d[i] + 2*d[i]*np.random.rand(total)
-		theta = np.random.rand(total)*2*np.pi
-		data[i] = np.array([
-			c[i, 0] + rou*np.cos(theta),
-			c[i, 1] + rou*np.sin(theta)
-			])
-	# draw figure to show points of topologies
-	fig1 = pl.figure()
-	pl.plot(data[0][0], data[0][1], "*")
-	pl.plot(data[1][0], data[1][1], ".")
-	pl.plot(data[2][0], data[2][1], "x")
-	pl.xlabel('x')
-	pl.ylabel('y')
-	pl.title('Classification of Random Topologies')
-	#pl.show()
-	pl.draw()
-	fig1.savefig("test2")
-	##################################################
-	# applying model to test samples
-	##################################################
-	net_dim = [2, 1000, len(r)]
-	net.set_net_dim(net_dim);
-	net.set_scale(100.0, 1.0)
+        # build net model
+	net_dim = [h*w, 10, 10]
+	net.set_net_dim(net_dim)
+	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
 	net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data
-	unum = 0 # unsupervised learning
 	snum = 5000  # supervised learning
-	ulbl = np.random.randint(0, len(r), size=unum)
-	useq = np.random.randint(0, train, size=unum)
-	uerr = np.zeros([len(net_dim)-2, unum])
-	for i in xrange(unum):
-		v = np.array([
-			data[ulbl[i]][0][useq[i]],
-			data[ulbl[i]][1][useq[i]]
-			])
-		(uopt, uerr[:,i]) = net.drive_model(v, []) # feedback=[] means no feedback
-	# plot unsupervised error level
-	uerrfig = pl.figure()
-	pl.plot(xrange(unum), uerr[0], "-")
-	pl.xlabel("Iteration Time")
-	pl.ylabel("SOM State Flag")
-	pl.title("Unsupervised Learning (SOM)")
-	pl.ylim(0.0, 1.0)
-	#pl.show()
-	pl.draw()
-	uerrfig.savefig("uerrfig")
 	#print "Model unsupervised learning process done!"
 	# supervised learning
-	slbl = np.random.randint(0, len(r), size=snum)
+	slbl = np.random.randint(0, 10, size=snum)
 	sseq = np.random.randint(0, train, size=snum)
 	serr = np.zeros(snum)
 	for i in xrange(snum):
@@ -208,15 +145,6 @@ def main():
 			cnt[t] += bool(plbl[i]==t)
 	print 1.0*crt/cnum
 	#print "couter: ", cnt
-	# draw preditced points
-	pdata = range(len(r))
-	for i in xrange(len(r)):
-		pdata[i] = np.zeros([2, cnt[i]])
-	cnt = np.zeros(len(r), 'int')
-	for i in xrange(cnum):
-		pdata[plbl[i]][0][cnt[plbl[i]]] = data[clbl[i]][0][cseq[i]]
-		pdata[plbl[i]][1][cnt[plbl[i]]] = data[clbl[i]][1][cseq[i]]
-		cnt[plbl[i]] += 1
 # execute the program
 main()
 
