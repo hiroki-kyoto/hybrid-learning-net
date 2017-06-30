@@ -76,9 +76,15 @@ def main():
 		buf, 
 		index
 	)
+        # prepare data for training and testing
+        total = ims.shape[0]
+	train = total/2
+	test = total - train
+        numlbl = 10
 	# apply max-pooling
-	ims1 = np.zeros([10,numRows*numColumns])
-	ims1[:,:]=ims[0:10,:]
+	ims1 = np.zeros([total,numRows*numColumns])
+	ims1[:,:]=ims[0:total,:]
+        del(ims)
 	h = numRows
 	w = numColumns
 	[ims1,h,w] = max_pool(ims1,h,w,2,2)
@@ -87,12 +93,8 @@ def main():
 		net = HLNN()
 	else:
 		net = BPNN()
-        return
-	total = 200
-	train = total/2
-	test = total - train
         # build net model
-	net_dim = [h*w, 10, 10]
+	net_dim = [h*w, 30, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)
@@ -100,51 +102,34 @@ def main():
 	net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
-	# prepare unsupervised and supervised data
-	snum = 5000  # supervised learning
-	#print "Model unsupervised learning process done!"
-	# supervised learning
-	slbl = np.random.randint(0, 10, size=snum)
-	sseq = np.random.randint(0, train, size=snum)
-	serr = np.zeros(snum)
+        # training 
+        snum = train*100
+        sseq = np.random.randint(0,train,snum)
+        serr = np.zeros(snum)
 	for i in xrange(snum):
-		v = np.array([
-			data[slbl[i]][0][sseq[i]],
-			data[slbl[i]][1][sseq[i]]
-			])
-		f = np.zeros(len(r)) + 0.2
-		f[slbl[i]] = 0.8
-		serr[i] = net.drive_model(v, f)
+            v = ims1[sseq[i],:]
+            f = np.zeros(numlbl) + 0.2
+	    f[int(lbs[sseq[i]])] = 0.8
+            serr[i] = net.drive_model(v, f)
+            print(serr[i])
 	# plot error figure
 	serrfig = pl.figure()
-	pl.plot(xrange(snum), serr, "-")
+	pl.plot(xrange(snum), serr, "r-")
 	pl.title("Supervised Learning Error Curve")
 	pl.xlabel("Iteration Time")
 	pl.ylabel("Supervised Error")
 	pl.ylim(0.0, 1.0)
-	#pl.show()
 	pl.draw()
 	serrfig.savefig("serrfig")
 	# check correctness
-	cnum = 800
-	clbl = np.random.randint(0, len(r), size=cnum)
-	cseq = np.random.randint(train, train+test, size=cnum)
-	plbl = np.random.randint(0, len(r), size=cnum)
-	for i in xrange(cnum):
-		v = np.array([
-			data[clbl[i]][0][cseq[i]],
-			data[clbl[i]][1][cseq[i]]
-			])
-		(opt, err) = net.drive_model(v, [])
-		plbl[i] = np.argmax(opt)
+        predict = np.zeros(test)
+	for i in xrange(test):
+            (opt, err) = net.drive_model(ims1[train+i,:], [])
+            predict[i] = np.argmax(opt)
 	crt = 0
-	cnt = np.zeros(len(r), 'int')
-	for i in xrange(cnum):
-		crt += bool(clbl[i]==plbl[i])
-		for t in xrange(len(r)):
-			cnt[t] += bool(plbl[i]==t)
-	print 1.0*crt/cnum
-	#print "couter: ", cnt
+	for i in xrange(test):
+		crt += bool(lbs[train+i]==predict[i])
+	print(1.0*crt/test)
 # execute the program
 main()
 

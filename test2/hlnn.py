@@ -104,17 +104,18 @@ class HLNN:
         if self.layers<1:
             print "Error: Model is not built yet!"
             return
-        # if input data has label then it is feedback training         
-        # else it should be unsupervised learning on SOM model         
+        # if input data has label then it is feedback training
+        # else it should be unsupervised learning on SOM model
         if len(data) != self.net_dim[0]:
-            print "Error: input data dimension is ILLEGAL!"             
-            return         
+            print "Error: input data dimension is ILLEGAL!"
+            return
         # run unsupervised learning first
         self.inputlayer[0] = data/self.inputscale
-        self.somlayer[0] = np.abs(self.som_conn[0]-self.inputlayer.T).sum(axis=0)
+        self.somlayer[0] = np.abs(self.som_conn[0]-self.inputlayer.T).sum(axis=0)/self.net_dim[0]
         mid = self.somlayer[0].argmin()
         self.somerror[0] = self.somlayer[0].min()
-        self.somflag[0] = (self.somlayer[0].max()-self.somerror[0])/2.0
+        self.somflag[0] = self.somlayer[0].max()-self.somerror[0]
+        # unifying
         self.somlayer[0] = unify(self.somlayer[0])
         # circle model updating
         decline = 1.0
@@ -137,10 +138,10 @@ class HLNN:
             # run unsupervised learning first
             self.somlayer[i-1] = np.abs(
                 self.som_conn[i-1]-self.hiddenlayer[i-2].T
-                ).sum(axis=0)
+                ).sum(axis=0)/self.net_dim[i-1]
             mid = self.somlayer[i-1].argmin()
             self.somerror[i-1] = self.somlayer[i-1].min()
-            self.somflag[i-1] = (self.somlayer[i-1].max()-self.somerror[i-1])/2.0
+            self.somflag[i-1] = self.somlayer[i-1].max()-self.somerror[i-1]
             self.somlayer[i-1] = unify(self.somlayer[i-1])
             # circle model updating
             decline = 1.0

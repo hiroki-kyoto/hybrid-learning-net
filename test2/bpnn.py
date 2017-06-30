@@ -102,10 +102,10 @@ class BPNN:
             return         
         # run unsupervised learning first
         self.inputlayer[0] = data/self.inputscale
-        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
+        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)/self.net_dim[0]
         mid = self.somlayer.argmin()
         som_error = self.somlayer.min()
-        som_flag = (self.somlayer.max()-som_error)/2.0
+        som_flag = self.somlayer.max()-som_error
         self.somlayer = unify(self.somlayer)
         self.som_conn[:,mid] += som_error*self.som_eta*(
             self.inputlayer[0]-self.som_conn[:,mid])
