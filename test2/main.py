@@ -41,11 +41,9 @@ def max_pool(ims, h, w, ph, pw):
                 nims[i,j*nw+k] = np.max(pool)
     return [nims, nh, nw]
 
-def main():
-	# reading MINST database
-	# load training images
-	filename = '../MNIST/train-images-idx3-ubyte'
-	binfile = open(filename , 'rb')
+def load_mnist(im_path, lb_path):
+	# loading images
+	binfile = open(im_path, 'rb')
 	buf = binfile.read()
 	index = 0
 	magic,numImages,numRows,numColumns = \
@@ -57,9 +55,8 @@ def main():
 	for i in range(numImages):
 		ims[i,:] = struct.unpack_from('>784B', buf, index)
 		index += struct.calcsize('>784B');
-	# loading training labels
-	filename = '../MNIST/train-labels-idx1-ubyte'
-	binfile = open(filename, 'rb')
+	# loading labels
+	binfile = open(lb_path, 'rb')
 	buf = binfile.read()
 	index = 0
 	magic,numLabels = struct.unpack_from(
@@ -76,18 +73,24 @@ def main():
 		buf, 
 		index
 	)
-        # prepare data for training and testing
-        total = ims.shape[0]
-	train = total/2
-	test = total - train
+	return [ims, numRows, numColumns, lbs]
+
+def main():
+	# reading MINST database
+	# load training images
+	train_im_path = '../MNIST/train-images-idx3-ubyte'
+	train_lb_path = '../MNIST/train-labels-idx1-ubyte'
+	test_im_path = '../MNIST/t10k-images-idx3-ubyte'
+	test_lb_path = '../MNIST/t10k-labels-idx1-ubyte'
+	# prepare data for training and testing
+	print('loading images and labels from MNIST...')
+	[ims, h, w, lbs] = load_mnist(train_im_path, train_lb_path)
+	train = ims.shape[0]
         numlbl = 10
 	# apply max-pooling
-	ims1 = np.zeros([total,numRows*numColumns])
-	ims1[:,:]=ims[0:total,:]
-        del(ims)
-	h = numRows
-	w = numColumns
-	[ims1,h,w] = max_pool(ims1,h,w,2,2)
+	print('applying max-pooling...')
+	[ims1, h, w] = max_pool(ims,h,w,2,2)
+	del(ims)
         # deep HLN => DHLN
 	if sys.argv[1]=="HLNN":
 		net = HLNN()
@@ -103,7 +106,7 @@ def main():
 	net.set_som_eta(0.8)
 	net.build_model()
         # training 
-        snum = train*100
+        snum = train*20
         sseq = np.random.randint(0,train,snum)
         serr = np.zeros(snum)
 	for i in xrange(snum):
@@ -111,7 +114,7 @@ def main():
             f = np.zeros(numlbl) + 0.2
 	    f[int(lbs[sseq[i]])] = 0.8
             serr[i] = net.drive_model(v, f)
-            print(serr[i])
+            print i, '\t', serr[i]
 	# plot error figure
 	serrfig = pl.figure()
 	pl.plot(xrange(snum), serr, "r-")
@@ -122,13 +125,16 @@ def main():
 	pl.draw()
 	serrfig.savefig("serrfig")
 	# check correctness
+	[ims, h, w, lbs] = load_mnist(test_im_path, test_lb_path)
+	test = ims.shape[0]
+	[ims1, h, w] = max_pool(ims, h, w, 2, 2)
         predict = np.zeros(test)
 	for i in xrange(test):
-            (opt, err) = net.drive_model(ims1[train+i,:], [])
+            (opt, err) = net.drive_model(ims1[i,:], [])
             predict[i] = np.argmax(opt)
 	crt = 0
 	for i in xrange(test):
-		crt += bool(lbs[train+i]==predict[i])
+		crt += bool(lbs[i]==predict[i])
 	print(1.0*crt/test)
 # execute the program
 main()
