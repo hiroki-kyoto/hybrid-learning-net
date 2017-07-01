@@ -106,7 +106,7 @@ def main():
 	net.set_som_eta(0.8)
 	net.build_model()
         # training 
-        snum = train*20
+        snum = train*3
         sseq = np.random.randint(0,train,snum)
         serr = np.zeros(snum)
 	for i in xrange(snum):
