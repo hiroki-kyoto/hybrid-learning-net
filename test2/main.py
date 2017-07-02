@@ -1,19 +1,10 @@
 # test HLN on MNIST database
-import matplotlib
-matplotlib.rcParams['text.usetex'] = True
-matplotlib.rcParams['text.latex.unicode'] = True
-matplotlib.rcParams['text.latex.preamble'] = [
-       '\\usepackage{CJK}',
-       r'\AtBeginDocument{\begin{CJK}{UTF8}{gbsn}}',
-       r'\AtEndDocument{\end{CJK}}']
-import matplotlib.pyplot as plt
 import numpy as np
 import sys
 import os
 import struct
 import numpy as np
 import sys
-import matplotlib.pyplot as pl
 from hlnn import HLNN
 from bpnn import BPNN
 
@@ -91,13 +82,18 @@ def main():
 	print('applying max-pooling...')
 	[ims1, h, w] = max_pool(ims,h,w,2,2)
 	del(ims)
+        # load test mnist data
+        [ims_test, h, w, lbs_test] = load_mnist(test_im_path, test_lb_path)
+	test = ims_test.shape[0]
+	[ims1_test, h, w] = max_pool(ims_test, h, w, 2, 2)
+        del(ims_test)
         # deep HLN => DHLN
 	if sys.argv[1]=="HLNN":
 		net = HLNN()
 	else:
 		net = BPNN()
         # build net model
-	net_dim = [h*w, 30, numlbl]
+	net_dim = [h*w, 20, 10, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)
@@ -106,37 +102,47 @@ def main():
 	net.set_som_eta(0.8)
 	net.build_model()
         # training 
-        snum = train*3
-        sseq = np.random.randint(0,train,snum)
-        serr = np.zeros(snum)
+        epn = 100
+        snum = train * epn
+        sseq = np.random.randint(0,train,snum) 
+        k = 0
+        epi = 0
+        err = 0
+        serr = np.zeros(epn) # supervised learning error
+        tacc = np.zeros(epn) # test accuracy
+        spar = np.zeros([net.layers-2, epn]) # neural net sparsity
+        # run unsupervised training for HLN
+        unum = train * 0
+        useq = np.random.randint(0,train,unum)
+        uerr = 0.0
+        for i in xrange(unum):
+            v = ims1[useq[i],:]
+            [_f, _err] = net.drive_model(v, [])
+            uerr += _err
+            if i%train==0:
+                print i/train, ':', uerr/train
+                uerr = 0
+        # supervised learning
 	for i in xrange(snum):
             v = ims1[sseq[i],:]
             f = np.zeros(numlbl) + 0.2
 	    f[int(lbs[sseq[i]])] = 0.8
-            serr[i] = net.drive_model(v, f)
-            print i, '\t', serr[i]
-	# plot error figure
-	serrfig = pl.figure()
-	pl.plot(xrange(snum), serr, "r-")
-	pl.title("Supervised Learning Error Curve")
-	pl.xlabel("Iteration Time")
-	pl.ylabel("Supervised Error")
-	pl.ylim(0.0, 1.0)
-	pl.draw()
-	serrfig.savefig("serrfig")
-	# check correctness
-	[ims, h, w, lbs] = load_mnist(test_im_path, test_lb_path)
-	test = ims.shape[0]
-	[ims1, h, w] = max_pool(ims, h, w, 2, 2)
-        predict = np.zeros(test)
-	for i in xrange(test):
-            (opt, err) = net.drive_model(ims1[i,:], [])
-            predict[i] = np.argmax(opt)
-	crt = 0
-	for i in xrange(test):
-		crt += bool(lbs[i]==predict[i])
-	print(1.0*crt/test)
-# execute the program
+            err += net.drive_model(v, f)
+            spar[:,epi] = spar[:,epi] + net.get_sparsity()
+            k += 1
+            if k==train:
+                serr[epi] = err/train
+                # run test dataset
+                crt = 0
+                for ii in xrange(test):
+                    (opt, _err) = net.drive_model(ims1_test[ii,:], [])
+                    crt += bool(lbs_test[ii]==np.argmax(opt))
+                tacc[epi] = 1.0*crt/test
+                spar[:,epi] = spar[:,epi]/train
+                print epi,'\t',serr[epi],'\t',tacc[epi],'\t',spar[:,epi]
+                # update training state
+                k = 0
+                epi += 1
+                err = 0
 main()
-
 # END OF FILE

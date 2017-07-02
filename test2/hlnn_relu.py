@@ -72,7 +72,6 @@ class HLNN:
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
         self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
         self.hiddenlayer = range(1, self.layers-1)
-        self.sparsity = np.zeros(self.layers-2)
         # each hidden layer has a friend som layer 
         # to estimate its signal distribution
         self.somlayer = range(1, self.layers-1)
@@ -135,7 +134,6 @@ class HLNN:
                 self.bp_conn[0]
             ) * self.somlayer[0] + self.hlayerbias[0]
         )
-        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[0]))/len(self.hiddenlayer[0])
         for i in range(2, self.layers-1):
             # run unsupervised learning first
             self.somlayer[i-1] = np.abs(
@@ -161,7 +159,6 @@ class HLNN:
                 self.hiddenlayer[i-2].dot(
                     self.bp_conn[i-1]
                 )*self.somlayer[i-1] + self.hlayerbias[i-1])
-            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[i-1]))/len(self.hiddenlayer[i-1])
 
         self.outputlayer = sigmoid(
             self.hiddenlayer[self.layers-3].dot(
@@ -224,7 +221,5 @@ class HLNN:
         self.olayerbias -= eta*self.node_error[self.layers-2]
         # return net error
         return error
-    def get_sparsity():
-        return self.sparsity
 
 # END OF FILE
