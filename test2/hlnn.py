@@ -224,7 +224,7 @@ class HLNN:
         self.olayerbias -= eta*self.node_error[self.layers-2]
         # return net error
         return error
-    def get_sparsity():
+    def get_sparsity(self):
         return self.sparsity
 
 # END OF FILE

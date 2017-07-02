@@ -178,7 +178,7 @@ class BPNN:
         for i in xrange(0, self.layers-2):
             self.hlayerbias[i] -= self.bp_eta*node_error[i]
         return error
-    def get_sparsity():
+    def get_sparsity(self):
         return self.sparsity
 
 
