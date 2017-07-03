@@ -80,12 +80,14 @@ def main():
         numlbl = 10
 	# apply max-pooling
 	print('applying max-pooling...')
-	[ims1, h, w] = max_pool(ims,h,w,2,2)
+	#[ims1, h, w] = max_pool(ims,h,w,2,2)
+        ims1 = ims
 	del(ims)
         # load test mnist data
         [ims_test, h, w, lbs_test] = load_mnist(test_im_path, test_lb_path)
 	test = ims_test.shape[0]
-	[ims1_test, h, w] = max_pool(ims_test, h, w, 2, 2)
+	#[ims1_test, h, w] = max_pool(ims_test, h, w, 2, 2)
+        ims1_test = ims_test
         del(ims_test)
         # deep HLN => DHLN
 	if sys.argv[1]=="HLNN":
@@ -93,7 +95,7 @@ def main():
 	else:
 		net = BPNN()
         # build net model
-	net_dim = [h*w, 20, 10, numlbl]
+	net_dim = [h*w, 30, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)
