@@ -16,18 +16,13 @@ import numpy as np
 # helper methods
 def sigmoid(x):
     return 1.0/(1.0+np.exp(-x))
-
-def argsig(x):
-    return -1.0*np.log(1.0/x-1)
-
 def unify(x):
     #return np.ones(len(x))
+    x = x + 1e-5
     a = x.min()
     b = x.max()
-    x = x + 1e-6
     t = a/(b-a)
     return b*t/x-t
-
 class HLNN:
     def __init__(self):
         self.layers = 0
@@ -36,6 +31,7 @@ class HLNN:
         self.som_rad = 2
         self.som_dec = 0.2
         self.bp_eta = 0.3
+        self.eta_coe = 2.0
         self.inputscale = 1.0
         self.outputscale = 1.0
         #self.bp_coe = 0.5
@@ -73,22 +69,34 @@ class HLNN:
             print "Net layers should be no less than 3"
             return
         self.inputlayer = np.zeros([1, self.net_dim[0]])
-        self.somlayer = np.zeros([1, self.net_dim[1]])
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
         self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
-        # hidden layers
         self.hiddenlayer = range(1, self.layers-1)
+        self.sparsity = np.zeros(self.layers-2)
+        # each hidden layer has a friend som layer 
+        # to estimate its signal distribution
+        self.somlayer = range(1, self.layers-1)
+        self.somflag = np.zeros(len(self.somlayer))
+        self.somerror = np.zeros(len(self.somlayer))
         self.hlayerbias = range(1, self.layers-1)
         for i in range(1, self.layers-1):
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
+            self.somlayer[i-1] = np.zeros([1, self.net_dim[i]])
             self.hlayerbias[i-1] = np.random.rand(1, self.net_dim[i])
         # build connections
         # SOM connections
-        self.som_conn = np.random.rand(self.net_dim[0], self.net_dim[1])
+        self.som_conn = range(1, self.layers-1)
         self.bp_conn = range(1, self.layers)
         for i in range(1, self.layers):
             self.bp_conn[i-1] = np.random.rand(
                 self.net_dim[i-1], self.net_dim[i])
+        for i in xrange(self.layers-2):
+            self.som_conn[i] = np.random.rand(
+                self.net_dim[i], self.net_dim[i+1])
+        # node error for each node
+        self.node_error = range(1, self.layers)
+        for i in range(1, self.layers):
+            self.node_error[i-1] = np.zeros([1, self.net_dim[i]])
 
     # this method only work on single row training or predicting     
     # training or predicting is unified as only one API     
@@ -97,46 +105,63 @@ class HLNN:
         if self.layers<1:
             print "Error: Model is not built yet!"
             return
-        # if input data has label then it is feedback training         
-        # else it should be unsupervised learning on SOM model         
+        # if input data has label then it is feedback training
+        # else it should be unsupervised learning on SOM model
         if len(data) != self.net_dim[0]:
-            print "Error: input data dimension is ILLEGAL!"             
-            return         
+            print "Error: input data dimension is ILLEGAL!"
+            return
         # run unsupervised learning first
         self.inputlayer[0] = data/self.inputscale
-        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
-        mid = self.somlayer.argmin()
-        som_error = self.somlayer.min()
-        som_flag = (self.somlayer.max()-som_error)/2.0
-        self.somlayer = unify(self.somlayer)
-        self.som_conn[:,mid] += som_error*self.som_eta*(
-            self.inputlayer[0]-self.som_conn[:,mid])
+        self.somlayer[0] = np.abs(self.som_conn[0]-self.inputlayer.T).sum(axis=0)/self.net_dim[0]
+        mid = self.somlayer[0].argmin()
+        self.somerror[0] = self.somlayer[0].min()
+        self.somflag[0] = self.somlayer[0].max()-self.somerror[0]
+        # unifying
+        self.somlayer[0] = unify(self.somlayer[0])
         # circle model updating
         decline = 1.0
-        for i in range(1, self.som_rad):  
-            #decline *= self.som_dec
-            self.som_conn[
-                :,
-                (mid-i)%self.net_dim[1]
-            ] += som_error*self.som_eta*decline*(
-                self.inputlayer[0]-self.som_conn[:,(mid-i)%self.net_dim[1]])
-            self.som_conn[
-                :,
-                (mid+i)%self.net_dim[1]
-            ] += som_error*self.som_eta*decline*(
-                self.inputlayer[0]-self.som_conn[:,(mid+i)%self.net_dim[1]])
+        for i in range(0, self.som_rad):
+            self.som_conn[0][:,(mid-i)%self.net_dim[1]] += \
+            self.somerror[0]*self.som_eta*decline*(
+                    self.inputlayer[0]-self.som_conn[0][:,(mid-i)%self.net_dim[1]])
+            if i>0:
+                self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
+                self.somerror[0]*self.som_eta*decline*(
+                        self.inputlayer[0]-self.som_conn[0][:,(mid+i)%self.net_dim[1]])
+            decline *= self.som_dec
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
             self.inputlayer.dot(
                 self.bp_conn[0]
-            ) * self.somlayer + self.hlayerbias[0]
+            ) * self.somlayer[0] + self.hlayerbias[0]
         )
+        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[0][0,:]))/len(self.hiddenlayer[0][0,:])
         for i in range(2, self.layers-1):
+            # run unsupervised learning first
+            self.somlayer[i-1] = np.abs(
+                self.som_conn[i-1]-self.hiddenlayer[i-2].T
+                ).sum(axis=0)/self.net_dim[i-1]
+            mid = self.somlayer[i-1].argmin()
+            self.somerror[i-1] = self.somlayer[i-1].min()
+            self.somflag[i-1] = self.somlayer[i-1].max()-self.somerror[i-1]
+            self.somlayer[i-1] = unify(self.somlayer[i-1])
+            # circle model updating
+            decline = 1.0
+            for k in range(0, self.som_rad):
+                self.som_conn[i-1][:,(mid-k)%self.net_dim[i]] += \
+                self.somerror[i-1]*self.som_eta*decline*(
+                    self.hiddenlayer[i-2][0][:]-self.som_conn[i-1][:,(mid-k)%self.net_dim[i]])
+                if k>0:
+                    self.som_conn[i-1][:,(mid+k)%self.net_dim[i]] += \
+                    self.somerror[i-1]*self.som_eta*decline*(
+                        self.hiddenlayer[i-2][0][:]-self.som_conn[i-1][:,(mid+k)%self.net_dim[i]])
+                decline *= self.som_dec
+            # update next hidden layer
             self.hiddenlayer[i-1] = sigmoid(
                 self.hiddenlayer[i-2].dot(
                     self.bp_conn[i-1]
-                ) + self.hlayerbias[i-1]
-            )
+                )*self.somlayer[i-1] + self.hlayerbias[i-1])
+            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[i-1][0,:]))/len(self.hiddenlayer[i-1][0,:])
         self.outputlayer = sigmoid(
             self.hiddenlayer[self.layers-3].dot(
                 self.bp_conn[self.layers-2]
@@ -145,7 +170,7 @@ class HLNN:
         # check if to do feedback procedure
         if feedback==[]:
             #print "output: ", self.outputlayer
-            return (self.outputlayer*self.outputscale, som_flag)
+            return (self.outputlayer*self.outputscale, self.somflag)
         # feedback part
         if len(feedback) != self.net_dim[self.layers-1]:
             print "feedback is of wrong dimension!"
@@ -157,25 +182,48 @@ class HLNN:
         feedback = feedback/self.outputscale
         error = self.outputlayer-feedback
         error = 0.5*(error*error).sum()
-        node_error = range(1, self.layers)
-        for i in range(1, self.layers):
-            node_error[i-1] = np.zeros([1, self.net_dim[i]])
         # back broadcast error
-        node_error[self.layers-2] = (self.outputlayer-feedback)*(
-            1-self.outputlayer)*self.outputlayer
-        for i in range(self.layers-2, 0, -1):
-            node_error[i-1] = (node_error[i].dot(self.bp_conn[i].T))*(
-                1-self.hiddenlayer[i-1])*self.hiddenlayer[i-1]
+        self.node_error[self.layers-2] = (
+            self.outputlayer-feedback
+            )*(
+            1-self.outputlayer
+            )*self.outputlayer
+        # THE LAST HIDDEN LAYER
+        self.node_error[self.layers-3] = (
+            self.node_error[self.layers-2].dot(
+                self.bp_conn[self.layers-2].T
+                )*(
+                1-self.hiddenlayer[self.layers-3]
+                )*self.hiddenlayer[self.layers-3]
+            )
+        for i in range(self.layers-3, 0, -1):
+            self.node_error[i-1] = (
+                (self.somerror[i]*self.node_error[i]).dot(self.bp_conn[i].T)
+                )*(
+                1-self.hiddenlayer[i-1]
+                )*self.hiddenlayer[i-1]
         # correcting weight of connection
-        self.bp_conn[0] -= self.bp_eta*self.inputlayer.T.dot(
-            node_error[0])*self.somlayer
-        for i in range(1, self.layers-1):
-            self.bp_conn[i] -= self.bp_eta*self.hiddenlayer[i-1].T.dot(
-                node_error[i])
-        # correcting bias of nodes
-        self.olayerbias -= self.bp_eta*node_error[self.layers-2]
-        for i in xrange(0, self.layers-2):
-            self.hlayerbias[i] -= self.bp_eta*node_error[i]
+        eta = self.bp_eta*(1.0/(1.0+self.eta_coe*self.somflag[0]))
+        self.bp_conn[0] -= eta*self.inputlayer.T.dot(
+            self.node_error[0]
+            )*self.somlayer[0]
+        self.hlayerbias[0] -= eta*self.node_error[0]
+        for i in range(1, self.layers-2):
+            eta = self.bp_eta*(1.0/(1.0+self.eta_coe*self.somflag[i]))
+            self.bp_conn[i] -= eta*self.hiddenlayer[i-1].T.dot(
+                self.node_error[i])*self.somlayer[i]
+            self.hlayerbias[i] -= eta*self.node_error[i]
+        # for the output layer
+        eta = self.bp_eta
+        self.bp_conn[self.layers-2] -= eta*self.hiddenlayer[
+            self.layers-3].T.dot(
+                self.node_error[self.layers-2]
+            )
+        # correcting bias of output layer
+        self.olayerbias -= eta*self.node_error[self.layers-2]
+        # return net error
         return error
+    def get_sparsity(self):
+        return self.sparsity
 
 # END OF FILE

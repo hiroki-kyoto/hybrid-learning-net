@@ -50,13 +50,13 @@ def main():
 	net.set_scale(100.0, 1.0)
 	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
-	#net.set_som_dec(0.2)
-        net.set_som_dec(1.0)
+	net.set_som_dec(0.2)
+        #net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
 	# prepare unsupervised and supervised data
-        unum = 0 # unsupervised learning 
-	snum = 8000 # supervised learning
+        unum = 5000 # unsupervised learning 
+	snum = 6000 # supervised learning
 	ulbl = np.random.randint(0, len(r), size=unum)
 	useq = np.random.randint(0, train, size=unum)
 	uerr = np.zeros(unum)

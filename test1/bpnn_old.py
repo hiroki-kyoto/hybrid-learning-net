@@ -76,7 +76,6 @@ class BPNN:
         self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
         # hidden layers
         self.hiddenlayer = range(1, self.layers-1)
-        self.sparsity = np.zeros(self.layers-2)
         self.hlayerbias = range(1, self.layers-1)
         for i in range(1, self.layers-1):
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
@@ -103,10 +102,10 @@ class BPNN:
             return         
         # run unsupervised learning first
         self.inputlayer[0] = data/self.inputscale
-        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)/self.net_dim[0]
+        self.somlayer = np.abs(self.som_conn-self.inputlayer.T).sum(axis=0)
         mid = self.somlayer.argmin()
         som_error = self.somlayer.min()
-        som_flag = self.somlayer.max()-som_error
+        som_flag = (self.somlayer.max()-som_error)/2.0
         self.somlayer = unify(self.somlayer)
         self.som_conn[:,mid] += som_error*self.som_eta*(
             self.inputlayer[0]-self.som_conn[:,mid])
@@ -130,14 +129,12 @@ class BPNN:
                 self.bp_conn[0]
             ) * self.somlayer + self.hlayerbias[0]
         )
-        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[0][0,:]))/len(self.hiddenlayer[0][0,:])
         for i in range(2, self.layers-1):
             self.hiddenlayer[i-1] = sigmoid(
                 self.hiddenlayer[i-2].dot(
                     self.bp_conn[i-1]
                 ) + self.hlayerbias[i-1]
             )
-            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[i-1][0,:]))/len(self.hiddenlayer[i-1][0,:])
         self.outputlayer = sigmoid(
             self.hiddenlayer[self.layers-3].dot(
                 self.bp_conn[self.layers-2]
@@ -178,8 +175,5 @@ class BPNN:
         for i in xrange(0, self.layers-2):
             self.hlayerbias[i] -= self.bp_eta*node_error[i]
         return error
-    def get_sparsity(self):
-        return self.sparsity
-
 
 # END OF FILE

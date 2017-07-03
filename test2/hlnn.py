@@ -135,7 +135,7 @@ class HLNN:
                 self.bp_conn[0]
             ) * self.somlayer[0] + self.hlayerbias[0]
         )
-        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[0][0,:]))/len(self.hiddenlayer[0][0,:])
+        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[0][0,:]))/len(self.hiddenlayer[0][0,:])
         for i in range(2, self.layers-1):
             # run unsupervised learning first
             self.somlayer[i-1] = np.abs(
@@ -161,7 +161,7 @@ class HLNN:
                 self.hiddenlayer[i-2].dot(
                     self.bp_conn[i-1]
                 )*self.somlayer[i-1] + self.hlayerbias[i-1])
-            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-4,self.hiddenlayer[i-1][0,:]))/len(self.hiddenlayer[i-1][0,:])
+            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[i-1][0,:]))/len(self.hiddenlayer[i-1][0,:])
         self.outputlayer = sigmoid(
             self.hiddenlayer[self.layers-3].dot(
                 self.bp_conn[self.layers-2]
