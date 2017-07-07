@@ -167,32 +167,58 @@
 \author[a]{Ying Liu}
 \author[a]{Chao Xiang}
 
-\address[a]{University of Chinese Academy of Sciences, Beijing 47001, China}
+\address[a]{University of Chinese Academy of Sciences, Beijing 100049, China}
 
 \begin{abstract}
 %% Text of abstract
-Currently, neural networks have succeeded in object recognition tasks 
-based on images, natural language translation, and voice recognition, 
-to name a few. However, neural nets are customly built for different 
-applications and vary a lot in achitectures and model hyperparameters 
-like learning rate and parameter initialization method. 
-To make it worse, these hyperparameter settings generally play a big role 
-in performances of training and testing, and the best settings for 
-specific applications are so far only available by manually trying 
-different configurations which is really huge work.
-
-We, thereby, present a novel neural network achitecture with 
-Self Organizing Maps(SOMs) aided, to achieve a much faster net learning 
-for general applications with good robustness to a few key hyperparameters. 
-We've also experimented our architecture over the MNIST dataset, 
-it has proved the surprising improvement on both training and testing phases
-of general applications, and we have unexpectedly discovered some interesting 
-facts about neural network trainings, such as neuron activation sparsity is 
-somehow strongly related to the training loss within certain cases.
+Currently, neural networks have 
+succeeded in object recognition 
+tasks based on images, natural 
+language translation, and voice 
+recognition, to name a few. 
+However, neural nets are customly 
+built for different applications 
+and vary a lot in achitectures 
+and model hyperparameters like 
+learning rate and parameter 
+initialization. To make it worse, 
+these hyperparameter settings 
+generally play a big role in 
+performances of training and 
+testing, and the best settings 
+for specific applications are so 
+far only available by manually 
+repeatly trying different 
+configurations which is really 
+huge work. We, thereby, present 
+a novel neural network achitecture,
+called Hybrid Learning Net(HLN), 
+with Self Organizing Maps(SOMs) 
+aided to learn from samples in 
+both unsupervised and supervised 
+way, targeting to achieve a much 
+faster net learning for general 
+applications with good robustness
+to a few key hyperparameters such 
+as the parameter initialization 
+and the net strcuture variation. 
+We've also experimented our 
+architecture over the MNIST 
+dataset, it has proved the 
+impressive promotion on both 
+training and testing phases
+of general applications, and 
+we have unexpectedly discovered 
+some interesting facts about 
+neural network trainings, 
+such as neuron activation 
+sparsity is somehow strongly 
+related to the training loss 
+within certain cases.
 \end{abstract}
 
 \begin{keyword}
-hybrid learning;neural network;general application;sparsity;SOM;MNIST;fast;
+hybrid learning; neural network; general application; sparsity; SOM; MNIST; fast learning
 
 %% keywords here, in the form: keyword \sep keyword
 
@@ -205,8 +231,8 @@ hybrid learning;neural network;general application;sparsity;SOM;MNIST;fast;
 
 \end{frontmatter}
 
-\correspondingauthor[*]{Corresponding author. Tel.: +0-000-000-0000 ; fax: +0-000-000-0000 .}
-\email{author@institute.xxx}
+\correspondingauthor[*]{Corresponding author. Tel.: +86-183-0114-2368;}
+\email{xiangchao215@mails.ucas.ac.cn}
 
 %%
 %% Start line numbering here if you want
@@ -214,33 +240,139 @@ hybrid learning;neural network;general application;sparsity;SOM;MNIST;fast;
 % \linenumbers
 
 %% main text
-\section{Main Text}
+\section{Introduction}
 \label{main}
+Since the first mathematical model 
+of artificial neural network was 
+proposed in 1943\cite{mcculloch1943logical}, 
+the neural network has been 
+designed into many architectures, 
+such as Convolutional Neural 
+Networks(CNNs) for image 
+recognition
+\cite{krizhevsky2012imagenet}, 
+Recurrent Convolutional Neural 
+Networks(R-CNNs) for object 
+detection in 
+videos\cite{girshick2015fast}, 
+and Long Short Term Memorys(LSTMs)
+for speech recognition
+\cite{graves2013hybrid} and many, 
+many more to make it a list. 
+These specially designed neural 
+network models are trained by 
+lots of efficient methods with 
+tons of carefully chosen little 
+skills which we may call tricks. 
+Such neural network architectures
+suit well for their specific 
+applications but may have plain 
+or worse performances on others, 
+and their best performances 
+rely heavily on hyperparameter 
+configuration in general. Thus, 
+it is an in-demand job to propose 
+a relatively universal 
+architecutre that enables equal 
+or similar performances among 
+varied applications.
 
-Here introduce the paper, and put a nomenclature if necessary, in a box with the same font size as the rest of the paper. The paragraphs continue from here and are only separated by headings, subheadings, images and formulae. The section headings are arranged by numbers, bold and 10 pt. Here follows further instructions for authors.
+We notice that, although there're 
+plenty of choices to train a 
+neural network, literally all 
+these methods can be reduced into
+3 categories, supervised learning
+\cite{lecun1990handwritten}, 
+unsupervised learning
+\cite{vincent2010stacked}, 
+and the semi-supervised
+\cite{chapelle2009semi}.
+In supervised learning, 
+one can only train a model from 
+labeled samples, however in real 
+applications, labeling a large 
+dataset is a tough and costly 
+task, the unlabeled ones are 
+therefore the primary data 
+available. To make use of the 
+majority unlabeled data, a few 
+unsupervised training algorithms 
+arose. These unsupervised learning
+methods, denoted as pretraining, 
+attempt to produce an optimized 
+parameter initialization
+\cite{le2013building}.
+Thus such unsupervised techniques 
+can only be applied before the 
+supervised training phase, once 
+the supervised begins, the 
+unsupversied learning will become 
+unavailable for the model.
+While the semi-supervised learning
+allows the model to learn from
+both labeled and unlabeled samples 
+at the same time, but the 
+technique is way too complicated, 
+and not neural-network-integreted
+\cite{socher2011semi}.
 
-\begin{nomenclature}
-\begin{deflist}[A]
-\defitem{A}\defterm{radius of}
-\defitem{B}\defterm{position of}
-\defitem{C}\defterm{further nomenclature continues down the page inside the text box}
-\end{deflist}
-\end{nomenclature}
+Here we introduce a new architecture
+that learn in both supervised and 
+unsupervised ways at the same time,
+and requires no extra techniques on
+training. Our architecture, Hybrid
+Learning Nets(HLNs), made of 
+decoupled hidden layer consisting
+a Self Organizing Map(SOM) and a 
+fully connected layer, training in
+the simplest way of Backprop, 
+demonstrate much faster learning
+capability and remain robust to 
+parameter initialization and
+network configuration such as the net
+depth of layer.
 
-\subsection{ Structure}
-For this Procedia the files must be in MS Word format only and should be formatted for direct printing. Figures and tables should be embedded and not supplied separately. Please make sure that you use as much as possible normal fonts in your documents.
+\subsection{Semi-supervised learning for
+neural network}
+A key assumption in semi-supervised 
+algorithms developed so far, is the 
+structure assumption: two samples with 
+similar distribution on the same mapping 
+structure tend to have high probability 
+of belonging to the same class. Based on 
+this assumption, one can use large 
+unlabeled data to uncover such 
+structures. There're already a few 
+algorithms dedicated to do this,
+such as cluster kernels
+\cite{chapelle2003cluster},
+Low Density Separation(LDS)
+\cite{chapelle2005semi},
+label propagation
+\cite{zhu2002learning},
+to name a few.
+In such algorithms, designing a regularizer
+to enable the model to learn the representation
+or structure of raw data, in order to improve
+the supervised learning performance, becomes
+the key point.
 
-Special fonts, such as fonts used in the Far East (Japanese, Chinese, Korean, etc.) may cause problems during processing.
+To get a clear idea of how such semi-supervised
+learning algorithms work, we will give a brief 
+recall to some.
+Let's firstly focus on the general algorithm
+description of semi-supervised learning.
+Given a set of unlabeled samples,
+$S=\{x_1,\cdots,x_N\}$,
+and the similarity labels between any
+$x_i$ and $x_j$,
+$\{W_{ij}|i,j=1,\cdots,N\}$,
+we're to find the best embedding function, 
+$f(x)$, for each sample $x_i$, and
 
-To avoid unnecessary errors you are strongly advised to use the `spellchecker' function of MS Word. Follow this order when typing manuscripts: Title, Authors, Affiliations, Abstract, Keywords, Main text (including figures and tables), Acknowledgements, References, and Appendix. Collate acknowledgements in a separate section at the end of the article and do not include them on the title page, as a footnote to the title or otherwise.
 
-For this Procedia the files must be in MS Word format only and should be formatted for direct printing. Figures and tables should be embedded and not supplied separately. Please make sure that you use as much as possible normal fonts in your documents. Special fonts, such as fonts used in the Far East (Japanese, Chinese, Korean, etc.) may cause problems during processing.
 
-To avoid unnecessary errors you are strongly advised to use the `spellchecker' function of MS Word. Follow this order when typing manuscripts: Title, Authors, Affiliations, Abstract, Keywords, Main text (including figures and tables), Acknowledgements,
 
-References, Appendix. Collate acknowledgements in a separate section at the end of the article and do not include them on the title page, as a footnote to the title or otherwise.
-
-Bulleted lists may be included and should look like this:
 \begin{itemize}[]
 \item First point
 \item Second point
@@ -329,7 +461,7 @@ These and the Reference headings are in bold but have no numbers. Text below con
 %% References with BibTeX database:
 
 \bibliographystyle{elsarticle-num}
-\bibliography{xampl}
+\bibliography{ref}
 
 %% Authors are advised to use a BibTeX database file for their reference list.
 %% The provided style file elsarticle-num.bst formats references in the required Procedia style

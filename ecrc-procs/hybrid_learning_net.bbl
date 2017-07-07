@@ -1,0 +1,89 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{mcculloch1943logical}
+W.~S. McCulloch, W.~Pitts, A logical calculus of the ideas immanent in nervous
+  activity, Bulletin of mathematical biology 5~(4) (1943) 115--133.
+
+\bibitem{krizhevsky2012imagenet}
+A.~Krizhevsky, I.~Sutskever, G.~E. Hinton, Imagenet classification with deep
+  convolutional neural networks, in: Advances in neural information processing
+  systems, 2012, pp. 1097--1105.
+
+\bibitem{girshick2015fast}
+R.~Girshick, Fast r-cnn, in: Proceedings of the IEEE international conference
+  on computer vision, 2015, pp. 1440--1448.
+
+\bibitem{graves2013hybrid}
+A.~Graves, N.~Jaitly, A.-r. Mohamed, Hybrid speech recognition with deep
+  bidirectional lstm, in: Automatic Speech Recognition and Understanding
+  (ASRU), 2013 IEEE Workshop on, IEEE, 2013, pp. 273--278.
+
+\bibitem{lecun1990handwritten}
+Y.~LeCun, B.~E. Boser, J.~S. Denker, D.~Henderson, R.~E. Howard, W.~E. Hubbard,
+  L.~D. Jackel, Handwritten digit recognition with a back-propagation network,
+  in: Advances in neural information processing systems, 1990, pp. 396--404.
+
+\bibitem{vincent2010stacked}
+P.~Vincent, H.~Larochelle, I.~Lajoie, Y.~Bengio, P.-A. Manzagol, Stacked
+  denoising autoencoders: Learning useful representations in a deep network
+  with a local denoising criterion, Journal of Machine Learning Research
+  11~(Dec) (2010) 3371--3408.
+
+\bibitem{chapelle2009semi}
+O.~Chapelle, B.~Scholkopf, A.~Zien, Semi-supervised learning (chapelle, o. et
+  al., eds.; 2006)[book reviews], IEEE Transactions on Neural Networks 20~(3)
+  (2009) 542--542.
+
+\bibitem{le2013building}
+Q.~V. Le, Building high-level features using large scale unsupervised learning,
+  in: Acoustics, Speech and Signal Processing (ICASSP), 2013 IEEE International
+  Conference on, IEEE, 2013, pp. 8595--8598.
+
+\bibitem{socher2011semi}
+R.~Socher, J.~Pennington, E.~H. Huang, A.~Y. Ng, C.~D. Manning, Semi-supervised
+  recursive autoencoders for predicting sentiment distributions, in:
+  Proceedings of the conference on empirical methods in natural language
+  processing, Association for Computational Linguistics, 2011, pp. 151--161.
+
+\bibitem{chapelle2003cluster}
+O.~Chapelle, J.~Weston, B.~Sch{\"o}lkopf, Cluster kernels for semi-supervised
+  learning, in: Advances in neural information processing systems, 2003, pp.
+  601--608.
+
+\bibitem{chapelle2005semi}
+O.~Chapelle, A.~Zien, Semi-supervised classification by low density
+  separation., in: AISTATS, 2005, pp. 57--64.
+
+\bibitem{zhu2002learning}
+X.~Zhu, Z.~Ghahramani, Learning from labeled and unlabeled data with label
+  propagation.
+
+\bibitem{article-minimal}
+L.~A. Aamport, The gnats and gnus document preparation system,
+  \mbox{G-Animal's} Journal.
+
+\bibitem{article-full}
+L.~A. Aamport, The gnats and gnus document preparation system,
+  \mbox{G-Animal's} Journal 41~(7) (1986) 73, this is a full ARTICLE entry.
+
+\bibitem{article-crossref}
+L.~A. Aamport, The gnats and gnus document preparation system, in:
+  \mbox{G-Animal's} Journal \cite{whole-journal}, pp. 73+ (1986) 73+, this is a
+  cross-referencing ARTICLE entry.
+
+\bibitem{whole-journal}
+\mbox{G-Animal's} Journal 41~(7), the entire issue is devoted to gnats and gnus
+  (this entry is a cross-referenced ARTICLE (journal)).
+
+\bibitem{inbook-minimal}
+D.~E. Knuth, Fundamental Algorithms, Addison-Wesley, {\noopsort{1973b}}1973,
+  Ch. 1.2.
+
+\end{thebibliography}

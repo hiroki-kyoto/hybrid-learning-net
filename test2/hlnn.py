@@ -23,6 +23,8 @@ def unify(x):
     b = x.max()
     t = a/(b-a)
     return b*t/x-t
+#def unify(x):
+#    x =  
 class HLNN:
     def __init__(self):
         self.layers = 0

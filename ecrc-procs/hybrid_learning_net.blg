@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: hybrid_learning_net.aux
+The style file: elsarticle-num.bst
+Database file #1: ref.bib
+Warning--empty journal in zhu2002learning
+Warning--empty author in whole-journal
+Warning--empty title in whole-journal
+Warning--empty pages in inbook-minimal
+You've used 17 entries,
+            2937 wiz_defined-function locations,
+            772 strings with 8170 characters,
+and the built_in function-call counts, 5980 in all, are:
+= -- 572
+> -- 140
+< -- 10
++ -- 58
+- -- 41
+* -- 348
+:= -- 729
+add.period$ -- 17
+call.type$ -- 17
+change.case$ -- 18
+chr.to.int$ -- 0
+cite$ -- 21
+duplicate$ -- 235
+empty$ -- 709
+format.name$ -- 51
+if$ -- 1606
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 18
+newline$ -- 60
+num.names$ -- 16
+pop$ -- 135
+preamble$ -- 2
+purify$ -- 0
+quote$ -- 0
+skip$ -- 450
+stack$ -- 0
+substring$ -- 388
+swap$ -- 89
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 4
+while$ -- 50
+width$ -- 19
+write$ -- 150
+(There were 4 warnings)
