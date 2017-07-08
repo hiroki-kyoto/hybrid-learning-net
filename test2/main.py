@@ -98,13 +98,13 @@ def main():
 	net_dim = [h*w, 30, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
-	net.set_bp_eta(0.8)
+	net.set_bp_eta(0.1)
 	net.set_som_rad(3)
 	net.set_som_dec(1.0)
 	net.set_som_eta(0.8)
 	net.build_model()
         # training 
-        epn = 100
+        epn = 300
         snum = train * epn
         sseq = np.random.randint(0,train,snum) 
         k = 0
