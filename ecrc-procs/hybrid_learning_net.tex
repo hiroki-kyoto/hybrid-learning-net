@@ -368,22 +368,26 @@ and the similarity labels between any
 $x_i$ and $x_j$,
 $\{W_{ij}|i,j=1,\cdots,N\}$,
 we're to find the best embedding function, 
-$f(x)$, for each sample $x_i$, and
+$f(x)$, for each sample $x_i$, to minimize:
+\begin{equation}
+\sum^{N}_{i=1}\sum^{N}_{j=1}L(f(x_i),f(x_j),W_{ij})
+\label{eq:1}
+\end{equation}
 
-
-
-
+to explain it,
 \begin{itemize}[]
-\item First point
-\item Second point
-\item And so on
+\item $L(\cdot)$ is the loss function of 3 variables: 
+$\left<f(x_i),f(x_j),W_{ij}\right>$, 
+such as 
+$$L(f(x_i),f(x_j),W_{ij}) = 
+\max(0,||f(x_i)-f(x_j)||-W_{ij})$$
+\item $f(x)$ is the embedding function, it tries to produce
+a vector from $x_i$, similar to that of $x_j$ with $W_{ij}=0$,
+and disimilar with $W_{ij}=1$.
+\item $W_{ij}\in \mathbf{R}^d$ is the similarity label matrix 
+on $x_1,x_2,\cdots,x_N$.
 \end{itemize}
 
-Ensure that you return to the `Els-body-text' style, the style that you will mainly be using for large blocks of text, when you have completed your bulleted list.
-
-Please do not alter the formatting and style layouts which have been set up in this template document. As indicated in the template,
-Papers should be prepared in single column format suitable for direct printing onto paper size (192 x 262) mm. Do not number pages on the front, as page numbers will be added separately for the preprints and the Proceedings. Leave a line clear between paragraphs.
-All the required style templates are provided in this document with the appropriate name supplied e.g. choose 1. Els1st-order-head for your first order heading text, els-abstract-text for the abstract text etc.
 
 \subsection{ Tables}
 
@@ -413,10 +417,19 @@ Section headings should be left justified, with the first letter capitalized and
 \subsection{General guidelines for the preparation of your text}
 Avoid hyphenation at the end of a line. Symbols denoting vectors and matrices should be indicated in bold type. Scalar variable names should normally be expressed using italics. Weights and measures should be expressed in SI units. Please title your files in this order conferenceacrynom\_authorslastname.pdf
 
-\section{ Author Artwork}
-All figures should be numbered with Arabic numerals (1,2,...n). All photographs, schemas, graphs and diagrams are to be referred to as figures. Line drawings should be good quality scans or true electronic output. Low-quality scans are not acceptable. Figures must be embedded into the text and not supplied separately. Lettering and symbols should be clearly defined either in the caption or in a legend provided as part of the figure. Figures should be placed at the top or bottom of a page wherever possible, as close as possible to the first reference to them in the paper.
+
+\section{SOMs-embedding for deep architecture}
+A recall to SOMs.
+
+How we construct deep architecture with SOMs-embeddings.
+
+\section{Empirical Study}
+To test our architecture performance on small data, we 
+use a synthetic dataset containing $3.5\%$ noisy samples. 
+A sampling from this dataset get the
 
 
+\subsection
 \begin{figure}[h]
 \centerline{\includegraphics{fx1}\hspace*{5mm}\includegraphics{fx1}}
 \caption{(a) first picture; (b) second picture.}
