@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  9 JUL 2017 18:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  8 JUL 2017 23:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**hybrid_learning_net.tex
-(./hybrid_learning_net.tex
+**procs-template-generic.tex
+(./procs-template-generic.tex
 LaTeX2e <2017/01/01> patch level 3
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (./elsarticle.cls
@@ -88,7 +88,6 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
-(./hybrid_learning_net.spl)
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
@@ -97,7 +96,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count94
 )
 \splwrite=\write3
-\openout3 = `hybrid_learning_net.spl'.
+\openout3 = `procs-template-generic.spl'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
@@ -459,13 +458,12 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box32
 \rot@mess@toks=\toks19
 )
-(./hybrid_learning_net.aux)
-\openout1 = `hybrid_learning_net.aux'.
+No file procs-template-generic.aux.
+\openout1 = `procs-template-generic.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 130.
 LaTeX Font Info:    Try loading font information for OML+txmi on input line 130
 .
-
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
@@ -599,72 +597,198 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+txmia on input line 195.
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
-File: utxmia.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for U+msa on input line 195.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 195.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 195.
-
-
-(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
-File: utxsyc.fd 2000/12/15 v3.1
-)
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 238.
-
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 178.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <9> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 238.
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 252.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 178.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 192.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 192.
 
 
-Package natbib Warning: Citation `mcculloch1943logical' on page 1 undefined on 
-input line 267.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 192.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 192.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 192.
 
 
-Package natbib Warning: Citation `krizhevsky2012imagenet' on page 1 undefined o
-n input line 273.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
+)
+Underfull \hbox (badness 10000) detected at line 210
+\OT1/txr/m/n/10 A 
+ []
 
 
-Package natbib Warning: Citation `girshick2015fast' on page 1 undefined on inpu
-t line 277.
+Underfull \hbox (badness 10000) detected at line 211
+\OT1/txr/m/n/10 B 
+ []
 
 
-Package natbib Warning: Citation `graves2013hybrid' on page 1 undefined on inpu
-t line 280.
+Underfull \hbox (badness 10000) detected at line 212
+\OT1/txr/m/n/10 C 
+ []
 
 
-Package natbib Warning: Citation `lecun1990handwritten' on page 1 undefined on 
-input line 305.
-
-
-Package natbib Warning: Citation `vincent2010stacked' on page 1 undefined on in
-put line 307.
-
-
-Package natbib Warning: Citation `chapelle2009semi' on page 1 undefined on inpu
-t line 309.
-
-
-Package natbib Warning: Citation `le2013building' on page 1 undefined on input 
-line 324.
-
-
-Package natbib Warning: Citation `socher2011semi' on page 1 undefined on input 
-line 339.
+Overfull \hbox (16.07999pt too wide) in paragraph at lines 214--214
+[] 
+ []
 
 <elsevier-logo-3p.pdf, id=1, 54.08205pt x 59.7432pt>
-File: elsevier-logo-3p.pdf Graphic
+File: elsevier-logo-3p.pdf Graphic file (type pdf)
+
+<use elsevier-logo-3p.pdf>
+Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 223.
+(pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
+LaTeX Font Info:    Try loading font information for OT1+txss on input line 223
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txss.fd
+File: ot1txss.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
+(Font)              scaled to size 9.49997pt on input line 223.
+
+<svsd-3p.pdf, id=2, 160.6pt x 12.64966pt>
+File: svsd-3p.pdf Graphic file (type pdf)
+ <use svsd-3p.pdf>
+Package pdftex.def Info: svsd-3p.pdf used on input line 223.
+(pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
+
+<procs_new.pdf, id=3, 111.41624pt x 72.27pt>
+File: procs_new.pdf Graphic file (type pdf)
+ <use procs_new.pdf>
+Package pdftex.def Info: procs_new.pdf used on input line 223.
+(pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
+
+Overfull \hbox (3.91597pt too wide) has occurred while \output is active
+[]| [] 
+ []
+
+File: elsevier-logo-3p.pdf Graphic file (type pdf)
+<use elsevier-logo-3p.pdf>
+Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 223.
+(pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
+File: svsd-3p.pdf Graphic file (type pdf)
+ <use svsd-3p.pdf>
+Package pdftex.def Info: svsd-3p.pdf used on input line 223.
+(pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
+File: procs_new.pdf Graphic file (type pdf)
+ <use procs_new.pdf>
+Package pdftex.def Info: procs_new.pdf used on input line 223.
+(pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
+
+Overfull \hbox (3.91597pt too wide) has occurred while \output is active
+[]| [] 
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+
+Overfull \vbox (49.74303pt too high) has occurred while \output is active []
+
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+ <./elsevier-logo-3p.pdf> <./svsd-3p.pdf> <./procs_new.pdf>]
+LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 231.
+
+Underfull \hbox (badness 10000) detected at line 247
+[]
+ []
+
+[2] <fx1.pdf, id=30, 92.345pt x 97.86563pt>
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 275.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 275.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+
+Overfull \hbox (25.26007pt too wide) in paragraph at lines 280--281
+\OT1/txr/m/n/10 lines and in-for-ma-tion to help you sub-mit high qual-ity art-
+work please visit: http://www.elsevier.comwps/find/authorsview.
+ []
+
+[3 <./fx1.pdf>]
+
+Package natbib Warning: Citation `article-minimal' on page 4 undefined on input
+ line 300.
+
+
+Package natbib Warning: Citation `article-full' on page 4 undefined on input li
+ne 300.
+
+
+Package natbib Warning: Citation `article-crossref' on page 4 undefined on inpu
+t line 300.
+
+
+Package natbib Warning: Citation `whole-journal' on page 4 undefined on input l
+ine 300.
+
+
+Package natbib Warning: Citation `inbook-minimal' on page 4 undefined on input 
+line 300.
+
+(./procs-template-generic.bbl
+
+Package natbib Warning: Citation `whole-journal' on page 4 undefined on input l
+ine 20.
+
+)
+
+Package natbib Warning: There were undefined citations.
+
+[4] (./procs-template-generic.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3674 strings out of 493013
+ 48586 string characters out of 6135683
+ 113907 words of memory out of 5000000
+ 7100 multiletter control sequences out of 15000+600000
+ 56796 words of font info for 137 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 39i,15n,36p,635b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txf
+onts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/times/utmri8a.pfb>
+Output written on procs-template-generic.pdf (4 pages, 178472 bytes).
+PDF statistics:
+ 75 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+

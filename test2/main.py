@@ -95,10 +95,10 @@ def main():
 	else:
 		net = BPNN()
         # build net model
-	net_dim = [h*w, 30, numlbl]
+	net_dim = [h*w, 40, 20, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
-	net.set_bp_eta(0.1)
+	net.set_bp_eta(0.8)
 	net.set_som_rad(3)
 	net.set_som_dec(1.0)
 	net.set_som_eta(0.8)

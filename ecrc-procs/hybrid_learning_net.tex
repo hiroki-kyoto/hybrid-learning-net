@@ -181,7 +181,7 @@ built for different applications
 and vary a lot in achitectures 
 and model hyperparameters like 
 learning rate and parameter 
-initialization. To make it worse, 
+initialization, what's worse,
 these hyperparameter settings 
 generally play a big role in 
 performances of training and 
@@ -192,29 +192,49 @@ repeatly trying different
 configurations which is really 
 huge work. We, thereby, present 
 a novel neural network achitecture,
-called Hybrid Learning Net(HLN), 
+called Hybrid Learning Net($\mathbf{HLN}$), 
 with Self Organizing Maps(SOMs) 
-aided to learn from samples in 
-both unsupervised and supervised 
-way, targeting to achieve a much 
-faster net learning for general 
-applications with good robustness
+embedded in each layer to learn 
+from samples in $\mathbf{both}$ 
+unsupervised and supervised way, 
+targeting to achieve a much
+$\mathbf{faster}$ net learning for general 
+applications with $\mathbf{good}$ robustness
 to a few key hyperparameters such 
-as the parameter initialization 
+as the parameter initialization
 and the net strcuture variation. 
 We've also experimented our 
 architecture over the MNIST 
 dataset, it has proved the 
-impressive promotion on both 
+impressive improvement on both 
 training and testing phases
-of general applications, and 
-we have unexpectedly discovered 
+of general applications, 
+say compared to the traditional
+architecture, our method speed up
+the training process by up to 
+$\mathbf{40}$ times, which only
+take $\mathbf{1}$ epoch to get 
+an testing accuracy of over
+$\mathbf{87.5\%}$, and takes
+no more than $\mathbf{3}$ epoches
+to reach a profound accuracy of 
+over $\mathbf{91.3\%}$.
+In addition, on big scale
+of input dimension and/or with deeper 
+architecture, where the traditional
+architecture fails to learn at all,
+our method still have a fast learning,
+and can retrieve the same testing 
+accuracy on MNIST.
+Moreover, we have discovered 
 some interesting facts about 
 neural network trainings, 
 such as neuron activation 
-sparsity is somehow strongly 
-related to the training loss 
-within certain cases.
+sparsity is strongly 
+correlated to the training loss 
+within certain cases which may shed 
+a little light on how such 
+architecture really works.
 \end{abstract}
 
 \begin{keyword}
@@ -311,26 +331,88 @@ unavailable for the model.
 While the semi-supervised learning
 allows the model to learn from
 both labeled and unlabeled samples 
-at the same time, but the 
-technique is way too complicated, 
-and not neural-network-integreted
+at the same time, however they use a
+regularizer to embed the semi-supervised
+learner to original optimizing object,
+and generally a balance constraint is
+required to avoid the trival solution
 \cite{socher2011semi}.
-
-Here we introduce a new architecture
+Such a enhanced learner brings more 
+hyperparameters(say the balance 
+constraint), making it even more 
+difficult to search for best settings
+for current architectures. 
+Additionally, this integration way 
+makes it impossible to separate the 
+two learners as the semi-supervised 
+regularizer is built on the supervised 
+learner, and therefore requires an 
+early supervised training alone with 
+profound labeled data before the 
+semi-supervised regularizer can be
+applied.
+Thus we introduce a new architecture
 that learn in both supervised and 
 unsupervised ways at the same time,
 and requires no extra techniques on
 training. Our architecture, Hybrid
 Learning Nets(HLNs), made of 
-decoupled hidden layer consisting
-a Self Organizing Map(SOM) and a 
-fully connected layer, training in
-the simplest way of Backprop, 
+stacked layers, with each hidden
+layer embedded with a Self Organizing
+Map(SOM), training in
+the simplest way of backprop, 
 demonstrate much faster learning
 capability and remain robust to 
 parameter initialization and
 network configuration such as the net
 depth of layer.
+
+%\subsection{Our contributes}
+The main contributions of our work are:
+\begin{itemize}
+\item We propose HLN, a SOM-embedded 
+architecture to learn both unlabeled 
+and labeled data at the same time.
+\item Our architecture HLN overcomes
+the problem brought by traditional 
+semi-supervised learning methods that 
+the semi-supervised learning requires
+an early standalone training for the
+supervised learner which contradicts
+with the key condition: no enough 
+labeled data is provided.
+\item The HLN uses a SOM embedding 
+coupling the first hidden layer near 
+to the input layer, to learn a cluster 
+mapping function from the cheap and 
+massive unlabeled data, and this process
+can occur at any time, no matter the 
+supervised learning begins or not,
+they're completely separated.
+For deeper hidden layers, each of them 
+also has a SOM-embedding coupled, 
+but can only learn from labeled data.
+\item The experimental result shows HLNs
+speed up the whole training a lot.
+\item Our architecture demonstrates a 
+good robustness to some hyperparameters
+which may slightly relax the work of 
+manually searching for best settings
+of hyperparameters by repeatly trying
+different configurations and run the
+whole training and testing over and 
+over again.
+\end{itemize}
+HLN is implemented in Python and all
+our code and results of experiments
+in detail are available at 
+\cololinks{https://github.com/hiroki-kyoto/hybrid-learning-net.git}
+
+%\subsection{The organization of this artical}
+
+
+
+\section{Related work}
 
 \subsection{Semi-supervised learning for
 neural network}
@@ -363,10 +445,11 @@ recall to some.
 Let's firstly focus on the general algorithm
 description of semi-supervised learning.
 Given a set of unlabeled samples,
-$S=\{x_1,\cdots,x_N\}$,
+$\mathbf{X}=\{x_1,\cdots,x_N\}
+(x\in\mathbb{R}^d)$,
 and the similarity labels between any
 $x_i$ and $x_j$,
-$\{W_{ij}|i,j=1,\cdots,N\}$,
+$\mathbf{W}=\{W_{ij}|i,j=1,\cdots,N\}$,
 we're to find the best embedding function, 
 $f(x)$, for each sample $x_i$, to minimize:
 \begin{equation}
@@ -381,12 +464,13 @@ $\left<f(x_i),f(x_j),W_{ij}\right>$,
 such as 
 $$L(f(x_i),f(x_j),W_{ij}) = 
 \max(0,||f(x_i)-f(x_j)||-W_{ij})$$
-\item $f(x)$ is the embedding function, it tries to produce
+\item $f(x)\in\mathbb{R}^n$ is the embedding function, it tries to produce
 a vector from $x_i$, similar to that of $x_j$ with $W_{ij}=0$,
 and disimilar with $W_{ij}=1$.
-\item $W_{ij}\in \mathbf{R}^d$ is the similarity label matrix 
-on $x_1,x_2,\cdots,x_N$.
+\item $W_{ij}\in \mathbb{R}$ is the similarity label of the sample pair
+$\left<x_i,x_j\right>$ from $\mathbf{X}$.
 \end{itemize}
+
 
 
 \subsection{ Tables}
@@ -428,8 +512,6 @@ To test our architecture performance on small data, we
 use a synthetic dataset containing $3.5\%$ noisy samples. 
 A sampling from this dataset get the
 
-
-\subsection
 \begin{figure}[h]
 \centerline{\includegraphics{fx1}\hspace*{5mm}\includegraphics{fx1}}
 \caption{(a) first picture; (b) second picture.}
