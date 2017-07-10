@@ -65,6 +65,14 @@ O.~Chapelle, A.~Zien, Semi-supervised classification by low density
 X.~Zhu, Z.~Ghahramani, Learning from labeled and unlabeled data with label
   propagation.
 
+\bibitem{weston2012deep}
+J.~Weston, F.~Ratle, H.~Mobahi, R.~Collobert, Deep learning via semi-supervised
+  embedding, in: Neural Networks: Tricks of the Trade, Springer, 2012, pp.
+  639--655.
+
+\bibitem{kohonen1998self}
+T.~Kohonen, The self-organizing map, Neurocomputing 21~(1) (1998) 1--6.
+
 \bibitem{article-minimal}
 L.~A. Aamport, The gnats and gnus document preparation system,
   \mbox{G-Animal's} Journal.

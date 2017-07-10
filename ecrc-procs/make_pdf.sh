@@ -2,4 +2,3 @@ pdflatex hybrid_learning_net.tex
 bibtex hybrid_learning_net
 pdflatex hybrid_learning_net.tex
 pdflatex hybrid_learning_net.tex
-chromium-browser hybrid_learning_net.pdf

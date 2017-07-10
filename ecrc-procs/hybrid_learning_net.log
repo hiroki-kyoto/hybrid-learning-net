@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  9 JUL 2017 20:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  10 JUL 2017 23:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -732,7 +732,7 @@ LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <9> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 239.
 LaTeX Font Info:    Calculating math sizes for size <13> on input line 253.
 
-<elsevier-logo-3p.pdf, id=65, 54.08205pt x 59.7432pt>
+<elsevier-logo-3p.pdf, id=69, 54.08205pt x 59.7432pt>
 File: elsevier-logo-3p.pdf Graphic file (type pdf)
 
 <use elsevier-logo-3p.pdf>
@@ -747,13 +747,13 @@ File: ot1txss.fd 2000/12/15 v3.1
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 370.
 
-<svsd-3p.pdf, id=66, 160.6pt x 12.64966pt>
+<svsd-3p.pdf, id=70, 160.6pt x 12.64966pt>
 File: svsd-3p.pdf Graphic file (type pdf)
  <use svsd-3p.pdf>
 Package pdftex.def Info: svsd-3p.pdf used on input line 370.
 (pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
 
-<procs_new.pdf, id=67, 111.41624pt x 72.27pt>
+<procs_new.pdf, id=71, 111.41624pt x 72.27pt>
 File: procs_new.pdf Graphic file (type pdf)
  <use procs_new.pdf>
 Package pdftex.def Info: procs_new.pdf used on input line 370.
@@ -794,45 +794,45 @@ Overfull \vbox (49.74303pt too high) has occurred while \output is active []
  <./elsevier-logo-3p.pdf> <./svsd-3p.pdf> <./procs_new.pdf>]
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 374.
- [2]
-Underfull \hbox (badness 10000) detected at line 498
-[]
- []
+ [2] [3]
+<fx1.pdf, id=137, 92.345pt x 97.86563pt>
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 641.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 641.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
 
-<fx1.pdf, id=115, 92.345pt x 97.86563pt>
-File: fx1.pdf Graphic file (type pdf)
- <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 533.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
-File: fx1.pdf Graphic file (type pdf)
- <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 533.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
- [3]
-Overfull \hbox (25.26007pt too wide) in paragraph at lines 538--539
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Overfull \hbox (25.26007pt too wide) in paragraph at lines 646--647
 \OT1/txr/m/n/10 lines and in-for-ma-tion to help you sub-mit high qual-ity art-
 work please visit: http://www.elsevier.comwps/find/authorsview.
  []
 
-(./hybrid_learning_net.bbl [4 <./fx1.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 608.
- [5]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 608.
+[4] (./hybrid_learning_net.bbl [5 <./fx1.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 716.
+ [6]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 716.
  (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 608.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 608.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 716.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 716.
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
-(rerunfilecheck)             Checksum: 68DEA73F063C881FB3EBB9BC51090284;863.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 608.
+(rerunfilecheck)             Checksum: 3EC16B1D19418852D9EBC9EA6A3C3D7E;945.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 716.
  ) 
 Here is how much of TeX's memory you used:
- 7302 strings out of 493013
- 104107 string characters out of 6135683
- 194745 words of memory out of 5000000
- 10656 multiletter control sequences out of 15000+600000
- 63109 words of font info for 153 fonts, out of 8000000 for 9000
+ 7328 strings out of 493013
+ 104456 string characters out of 6135683
+ 196238 words of memory out of 5000000
+ 10669 multiletter control sequences out of 15000+600000
+ 64485 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,36p,632b,345s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,36p,632b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
@@ -844,10 +844,10 @@ ex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr
 ve/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
 times/utmri8a.pfb>
-Output written on hybrid_learning_net.pdf (5 pages, 207514 bytes).
+Output written on hybrid_learning_net.pdf (6 pages, 214818 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 125 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

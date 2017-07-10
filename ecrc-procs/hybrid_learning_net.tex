@@ -200,7 +200,7 @@ from samples in $\mathbf{both}$
 unsupervised and supervised way, 
 targeting to achieve a much
 $\mathbf{faster}$ net learning for general 
-applications with $\mathbf{good}$ robustness
+applications with good robustness
 to a few key hyperparameters such 
 as the parameter initialization
 and the net strcuture variation. 
@@ -407,7 +407,7 @@ over again.
 HLN is implemented in Python and all
 our code and results of experiments
 in detail are available at
-\url{https://github.com/hiroki-kyoto/hybrid-learning-net}
+\url{https://github.com/hiroki-kyoto/hybrid-learning-net}.
 
 %\subsection{The organization of this artical}
 The rest of the article is as follows.
@@ -420,7 +420,7 @@ the neural network embedding.
 In section 3, we introduce our novel
 architecture HLN, show how to
 embed SOMs into deep architectures of
-neural net.
+neural nets.
 In section 4 we explain the exact 
 training theory for HLNs.
 Section 5 gives experimental
@@ -455,9 +455,6 @@ or structure of raw data, in order to improve
 the supervised learning performance, becomes
 the key point.
 
-To get a clear idea of how such semi-supervised
-learning algorithms work, we will give a brief 
-recall to some.
 Let's firstly focus on the general algorithm
 description of semi-supervised learning.
 Given a set of unlabeled samples,
@@ -469,11 +466,10 @@ $\mathbf{W}=\{W_{ij}|i,j=1,\cdots,N\}$,
 we're to find the best embedding function, 
 $f(x)$, for each sample $x_i$, to minimize:
 \begin{equation}
-\sum^{N}_{i=1}\sum^{N}_{j=1}L(f(x_i),f(x_j),W_{ij})
+\Delta_{f}=\sum^{N}_{i=1}\sum^{N}_{j=1}L(f(x_i),f(x_j),W_{ij})
 \label{eq:1}
 \end{equation}
-
-to explain it,
+To explain it,
 \begin{itemize}[]
 \item $L(\cdot)$ is the loss function of 3 variables: 
 $\left<f(x_i),f(x_j),W_{ij}\right>$, 
@@ -487,41 +483,144 @@ and disimilar with $W_{ij}=1$.
 $\left<x_i,x_j\right>$ from $\mathbf{X}$.
 \end{itemize}
 
+\emph{Label Propagation(LP)}
+\cite{zhu2002learning} 
+is one of the most efficient algorithms using 
+the semi-supervised learning scheme as 
+described above in equation~\ref{eq:1}. 
+It adds a Laplacian Eigenmap type 
+regularization to a nearest neighbor 
+classifier:
+\begin{equation}
+	\min_f\sum^L_{i=1}\|f_i-y_i\|^2+
+	\lambda\sum^{L+U}_{i=1}\sum^{L+U}_{j=1}W_{ij}\|f_i-f_j\|^2
+	\label{eq:2}
+\end{equation}
+$L$ is a labeled sample set of $X$, and $U$ is 
+a unlabeled one, the right part of 
+equation~\ref{eq:2} is the semi-supervised 
+regularizer,
+the left part is for supervised learning only.
+Parameter $\lambda$ is the balance constraint. 
+LP trains the classifier $f(\cdot)$ to give
+two examples with high similarity $W_{ij}$
+the same label, and the neighbors of neighbors
+tend to get the same label by transitivity.
+The two points make its name \emph{label
+propagation}. For neural network model,
+we replace $f(\cdot)$ with equation as follow,
+\begin{equation}
+	y_i=\sum_jw_j^{M+1,i}y^M_j(x)
+	+b^{M+1,i},\quad i=1,\cdots,D
+\label{eq:3}
+\end{equation}
+and such that
+\begin{equation}
+	f(x) = \vec{y}=
+	\left(y_1,y_2,\cdots,y_D\right)
+\label{eq:4}
+\end{equation}
+The equation~\ref{eq:3} describe the simplest 
+neural model with $M$ hidden layers, $D$ is 
+the output dimension, $f_i(x)$ computes the
+output of $i^{th}$ neuron in the
+$(M+1)^{th}$(index starts from 0) 
+layer(the output layer of the net model) 
+and $y^{M}_j$ is the $j^{th}$ hidden
+neuron on $M^{th}$ layer, $w^{M+1,i}_j$
+is the connection weight from $j^{th}$
+neuron in $M^{th}$ layer to 
+$i^{th}$ neuron in output layer.
+$b^{M+1,i}$ is the bias for the $i^{th}$
+neuron in $(M+1)^{th}$ layer.
+To get $y_j^M$, just follow the equation as
+\begin{equation}
+	y^k_i(x) = \sigma\left(
+		\sum_j w_j^{k,i}y_j^{k-1}
+		+b^{k,i}
+	\right),k>1
+	\label{eq:5}
+\end{equation}
+and when it comes to the first hidden layer,
+\begin{equation}
+	y^1_i(x)=\sigma\left(\sum_jw_j^{1,i}x_j
+	+b^{1,i}\right)
+	\label{eq:6}
+\end{equation}
+$\sigma$ can be any non-linear function, such as
+the sigmoid $\left(1+e^{-x}\right)^{-1}$, 
+$tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$ and 
+the latest ReLU $\sigma(x)=\max(0,x)$ and a few
+more. Notice that a nonlinear activation
+function is often required when the neural
+network model is used in a classification
+application.
+
+\subsection{Traditional way for 
+semi-supervised embedding}
+As described in last subsection, 
+the traditional way to embed semi-supervised 
+learning ability into a neural net is through 
+a weighted regularizer, which is practically 
+adding a semi-supervised loss $\Delta_f$
+onto the supervised learning loss
+\cite{weston2012deep}, thus the learning 
+problem turns to be minimizing:
+\begin{equation}
+	\sum^L_{i=1}\ell(f(x_i),y_i)+
+	\lambda\sum^{L+U}_{i=1}\sum^{L+U}_{j=1}
+	L\left(f(x_i),f(x_j),W_{ij}\right)
+	\label{eq:7}
+\end{equation}
+and in most efficient algorithms Euclidean 
+metric is used for the loss.
+
+\subsection{Self Organizing Map}
+The Self Organizing Map(SOM) is an effective 
+software tool for the visualization of 
+high-dimensional data. It can also be used 
+as an automatic clustering method. The SOM
+consists of a two-dimensional regular grid
+of nodes. The models are automatically 
+organized into a meaningful two-dimensional
+order in which similar models are closer to
+each other in the grid than the more dissimilar
+ones\cite{kohonen1998self}.
+It use such rules to update models:
+\begin{equation}
+	\mathbf{m}_i(t+1)=\mathbf{m}_i(t)+
+	h_{c(x),i}\left(
+	\mathbf{x}(t)-\mathbf{m}_i(t)
+	\right)
+	\label{eq:8}
+\end{equation}
+
+and the learning rate is dynamically determined
+as
+\begin{equation}
+	h_{c(x),i} = \alpha(t)\exp\left(
+	-\frac{\|\mathbf{r}_i-\mathbf{r}_c\|^2}
+	{2\sigma^2(t)}
+	\right)
+\end{equation}
+$\mathbf{m}_i\in\mathbb{R}^n$ is the $i^{th}$
+model vector, $\mathbf{x}$ is an input pattern,
+$c(x)$ relates to the best match vector index
+in $\mathbf{m}$ for input pattern $\mathbf{x}$,
+and $\alpha(t)$ is a learning rate that 
+decreases with training preceeding.
+$\mathbf{r}$ is the model vector location in 
+the map, and $\sigma(t)$ corresponds to the 
+width of the neighborhood function, which 
+also decreases monotonically with the 
+regression steps.
 
 
-\subsection{ Tables}
+\section{A novel architecture: 
+Hybrid Learning Net}
 
-All tables should be numbered with Arabic numerals. Headings should be placed above tables, left justified. Leave one line space between the heading and the table. Only horizontal lines should be used within a table, to distinguish the column headings from the body of the table, and immediately above and below the table. Tables must be embedded into the text and not supplied separately. Below is an example which authors may find useful.
+\section{The training theory for HLN}
 
-\begin{table}[h]
-\caption{An example of a table.}
-\begin{tabular*}{\hsize}{@{\extracolsep{\fill}}lll@{}}
-\hline
-An example of a column heading & Column A (t) & Column B (T)\\
-\hline
-And an entry &   1 &  2\\
-And another entry  & 3 &  4\\
-And another entry &  5 &  6\\
-\hline
-\end{tabular*}
-\end{table}
-
-
-\subsection{ Construction of references}
-
-References should be added at the end of the paper, and its corresponding citation will be added in the order of their appearance in the text. Authors should ensure that every reference in the text appears in the list of references and vice versa. Indicate references by [1], [2-3] in the text. The actual authors can be referred to, but the reference citation(s) must always be given. Some examples of how your references should be listed are given at the end of this template in the `References' section, which will allow you to assemble your reference list according to the correct format and font size.
-
-\subsection{Section headings}
-Section headings should be left justified, with the first letter capitalized and numbered consecutively, starting with the Introduction. Sub-section headings should be in capital and lower-case italic letters, numbered 1.1, 1.2, etc, and left justified, with second and subsequent lines indented. You may need to insert a page break to keep a heading with its text.
-
-\subsection{General guidelines for the preparation of your text}
-Avoid hyphenation at the end of a line. Symbols denoting vectors and matrices should be indicated in bold type. Scalar variable names should normally be expressed using italics. Weights and measures should be expressed in SI units. Please title your files in this order conferenceacrynom\_authorslastname.pdf
-
-
-\section{SOMs-embedding for deep architecture}
-A recall to SOMs.
-
-How we construct deep architecture with SOMs-embeddings.
 
 \section{Empirical Study}
 To test our architecture performance on small data, we 
