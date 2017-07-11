@@ -79,7 +79,7 @@ def main():
 	train = ims.shape[0]
         numlbl = 10
 	# apply max-pooling
-	print('applying max-pooling...')
+	#print('applying max-pooling...')
 	#[ims1, h, w] = max_pool(ims,h,w,2,2)
         ims1 = ims
 	del(ims)
@@ -95,7 +95,7 @@ def main():
 	else:
 		net = BPNN()
         # build net model
-	net_dim = [h*w, 40, 20, numlbl]
+	net_dim = [h*w, 30, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)

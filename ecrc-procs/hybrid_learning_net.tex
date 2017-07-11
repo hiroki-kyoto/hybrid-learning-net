@@ -428,7 +428,7 @@ comparisons between nets with HLN
 architecture and without, and the
 last section concludes.
 
-\section{Related work}
+\section{Related work and backgrounds}
 
 \subsection{Semi-supervised learning for
 neural network}
@@ -594,7 +594,6 @@ It use such rules to update models:
 	\right)
 	\label{eq:8}
 \end{equation}
-
 and the learning rate is dynamically determined
 as
 \begin{equation}
@@ -603,8 +602,9 @@ as
 	{2\sigma^2(t)}
 	\right)
 \end{equation}
-$\mathbf{m}_i\in\mathbb{R}^n$ is the $i^{th}$
-model vector, $\mathbf{x}$ is an input pattern,
+where $\mathbf{m}_i\in\mathbb{R}^n$ 
+is the $i^{th}$ model vector, 
+$\mathbf{x}$ is an input pattern,
 $c(x)$ relates to the best match vector index
 in $\mathbf{m}$ for input pattern $\mathbf{x}$,
 and $\alpha(t)$ is a learning rate that 
@@ -616,8 +616,54 @@ also decreases monotonically with the
 regression steps.
 
 
-\section{A novel architecture: 
-Hybrid Learning Net}
+\section{Our architecture: 
+the Hybrid Learning Net}
+We propose the Hybrid Learning Net(HLN) as
+an architecture to enhance arbitrary nets
+on their training efficiency and robustness 
+to some hyperparameters.
+Each layer in the HLN architecture embeds a
+SOM into its original layer, for the simplest
+situation where neurons connected in fully
+connected way, which we call the Fully 
+Connected Neurons(FCN) architecture, we have 
+such an embedding solution as described in 
+figure~\ref{fig:1}.
+
+\begin{figure}[h]
+	\centerline{
+		\includegraphics[width=3in]{FCN}
+		\hspace*{5mm}
+		\includegraphics[width=3in]{HLN}
+	}
+\caption{(a) FCN architecture; 
+	(b) HLN architecture.}
+	\label{fig:1}
+\end{figure}
+
+In the HLN architecture from figure~\ref{fig:1},
+$h(x)$ is an unifying function we proposed for 
+SOMs to convert from pattern disimilarity
+$\|\mathbf{x}-\mathbf{m}_i\|$, into
+a semi-supervised learning factor for each
+different hidden units. The semi-supervised
+learning factors act as a dynamic sparsity 
+generator for each hybrid learning layer.
+It works in a way like the Dropout 
+technique\cite{srivastava2014dropout}, 
+enabling the neural nets 
+to improve the model robustness and prevent
+overfitting by learning their submodels for 
+each batch. However, the HLN differs from 
+techniques like the Dropout in which, 
+the HLN does not generate sparsity with 
+randomness, she uses the SOM
+to unsupervisedly learn the \emph{static}
+policy of neuron-activation distribution for
+each layer, the net sparsity generator thereby
+will stablize with training steps, and the
+randomness in sparsity will disappear 
+automatically.
 
 \section{The training theory for HLN}
 
@@ -633,13 +679,6 @@ A sampling from this dataset get the
 \end{figure}
 
 
-The figure number and caption should be typed below the illustration in 8 pt and left justified. For more guidelines and information to help you submit high quality artwork please visit: http://www.elsevier.comwps/find/authorsview. authors/authorartworkinstructions. Artwork has no text along the side of it in the main body of the text. However, if two images fit next to each other, these may be placed next to each other to save space, see Fig 1. They must be numbered consecutively, all figures, and all tables respectively.
-
-
-\subsection{Footnotes}
-Footnotes should be avoided if possible. Necessary footnotes should be denoted in the text by consecutive superscript letters. The footnotes should be typed single spaced, and in smaller type size (8 pt), at the foot of the page in which they are mentioned, and separated from the main text by a short line extending at the foot of the column. The `Els-footnote' style is available in this template for the text of the footnote.
-
-Equations and formulae should be typed and numbered consecutively with Arabic numerals in parentheses on the right hand side of the page (if referred to explicitly in the text),
 \begin{equation}
 \begin{array}{rcl}
 \displaystyle X_r &=& \displaystyle\dot{Q}^{"}_{rad}\left/\left(\dot{Q}^{"}_{rad} + \dot{Q}^{"}_{conv}\right)\right.\\[6pt]
@@ -649,11 +688,9 @@ Equations and formulae should be typed and numbered consecutively with Arabic nu
 
 They should also be separated from the surrounding text by one space.
 
-\section{Online licence}
+\section{Conclusions}
 All authors must Transfer the Online licence before the article can be published. This transfer agreement enables Elsevier to protect the copyrighted material for the authors, but does not relinquish the authors' proprietary rights. The copyright transfer covers the exclusive rights to reproduce and distribute the article, including reprints, photographic reproductions, microfilm or any other reproductions of similar nature and translations. Authors are responsible for obtaining from the copyright holder permission to reproduce any figures for which copyright exists.
 
-
-The citation must be used in following style: \cite{article-minimal}, \cite{article-full}, \cite{article-crossref}, \cite{whole-journal} and \cite{inbook-minimal}.
 
 \section*{Acknowledgements}
 
