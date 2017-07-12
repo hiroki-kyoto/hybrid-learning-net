@@ -458,29 +458,57 @@ the key point.
 Let's firstly focus on the general algorithm
 description of semi-supervised learning.
 Given a set of unlabeled samples,
-$\mathbf{X}=\{x_1,\cdots,x_N\}
-(x\in\mathbb{R}^d)$,
+$\mathbf{X}=\{\mathbf{x}_1,\cdots,
+\mathbf{x}_N\}(\mathbf{x}\in\mathbb{R}^d)$,
 and the similarity labels between any
-$x_i$ and $x_j$,
+$\mathbf{x}_i$ and $\mathbf{x}_j$,
 $\mathbf{W}=\{W_{ij}|i,j=1,\cdots,N\}$,
 we're to find the best embedding function, 
-$f(x)$, for each sample $x_i$, to minimize:
+$f(\mathbf{x})$, for each sample $\mathbf{x}_i$, 
+to minimize:
 \begin{equation}
-\Delta_{f}=\sum^{N}_{i=1}\sum^{N}_{j=1}L(f(x_i),f(x_j),W_{ij})
+\Delta_{f}=
+	\sum^{N}_{i=1}
+	\sum^{N}_{j=1}
+	L\left(
+	f(\mathbf{x}_i),
+	f(\mathbf{x}_j),
+	W_{ij}
+	\right)
 \label{eq:1}
 \end{equation}
 To explain it,
 \begin{itemize}[]
-\item $L(\cdot)$ is the loss function of 3 variables: 
-$\left<f(x_i),f(x_j),W_{ij}\right>$, 
+\item $L(\cdot)$ is the loss function of 3 
+variables: 
+$\left<
+		f(\mathbf{x}_i),
+		f(\mathbf{x}_j),
+		W_{ij}
+		\right>$, 
 such as 
-$$L(f(x_i),f(x_j),W_{ij}) = 
-\max(0,||f(x_i)-f(x_j)||-W_{ij})$$
-\item $f(x)\in\mathbb{R}^n$ is the embedding function, it tries to produce
-a vector from $x_i$, similar to that of $x_j$ with $W_{ij}=0$,
+		$$L\left(
+		f(\mathbf{x}_i),
+		f(\mathbf{x}_j),
+		W_{ij}
+		\right) = 
+		\max\left(
+		0,
+		\|f(\mathbf{x}_i)-
+		f(\mathbf{x}_j)
+		\|-W_{ij}
+		\right)$$
+\item $f(\mathbf{x})\in\mathbb{R}^n$ is the 
+embedding function, it tries to produce a 
+vector from $\mathbf{x}_i$, similar to that 
+of $\mathbf{x}_j$ with $W_{ij}=0$,
 and disimilar with $W_{ij}=1$.
-\item $W_{ij}\in \mathbb{R}$ is the similarity label of the sample pair
-$\left<x_i,x_j\right>$ from $\mathbf{X}$.
+\item $W_{ij}\in \mathbb{R}$ is the similarity 
+label of the sample pair
+$\left<
+		\mathbf{x}_i,
+		\mathbf{x}_j
+		\right>$ from $\mathbf{X}$.
 \end{itemize}
 
 \emph{Label Propagation(LP)}
@@ -492,11 +520,22 @@ It adds a Laplacian Eigenmap type
 regularization to a nearest neighbor 
 classifier:
 \begin{equation}
-	\min_f\sum^L_{i=1}\|f_i-y_i\|^2+
-	\lambda\sum^{L+U}_{i=1}\sum^{L+U}_{j=1}W_{ij}\|f_i-f_j\|^2
+	\min_f
+	\sum^L_{i=1}
+	\left\|
+	\vec{f}_i-\mathbf{\hat{y}}_i
+	\right\|^2 +
+	\lambda
+	\sum^{L+U}_{i=1}
+	\sum^{L+U}_{j=1}
+	W_{ij}
+	\left\|
+	\vec{f}_i-\vec{f}_j
+	\right\|^2
 	\label{eq:2}
 \end{equation}
-$L$ is a labeled sample set of $X$, and $U$ is 
+$L$ is a labeled sample set of $\mathbf{X}$, 
+and $U$ is 
 a unlabeled one, the right part of 
 equation~\ref{eq:2} is the semi-supervised 
 regularizer,
@@ -507,23 +546,25 @@ two examples with high similarity $W_{ij}$
 the same label, and the neighbors of neighbors
 tend to get the same label by transitivity.
 The two points make its name \emph{label
-propagation}. For neural network model,
+propagation}.
+
+For neural network model,
 we replace $f(\cdot)$ with equation as follow,
 \begin{equation}
-	y_i=\sum_jw_j^{M+1,i}y^M_j(x)
+	y_i=\sum_j w_j^{M+1,i}y^M_j(\mathbf{x})
 	+b^{M+1,i},\quad i=1,\cdots,D
 \label{eq:3}
 \end{equation}
 and such that
 \begin{equation}
-	f(x) = \vec{y}=
+	f(\mathbf{x}) = \vec{y}=
 	\left(y_1,y_2,\cdots,y_D\right)
 \label{eq:4}
 \end{equation}
 The equation~\ref{eq:3} describe the simplest 
 neural model with $M$ hidden layers, $D$ is 
-the output dimension, $f_i(x)$ computes the
-output of $i^{th}$ neuron in the
+the output dimension, $f_i(\mathbf{x})$ 
+computes the output of $i^{th}$ neuron in the
 $(M+1)^{th}$(index starts from 0) 
 layer(the output layer of the net model) 
 and $y^{M}_j$ is the $j^{th}$ hidden
@@ -535,7 +576,7 @@ $b^{M+1,i}$ is the bias for the $i^{th}$
 neuron in $(M+1)^{th}$ layer.
 To get $y_j^M$, just follow the equation as
 \begin{equation}
-	y^k_i(x) = \sigma\left(
+	y^k_i(\mathbf{x}) = \sigma\left(
 		\sum_j w_j^{k,i}y_j^{k-1}
 		+b^{k,i}
 	\right),k>1
@@ -543,7 +584,8 @@ To get $y_j^M$, just follow the equation as
 \end{equation}
 and when it comes to the first hidden layer,
 \begin{equation}
-	y^1_i(x)=\sigma\left(\sum_jw_j^{1,i}x_j
+	y^1_i(\mathbf{x})=
+	\sigma\left(\sum_jw_j^{1,i}x_j
 	+b^{1,i}\right)
 	\label{eq:6}
 \end{equation}
@@ -567,9 +609,15 @@ onto the supervised learning loss
 \cite{weston2012deep}, thus the learning 
 problem turns to be minimizing:
 \begin{equation}
-	\sum^L_{i=1}\ell(f(x_i),y_i)+
+	\sum^L_{i=1}\ell\left(
+	f(\mathbf{x}_i),\mathbf{\hat{y}}_i
+	\right) +
 	\lambda\sum^{L+U}_{i=1}\sum^{L+U}_{j=1}
-	L\left(f(x_i),f(x_j),W_{ij}\right)
+	L\left(
+	f(\mathbf{x}_i),
+	f(\mathbf{x}_j),
+	W_{ij}
+	\right)
 	\label{eq:7}
 \end{equation}
 and in most efficient algorithms Euclidean 
@@ -645,10 +693,11 @@ In the HLN architecture from figure~\ref{fig:1},
 $h(x)$ is an unifying function we proposed for 
 SOMs to convert from pattern disimilarity
 $\|\mathbf{x}-\mathbf{m}_i\|$, into
-a semi-supervised learning factor for each
+a semi-supervised learning factor for
 different hidden units. The semi-supervised
-learning factors act as a dynamic sparsity 
-generator for each hybrid learning layer.
+learning factors as a whole act as a 
+dynamic neuron activation sparsity mask for 
+each hybrid learning layer.
 It works in a way like the Dropout 
 technique\cite{srivastava2014dropout}, 
 enabling the neural nets 
@@ -664,8 +713,115 @@ each layer, the net sparsity generator thereby
 will stablize with training steps, and the
 randomness in sparsity will disappear 
 automatically.
+We propose $h(x)$ with the form as following,
+\begin{equation}
+	\delta_{max} = \max_i\left(
+	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
+	\right)
+	\label{eq:10}
+\end{equation}
+\begin{equation}
+	\delta_{min} = \min_i\left(
+	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
+	\right)
+	\label{eq:11}
+\end{equation}
+\begin{equation}
+	\delta_{scale} = \frac{\mathbf{m}_{min}}
+	{\mathbf{m}_{max}-
+	\mathbf{m}_{min} + \epsilon}
+	\label{eq:12}
+\end{equation}
+\begin{equation}
+	h(x)|_{x=\|\mathbf{m}_i-\mathbf{x}\|}=
+	\frac{\delta_{max}\cdot\delta_{scale}}
+	{\left\|\mathbf{m}_i-\mathbf{x}\right\|
+	+\epsilon}-\delta_{scale}
+	\label{eq:13}
+\end{equation}
+in which $\mathbf{m}_i$ and $\mathbf{x}$ is the
+same way defined in equation~\ref{eq:8}.
+$\epsilon$ is a constant of pretty small value
+like $\epsilon=10^{-5}$ to avoid 
+\emph{division-by-zero} errors that may, 
+though not very likely occur. Notice that
+if any other metrics be preferred, we can
+always replace the pattern disimilarity
+$\|\mathbf{m}_i-\mathbf{x}\|$ with its
+corresponding form.
+$f(s,o)$ is the function to combine the 
+sparsity mask $s$ generated by $h(\cdot)$ 
+and the fully connected linear summation 
+output $o$. In most cases, we choose the
+multiplication operator,
+\begin{equation}
+	f(s,o) = s\cdot o = 
+	h\left(
+	\left\|
+	\mathbf{m}_i-\mathbf{y^{k-1}}
+	\right\|
+	\right)
+	\cdot
+	\sum_j
+	\left(
+	w_j^{k,i}y_j^{k-1}
+	\right)
+	+b^{k,i},k>1
+	\label{eq:14}
+\end{equation}
+where $w$, $y$, $b$, $i$, $j$, $k$ is the
+same denotion as in equation~\ref{eq:5}.
+For the computing flow described in 
+figure~\ref{fig:1}, $f(\cdot) $ is followed 
+by an activation function, it can be any 
+arbitrary nonlinear function that takes 
+only one dimension inputs and outputs a 
+single real.
 
-\section{The training theory for HLN}
+\section{The training theory for HLNs}
+Let's compare the embedding theories between
+HLNs and the ones mentioned in the section of
+\emph{Related work and backgrounds}.
+The existing semi-supervised algorithms
+embed a regularizer into the supervised 
+learner, making it impossible to train both of
+the supervised learner and the unsupervised
+separately. As analyzed before, performances
+of such regularizer solutions depends on the
+standalone supervised pretraining for which
+a profound labeled data is required.
+However, in our architecture HLN, we assign
+each of the learning methods a completely
+separate optimizing object, with no priority
+orders restricted.
+
+For the supervised learning, we may have such
+form of optimizing object as
+\begin{equation}
+	\arg \min_g \sum_{i=1}^L\ell\left(
+	g(\mathbf{x}_i),
+	\mathbf{\hat{y}}_i
+	\right)
+	\label{eq:15}
+\end{equation}
+
+where $g(\mathbf{x})$ is the function describing
+the mapping from the input 
+$\mathbf{x}\in\mathbb{R^d}$ to the output
+$\mathbf{y}\in\mathbb{R^n}$, parameterized with
+$\mathbf{W}$ of the HLN.
+This equation~\ref{eq:15} may become the 
+following one when Enclidean metrics be 
+applied for the loss,
+\begin{equation}
+	\arg \min_g
+	\frac{1}{2}
+	\sum_{i=1}^L
+	\left\|
+	g(\mathbf{x}_i)-\mathbf{\hat{y}}_i
+	\right\|^2
+	\label{eq:16}
+\end{equation}
 
 
 \section{Empirical Study}

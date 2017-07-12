@@ -21,7 +21,7 @@ def unify(x):
     x = x + 1e-5
     a = x.min()
     b = x.max()
-    t = a/(b-a)
+    t = a/(b-a+1e-5)
     return b*t/x-t
 #def unify(x):
 #    x =  

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  11 JUL 2017 23:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  12 JUL 2017 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -798,70 +798,70 @@ LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
 <FCN.pdf, id=126, 597.50786pt x 845.04686pt>
 File: FCN.pdf Graphic file (type pdf)
  <use FCN.pdf>
-Package pdftex.def Info: FCN.pdf used on input line 638.
+Package pdftex.def Info: FCN.pdf used on input line 686.
 (pdftex.def)             Requested size: 216.81pt x 306.62788pt.
 
 <HLN.pdf, id=127, 597.50786pt x 845.04686pt>
 File: HLN.pdf Graphic file (type pdf)
  <use HLN.pdf>
-Package pdftex.def Info: HLN.pdf used on input line 638.
+Package pdftex.def Info: HLN.pdf used on input line 686.
 (pdftex.def)             Requested size: 216.81pt x 306.62788pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<fx1.pdf, id=130, 92.345pt x 97.86563pt>
-File: fx1.pdf Graphic file (type pdf)
- <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 677.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
-File: fx1.pdf Graphic file (type pdf)
- <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 677.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4] (./hybrid_learning_net.bbl [5 <./FCN.pdf> <./HLN.pdf
+[4] [5 <./FCN.pdf> <./HLN.pdf
 
 pdfTeX warning: pdflatex (file ./HLN.pdf): PDF inclusion: multiple pdfs with pa
 ge group included in a single page
->])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 743.
- [6 <./fx1.pdf>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 743.
+>]
+Missing character: There is no d in font msbm7!
+ <fx1.pdf, id=312, 92.345pt x 97.86563pt>
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 833.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+File: fx1.pdf Graphic file (type pdf)
+ <use fx1.pdf>
+Package pdftex.def Info: fx1.pdf used on input line 833.
+(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+
+(./hybrid_learning_net.bbl [6 <./fx1.pdf>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 899.
+ [7]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 899.
  (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 743.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 743.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 899.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 899.
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
-(rerunfilecheck)             Checksum: B610FB8323D0C604376EDEDF1ED98F9F;748.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 743.
+(rerunfilecheck)             Checksum: 33864DA2E9DCE0A34C1B3FDA2108FBB3;749.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 899.
  ) 
 Here is how much of TeX's memory you used:
- 7317 strings out of 493013
- 104149 string characters out of 6135683
- 196238 words of memory out of 5000000
- 10662 multiletter control sequences out of 15000+600000
- 64485 words of font info for 155 fonts, out of 8000000 for 9000
+ 7334 strings out of 493013
+ 104306 string characters out of 6135683
+ 196695 words of memory out of 5000000
+ 10669 multiletter control sequences out of 15000+600000
+ 65835 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,36p,599b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,36p,599b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tx
-ex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
-a.pfb>
-Output written on hybrid_learning_net.pdf (6 pages, 307347 bytes).
+-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
+pfb>
+Output written on hybrid_learning_net.pdf (7 pages, 315521 bytes).
 PDF statistics:
- 369 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 500000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
 

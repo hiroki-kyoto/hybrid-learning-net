@@ -1291,9 +1291,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="183.72707"
-     inkscape:cy="762.07533"
+     inkscape:zoom="0.50000001"
+     inkscape:cx="-99.921881"
+     inkscape:cy="751.95723"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -2601,12 +2601,12 @@
          y="55.700012"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.26458332">h(x)</tspan></text>
     <rect
-       style="opacity:0.98999999;fill:none;fill-opacity:1;stroke:#052710;stroke-width:0.527;stroke-miterlimit:4;stroke-dasharray:3.162,0.527;stroke-opacity:1;stroke-dashoffset:0"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;stroke:#052710;stroke-width:0.60540444;stroke-miterlimit:4;stroke-dasharray:3.63242645, 0.60540441;stroke-dashoffset:0;stroke-opacity:1"
        id="rect58887"
-       width="31.572708"
-       height="10.556041"
-       x="10.596979"
-       y="48.305309" />
+       width="41.977783"
+       height="10.477636"
+       x="10.636181"
+       y="48.344513" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
@@ -2617,14 +2617,14 @@
          id="tspan58883-4"
          x="22.754154"
          y="72.104172"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.26458332">f(x)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:Courier;-inkscape-font-specification:Courier;stroke-width:0.26458332">f(s,o)</tspan></text>
     <rect
-       style="opacity:0.98999999;fill:none;fill-opacity:1;stroke:#052710;stroke-width:0.52700001;stroke-miterlimit:4;stroke-dasharray:3.16200003, 0.52700001;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:0.98999999;fill:none;fill-opacity:1;stroke:#052710;stroke-width:0.60170937;stroke-miterlimit:4;stroke-dasharray:3.61025628, 0.60170939;stroke-dashoffset:0;stroke-opacity:1"
        id="rect58887-4"
-       width="31.572712"
-       height="10.556041"
-       x="11.12614"
-       y="64.709473" />
+       width="41.452316"
+       height="10.481332"
+       x="11.163494"
+       y="64.746826" />
     <circle
        style="opacity:0.98999999;fill:#008080;fill-opacity:1;stroke:#000000;stroke-width:0.28594509;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path18685-05-6"
