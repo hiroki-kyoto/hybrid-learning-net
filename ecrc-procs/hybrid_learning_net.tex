@@ -38,6 +38,7 @@
 %% The `ecrc' package must be called to make the CRC functionality available
 \usepackage{ecrc}
 \usepackage{hyperref}
+\usepackage{amsmath}
 
 %% The ecrc package defines commands needed for running heads and logos.
 %% For running heads, you can set the journal name, the volume, the starting page and the authors
@@ -727,9 +728,10 @@ We propose $h(x)$ with the form as following,
 	\label{eq:11}
 \end{equation}
 \begin{equation}
-	\delta_{scale} = \frac{\mathbf{m}_{min}}
-	{\mathbf{m}_{max}-
-	\mathbf{m}_{min} + \epsilon}
+	\delta_{scale} = 
+	\frac{\mathbf{\delta}_{min}}
+	{\mathbf{\delta}_{max}-
+	\mathbf{\delta}_{min} + \epsilon}
 	\label{eq:12}
 \end{equation}
 \begin{equation}
@@ -776,7 +778,46 @@ figure~\ref{fig:1}, $f(\cdot) $ is followed
 by an activation function, it can be any 
 arbitrary nonlinear function that takes 
 only one dimension inputs and outputs a 
-single real.
+single real, such as the sigmoid function, 
+$tanh(x)$ and the ReLU. With the new 
+architecture, we update the computing rules 
+in equations~(\ref{eq:5}) and (\ref{eq:6}) as 
+\begin{equation}
+	y_i^k(\mathbf{x})=
+	\sigma\left(
+	h\left(
+	\left\|
+	\mathbf{m}_i^k-y^{k-1}(\mathbf{x})
+	\right\|
+	\right)\cdot
+	\sum_j\left(
+	w_j^{k,i}y_j^{k-1}(\mathbf{x})
+	\right) + b^{k,i}
+	\right), k>1
+	\label{eq:5-1}
+\end{equation}
+\begin{equation}
+	y_i^1(\mathbf{x})=
+	\sigma\left(
+	h\left(
+	\left\|
+	\mathbf{m}_i^1-\mathbf{x}
+	\right\|
+	\right)\cdot
+	\left(
+	\sum_j w_j^{1,i}x_j
+	\right) + b^{1,i}
+	\right)
+	\label{eq:6-1}
+\end{equation}
+where $m^k_i$ denotes the $i^{th}$ vector
+in the $k^{th}$ SOM of the net(all indexes
+start from 1), $\sigma$ is a nonlinear 
+activation function.
+The equations~(\ref{eq:3}) and (\ref{eq:4})
+require no update since the output layer
+of the net is not involved in the 
+architecture shifting.
 
 \section{The training theory for HLNs}
 Let's compare the embedding theories between
@@ -804,23 +845,68 @@ form of optimizing object as
 	\right)
 	\label{eq:15}
 \end{equation}
-
 where $g(\mathbf{x})$ is the function describing
 the mapping from the input 
-$\mathbf{x}\in\mathbb{R^d}$ to the output
-$\mathbf{y}\in\mathbb{R^n}$, parameterized with
-$\mathbf{W}$ of the HLN.
+$\mathbf{x}\in\mathbb{R}^d$ to the output
+$\mathbf{y}\in\mathbb{R}^n$, parameterized with
+the neural connection weights $\mathbf{W}$ and 
+the biases $\mathbf{b}$ for all non-input 
+layer neurons in the HLN architecture.
 This equation~\ref{eq:15} may become the 
 following one when Enclidean metrics be 
 applied for the loss,
 \begin{equation}
-	\arg \min_g
+	\arg \min_{\mathbf{W},\mathbf{b}}
 	\frac{1}{2}
 	\sum_{i=1}^L
 	\left\|
-	g(\mathbf{x}_i)-\mathbf{\hat{y}}_i
+	y^k(
+	\mathbf{x}_i)\big|_{\mathbf{W},\mathbf{b}}-
+	\mathbf{\hat{y}}_i
 	\right\|^2
 	\label{eq:16}
+\end{equation}
+
+For the unsupervised learning, the optimizing
+objects are
+\begin{equation}
+	\arg \min_{\mathbf{m}^k}
+	\sum_i^{L+U}
+	\left(
+	\min_j\left(
+	\left\|
+	\mathbf{m}^k_j-\mathbf{x}^k_i
+	\right\|
+	\right)
+	\right),\quad k=1,2,\cdots
+	\label{eq:17}
+\end{equation}
+with the predefined notation:
+\begin{equation}
+	\mathbf{x}_i^k=
+	\left\{
+		\begin{aligned}
+			\mathbf{x}_i,\quad & k=1\\
+			y^{k-1}(\mathbf{x}_i),\quad & k>1
+		\end{aligned}
+	\right.
+	,\quad \mathbf{x}_i\in L+U
+\end{equation}
+Thus for a net with $M$ hybrid learning layers,
+there should be 1 supervised
+and $M$ unsupervised optimizing objects.
+Though a multi-objective problem may not have 
+a global solution, however in HLNs,
+each object is optimized on its own isolated
+parameter space, thus each optimizing object
+have its corresponding global optimization 
+solution, they together makes the whole one.
+
+Using the well-known Back Propagation(BP)
+algorithm, we obtain the parameter updating
+rules,
+\begin{equation}
+x
 \end{equation}
 
 

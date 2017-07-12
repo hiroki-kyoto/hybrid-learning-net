@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  12 JUL 2017 18:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  13 JUL 2017 00:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -320,12 +320,69 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip47
 )
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip48
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen124
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen125
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count108
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count109
+\leftroot@=\count110
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count111
+\DOTSCASE@=\count112
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box32
+\strutbox@=\box33
+\big@size=\dimen126
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count113
+\c@MaxMatrixCols=\count114
+\dotsspace@=\muskip11
+\c@parentequation=\count115
+\dspbrk@lvl=\count116
+\tag@help=\toks19
+\row@=\count117
+\column@=\count118
+\maxfields@=\count119
+\andhelp@=\toks20
+\eqnshift@=\dimen127
+\alignsep@=\dimen128
+\tagshift@=\dimen129
+\tagwidth@=\dimen130
+\totwidth@=\dimen131
+\lineht@=\dimen132
+\@envbody=\toks21
+\multlinegap=\skip49
+\multlinetaggap=\skip50
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks18
 LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 59.
 LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
 (Font)                  U/txsya/m/n --> U/msa/m/n on input line 59.
@@ -563,54 +620,54 @@ Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count108
-\rotFPtop=\skip48
-\rotFPbot=\skip49
-\rot@float@box=\box32
-\rot@mess@toks=\toks19
+\c@r@tfl@t=\count120
+\rotFPtop=\skip51
+\rotFPbot=\skip52
+\rot@float@box=\box34
+\rot@mess@toks=\toks23
 )
 (./hybrid_learning_net.aux)
 \openout1 = `hybrid_learning_net.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 131.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 131
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 132.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 132
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 131
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 132.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 132
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 131
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 132.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 132
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 131.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 131.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 132.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 132.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 131.
-LaTeX Font Info:    ... okay on input line 131.
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 131.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 132.
+LaTeX Font Info:    ... okay on input line 132.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 132.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
@@ -618,17 +675,17 @@ File: ot1txr.fd 2000/12/15 v3.1
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count109
-\scratchdimen=\dimen124
-\scratchbox=\box33
-\nofMPsegments=\count110
-\nofMParguments=\count111
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count112
-\MPscratchDim=\dimen125
-\MPnumerator=\count113
-\makeMPintoPDFobject=\count114
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count121
+\scratchdimen=\dimen133
+\scratchbox=\box35
+\nofMPsegments=\count122
+\nofMParguments=\count123
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count124
+\MPscratchDim=\dimen134
+\MPnumerator=\count125
+\makeMPintoPDFobject=\count126
+\everyMPtoPDFconversion=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -682,81 +739,81 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box34
-Package hyperref Info: Link coloring OFF on input line 131.
+\AtBeginShipoutBox=\box36
+Package hyperref Info: Link coloring OFF on input line 132.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count115
+\c@section@level=\count127
 )
-LaTeX Info: Redefining \ref on input line 131.
-LaTeX Info: Redefining \pageref on input line 131.
-LaTeX Info: Redefining \nameref on input line 131.
+LaTeX Info: Redefining \ref on input line 132.
+LaTeX Info: Redefining \pageref on input line 132.
+LaTeX Info: Redefining \nameref on input line 132.
 
 (./hybrid_learning_net.out) (./hybrid_learning_net.out)
 \@outlinefile=\write4
 \openout4 = `hybrid_learning_net.out'.
 
-LaTeX Font Info:    Try loading font information for U+txmia on input line 196.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 197.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 196.
+LaTeX Font Info:    Try loading font information for U+msa on input line 197.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 196.
+LaTeX Font Info:    Try loading font information for U+msb on input line 197.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 196.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 197.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 239.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 240.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <9> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 239.
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 253.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 240.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 254.
 
 <elsevier-logo-3p.pdf, id=57, 54.08205pt x 59.7432pt>
 File: elsevier-logo-3p.pdf Graphic file (type pdf)
 
 <use elsevier-logo-3p.pdf>
-Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 370.
+Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 371.
 (pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
-LaTeX Font Info:    Try loading font information for OT1+txss on input line 370
+LaTeX Font Info:    Try loading font information for OT1+txss on input line 371
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txss.fd
 File: ot1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
-(Font)              scaled to size 9.49997pt on input line 370.
+(Font)              scaled to size 9.49997pt on input line 371.
 
 <svsd-3p.pdf, id=58, 160.6pt x 12.64966pt>
 File: svsd-3p.pdf Graphic file (type pdf)
  <use svsd-3p.pdf>
-Package pdftex.def Info: svsd-3p.pdf used on input line 370.
+Package pdftex.def Info: svsd-3p.pdf used on input line 371.
 (pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
 
 <procs_new.pdf, id=59, 111.41624pt x 72.27pt>
 File: procs_new.pdf Graphic file (type pdf)
  <use procs_new.pdf>
-Package pdftex.def Info: procs_new.pdf used on input line 370.
+Package pdftex.def Info: procs_new.pdf used on input line 371.
 (pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
 
 Overfull \hbox (3.91597pt too wide) has occurred while \output is active
@@ -765,15 +822,15 @@ Overfull \hbox (3.91597pt too wide) has occurred while \output is active
 
 File: elsevier-logo-3p.pdf Graphic file (type pdf)
 <use elsevier-logo-3p.pdf>
-Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 370.
+Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 371.
 (pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
 File: svsd-3p.pdf Graphic file (type pdf)
  <use svsd-3p.pdf>
-Package pdftex.def Info: svsd-3p.pdf used on input line 370.
+Package pdftex.def Info: svsd-3p.pdf used on input line 371.
 (pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
 File: procs_new.pdf Graphic file (type pdf)
  <use procs_new.pdf>
-Package pdftex.def Info: procs_new.pdf used on input line 370.
+Package pdftex.def Info: procs_new.pdf used on input line 371.
 (pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
 
 Overfull \hbox (3.91597pt too wide) has occurred while \output is active
@@ -793,18 +850,18 @@ Overfull \vbox (49.74303pt too high) has occurred while \output is active []
 
  <./elsevier-logo-3p.pdf> <./svsd-3p.pdf> <./procs_new.pdf>]
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 374.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 375.
  [2] [3]
 <FCN.pdf, id=126, 597.50786pt x 845.04686pt>
 File: FCN.pdf Graphic file (type pdf)
  <use FCN.pdf>
-Package pdftex.def Info: FCN.pdf used on input line 686.
+Package pdftex.def Info: FCN.pdf used on input line 687.
 (pdftex.def)             Requested size: 216.81pt x 306.62788pt.
 
 <HLN.pdf, id=127, 597.50786pt x 845.04686pt>
 File: HLN.pdf Graphic file (type pdf)
  <use HLN.pdf>
-Package pdftex.def Info: HLN.pdf used on input line 686.
+Package pdftex.def Info: HLN.pdf used on input line 687.
 (pdftex.def)             Requested size: 216.81pt x 306.62788pt.
 
 
@@ -814,54 +871,54 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 pdfTeX warning: pdflatex (file ./HLN.pdf): PDF inclusion: multiple pdfs with pa
 ge group included in a single page
->]
-Missing character: There is no d in font msbm7!
- <fx1.pdf, id=312, 92.345pt x 97.86563pt>
+>] <fx1.pdf, id=318, 92.345pt x 97.86563pt>
 File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 833.
+Package pdftex.def Info: fx1.pdf used on input line 919.
 (pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
 File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
-Package pdftex.def Info: fx1.pdf used on input line 833.
+Package pdftex.def Info: fx1.pdf used on input line 919.
 (pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
 
-(./hybrid_learning_net.bbl [6 <./fx1.pdf>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 899.
- [7]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 899.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] (./hybrid_learning_net.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 985.
+ [7 <./fx1.pdf>] [8]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 985.
  (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 899.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 899.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 985.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 985.
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
 (rerunfilecheck)             Checksum: 33864DA2E9DCE0A34C1B3FDA2108FBB3;749.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 899.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 985.
  ) 
 Here is how much of TeX's memory you used:
- 7334 strings out of 493013
- 104306 string characters out of 6135683
- 196695 words of memory out of 5000000
- 10669 multiletter control sequences out of 15000+600000
+ 7920 strings out of 493013
+ 111017 string characters out of 6135683
+ 207291 words of memory out of 5000000
+ 11233 multiletter control sequences out of 15000+600000
  65835 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,36p,599b,457s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,36p,599b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.
-pfb>
-Output written on hybrid_learning_net.pdf (7 pages, 315521 bytes).
+-dist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tx
+ex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on hybrid_learning_net.pdf (8 pages, 316274 bytes).
 PDF statistics:
- 392 PDF objects out of 1000 (max. 8388607)
- 294 compressed objects within 3 object streams
- 56 named destinations out of 1000 (max. 500000)
+ 403 PDF objects out of 1000 (max. 8388607)
+ 304 compressed objects within 4 object streams
+ 62 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
