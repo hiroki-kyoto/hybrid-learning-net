@@ -650,6 +650,7 @@ as
 	-\frac{\|\mathbf{r}_i-\mathbf{r}_c\|^2}
 	{2\sigma^2(t)}
 	\right)
+	\label{eq:9}
 \end{equation}
 where $\mathbf{m}_i\in\mathbb{R}^n$ 
 is the $i^{th}$ model vector, 
@@ -714,19 +715,24 @@ each layer, the net sparsity generator thereby
 will stablize with training steps, and the
 randomness in sparsity will disappear 
 automatically.
-We propose $h(x)$ with the form as following,
+We propose $h(x)$ with the form as followings,
 \begin{equation}
 	\delta_{max} = \max_i\left(
 	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
 	\right)
 	\label{eq:10}
 \end{equation}
+$\delta_{max}$ is the maximum disimilarity
+between an arbitrary vector in $\mathbf{m}$
+and the input pattern vector $\mathbf{x}$,
+$\delta_{min}$ is similar,
 \begin{equation}
 	\delta_{min} = \min_i\left(
 	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
 	\right)
 	\label{eq:11}
 \end{equation}
+and the scale of all disimilarities is
 \begin{equation}
 	\delta_{scale} = 
 	\frac{\mathbf{\delta}_{min}}
@@ -734,6 +740,8 @@ We propose $h(x)$ with the form as following,
 	\mathbf{\delta}_{min} + \epsilon}
 	\label{eq:12}
 \end{equation}
+Finally we unify the disimilarities and convert
+them into sparsity mask as
 \begin{equation}
 	h(x)|_{x=\|\mathbf{m}_i-\mathbf{x}\|}=
 	\frac{\delta_{max}\cdot\delta_{scale}}
@@ -794,8 +802,9 @@ in equations~(\ref{eq:5}) and (\ref{eq:6}) as
 	w_j^{k,i}y_j^{k-1}(\mathbf{x})
 	\right) + b^{k,i}
 	\right), k>1
-	\label{eq:5-1}
+	\label{eq:15}
 \end{equation}
+and for the very first hybrid learning layer,  
 \begin{equation}
 	y_i^1(\mathbf{x})=
 	\sigma\left(
@@ -808,7 +817,7 @@ in equations~(\ref{eq:5}) and (\ref{eq:6}) as
 	\sum_j w_j^{1,i}x_j
 	\right) + b^{1,i}
 	\right)
-	\label{eq:6-1}
+	\label{eq:16}
 \end{equation}
 where $m^k_i$ denotes the $i^{th}$ vector
 in the $k^{th}$ SOM of the net(all indexes
@@ -834,8 +843,7 @@ a profound labeled data is required.
 However, in our architecture HLN, we assign
 each of the learning methods a completely
 separate optimizing object, with no priority
-orders restricted.
-
+orders restricted.\\
 For the supervised learning, we may have such
 form of optimizing object as
 \begin{equation}
@@ -843,7 +851,7 @@ form of optimizing object as
 	g(\mathbf{x}_i),
 	\mathbf{\hat{y}}_i
 	\right)
-	\label{eq:15}
+	\label{eq:17}
 \end{equation}
 where $g(\mathbf{x})$ is the function describing
 the mapping from the input 
@@ -852,7 +860,7 @@ $\mathbf{y}\in\mathbb{R}^n$, parameterized with
 the neural connection weights $\mathbf{W}$ and 
 the biases $\mathbf{b}$ for all non-input 
 layer neurons in the HLN architecture.
-This equation~\ref{eq:15} may become the 
+This equation~\ref{eq:17} may become the 
 following one when Enclidean metrics be 
 applied for the loss,
 \begin{equation}
@@ -864,9 +872,8 @@ applied for the loss,
 	\mathbf{x}_i)\big|_{\mathbf{W},\mathbf{b}}-
 	\mathbf{\hat{y}}_i
 	\right\|^2
-	\label{eq:16}
+	\label{eq:18}
 \end{equation}
-
 For the unsupervised learning, the optimizing
 objects are
 \begin{equation}
@@ -879,7 +886,7 @@ objects are
 	\right\|
 	\right)
 	\right),\quad k=1,2,\cdots
-	\label{eq:17}
+	\label{eq:19}
 \end{equation}
 with the predefined notation:
 \begin{equation}
@@ -891,24 +898,182 @@ with the predefined notation:
 		\end{aligned}
 	\right.
 	,\quad \mathbf{x}_i\in L+U
+	\label{eq:20}
 \end{equation}
 Thus for a net with $M$ hybrid learning layers,
 there should be 1 supervised
 and $M$ unsupervised optimizing objects.
-Though a multi-objective problem may not have 
-a global solution, however in HLNs,
+As we know a multi-objective problem may not 
+have a global solution, however in HLNs,
 each object is optimized on its own isolated
 parameter space, thus each optimizing object
 have its corresponding global optimization 
 solution, they together makes the whole one.
 
 Using the well-known Back Propagation(BP)
-algorithm, we obtain the parameter updating
-rules,
+algorithm, we obtain parameter updating
+rules in the training with mean square error 
+used for the loss function. 
+The output layer error gradient is,
 \begin{equation}
-x
+	\frac{\partial E}
+	{\partial y_i^{M+1}}=
+	\frac{\partial E}
+	{\partial y_i}=
+	y_i-\hat{y}_i
+	\label{eq:21}
 \end{equation}
-
+For the linear summation of the output layer,
+\begin{equation}
+	o_i^{M+1}=
+	\sum_j
+	W_j^{M+1,i}
+	x_j
+	\label{eq:22}
+\end{equation}
+and linear summations of hybrid learning
+layers are (with $\mathbf{y}^0=\mathbf{x}$):
+\begin{equation}
+	o_i^k =
+	h\left(
+	\left\|
+	\mathbf{m}_i^k-\mathbf{y}^{k-1}
+	\right\|
+	\right)
+	\sum_j 
+	W_j^{k,i}
+	y_j^{k-1},
+	\quad k=1,2,\cdots,M
+	\label{eq:23}
+\end{equation}
+Apply the non-linear activation function
+(taking the sigmoid as an instance),
+\begin{equation}
+	\frac{\partial E}
+	{\partial o_i^k}=
+	\frac{\partial E}
+	{\partial y_i^k}\times
+	\frac{\partial y_i^k}
+	{\partial o_i^k}=
+	\frac{\partial E}
+	{\partial y_i^k}
+	\sigma'(o_i^k)=
+	\frac{\partial E}
+	{\partial y_i^k}
+	y_i^k\left(
+	1-y_i^k
+	\right),
+	\quad k=1,2,\cdots,M+1
+	\label{eq:24}
+\end{equation}
+Thus the recursive layer gradient computing
+is
+\begin{equation}
+	\frac{\partial E}
+	{\partial y_i^{k-1}}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^k}
+	\frac{\partial o_j^k}
+	{\partial y_i^{k-1}}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^k}
+	h\left(
+	\left\|
+	\mathbf{m}_j^k-
+	\mathbf{y}^{k-1}
+	\right\|
+	\right)
+	W_j^{k,i}
+	\quad k=1,2,\cdots,M
+	\label{eq:25}
+\end{equation}
+Particularly on the last hybrid learning
+layer, the partial gradient on 
+$\mathbf{y}^M$ is slightly different due
+to the absence of the coupling SOM:
+\begin{equation}
+	\frac{\partial E}
+	{\partial y_i^M}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^{M+1}}
+	\frac{\partial o_j^{M+1}}
+	{\partial y_i^M}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^{M+1}}
+	W_j^{M+1,i}
+	\label{eq:26}
+\end{equation}
+The partial error gradients for the
+connection parameters $\mathbf{W}$:
+\begin{equation}
+	\frac{\partial E}
+	{\partial W_j^{k,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^k}
+	\frac{\partial o_i^k}
+	{\partial W_j^{k,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^k}
+	h\left(
+	\left\|
+	\mathbf{m}_i^k-
+	\mathbf{y}^{k-1}
+	\right\|
+	\right)
+	y_i^{k-1},
+	\quad k=1,2,\cdots,M
+	\label{eq:27}
+\end{equation}
+Particularly, for parameters of the last 
+hybrid layer,
+\begin{equation}
+	\frac{\partial E}
+	{\partial W_j^{M+1,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^{M+1}}
+	\frac{\partial o_i^{M+1}}
+	{\partial W_j^{M+1,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^{M+1}}
+	y_i^{M+1}
+	\label{eq:28}
+\end{equation}
+For the partial error gradients on biases:
+\begin{equation}
+	\frac{\partial E}
+	{\partial b^{k,i}}=
+	\frac{\partial E}
+	{\partial o_i^k}
+	\frac{\partial o_i^k}
+	{\partial b^{k,i}}=
+	\frac{\partial E}
+	{\partial o_i^k}
+	\times 1,
+	\quad k=1,2,\cdots,M+1
+	\label{eq:29}
+\end{equation}
+Finally we get the rules to update parameter
+$\mathbf{W}$:
+\begin{equation}
+	W_j^{k,i}(t+1) = \eta(t)\cdot
+	\frac{\partial E}{\partial W_j^{k,i}}(t)+
+	W_j^{k,i}(t),
+	\quad k=1,2,\cdots,M+1
+	\text{ and }
+	t=1,2,\cdots
+	\label{eq:30}
+\end{equation}
+where $\eta(t)$ is the learning rate, and 
+the biases:
+\begin{equation}
+	b^{k,i}(t+1) = \eta(t)\cdot
+	\frac{\partial E}{\partial b^{k,i}}(t)+
+	b^{k,i}(t)
+	\quad k=1,2,\cdots,M+1,
+	\text{ and }
+	t=1,2,\cdots
+	\label{eq:31}
+\end{equation}
 
 \section{Empirical Study}
 To test our architecture performance on small data, we 
@@ -931,7 +1096,6 @@ A sampling from this dataset get the
 They should also be separated from the surrounding text by one space.
 
 \section{Conclusions}
-All authors must Transfer the Online licence before the article can be published. This transfer agreement enables Elsevier to protect the copyrighted material for the authors, but does not relinquish the authors' proprietary rights. The copyright transfer covers the exclusive rights to reproduce and distribute the article, including reprints, photographic reproductions, microfilm or any other reproductions of similar nature and translations. Authors are responsible for obtaining from the copyright holder permission to reproduce any figures for which copyright exists.
 
 
 \section*{Acknowledgements}
