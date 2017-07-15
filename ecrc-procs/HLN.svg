@@ -1292,8 +1292,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.50000001"
-     inkscape:cx="-99.921881"
-     inkscape:cy="751.95723"
+     inkscape:cx="-439.92187"
+     inkscape:cy="591.95723"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -1374,7 +1374,7 @@
          id="tspan3765"
          x="5.1404757"
          y="14.424991"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';stroke-width:0.26458332">Input Pattern</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Century Schoolbook L';-inkscape-font-specification:'Century Schoolbook L';stroke-width:0.26458332">Input</tspan></text>
     <rect
        id="rect3682-3"
        width="36.380264"
@@ -1506,7 +1506,7 @@
          id="tspan3765-20"
          x="5.1404781"
          y="284.29956"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Asana Math';-inkscape-font-specification:'Asana Math';stroke-width:0.26458332">Output Vector</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46666622px;font-family:'Asana Math';-inkscape-font-specification:'Asana Math';stroke-width:0.26458332">Output</tspan></text>
     <path
        style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:0.31783739;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5551-2-7)"
        d="M 113.7084,22.508017 87.324316,32.931634"

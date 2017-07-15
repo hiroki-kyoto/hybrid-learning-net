@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  15 JUL 2017 22:05
+=======
 This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  15 JUL 2017 00:09
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -871,6 +875,32 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 pdfTeX warning: pdflatex (file ./HLN.pdf): PDF inclusion: multiple pdfs with pa
 ge group included in a single page
+<<<<<<< HEAD
+>] [6] <mean_accuracy.png, id=336, 1084.05pt x 289.08pt>
+File: mean_accuracy.png Graphic file (type png)
+
+<use mean_accuracy.png>
+Package pdftex.def Info: mean_accuracy.png used on input line 1103.
+(pdftex.def)             Requested size: 505.89pt x 134.9016pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<devi_accuracy.png, id=339, 1084.05pt x 289.08pt>
+File: devi_accuracy.png Graphic file (type png)
+ <use devi_accuracy.png>
+Package pdftex.def Info: devi_accuracy.png used on input line 1131.
+(pdftex.def)             Requested size: 505.89pt x 134.9016pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<delta_accuracy.png, id=341, 1084.05pt x 289.08pt>
+File: delta_accuracy.png Graphic file (type png)
+ <use delta_accuracy.png>
+Package pdftex.def Info: delta_accuracy.png used on input line 1157.
+(pdftex.def)             Requested size: 505.89pt x 134.9016pt.
+=======
 >] [6] <fx1.pdf, id=334, 92.345pt x 97.86563pt>
 File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
@@ -880,10 +910,24 @@ File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
 Package pdftex.def Info: fx1.pdf used on input line 1090.
 (pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+<<<<<<< HEAD
+[7] (./hybrid_learning_net.bbl [8 <./mean_accuracy.png> <./devi_accuracy.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1225.
+[9 <./delta_accuracy.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1225.
+ (./hybrid_learning_net.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1225.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1225.
+
+Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
+(rerunfilecheck)             Checksum: 33864DA2E9DCE0A34C1B3FDA2108FBB3;749.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1225.
+=======
 (./hybrid_learning_net.bbl [7])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1155.
  [8 <./fx1.pdf>]
@@ -895,15 +939,20 @@ Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1155.
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
 (rerunfilecheck)             Checksum: 33864DA2E9DCE0A34C1B3FDA2108FBB3;749.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1155.
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
  ) 
 Here is how much of TeX's memory you used:
- 7943 strings out of 493013
- 111235 string characters out of 6135683
- 210008 words of memory out of 5000000
- 11246 multiletter control sequences out of 15000+600000
+ 7959 strings out of 493013
+ 111541 string characters out of 6135683
+ 211228 words of memory out of 5000000
+ 11257 multiletter control sequences out of 15000+600000
  65835 words of font info for 157 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
+<<<<<<< HEAD
+ 34i,14n,36p,263b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+=======
  34i,14n,36p,263b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
@@ -916,10 +965,19 @@ ve/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
+<<<<<<< HEAD
+Output written on hybrid_learning_net.pdf (9 pages, 358246 bytes).
+PDF statistics:
+ 430 PDF objects out of 1000 (max. 8388607)
+ 327 compressed objects within 4 object streams
+ 75 named destinations out of 1000 (max. 500000)
+ 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+=======
 Output written on hybrid_learning_net.pdf (8 pages, 320583 bytes).
 PDF statistics:
  418 PDF objects out of 1000 (max. 8388607)
  319 compressed objects within 4 object streams
  72 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 

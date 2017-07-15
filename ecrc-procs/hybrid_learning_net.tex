@@ -1074,22 +1074,101 @@ the biases:
 	t=1,2,\cdots
 	\label{eq:31}
 \end{equation}
+<<<<<<< HEAD
+Thus we can iterate recursively along 
+layers with 
+equations~(\ref{eq:21}-\ref{eq:31}) to 
+update all parameters of the supervised 
+training, and the equations corresponding 
+tothe unsupervised training refer 
+directly to equations~(\ref{eq:8}) and 
+=======
 Thus we can iterate along layers with 
 equation~(\ref{eq:21}-\ref{eq:31}) to 
 update all parameters of the supervised 
 training, and the equations corresponding 
 tothe unsupervised training refer 
 directly to equation~(\ref{eq:8}) and 
+>>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 (\ref{eq:9}).
 \section{Empirical Study}
-To test our architecture performance on small data, we 
-use a synthetic dataset containing $3.5\%$ noisy samples. 
-A sampling from this dataset get the
+To demonstrate the advantages of nets with
+our HLN architecture over the ones 
+without, 
+we use a synthetic dataset that maps
+2-dimension vectos into 3 classes, where
+$3.5\%$ of the noise is mixed to simulate 
+a real sampling dataset.
+We then apply the data to the HLN(the 
+net with HLN architecture) and the 
+FCN(the net without),
+and compare the regression capabilities 
+of the two. 
+Figures~(\ref{fig:2}-\ref{fig:4}) 
+present the comparison results.
 
 \begin{figure}[h]
-\centerline{\includegraphics{fx1}\hspace*{5mm}\includegraphics{fx1}}
-\caption{(a) first picture; (b) second picture.}
+	\centerline{
+		\includegraphics[width=7in]{mean_accuracy}}
+	\caption{
+		Comparison on mean of 
+		accuracy with synthetic data}
+	\label{fig:2}
 \end{figure}
+
+An explanation is needed here,
+we split the data into two parts, one
+is for trainings of two
+architectures and the another is for
+testing, the train/test ratio is 0.8.
+Considering the possible impact from
+the parameter initialization, 
+we repeat the complete workflow
+of training and testing with varied
+random parameter initialization
+for each net with different 
+configurations.
+From figure~(\ref{fig:2}), easy
+to see that nets with our architecture
+win over nets without in all situations
+concerned.
+The HLN architecture learn much faster
+than the FCN.
+
+\begin{figure}[h]
+	\centerline{
+		\includegraphics[width=7in]{devi_accuracy}}
+	\caption{
+		Comparison on deviation of 
+		accuracy with synthetic data}
+	\label{fig:3}
+\end{figure}
+
+Each of the net training is repeated for 
+30 times in our experiments, and within
+each training, the net parameters are
+reinitialized and relearned from the
+very beginning of training. Thus we
+can analyze the robustness of 
+architectures to the parameter
+initialization.
+Figure~(\ref{fig:3}) shows the HLN
+stablize quickly under all conditions,
+however the FCN requires more training
+to get itself stablized. The HLN proves
+to be robuster to the neural network
+hyperparameter of parameter
+initialization.
+
+
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=7in]{delta_accuracy}}
+	\caption{A visualization of
+	difference between FCN and HLN}
+	\label{fig:4}
+\end{figure}
+
 
 
 \begin{equation}
