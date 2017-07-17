@@ -516,7 +516,7 @@ $\left<
 \cite{zhu2002learning} 
 is one of the most efficient algorithms using 
 the semi-supervised learning scheme as 
-described above in equation~\ref{eq:1}. 
+described above in equation~(\ref{eq:1}). 
 It adds a Laplacian Eigenmap type 
 regularization to a nearest neighbor 
 classifier:
@@ -538,7 +538,7 @@ classifier:
 $L$ is a labeled sample set of $\mathbf{X}$, 
 and $U$ is 
 a unlabeled one, the right part of 
-equation~\ref{eq:2} is the semi-supervised 
+equation~(\ref{eq:2}) is the semi-supervised 
 regularizer,
 the left part is for supervised learning only.
 Parameter $\lambda$ is the balance constraint. 
@@ -562,7 +562,7 @@ and such that
 	\left(y_1,y_2,\cdots,y_D\right)
 \label{eq:4}
 \end{equation}
-The equation~\ref{eq:3} describe the simplest 
+The equation~(\ref{eq:3}) describe the simplest 
 neural model with $M$ hidden layers, $D$ is 
 the output dimension, $f_i(\mathbf{x})$ 
 computes the output of $i^{th}$ neuron in the
@@ -678,7 +678,7 @@ situation where neurons connected in fully
 connected way, which we call the Fully 
 Connected Neurons(FCN) architecture, we have 
 such an embedding solution as described in 
-figure~\ref{fig:1}.
+figure~(\ref{fig:1}).
 
 \begin{figure}[h]
 	\centerline{
@@ -691,7 +691,8 @@ figure~\ref{fig:1}.
 	\label{fig:1}
 \end{figure}
 
-In the HLN architecture from figure~\ref{fig:1},
+In the HLN architecture from 
+figure~(\ref{fig:1}),
 $h(x)$ is an unifying function we proposed for 
 SOMs to convert from pattern disimilarity
 $\|\mathbf{x}-\mathbf{m}_i\|$, into
@@ -750,7 +751,7 @@ them into sparsity mask as
 	\label{eq:13}
 \end{equation}
 in which $\mathbf{m}_i$ and $\mathbf{x}$ is the
-same way defined in equation~\ref{eq:8}.
+same way defined in equation~(\ref{eq:8}).
 $\epsilon$ is a constant of pretty small value
 like $\epsilon=10^{-5}$ to avoid 
 \emph{division-by-zero} errors that may, 
@@ -780,9 +781,10 @@ multiplication operator,
 	\label{eq:14}
 \end{equation}
 where $w$, $y$, $b$, $i$, $j$, $k$ is the
-same denotion as in equation~\ref{eq:5}.
+same denotion as in equation~(\ref{eq:5}).
 For the computing flow described in 
-figure~\ref{fig:1}, $f(\cdot) $ is followed 
+figure~(\ref{fig:1}), 
+$f(\cdot) $ is followed 
 by an activation function, it can be any 
 arbitrary nonlinear function that takes 
 only one dimension inputs and outputs a 
@@ -860,7 +862,7 @@ $\mathbf{y}\in\mathbb{R}^n$, parameterized with
 the neural connection weights $\mathbf{W}$ and 
 the biases $\mathbf{b}$ for all non-input 
 layer neurons in the HLN architecture.
-This equation~\ref{eq:17} may become the 
+This equation~(\ref{eq:17}) may become the 
 following one when Enclidean metrics be 
 applied for the loss,
 \begin{equation}
@@ -1074,23 +1076,15 @@ the biases:
 	t=1,2,\cdots
 	\label{eq:31}
 \end{equation}
-<<<<<<< HEAD
 Thus we can iterate recursively along 
 layers with 
 equations~(\ref{eq:21}-\ref{eq:31}) to 
 update all parameters of the supervised 
 training, and the equations corresponding 
-tothe unsupervised training refer 
+to the unsupervised training refer 
 directly to equations~(\ref{eq:8}) and 
-=======
-Thus we can iterate along layers with 
-equation~(\ref{eq:21}-\ref{eq:31}) to 
-update all parameters of the supervised 
-training, and the equations corresponding 
-tothe unsupervised training refer 
-directly to equation~(\ref{eq:8}) and 
->>>>>>> 1164976ea8a7bca42f9ff9c80ca849b924db2e0c
 (\ref{eq:9}).
+
 \section{Empirical Study}
 To demonstrate the advantages of nets with
 our HLN architecture over the ones 
@@ -1116,24 +1110,36 @@ present the comparison results.
 	\label{fig:2}
 \end{figure}
 
-An explanation is needed here,
-we split the data into two parts, one
-is for trainings of two
+An explanation may be helpful:
+we split the data into two partitions, 
+one is for the training of two
 architectures and the another is for
 testing, the train/test ratio is 0.8.
 Considering the possible impact from
 the parameter initialization, 
-we repeat the complete workflow
+we replay the complete workflow
 of training and testing with varied
 random parameter initialization
 for each net with different 
 configurations.
 From figure~(\ref{fig:2}), easy
-to see that nets with our architecture
-win over nets without in all situations
-concerned.
-The HLN architecture learn much faster
-than the FCN.
+to see that nets with our HLN 
+architecture win over nets without 
+in all conditions concerned.
+The overall results we may obtain
+from this test would be:
+\begin{itemize}
+	\item The HLN architecture 
+		learns much faster than the 
+		FCN.
+	\item We find the pretraining
+		with unlabeled data do improve 
+		the performance of HLN, however 
+		the improvement is limited.
+	\item A constant learning rate is
+		more advisal than a decreasing 
+		one with steps.
+\end{itemize}
 
 \begin{figure}[h]
 	\centerline{
