@@ -686,8 +686,16 @@ figure~(\ref{fig:1}).
 		\hspace*{5mm}
 		\includegraphics[width=3in]{HLN}
 	}
-\caption{(a) FCN architecture; 
-	(b) HLN architecture.}
+\caption{The left is FCN architecture, 
+	the right is HLN architecture.
+	The big solid circles are the 
+	neurons, the medium ones are the 
+	middle states of neurons, and 
+	the small ones are the vector maps 
+	$\mathbf{m}^k$ of SOMs, finally the 
+	tiny ones are the function modules.
+	The parts omitted refers to repeating
+	hidden layers connected in same way.}
 	\label{fig:1}
 \end{figure}
 
@@ -1086,10 +1094,9 @@ directly to equations~(\ref{eq:8}) and
 (\ref{eq:9}).
 
 \section{Empirical Study}
-To demonstrate the advantages of nets with
-our HLN architecture over the ones 
-without, 
-we use a synthetic dataset that maps
+\subsection{Regression capability
+experiment using small synthetic data}
+A synthetic dataset is used. It maps
 2-dimension vectos into 3 classes, where
 $3.5\%$ of the noise is mixed to simulate 
 a real sampling dataset.
@@ -1098,7 +1105,11 @@ net with HLN architecture) and the
 FCN(the net without),
 and compare the regression capabilities 
 of the two. 
-Figures~(\ref{fig:2}-\ref{fig:4}) 
+The FCN and HLN applied in this 
+experiment follow the exact design as 
+in Fig.(\ref{fig:1}) with only a single 
+hidden layer.
+Figures~(\ref{fig:2}-\ref{fig:3}) 
 present the comparison results.
 
 \begin{figure}[h]
@@ -1106,7 +1117,16 @@ present the comparison results.
 		\includegraphics[width=7in]{mean_accuracy}}
 	\caption{
 		Comparison on mean of 
-		accuracy with synthetic data}
+		accuracy with synthetic data:
+		$\mu$ is the mean accuracy for
+		multiple replays with the same
+		configuration.
+		$N_{pre}$ is the unlabeled sample 
+		volume for pretraining, $\eta$
+		is the initial learning rate,
+		$\alpha$ is the decay factor of
+		learning rate $\eta(t)$.
+		}
 	\label{fig:2}
 \end{figure}
 
@@ -1127,7 +1147,7 @@ to see that nets with our HLN
 architecture win over nets without 
 in all conditions concerned.
 The overall results we may obtain
-from this test would be:
+from this experiment would be:
 \begin{itemize}
 	\item The HLN architecture 
 		learns much faster than the 
@@ -1146,7 +1166,15 @@ from this test would be:
 		\includegraphics[width=7in]{devi_accuracy}}
 	\caption{
 		Comparison on deviation of 
-		accuracy with synthetic data}
+		accuracy with synthetic data:
+		the deviation takes the form as
+		$\delta$ is the deviation of
+		multiple replays with the same
+		configuration as 
+		$\delta=\sum_1^N(\gamma_i-\mu)/N$
+		, where $\gamma_i$ is $i^{th}$ 
+		replay accuracy.
+		}
 	\label{fig:3}
 \end{figure}
 
@@ -1163,28 +1191,50 @@ stablize quickly under all conditions,
 however the FCN requires more training
 to get itself stablized. The HLN proves
 to be robuster to the neural network
-hyperparameter of parameter
+hyperparameter variation of parameter 
 initialization.
-
-
+\subsection{Comparisons on MNIST with and
+without max-pooling}
+Experiments on the well-known MNIST
+benchmark demonstrate greater enhencement
+over the traditional architecture.
+Moreover the advantage of HLN increases 
+with higher input dimension
+and deeper network. 
+To enable the input dimension variation,
+a max-pooling is applied before the input
+of a neural net. The MNIST dataset
+provides 50000 images for training and 
+10000 images for testing, with each image
+resized as $28\times 28$ of pixels. 
+A max-pooling with the kernel of 
+$2\times 2$
+leads to a input dimension of 196, and
+particularly a max-pooling with the
+kernel $1\times 1$ will keep the original
+input dimension as 784. All nets used
+are based on architectures in 
+Fig.(\ref{fig:1}).
 
 \begin{figure}[h]
-	\centerline{\includegraphics[width=7in]{delta_accuracy}}
-	\caption{A visualization of
-	difference between FCN and HLN}
+	\centerline{
+		\includegraphics[width=7in]{mnist_testing_accuracy}}
+	\caption{
+		Comparison of testing accuracy on 
+		MNIST with 4 different network
+		model: 
+		$196I$ refers to
+		the input layer of dimension 196, 
+		$30H$ refers to the hidden layer
+		of dimension of 30, and $10F$ is
+		the fully connected output layer 
+		of dimension 10.
+		}
 	\label{fig:4}
 \end{figure}
 
-
-
-\begin{equation}
-\begin{array}{rcl}
-\displaystyle X_r &=& \displaystyle\dot{Q}^{"}_{rad}\left/\left(\dot{Q}^{"}_{rad} + \dot{Q}^{"}_{conv}\right)\right.\\[6pt]
-\displaystyle \rho &=& \displaystyle\frac{\vec{E}}{J_c(T={\rm const.})\cdot\left(P\cdot\left(\displaystyle\frac{\vec{E}}{E_c}\right)^m+(1-P)\right)}
-\end{array}
-\end{equation}
-
-They should also be separated from the surrounding text by one space.
+From Fig.(\ref{fig:4}), we see that both
+FCN and HLN architectures works well.
 
 \section{Conclusions}
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  18 JUL 2017 00:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  18 JUL 2017 23:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -799,7 +799,7 @@ rted-to.pdf elsevier-logo-3p.eps>
 (epstopdf)             \includegraphics on input line 371.
 Package epstopdf Info: Output file is already uptodate.
 
-<elsevier-logo-3p-eps-converted-to.pdf, id=57, 54.2025pt x 60.225pt>
+<elsevier-logo-3p-eps-converted-to.pdf, id=65, 54.2025pt x 60.225pt>
 File: elsevier-logo-3p-eps-converted-to.pdf Graphic file (type pdf)
 
 <use elsevier-logo-3p-eps-converted-to.pdf>
@@ -825,7 +825,7 @@ df svsd-3p.eps>
 (epstopdf)             \includegraphics on input line 371.
 Package epstopdf Info: Output file is already uptodate.
 
-<svsd-3p-eps-converted-to.pdf, id=58, 159.59625pt x 13.04875pt>
+<svsd-3p-eps-converted-to.pdf, id=66, 159.59625pt x 13.04875pt>
 File: svsd-3p-eps-converted-to.pdf Graphic file (type pdf)
 
 <use svsd-3p-eps-converted-to.pdf>
@@ -842,7 +842,7 @@ Package epstopdf Info: Source file: <procs_new.eps>
 (epstopdf)             \includegraphics on input line 371.
 Package epstopdf Info: Output file is already uptodate.
 
-<procs_new-eps-converted-to.pdf, id=59, 110.4125pt x 72.27pt>
+<procs_new-eps-converted-to.pdf, id=67, 110.4125pt x 72.27pt>
 File: procs_new-eps-converted-to.pdf Graphic file (type pdf)
 
 <use procs_new-eps-converted-to.pdf>
@@ -919,13 +919,13 @@ Overfull \vbox (50.22484pt too high) has occurred while \output is active []
 procs_new-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 375.
- [2] [3] <FCN.pdf, id=125, 597.50786pt x 845.04686pt>
+ [2] [3] <FCN.pdf, id=133, 597.50786pt x 845.04686pt>
 File: FCN.pdf Graphic file (type pdf)
  <use FCN.pdf>
 Package pdftex.def Info: FCN.pdf used on input line 688.
 (pdftex.def)             Requested size: 216.81pt x 306.62788pt.
 
-<HLN.pdf, id=126, 597.50786pt x 845.04686pt>
+<HLN.pdf, id=134, 597.50786pt x 845.04686pt>
 File: HLN.pdf Graphic file (type pdf)
  <use HLN.pdf>
 Package pdftex.def Info: HLN.pdf used on input line 688.
@@ -938,56 +938,49 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 pdfTeX warning: pdflatex (file ./HLN.pdf): PDF inclusion: multiple pdfs with pa
 ge group included in a single page
->] [6] <mean_accuracy.png, id=335, 1084.05pt x 289.08pt>
+>] [6] <mean_accuracy.png, id=343, 1084.05pt x 289.08pt>
 File: mean_accuracy.png Graphic file (type png)
 
 <use mean_accuracy.png>
-Package pdftex.def Info: mean_accuracy.png used on input line 1106.
+Package pdftex.def Info: mean_accuracy.png used on input line 1117.
 (pdftex.def)             Requested size: 505.89pt x 134.9016pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<devi_accuracy.png, id=338, 1084.05pt x 289.08pt>
+[7] <devi_accuracy.png, id=360, 1084.05pt x 289.08pt>
 File: devi_accuracy.png Graphic file (type png)
  <use devi_accuracy.png>
-Package pdftex.def Info: devi_accuracy.png used on input line 1146.
+Package pdftex.def Info: devi_accuracy.png used on input line 1166.
 (pdftex.def)             Requested size: 505.89pt x 134.9016pt.
 
+[8 <./mean_accuracy.png> <./devi_accuracy.png>]
+<mnist_testing_accuracy.png, id=371, 1084.05pt x 289.08pt>
+File: mnist_testing_accuracy.png Graphic file (type png)
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7] <delta_accuracy.png, id=355, 1084.05pt x 289.08pt>
-File: delta_accuracy.png Graphic file (type png)
-
-<use delta_accuracy.png>
-Package pdftex.def Info: delta_accuracy.png used on input line 1172.
+<use mnist_testing_accuracy.png>
+Package pdftex.def Info: mnist_testing_accuracy.png used on input line 1221.
 (pdftex.def)             Requested size: 505.89pt x 134.9016pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-(./hybrid_learning_net.bbl [8 <./mean_accuracy.png> <./devi_accuracy.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1240.
-
-[9 <./delta_accuracy.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1240.
+ (./hybrid_learning_net.bbl [9 <./mnist_testing_accuracy.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1290.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1290.
  (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1240.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1240.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1290.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1290.
 
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
-(rerunfilecheck)             Checksum: 33864DA2E9DCE0A34C1B3FDA2108FBB3;749.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1240.
+(rerunfilecheck)             Checksum: CF5A643905D59CA70F5214AA66535E1E;957.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1290.
  ) 
 Here is how much of TeX's memory you used:
- 7971 strings out of 493013
- 111799 string characters out of 6135683
- 210228 words of memory out of 5000000
- 11257 multiletter control sequences out of 15000+600000
- 65835 words of font info for 157 fonts, out of 8000000 for 9000
+ 7981 strings out of 493013
+ 111925 string characters out of 6135683
+ 211085 words of memory out of 5000000
+ 11259 multiletter control sequences out of 15000+600000
+ 68981 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,39p,263b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,39p,471b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
@@ -1000,10 +993,10 @@ ve/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on hybrid_learning_net.pdf (9 pages, 394388 bytes).
+Output written on hybrid_learning_net.pdf (10 pages, 407591 bytes).
 PDF statistics:
- 429 PDF objects out of 1000 (max. 8388607)
- 326 compressed objects within 4 object streams
- 75 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 443 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 77 named destinations out of 1000 (max. 500000)
+ 145 words of extra memory for PDF output out of 10000 (max. 10000000)
 

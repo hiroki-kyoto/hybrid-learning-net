@@ -52,12 +52,12 @@
 \newlabel{eq:10}{{10}{4}{Our architecture: the Hybrid Learning Net}{equation.3.10}{}}
 \newlabel{eq:11}{{11}{4}{Our architecture: the Hybrid Learning Net}{equation.3.11}{}}
 \newlabel{eq:12}{{12}{4}{Our architecture: the Hybrid Learning Net}{equation.3.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces (a) FCN architecture; (b) HLN architecture.}}{5}{figure.1}}
-\newlabel{fig:1}{{1}{5}{(a) FCN architecture; (b) HLN architecture}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The left is FCN architecture, the right is HLN architecture. The big solid circles are the neurons, the medium ones are the middle states of neurons, and the small ones are the vector maps $\mathbf  {m}^k$ of SOMs, finally the tiny ones are the function modules. The parts omitted refers to repeating hidden layers connected in same way.}}{5}{figure.1}}
+\newlabel{fig:1}{{1}{5}{The left is FCN architecture, the right is HLN architecture. The big solid circles are the neurons, the medium ones are the middle states of neurons, and the small ones are the vector maps $\mathbf {m}^k$ of SOMs, finally the tiny ones are the function modules. The parts omitted refers to repeating hidden layers connected in same way}{figure.1}{}}
 \newlabel{eq:13}{{13}{5}{Our architecture: the Hybrid Learning Net}{equation.3.13}{}}
 \newlabel{eq:14}{{14}{5}{Our architecture: the Hybrid Learning Net}{equation.3.14}{}}
 \newlabel{eq:15}{{15}{5}{Our architecture: the Hybrid Learning Net}{equation.3.15}{}}
-\newlabel{eq:16}{{16}{5}{Our architecture: the Hybrid Learning Net}{equation.3.16}{}}
+\newlabel{eq:16}{{16}{6}{Our architecture: the Hybrid Learning Net}{equation.3.16}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}The training theory for HLNs}{6}{section.4}}
 \newlabel{eq:17}{{17}{6}{The training theory for HLNs}{equation.4.17}{}}
 \newlabel{eq:18}{{18}{6}{The training theory for HLNs}{equation.4.18}{}}
@@ -65,7 +65,7 @@
 \newlabel{eq:20}{{20}{6}{The training theory for HLNs}{equation.4.20}{}}
 \newlabel{eq:21}{{21}{6}{The training theory for HLNs}{equation.4.21}{}}
 \newlabel{eq:22}{{22}{6}{The training theory for HLNs}{equation.4.22}{}}
-\newlabel{eq:23}{{23}{6}{The training theory for HLNs}{equation.4.23}{}}
+\newlabel{eq:23}{{23}{7}{The training theory for HLNs}{equation.4.23}{}}
 \newlabel{eq:24}{{24}{7}{The training theory for HLNs}{equation.4.24}{}}
 \newlabel{eq:25}{{25}{7}{The training theory for HLNs}{equation.4.25}{}}
 \newlabel{eq:26}{{26}{7}{The training theory for HLNs}{equation.4.26}{}}
@@ -75,14 +75,14 @@
 \newlabel{eq:30}{{30}{7}{The training theory for HLNs}{equation.4.30}{}}
 \newlabel{eq:31}{{31}{7}{The training theory for HLNs}{equation.4.31}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Empirical Study}{7}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Regression capability experiment using small synthetic data}{7}{subsection.5.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Comparison on mean of accuracy with synthetic data: $\mu $ is the mean accuracy for multiple replays with the same configuration. $N_{pre}$ is the unlabeled sample volume for pretraining, $\eta $ is the initial learning rate, $\alpha $ is the decay factor of learning rate $\eta (t)$. }}{8}{figure.2}}
+\newlabel{fig:2}{{2}{8}{Comparison on mean of accuracy with synthetic data: $\mu $ is the mean accuracy for multiple replays with the same configuration. $N_{pre}$ is the unlabeled sample volume for pretraining, $\eta $ is the initial learning rate, $\alpha $ is the decay factor of learning rate $\eta (t)$}{figure.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Comparison on deviation of accuracy with synthetic data: the deviation takes the form as $\delta $ is the deviation of multiple replays with the same configuration as $\delta =\DOTSB \sum@ \slimits@ _1^N(\gamma _i-\mu )/N$ , where $\gamma _i$ is $i^{th}$ replay accuracy. }}{8}{figure.3}}
+\newlabel{fig:3}{{3}{8}{Comparison on deviation of accuracy with synthetic data: the deviation takes the form as $\delta $ is the deviation of multiple replays with the same configuration as $\delta =\sum _1^N(\gamma _i-\mu )/N$ , where $\gamma _i$ is $i^{th}$ replay accuracy}{figure.3}{}}
 \bibstyle{elsarticle-num}
 \bibdata{ref}
 \bibcite{mcculloch1943logical}{{1}{}{{}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces  Comparison on mean of accuracy with synthetic data}}{8}{figure.2}}
-\newlabel{fig:2}{{2}{8}{Comparison on mean of accuracy with synthetic data}{figure.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces  Comparison on deviation of accuracy with synthetic data}}{8}{figure.3}}
-\newlabel{fig:3}{{3}{8}{Comparison on deviation of accuracy with synthetic data}{figure.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{8}{section.6}}
 \bibcite{krizhevsky2012imagenet}{{2}{}{{}}{{}}}
 \bibcite{girshick2015fast}{{3}{}{{}}{{}}}
 \bibcite{graves2013hybrid}{{4}{}{{}}{{}}}
@@ -96,11 +96,13 @@
 \bibcite{zhu2002learning}{{12}{}{{}}{{}}}
 \bibcite{weston2012deep}{{13}{}{{}}{{}}}
 \bibcite{kohonen1998self}{{14}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Comparisons on MNIST with and without max-pooling}{9}{subsection.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Comparison of testing accuracy on MNIST with 4 different network model: $196I$ refers to the input layer of dimension 196, $30H$ refers to the hidden layer of dimension of 30, and $10F$ is the fully connected output layer of dimension 10. }}{9}{figure.4}}
+\newlabel{fig:4}{{4}{9}{Comparison of testing accuracy on MNIST with 4 different network model: $196I$ refers to the input layer of dimension 196, $30H$ refers to the hidden layer of dimension of 30, and $10F$ is the fully connected output layer of dimension 10}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{9}{section.6}}
 \bibcite{srivastava2014dropout}{{15}{}{{}}{{}}}
 \providecommand\NAT@force@numbers{}\NAT@force@numbers
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces A visualization of difference between FCN and HLN}}{9}{figure.4}}
-\newlabel{fig:4}{{4}{9}{A visualization of difference between FCN and HLN}{figure.4}{}}
 \@writefile{toc}{\let\numberline\tmptocnumberline}
-\@writefile{toc}{\contentsline {section}{\numberline {Appendix \nobreakspace  {}A}An example appendix}{9}{appendix.A}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.1}Example of a sub-heading within an appendix}{9}{subsection.A.1}}
-\newlabel{lastpage}{{Appendix \nobreakspace  {}A.1}{9}{Example of a sub-heading within an appendix}{subsection.A.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {Appendix \nobreakspace  {}A}An example appendix}{10}{appendix.A}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {Appendix \nobreakspace  {}A.1}Example of a sub-heading within an appendix}{10}{subsection.A.1}}
+\newlabel{lastpage}{{Appendix \nobreakspace  {}A.1}{10}{Example of a sub-heading within an appendix}{subsection.A.1}{}}
