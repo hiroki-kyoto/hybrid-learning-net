@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  18 JUL 2017 23:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.6.15)  19 JUL 2017 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **hybrid_learning_net.tex
 (./hybrid_learning_net.tex
-LaTeX2e <2017/01/01> patch level 3
+LaTeX2e <2016/03/31> patch level 3
 Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
 (./elsarticle.cls
 Document Class: elsarticle 2010/06/11, 1.21: Elsevier Ltd
@@ -34,7 +34,7 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/10/09 v1.0u Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -45,7 +45,7 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -321,7 +321,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 \Hy@SectionHShift=\skip47
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/11/05 v2.16a AMS math features
+Package: amsmath 2016/06/28 v2.15d AMS math features
 \@mathmargin=\skip48
 
 For additional information on amsmath, use the `?' option.
@@ -341,20 +341,20 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count108
-LaTeX Info: Redefining \frac on input line 213.
+LaTeX Info: Redefining \frac on input line 199.
 \uproot@=\count109
 \leftroot@=\count110
-LaTeX Info: Redefining \overline on input line 375.
+LaTeX Info: Redefining \overline on input line 297.
 \classnum@=\count111
 \DOTSCASE@=\count112
-LaTeX Info: Redefining \ldots on input line 472.
-LaTeX Info: Redefining \dots on input line 475.
-LaTeX Info: Redefining \cdots on input line 596.
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box32
 \strutbox@=\box33
 \big@size=\dimen126
-LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
 \macc@depth=\count113
 \c@MaxMatrixCols=\count114
 \dotsspace@=\muskip11
@@ -375,8 +375,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \multlinegap=\skip49
 \multlinetaggap=\skip50
 \mathdisplay@stack=\toks22
-LaTeX Info: Redefining \[ on input line 2817.
-LaTeX Info: Redefining \] on input line 2818.
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
@@ -615,7 +615,7 @@ LaTeX Font Info:    Redeclaring math symbol \hslash on input line 262.
 LaTeX Font Info:    Redeclaring math symbol \backepsilon on input line 265.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
-Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+Package: rotating 2016/05/22 v2.16c rotated objects in LaTeX
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -789,10 +789,10 @@ LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <9> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 240.
 LaTeX Font Info:    Calculating math sizes for size <13> on input line 254.
 Package epstopdf Info: Source file: <elsevier-logo-3p.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 511887 bytes
 (epstopdf)             Output file: <elsevier-logo-3p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:37
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 77000 bytes
 (epstopdf)             Command: <repstopdf --outfile=elsevier-logo-3p-eps-conve
 rted-to.pdf elsevier-logo-3p.eps>
@@ -815,10 +815,10 @@ File: ot1txss.fd 2000/12/15 v3.1
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 371.
 Package epstopdf Info: Source file: <svsd-3p.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 304246 bytes
 (epstopdf)             Output file: <svsd-3p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:41
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 13643 bytes
 (epstopdf)             Command: <repstopdf --outfile=svsd-3p-eps-converted-to.p
 df svsd-3p.eps>
@@ -832,10 +832,10 @@ File: svsd-3p-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: svsd-3p-eps-converted-to.pdf used on input line 371.
 (pdftex.def)             Requested size: 159.59584pt x 13.0487pt.
 Package epstopdf Info: Source file: <procs_new.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 260725 bytes
 (epstopdf)             Output file: <procs_new-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:42
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 9724 bytes
 (epstopdf)             Command: <repstopdf --outfile=procs_new-eps-converted-to
 .pdf procs_new.eps>
@@ -855,10 +855,10 @@ Overfull \hbox (2.91222pt too wide) has occurred while \output is active
  []
 
 Package epstopdf Info: Source file: <elsevier-logo-3p.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 511887 bytes
 (epstopdf)             Output file: <elsevier-logo-3p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:37
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 77000 bytes
 (epstopdf)             Command: <repstopdf --outfile=elsevier-logo-3p-eps-conve
 rted-to.pdf elsevier-logo-3p.eps>
@@ -870,10 +870,10 @@ Package pdftex.def Info: elsevier-logo-3p-eps-converted-to.pdf used on input li
 ne 371.
 (pdftex.def)             Requested size: 54.20236pt x 60.22484pt.
 Package epstopdf Info: Source file: <svsd-3p.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 304246 bytes
 (epstopdf)             Output file: <svsd-3p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:41
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 13643 bytes
 (epstopdf)             Command: <repstopdf --outfile=svsd-3p-eps-converted-to.p
 df svsd-3p.eps>
@@ -884,10 +884,10 @@ File: svsd-3p-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: svsd-3p-eps-converted-to.pdf used on input line 371.
 (pdftex.def)             Requested size: 159.59584pt x 13.0487pt.
 Package epstopdf Info: Source file: <procs_new.eps>
-(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    date: 2017-07-08 00:17:57
 (epstopdf)                    size: 260725 bytes
 (epstopdf)             Output file: <procs_new-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-17 22:37:42
+(epstopdf)                    date: 2017-07-19 14:01:21
 (epstopdf)                    size: 9724 bytes
 (epstopdf)             Command: <repstopdf --outfile=procs_new-eps-converted-to
 .pdf procs_new.eps>
@@ -948,39 +948,62 @@ Package pdftex.def Info: mean_accuracy.png used on input line 1117.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7] <devi_accuracy.png, id=360, 1084.05pt x 289.08pt>
+<devi_accuracy.png, id=345, 1084.05pt x 289.08pt>
 File: devi_accuracy.png Graphic file (type png)
  <use devi_accuracy.png>
-Package pdftex.def Info: devi_accuracy.png used on input line 1166.
+Package pdftex.def Info: devi_accuracy.png used on input line 1135.
 (pdftex.def)             Requested size: 505.89pt x 134.9016pt.
 
-[8 <./mean_accuracy.png> <./devi_accuracy.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7] [8 <./mean_accuracy.png> <./devi_accuracy.png>]
 <mnist_testing_accuracy.png, id=371, 1084.05pt x 289.08pt>
 File: mnist_testing_accuracy.png Graphic file (type png)
 
 <use mnist_testing_accuracy.png>
 Package pdftex.def Info: mnist_testing_accuracy.png used on input line 1221.
 (pdftex.def)             Requested size: 505.89pt x 134.9016pt.
- (./hybrid_learning_net.bbl [9 <./mnist_testing_accuracy.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1290.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1290.
- (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1290.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1290.
+
+<mnist_training_loss.png, id=372, 1084.05pt x 289.08pt>
+File: mnist_training_loss.png Graphic file (type png)
+
+<use mnist_training_loss.png>
+Package pdftex.def Info: mnist_training_loss.png used on input line 1238.
+(pdftex.def)             Requested size: 505.89pt x 134.9016pt.
+
+<mnist_training_sparsity.png, id=373, 1084.05pt x 289.08pt>
+File: mnist_training_sparsity.png Graphic file (type png)
+
+<use mnist_training_sparsity.png>
+Package pdftex.def Info: mnist_training_sparsity.png used on input line 1248.
+(pdftex.def)             Requested size: 505.89pt x 134.9016pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9 <./mnist_testing_accuracy.png> <./mnist_training_loss.png>]
+(./hybrid_learning_net.bbl [10 <./mnist_training_sparsity.png>])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1372.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1372.
+
+(./hybrid_learning_net.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1372.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1372.
 
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
-(rerunfilecheck)             Checksum: CF5A643905D59CA70F5214AA66535E1E;957.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1290.
+(rerunfilecheck)             Checksum: 68ABCF0EA6AFBD256AC8CEA18DC35D30;928.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1372.
  ) 
 Here is how much of TeX's memory you used:
- 7981 strings out of 493013
- 111925 string characters out of 6135683
- 211085 words of memory out of 5000000
- 11259 multiletter control sequences out of 15000+600000
+ 7992 strings out of 493013
+ 112163 string characters out of 6135682
+ 212197 words of memory out of 5000000
+ 11265 multiletter control sequences out of 15000+600000
  68981 words of font info for 163 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,39p,471b,506s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,39p,471b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf
@@ -993,10 +1016,10 @@ ve/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on hybrid_learning_net.pdf (10 pages, 407591 bytes).
+Output written on hybrid_learning_net.pdf (11 pages, 479226 bytes).
 PDF statistics:
- 443 PDF objects out of 1000 (max. 8388607)
- 339 compressed objects within 4 object streams
- 77 named destinations out of 1000 (max. 500000)
- 145 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 458 PDF objects out of 1000 (max. 8388607)
+ 349 compressed objects within 4 object streams
+ 80 named destinations out of 1000 (max. 500000)
+ 155 words of extra memory for PDF output out of 10000 (max. 10000000)
 

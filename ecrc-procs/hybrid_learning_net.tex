@@ -1130,6 +1130,24 @@ present the comparison results.
 	\label{fig:2}
 \end{figure}
 
+\begin{figure}[h]
+	\centerline{
+		\includegraphics[width=7in]{devi_accuracy}}
+	\caption{
+		Comparison on deviation of 
+		accuracy with synthetic data:
+		the deviation takes the form as
+		$\delta$ is the deviation of
+		multiple replays with the same
+		configuration as 
+		$\delta=\sum_1^N(\gamma_i-\mu)/N$
+		, where $\gamma_i$ is $i^{th}$ 
+		replay accuracy.
+		}
+	\label{fig:3}
+\end{figure}
+
+
 An explanation may be helpful:
 we split the data into two partitions, 
 one is for the training of two
@@ -1161,23 +1179,6 @@ from this experiment would be:
 		one with steps.
 \end{itemize}
 
-\begin{figure}[h]
-	\centerline{
-		\includegraphics[width=7in]{devi_accuracy}}
-	\caption{
-		Comparison on deviation of 
-		accuracy with synthetic data:
-		the deviation takes the form as
-		$\delta$ is the deviation of
-		multiple replays with the same
-		configuration as 
-		$\delta=\sum_1^N(\gamma_i-\mu)/N$
-		, where $\gamma_i$ is $i^{th}$ 
-		replay accuracy.
-		}
-	\label{fig:3}
-\end{figure}
-
 Each of the net training is repeated for 
 30 times in our experiments, and within
 each training, the net parameters are
@@ -1193,8 +1194,7 @@ to get itself stablized. The HLN proves
 to be robuster to the neural network
 hyperparameter variation of parameter 
 initialization.
-\subsection{Comparisons on MNIST with and
-without max-pooling}
+\subsection{Experiments on MNIST}
 Experiments on the well-known MNIST
 benchmark demonstrate greater enhencement
 over the traditional architecture.
@@ -1233,8 +1233,90 @@ Fig.(\ref{fig:1}).
 	\label{fig:4}
 \end{figure}
 
-From Fig.(\ref{fig:4}), we see that both
-FCN and HLN architectures works well.
+\begin{figure}[h]
+	\centerline{
+		\includegraphics[width=7in]{mnist_training_loss}}
+	\caption{
+		Comparison of training loss on 
+		MNIST with 4 different network models
+		}
+	\label{fig:5}
+\end{figure}
+
+\begin{figure}[h]
+	\centerline{
+		\includegraphics[width=7in]{mnist_training_sparsity}}
+	\caption{
+		Comparison of neuron activation sparsity 
+on MNIST with 4 different network models
+		}
+	\label{fig:6}
+\end{figure}
+
+Seen from the first graph of Fig.(\ref{fig:4}), 
+where a single hidden layer architecture is used,
+the FCN requires about 150-200 epoches to stablize 
+at its best test accuracy of 93\%, the HLN however 
+only takes 4-5 epoches to achieve the same test 
+accuracy or a bit higher. 
+It's a $40\times$ speed up 
+on the training without a sacrifice of the
+model capability. The HLN additionally performs
+much higher stablity at all time during the whole
+training process. This may be due to the hybrid 
+learning method used by the HLN, which enables 
+the network to learn the neuron activation 
+clustering maps(the SOMs) of every non-output layer
+especially the input layer at the same time for
+the supervised learning. Each sample for the input
+is more profoundly taken in use, making the HLN
+a much faster learning.
+
+For the second graph with a deeper architecture,
+the FCN seems fail to learn at all, however our
+HLN remains a fast learning. Though the HLN 
+architecture seems \emph{slow down} a bit for
+a double hidden layer net compared to the single
+one's, it satisifies the emprical knowledge: a deeper
+architecture brings a tougher parameter tuning.
+
+For the third comparison in Fig.(\ref{fig:4}), 
+we use a max-pooling with a kernel of $1\times 1$,
+which equals to original input as in MNIST.
+The input dimension of the net is therefore 4 
+times larger than that in the first test, however
+the HLN learns as fast as the one of low input
+dimension with stablity held the same strong.
+While the FCN in this situation fails to learn at
+all either.
+
+Let's focus on the fourth comparison in 
+Fig.(\ref{fig:4}), where the HLN takes about 120
+epoches to stalize at the best performance and
+the FCN seems never start to learn.
+Compared to the third test, the networks have a
+deeper architecture, making the model more difficult
+to learn as expected.  Compared to the second, the
+nets in the fourth experiment
+have a larger input dimension, which leads to a
+tougher learning too. The two factors putting 
+together turns out to be even more harmful to
+the training efficiency as we may expect in a
+linear manner.
+
+Fig.(\ref{fig:5}) further confirms the 
+\emph{facts} 
+drawn from results in Fig.(\ref{fig:4}).
+The test accuracy is not improved at all
+with training steps for deeper architectures,
+whereas the training loss is dropping, though,
+at a very slow pace. This may conclude to a guess:
+with the epoch number increasing to a rather larger
+one, the training loss may drop to a level where
+a visible learning expressed by test accuracy 
+improvement at length begins.
+
+
 
 \section{Conclusions}
 

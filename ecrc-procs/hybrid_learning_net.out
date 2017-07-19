@@ -7,7 +7,7 @@
 \BOOKMARK [1][-]{section.4}{The training theory for HLNs}{}% 7
 \BOOKMARK [1][-]{section.5}{Empirical Study}{}% 8
 \BOOKMARK [2][-]{subsection.5.1}{Regression capability experiment using small synthetic data}{section.5}% 9
-\BOOKMARK [2][-]{subsection.5.2}{Comparisons on MNIST with and without max-pooling}{section.5}% 10
+\BOOKMARK [2][-]{subsection.5.2}{Experiments on MNIST}{section.5}% 10
 \BOOKMARK [1][-]{section.6}{Conclusions}{}% 11
 \BOOKMARK [1][-]{appendix.A}{An example appendix}{}% 12
 \BOOKMARK [2][-]{subsection.A.1}{Example of a sub-heading within an appendix}{appendix.A}% 13
