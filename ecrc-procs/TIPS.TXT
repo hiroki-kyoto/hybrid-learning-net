@@ -1,25 +1,10 @@
-1.introduction
-	重要性--
-	举例--
-	分为监督和非监督--
-	缺点，才有半监督--
-	半监督的缺点--
-	本文提出的解决半监督的缺点--
-	本文的contribution:分条和结果回报(xx)
-	本文组织结构(xx)
-2.Related work
-	类似工作介绍
-	背景知识
-3.自己提出的贡献分章节展示
-4...<同上>
-5...<同上>
-6.performance evaluation
-	6.1 data description
-	6.2 平台
-	6.3 度量方法
-	6.4 试验结果:1.accuracy,2.robustness 3.efficiency
-	6.5 讨论
-7.conclusion and future work
-8.致谢
-image subset
-创业方向：基于小规模深度学习的智能硬件
+neural network
+1. SOMS embeddings
+2. H(x) kernel
+3. different training
+
+remove theory
+figure (a) (b)
+semi-supervisor: small labeled
+data, to make big data project
+with deep learning
