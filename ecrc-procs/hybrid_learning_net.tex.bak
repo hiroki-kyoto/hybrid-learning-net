@@ -179,7 +179,7 @@ succeeded in object recognition
 tasks based on images, natural 
 language translation, and voice 
 recognition, to name a few. 
-However, neural networks are customly 
+However, neural nets are customly 
 built for different applications 
 and vary a lot in achitectures 
 and model hyperparameters like 
@@ -215,7 +215,13 @@ of general applications,
 say compared to the traditional
 architecture, our method speed up
 the training process by up to 
-$\mathbf{40}$ times.
+$\mathbf{40}$ times, which only
+take $\mathbf{1}$ epoch to get 
+an testing accuracy of over
+$\mathbf{87.5\%}$, and takes
+no more than $\mathbf{3}$ epoches
+to reach a profound accuracy of 
+over $\mathbf{91.3\%}$.
 In addition, on big scale
 of input dimension and/or with deeper 
 architecture, where the traditional
@@ -223,6 +229,15 @@ architecture fails to learn at all,
 our method still have a fast learning,
 and can retrieve the same testing 
 accuracy on MNIST.
+Moreover, we have discovered 
+some interesting facts about 
+neural network trainings, 
+such as neuron activation 
+sparsity is strongly 
+correlated to the training loss 
+within certain cases which may shed 
+a little light on how such 
+architecture really works.
 \end{abstract}
 
 \begin{keyword}
@@ -345,7 +360,7 @@ that learn in both supervised and
 unsupervised ways at the same time,
 and requires no extra techniques on
 training. Our architecture, Hybrid
-Learning Networks(HLNs), made of 
+Learning Nets(HLNs), made of 
 stacked layers, with each hidden
 layer embedded with a Self Organizing
 Map(SOM), training in
@@ -399,11 +414,11 @@ the neural network embedding.
 In section 3, we introduce our novel
 architecture HLN, show how to
 embed SOMs into deep architectures of
-neural networks.
+neural nets.
 In section 4 we explain the exact 
 training theory for HLNs.
 Section 5 gives experimental
-comparisons between networks with HLN
+comparisons between nets with HLN
 architecture and without, and the
 last section concludes.
 
@@ -471,12 +486,12 @@ such as
 		f(\mathbf{x}_j),
 		W_{ij}
 		\right) = 
-		\left(
+		\max\left(
+		0,
 		\|f(\mathbf{x}_i)-
 		f(\mathbf{x}_j)
 		\|-W_{ij}
-		\right)^2$$
-if Euclidean metric is used for the loss.
+		\right)$$
 \item $f(\mathbf{x})\in\mathbb{R}^n$ is the 
 embedding function, it tries to produce a 
 vector from $\mathbf{x}_i$, similar to that 
@@ -489,6 +504,93 @@ $\left<
 		\mathbf{x}_j
 		\right>$ from $\mathbf{X}$.
 \end{itemize}
+
+\emph{Label Propagation(LP)}
+\cite{zhu2002learning} 
+is one of the most efficient algorithms using 
+the semi-supervised learning scheme as 
+described above in equation~(\ref{eq:1}). 
+It adds a Laplacian Eigenmap type 
+regularization to a nearest neighbor 
+classifier:
+\begin{equation}
+	\min_f
+	\sum^L_{i=1}
+	\left\|
+	\vec{f}_i-\mathbf{\hat{y}}_i
+	\right\|^2 +
+	\lambda
+	\sum^{L+U}_{i=1}
+	\sum^{L+U}_{j=1}
+	W_{ij}
+	\left\|
+	\vec{f}_i-\vec{f}_j
+	\right\|^2
+	\label{eq:2}
+\end{equation}
+$L$ is a labeled sample set of $\mathbf{X}$, 
+and $U$ is 
+a unlabeled one, the right part of 
+equation~(\ref{eq:2}) is the semi-supervised 
+regularizer,
+the left part is for supervised learning only.
+Parameter $\lambda$ is the balance constraint. 
+LP trains the classifier $f(\cdot)$ to give
+two examples with high similarity $W_{ij}$
+the same label, and the neighbors of neighbors
+tend to get the same label by transitivity.
+The two points make its name \emph{label
+propagation}.
+
+For neural network model,
+we replace $f(\cdot)$ with equation as follow,
+\begin{equation}
+	y_i=\sum_j w_j^{M+1,i}y^M_j(\mathbf{x})
+	+b^{M+1,i},\quad i=1,\cdots,D
+\label{eq:3}
+\end{equation}
+and such that
+\begin{equation}
+	f(\mathbf{x}) = \vec{y}=
+	\left(y_1,y_2,\cdots,y_D\right)
+\label{eq:4}
+\end{equation}
+The equation~(\ref{eq:3}) describe the simplest 
+neural model with $M$ hidden layers, $D$ is 
+the output dimension, $f_i(\mathbf{x})$ 
+computes the output of $i^{th}$ neuron in the
+$(M+1)^{th}$(index starts from 0) 
+layer(the output layer of the net model) 
+and $y^{M}_j$ is the $j^{th}$ hidden
+neuron on $M^{th}$ layer, $w^{M+1,i}_j$
+is the connection weight from $j^{th}$
+neuron in $M^{th}$ layer to 
+$i^{th}$ neuron in output layer.
+$b^{M+1,i}$ is the bias for the $i^{th}$
+neuron in $(M+1)^{th}$ layer.
+To get $y_j^M$, just follow the equation as
+\begin{equation}
+	y^k_i(\mathbf{x}) = \sigma\left(
+		\sum_j w_j^{k,i}y_j^{k-1}
+		+b^{k,i}
+	\right),k>1
+	\label{eq:5}
+\end{equation}
+and when it comes to the first hidden layer,
+\begin{equation}
+	y^1_i(\mathbf{x})=
+	\sigma\left(\sum_jw_j^{1,i}x_j
+	+b^{1,i}\right)
+	\label{eq:6}
+\end{equation}
+$\sigma$ can be any non-linear function, such as
+the sigmoid $\left(1+e^{-x}\right)^{-1}$, 
+$tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$ and 
+the latest ReLU $\sigma(x)=\max(0,x)$ and a few
+more. Notice that a nonlinear activation
+function is often required when the neural
+network model is used in a classification
+application.
 
 \subsection{Self Organizing Map}
 The Self Organizing Map(SOM) is an effective 
@@ -531,10 +633,11 @@ width of the neighborhood function, which
 also decreases monotonically with the 
 regression steps.
 
+
 \section{Our architecture: 
 the Hybrid Learning Net}
 We propose the Hybrid Learning Net(HLN) as
-an architecture to enhance arbitrary networks
+an architecture to enhance arbitrary nets
 on their training efficiency and robustness 
 to some hyperparameters.
 Each layer in the HLN architecture embeds a
@@ -549,11 +652,11 @@ figure~(\ref{fig:1}).
 	\centering
 	\subfigure[The FCN architecture]{
 		\label{fig:1:a}
-		\includegraphics[width=2in]{FCN}}
-	\hspace{0.2in}
+		\includegraphics[width=2.5in]{FCN}}
+	\hspace{1in}
 	\subfigure[The HLN architecture]{
 		\label{fig:1:b}
-		\includegraphics[width=2in]{HLN}}
+		\includegraphics[width=2.5in]{HLN}}
 	\caption{The left is FCN architecture, 
 	the right is HLN architecture.
 	The big solid circles are the 
@@ -579,7 +682,7 @@ dynamic neuron activation sparsity mask for
 each hybrid learning layer.
 It works in a way like the Dropout 
 technique\cite{srivastava2014dropout}, 
-enabling the neural networks 
+enabling the neural nets 
 to improve the model robustness and prevent
 overfitting by learning their submodels for 
 each batch. However, the HLN differs from 
@@ -656,16 +759,18 @@ multiplication operator,
 	+b^{k,i},k>1
 	\label{eq:14}
 \end{equation}
+where $w$, $y$, $b$, $i$, $j$, $k$ is the
+same denotion as in equation~(\ref{eq:5}).
 For the computing flow described in 
-figure~(\ref{fig:1:b}), 
+figure~(\ref{fig:1}), 
 $f(\cdot) $ is followed 
 by an activation function, it can be any 
 arbitrary nonlinear function that takes 
 only one dimension inputs and outputs a 
 single real, such as the sigmoid function, 
 $tanh(x)$ and the ReLU. With the new 
-architecture, we update the forward computing
-rules as 
+architecture, we update the computing rules 
+in equations~(\ref{eq:5}) and (\ref{eq:6}) as 
 \begin{equation}
 	y_i^k(\mathbf{x})=
 	\sigma\left(
@@ -680,7 +785,7 @@ rules as
 	\right), k>1
 	\label{eq:15}
 \end{equation}
-and for the first hybrid learning layer,  
+and for the very first hybrid learning layer,  
 \begin{equation}
 	y_i^1(\mathbf{x})=
 	\sigma\left(
@@ -699,8 +804,12 @@ where $m^k_i$ denotes the $i^{th}$ vector
 in the $k^{th}$ SOM of the net(all indexes
 start from 1), $\sigma$ is a nonlinear 
 activation function.
+The equations~(\ref{eq:3}) and (\ref{eq:4})
+require no update since the output layer
+of the net is not involved in the 
+architecture shifting.
 
-\section{Training the HLNs}
+\section{The training theory for HLNs}
 Let's compare the embedding theories between
 HLNs and the ones mentioned in the section of
 \emph{Related work and backgrounds}.
@@ -772,8 +881,7 @@ with the predefined notation:
 	,\quad \mathbf{x}_i\in L+U
 	\label{eq:20}
 \end{equation}
-
-For a net with $M$ hybrid learning layers,
+Thus for a net with $M$ hybrid learning layers,
 there should be 1 supervised
 and $M$ unsupervised optimizing objects.
 As we know a multi-objective problem may not 
@@ -976,21 +1084,8 @@ Figures~(\ref{fig:2}-\ref{fig:3})
 present the comparison results.
 
 \begin{figure}[h]
-	\centering
-	\subfigure[]{
-		\includegraphics[width=55mm]{mean_accuracy0}
-		\label{fig:2:a}
-	}
-	\hspace{-8mm}
-	\subfigure[]{
-		\includegraphics[width=55mm]{mean_accuracy1}
-		\label{fig:2:b}
-	}
-	\hspace{-8mm}
-	\subfigure[]{
-		\includegraphics[width=55mm]{mean_accuracy2}
-		\label{fig:2:c}
-	}
+	\centerline{
+		\includegraphics[width=7in]{mean_accuracy}}
 	\caption{
 		Comparison on mean of 
 		accuracy with synthetic data:
@@ -1007,23 +1102,10 @@ present the comparison results.
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\subfigure[]{
-		\includegraphics[width=55mm]{devi_accuracy0}
-		\label{fig:3:a}
-	}
-	\hspace{-8mm}
-	\subfigure[]{
-		\includegraphics[width=55mm]{devi_accuracy1}
-		\label{fig:3:b}
-	}
-	\hspace{-8mm}
-	\subfigure[]{
-		\includegraphics[width=55mm]{devi_accuracy2}
-		\label{fig:3:c}
-	}
+	\centerline{
+		\includegraphics[width=7in]{devi_accuracy}}
 	\caption{
-		Comparison on deviation of test
+		Comparison on deviation of 
 		accuracy with synthetic data:
 		the deviation takes the form as
 		$\delta$ is the deviation of
@@ -1035,6 +1117,7 @@ present the comparison results.
 		}
 	\label{fig:3}
 \end{figure}
+
 
 An explanation may be helpful:
 we split the data into two partitions, 
@@ -1049,8 +1132,8 @@ random parameter initialization
 for each net with different 
 configurations.
 From figure~(\ref{fig:2}), easy
-to see that networks with our HLN 
-architecture win over networks without 
+to see that nets with our HLN 
+architecture win over nets without 
 in all conditions concerned.
 The overall results we may obtain
 from this experiment would be:
@@ -1100,36 +1183,17 @@ $2\times 2$
 leads to a input dimension of 196, and
 particularly a max-pooling with the
 kernel $1\times 1$ will keep the original
-input dimension as 784. All networks used
+input dimension as 784. All nets used
 are based on architectures in 
 Fig.(\ref{fig:1}).
 
 \begin{figure}[h]
-	\centering
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_1}
-		\label{fig:4:a}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_2}
-		\label{fig:4:b}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_3}
-		\label{fig:4:c}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_4}
-		\label{fig:4:d}
-	}
-
+	\centerline{
+		\includegraphics[width=7in]{mnist_testing_accuracy}}
 	\caption{
 		Comparison of testing accuracy on 
 		MNIST with 4 different network
-		models: 
+		model: 
 		$196I$ refers to
 		the input layer of dimension 196, 
 		$30H$ refers to the hidden layer
@@ -1137,31 +1201,12 @@ Fig.(\ref{fig:1}).
 		the fully connected output layer 
 		of dimension 10.
 		}
-	\label{fig:4}
+		\label{fig:4}
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_1}
-		\label{fig:5:a}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_2}
-		\label{fig:5:b}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_3}
-		\label{fig:5:c}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_4}
-		\label{fig:5:d}
-	}
-
+	\centerline{
+		\includegraphics[width=7in]{mnist_training_loss}}
 	\caption{
 		Comparison of training loss on 
 		MNIST with 4 different network models
@@ -1170,26 +1215,8 @@ Fig.(\ref{fig:1}).
 \end{figure}
 
 \begin{figure}[h]
-	\centering
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_1}
-		\label{fig:6:a}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_2}
-		\label{fig:6:b}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_3}
-		\label{fig:6:c}
-	}
-	\hspace{-7mm}
-	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_4}
-		\label{fig:6:d}
-	}
+	\centerline{
+		\includegraphics[width=7in]{mnist_training_sparsity}}
 	\caption{
 		Comparison of neuron activation sparsity 
 on MNIST with 4 different network models
@@ -1240,8 +1267,8 @@ epoches to stalize at the best performance and
 the FCN seems never start to learn.
 Compared to the third test, the networks have a
 deeper architecture, making the model more difficult
-to learn as expected.  Compared to the second, 
-networks in the fourth experiment
+to learn as expected.  Compared to the second, the
+nets in the fourth experiment
 have a larger input dimension, which leads to a
 tougher learning too. The two factors putting 
 together turns out to be even more harmful to
@@ -1260,29 +1287,10 @@ one, the training loss may drop to a level where
 a visible learning expressed by test accuracy 
 improvement at length begins.
 
-Fig.(\ref{fig:6}) shows the neuron activation
-sparsity for every hidden layer in networks.
-Notice that a SOM-embedding output in HLNs
-is used as a sparsity mask to control, or more
-precisely, to increase the sparsity of every
-hidden layer. It's obvious that networks with 
-the HLN architecture tend to have a higher 
-sparsity than ones without seen from 
-Fig.(\ref{fig:6}).
+
 
 \section{Conclusions}
-We proposed a hybrid learning architecture,
-the HLN, for neural networks to learn from
-labeled and unlabeled data at the same time
-and to achieve a much faster learning with
-fair stablity.
-We showed the solution to training networks of
-the HLN architecture, and also demonstrated 
-the advantages in training speed and robustness
-to some hyperparameter variation by experimenting
-on synthetic data and the MNIST. In the future,
-we will investigate if our architecture works well
-on more public benchmark datasets.
+
 
 \section*{Acknowledgements}
 
@@ -1301,6 +1309,36 @@ These and the Reference headings are in bold but have no numbers. Text below con
 
 \bibliographystyle{elsarticle-num}
 \bibliography{ref}
+
+%% Authors are advised to use a BibTeX database file for their reference list.
+%% The provided style file elsarticle-num.bst formats references in the required Procedia style
+
+%% For references without a BibTeX database:
+
+% \begin{thebibliography}{00}
+
+%% \bibitem must have the following form:
+%%   \bibitem{key}...
+%%
+
+% \bibitem{}
+
+% \end{thebibliography}
+
+
+%% The Appendices part is started with the command \appendix;
+%% appendix sections are then done as normal sections
+%% \appendix
+
+%% \section{}
+%% \label{}
+
+\appendix
+\section{An example appendix}
+Authors including an appendix section should do so after References section. Multiple appendices should all have headings in the style used above. They will automatically be ordered A, B, C etc.
+
+\subsection{Example of a sub-heading within an appendix}
+There is also the option to include a subheading within the Appendix if you wish.
 
 \end{document}
 

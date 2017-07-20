@@ -4,45 +4,45 @@ The top-level auxiliary file: hybrid_learning_net.aux
 The style file: elsarticle-num.bst
 Database file #1: ref.bib
 Warning--empty journal in zhu2002learning
-You've used 15 entries,
+You've used 14 entries,
             2937 wiz_defined-function locations,
-            768 strings with 8217 characters,
-and the built_in function-call counts, 5894 in all, are:
-= -- 567
-> -- 156
-< -- 9
-+ -- 62
-- -- 47
-* -- 356
-:= -- 726
-add.period$ -- 15
-call.type$ -- 15
-change.case$ -- 15
+            763 strings with 8034 characters,
+and the built_in function-call counts, 5426 in all, are:
+= -- 523
+> -- 143
+< -- 8
++ -- 57
+- -- 43
+* -- 329
+:= -- 673
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 228
-empty$ -- 682
-format.name$ -- 59
-if$ -- 1562
+cite$ -- 15
+duplicate$ -- 207
+empty$ -- 626
+format.name$ -- 54
+if$ -- 1435
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 15
-newline$ -- 54
-num.names$ -- 15
-pop$ -- 125
+int.to.str$ -- 14
+missing$ -- 14
+newline$ -- 51
+num.names$ -- 14
+pop$ -- 113
 preamble$ -- 2
 purify$ -- 0
 quote$ -- 0
-skip$ -- 420
+skip$ -- 386
 stack$ -- 0
-substring$ -- 429
-swap$ -- 90
-text.length$ -- 9
+substring$ -- 397
+swap$ -- 81
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 52
-width$ -- 17
-write$ -- 135
+while$ -- 48
+width$ -- 16
+write$ -- 126
 (There was 1 warning)
