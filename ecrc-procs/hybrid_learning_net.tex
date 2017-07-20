@@ -543,7 +543,7 @@ situation where neurons connected in fully
 connected way, which we call the Fully 
 Connected Neurons(FCN) architecture, we have 
 such an embedding solution as described in 
-figure~(\ref{fig:1}).
+Fig.(\ref{fig:1}).
 
 \begin{figure}
 	\centering
@@ -568,7 +568,7 @@ figure~(\ref{fig:1}).
 \end{figure}
 
 In the HLN architecture from 
-figure~(\ref{fig:1}),
+Fig.(\ref{fig:1}),
 $h(x)$ is an unifying function we proposed for 
 SOMs to convert from pattern disimilarity
 $\|\mathbf{x}-\mathbf{m}_i\|$, into
@@ -585,7 +585,7 @@ overfitting by learning their submodels for
 each batch. However, the HLN differs from 
 techniques like the Dropout in which, 
 the HLN does not generate sparsity with 
-randomness, she uses the SOM
+randomness, it uses the SOM
 to unsupervisedly learn the \emph{static}
 policy of neuron-activation distribution for
 each layer, the net sparsity generator thereby
@@ -657,7 +657,7 @@ multiplication operator,
 	\label{eq:14}
 \end{equation}
 For the computing flow described in 
-figure~(\ref{fig:1:b}), 
+Fig.(\ref{fig:1:b}), 
 $f(\cdot) $ is followed 
 by an activation function, it can be any 
 arbitrary nonlinear function that takes 
@@ -972,7 +972,7 @@ The FCN and HLN applied in this
 experiment follow the exact design as 
 in Fig.(\ref{fig:1}) with only a single 
 hidden layer.
-Figures~(\ref{fig:2}-\ref{fig:3}) 
+Fig.(\ref{fig:2}-\ref{fig:3}) 
 present the comparison results.
 
 \begin{figure}[h]
@@ -1048,7 +1048,7 @@ of training and testing with varied
 random parameter initialization
 for each net with different 
 configurations.
-From figure~(\ref{fig:2}), easy
+From Fig.(\ref{fig:2}), easy
 to see that networks with our HLN 
 architecture win over networks without 
 in all conditions concerned.
@@ -1075,7 +1075,7 @@ very beginning of training. Thus we
 can analyze the robustness of 
 architectures to the parameter
 initialization.
-Figure~(\ref{fig:3}) shows the HLN
+Fig.(\ref{fig:3}) shows the HLN
 stablize quickly under all conditions,
 however the FCN requires more training
 to get itself stablized. The HLN proves
@@ -1197,7 +1197,7 @@ on MNIST with 4 different network models
 	\label{fig:6}
 \end{figure}
 
-Seen from the first graph of Fig.(\ref{fig:4}), 
+Seen from Fig.(\ref{fig:4:a}), 
 where a single hidden layer architecture is used,
 the FCN requires about 150-200 epoches to stablize 
 at its best test accuracy of 93\%, the HLN however 
@@ -1216,7 +1216,7 @@ the supervised learning. Each sample for the input
 is more profoundly taken in use, making the HLN
 a much faster learning.
 
-For the second graph with a deeper architecture,
+For Fig.(\ref{fig:4:b}) with a deeper architecture,
 the FCN seems fail to learn at all, however our
 HLN remains a fast learning. Though the HLN 
 architecture seems \emph{slow down} a bit for
@@ -1224,7 +1224,7 @@ a double hidden layer net compared to the single
 one's, it satisifies the emprical knowledge: a deeper
 architecture brings a tougher parameter tuning.
 
-For the third comparison in Fig.(\ref{fig:4}), 
+For Fig.(\ref{fig:4:c}), 
 we use a max-pooling with a kernel of $1\times 1$,
 which equals to original input as in MNIST.
 The input dimension of the net is therefore 4 
@@ -1234,8 +1234,8 @@ dimension with stablity held the same strong.
 While the FCN in this situation fails to learn at
 all either.
 
-Let's focus on the fourth comparison in 
-Fig.(\ref{fig:4}), where the HLN takes about 120
+Let's focus on  
+Fig.(\ref{fig:4:d}), where the HLN takes about 120
 epoches to stalize at the best performance and
 the FCN seems never start to learn.
 Compared to the third test, the networks have a
