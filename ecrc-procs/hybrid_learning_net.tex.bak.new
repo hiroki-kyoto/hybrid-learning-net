@@ -796,13 +796,27 @@ have its corresponding global optimization
 solution, they together makes the whole one.
 
 Using the well-known Back Propagation(BP)
-algorithm, we can obtain parameter updating
-rules for training the HLNs. 
-We're only focusing on differences compared to
-original BP algorithm for the FCN model.
-Let's denote the linear summation for $i^{th}$ unit
-in $k^{th}$ layer as $o_i^k$, then
-linear summations of hybrid learning
+algorithm, we obtain parameter updating
+rules in the training with mean square error 
+used for the loss function. 
+The output layer error gradient is,
+\begin{equation}
+	\frac{\partial E}
+	{\partial y_i^{M+1}}=
+	\frac{\partial E}
+	{\partial y_i}=
+	y_i-\hat{y}_i
+	\label{eq:21}
+\end{equation}
+For the linear summation of the output layer,
+\begin{equation}
+	o_i^{M+1}=
+	\sum_j
+	W_j^{M+1,i}
+	x_j
+	\label{eq:22}
+\end{equation}
+and linear summations of hybrid learning
 layers are (with $\mathbf{y}^0=\mathbf{x}$):
 \begin{equation}
 	o_i^k =
@@ -823,6 +837,10 @@ Apply the non-linear activation function
 	\frac{\partial E}
 	{\partial o_i^k}=
 	\frac{\partial E}
+	{\partial y_i^k}\times
+	\frac{\partial y_i^k}
+	{\partial o_i^k}=
+	\frac{\partial E}
 	{\partial y_i^k}
 	\sigma'(o_i^k)=
 	\frac{\partial E}
@@ -840,6 +858,10 @@ is
 	{\partial y_i^{k-1}}=\sum_j
 	\frac{\partial E}
 	{\partial o_j^k}
+	\frac{\partial o_j^k}
+	{\partial y_i^{k-1}}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^k}
 	h\left(
 	\left\|
 	\mathbf{m}_j^k-
@@ -850,10 +872,30 @@ is
 	\quad k=1,2,\cdots,M
 	\label{eq:25}
 \end{equation}
+Particularly on the last hybrid learning
+layer, the partial gradient on 
+$\mathbf{y}^M$ is slightly different due
+to the absence of the coupling SOM:
+\begin{equation}
+	\frac{\partial E}
+	{\partial y_i^M}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^{M+1}}
+	\frac{\partial o_j^{M+1}}
+	{\partial y_i^M}=\sum_j
+	\frac{\partial E}
+	{\partial o_j^{M+1}}
+	W_j^{M+1,i}
+	\label{eq:26}
+\end{equation}
 The partial error gradients for the
 connection parameters $\mathbf{W}$:
 \begin{equation}
 	\frac{\partial E}
+	{\partial W_j^{k,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^k}
+	\frac{\partial o_i^k}
 	{\partial W_j^{k,i}}=\sum_i
 	\frac{\partial E}
 	{\partial o_i^k}
@@ -866,6 +908,20 @@ connection parameters $\mathbf{W}$:
 	y_i^{k-1},
 	\quad k=1,2,\cdots,M
 	\label{eq:27}
+\end{equation}
+Particularly, for parameters of the last 
+hybrid layer,
+\begin{equation}
+	\frac{\partial E}
+	{\partial W_j^{M+1,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^{M+1}}
+	\frac{\partial o_i^{M+1}}
+	{\partial W_j^{M+1,i}}=\sum_i
+	\frac{\partial E}
+	{\partial o_i^{M+1}}
+	y_i^{M+1}
+	\label{eq:28}
 \end{equation}
 For the partial error gradients on biases:
 \begin{equation}
@@ -881,9 +937,31 @@ For the partial error gradients on biases:
 	\quad k=1,2,\cdots,M+1
 	\label{eq:29}
 \end{equation}
+Finally we get the rules to update parameter
+$\mathbf{W}$:
+\begin{equation}
+	W_j^{k,i}(t+1) = \eta(t)\cdot
+	\frac{\partial E}{\partial W_j^{k,i}}(t)+
+	W_j^{k,i}(t),
+	\quad k=1,2,\cdots,M+1
+	\text{ and }
+	t=1,2,\cdots
+	\label{eq:30}
+\end{equation}
+where $\eta(t)$ is the learning rate, and 
+the biases:
+\begin{equation}
+	b^{k,i}(t+1) = \eta(t)\cdot
+	\frac{\partial E}{\partial b^{k,i}}(t)+
+	b^{k,i}(t)
+	\quad k=1,2,\cdots,M+1,
+	\text{ and }
+	t=1,2,\cdots
+	\label{eq:31}
+\end{equation}
 Thus we can iterate recursively along 
 layers with 
-equations~(\ref{eq:23}-\ref{eq:29}) to 
+equations~(\ref{eq:21}-\ref{eq:31}) to 
 update all parameters of the supervised 
 training, and the equations corresponding 
 to the unsupervised training refer 

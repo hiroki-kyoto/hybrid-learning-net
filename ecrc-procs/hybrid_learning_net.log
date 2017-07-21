@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  21 JUL 2017 10:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  21 JUL 2017 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -941,159 +941,59 @@ LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
  [2] <FCN.pdf, id=104, 597.50786pt x 845.04686pt>
 File: FCN.pdf Graphic file (type pdf)
  <use FCN.pdf>
-Package pdftex.def Info: FCN.pdf used on input line 552.
+Package pdftex.def Info: FCN.pdf used on input line 564.
 (pdftex.def)             Requested size: 144.54pt x 204.41429pt.
 
 <HLN.pdf, id=105, 597.50786pt x 845.04686pt>
 File: HLN.pdf Graphic file (type pdf)
  <use HLN.pdf>
-Package pdftex.def Info: HLN.pdf used on input line 556.
+Package pdftex.def Info: HLN.pdf used on input line 568.
 (pdftex.def)             Requested size: 144.54pt x 204.41429pt.
  [3] [4 <./FCN.pdf> <./HLN.pdf
 
 pdfTeX warning: pdflatex (file ./HLN.pdf): PDF inclusion: multiple pdfs with pa
 ge group included in a single page
->] [5] <mean_accuracy0.pdf, id=312, 274.626pt x 231.26399pt>
+>] [5] <mean_accuracy0.pdf, id=311, 274.626pt x 231.26399pt>
 File: mean_accuracy0.pdf Graphic file (type pdf)
 
 <use mean_accuracy0.pdf>
-Package pdftex.def Info: mean_accuracy0.pdf used on input line 983.
+Package pdftex.def Info: mean_accuracy0.pdf used on input line 917.
 (pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
- <mean_accuracy1.pdf, id=313, 274.626pt x 231.26399pt>
+ <mean_accuracy1.pdf, id=312, 274.626pt x 231.26399pt>
 File: mean_accuracy1.pdf Graphic file (type pdf)
 
 <use mean_accuracy1.pdf>
-Package pdftex.def Info: mean_accuracy1.pdf used on input line 988.
+Package pdftex.def Info: mean_accuracy1.pdf used on input line 922.
 (pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
- <mean_accuracy2.pdf, id=314, 274.626pt x 231.26399pt>
+ <mean_accuracy2.pdf, id=313, 274.626pt x 231.26399pt>
 File: mean_accuracy2.pdf Graphic file (type pdf)
 
 <use mean_accuracy2.pdf>
-Package pdftex.def Info: mean_accuracy2.pdf used on input line 993.
+Package pdftex.def Info: mean_accuracy2.pdf used on input line 927.
 (pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<devi_accuracy0.pdf, id=315, 274.626pt x 231.26399pt>
+ <devi_accuracy0.pdf, id=314, 274.626pt x 231.26399pt>
 File: devi_accuracy0.pdf Graphic file (type pdf)
- <use devi_accuracy0.pdf>
-Package pdftex.def Info: devi_accuracy0.pdf used on input line 1014.
-(pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
 
-<devi_accuracy1.pdf, id=316, 274.626pt x 231.26399pt>
+<use devi_accuracy0.pdf>
+Package pdftex.def Info: devi_accuracy0.pdf used on input line 948.
+(pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
+ <devi_accuracy1.pdf, id=315, 274.626pt x 231.26399pt>
 File: devi_accuracy1.pdf Graphic file (type pdf)
- <use devi_accuracy1.pdf>
-Package pdftex.def Info: devi_accuracy1.pdf used on input line 1019.
-(pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
 
-<devi_accuracy2.pdf, id=317, 274.626pt x 231.26399pt>
+<use devi_accuracy1.pdf>
+Package pdftex.def Info: devi_accuracy1.pdf used on input line 953.
+(pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
+ <devi_accuracy2.pdf, id=316, 274.626pt x 231.26399pt>
 File: devi_accuracy2.pdf Graphic file (type pdf)
- <use devi_accuracy2.pdf>
-Package pdftex.def Info: devi_accuracy2.pdf used on input line 1024.
+
+<use devi_accuracy2.pdf>
+Package pdftex.def Info: devi_accuracy2.pdf used on input line 958.
 (pdftex.def)             Requested size: 156.49014pt x 131.77948pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] <mnist_testing_accuracy_1.pdf, id=335, 274.626pt x 231.26399pt>
-File: mnist_testing_accuracy_1.pdf Graphic file (type pdf)
-
-<use mnist_testing_accuracy_1.pdf>
-Package pdftex.def Info: mnist_testing_accuracy_1.pdf used on input line 1112.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_testing_accuracy_2.pdf, id=336, 274.626pt x 231.26399pt>
-File: mnist_testing_accuracy_2.pdf Graphic file (type pdf)
-
-<use mnist_testing_accuracy_2.pdf>
-Package pdftex.def Info: mnist_testing_accuracy_2.pdf used on input line 1117.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_testing_accuracy_3.pdf, id=337, 274.626pt x 231.26399pt>
-File: mnist_testing_accuracy_3.pdf Graphic file (type pdf)
-
-<use mnist_testing_accuracy_3.pdf>
-Package pdftex.def Info: mnist_testing_accuracy_3.pdf used on input line 1122.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_testing_accuracy_4.pdf, id=338, 274.626pt x 231.26399pt>
-File: mnist_testing_accuracy_4.pdf Graphic file (type pdf)
-
-<use mnist_testing_accuracy_4.pdf>
-Package pdftex.def Info: mnist_testing_accuracy_4.pdf used on input line 1127.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<mnist_training_loss_1.pdf, id=339, 274.626pt x 231.26399pt>
-File: mnist_training_loss_1.pdf Graphic file (type pdf)
-
-<use mnist_training_loss_1.pdf>
-Package pdftex.def Info: mnist_training_loss_1.pdf used on input line 1148.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_loss_2.pdf, id=340, 274.626pt x 231.26399pt>
-File: mnist_training_loss_2.pdf Graphic file (type pdf)
-
-<use mnist_training_loss_2.pdf>
-Package pdftex.def Info: mnist_training_loss_2.pdf used on input line 1153.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_loss_3.pdf, id=341, 274.626pt x 231.26399pt>
-File: mnist_training_loss_3.pdf Graphic file (type pdf)
-
-<use mnist_training_loss_3.pdf>
-Package pdftex.def Info: mnist_training_loss_3.pdf used on input line 1158.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_loss_4.pdf, id=342, 274.626pt x 231.26399pt>
-File: mnist_training_loss_4.pdf Graphic file (type pdf)
-
-<use mnist_training_loss_4.pdf>
-Package pdftex.def Info: mnist_training_loss_4.pdf used on input line 1163.
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<mnist_training_sparsity_1.pdf, id=343, 274.626pt x 231.26399pt>
-File: mnist_training_sparsity_1.pdf Graphic file (type pdf)
-
-<use mnist_training_sparsity_1.pdf>
-Package pdftex.def Info: mnist_training_sparsity_1.pdf used on input line 1177.
-
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_sparsity_2.pdf, id=344, 274.626pt x 231.26399pt>
-File: mnist_training_sparsity_2.pdf Graphic file (type pdf)
-
-<use mnist_training_sparsity_2.pdf>
-Package pdftex.def Info: mnist_training_sparsity_2.pdf used on input line 1182.
-
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_sparsity_3.pdf, id=345, 274.626pt x 231.26399pt>
-File: mnist_training_sparsity_3.pdf Graphic file (type pdf)
-
-<use mnist_training_sparsity_3.pdf>
-Package pdftex.def Info: mnist_training_sparsity_3.pdf used on input line 1187.
-
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-<mnist_training_sparsity_4.pdf, id=346, 274.626pt x 231.26399pt>
-File: mnist_training_sparsity_4.pdf Graphic file (type pdf)
-
-<use mnist_training_sparsity_4.pdf>
-Package pdftex.def Info: mnist_training_sparsity_4.pdf used on input line 1192.
-
-(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[7 <./mean_accuracy0.pdf> <./mean_accuracy1.pdf
+[6 <./mean_accuracy0.pdf> <./mean_accuracy1.pdf
 
 pdfTeX warning: pdflatex (file ./mean_accuracy1.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
@@ -1101,11 +1001,101 @@ dfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./mean_accuracy2.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
-> <./devi_accuracy0.pdf
+>] <mnist_testing_accuracy_1.pdf, id=420, 274.626pt x 231.26399pt>
+File: mnist_testing_accuracy_1.pdf Graphic file (type pdf)
 
-pdfTeX warning: pdflatex (file ./devi_accuracy0.pdf): PDF inclusion: multiple p
-dfs with page group included in a single page
-> <./devi_accuracy1.pdf
+<use mnist_testing_accuracy_1.pdf>
+Package pdftex.def Info: mnist_testing_accuracy_1.pdf used on input line 1046.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_testing_accuracy_2.pdf, id=421, 274.626pt x 231.26399pt>
+File: mnist_testing_accuracy_2.pdf Graphic file (type pdf)
+
+<use mnist_testing_accuracy_2.pdf>
+Package pdftex.def Info: mnist_testing_accuracy_2.pdf used on input line 1051.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_testing_accuracy_3.pdf, id=422, 274.626pt x 231.26399pt>
+File: mnist_testing_accuracy_3.pdf Graphic file (type pdf)
+
+<use mnist_testing_accuracy_3.pdf>
+Package pdftex.def Info: mnist_testing_accuracy_3.pdf used on input line 1056.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_testing_accuracy_4.pdf, id=423, 274.626pt x 231.26399pt>
+File: mnist_testing_accuracy_4.pdf Graphic file (type pdf)
+
+<use mnist_testing_accuracy_4.pdf>
+Package pdftex.def Info: mnist_testing_accuracy_4.pdf used on input line 1061.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_loss_1.pdf, id=424, 274.626pt x 231.26399pt>
+File: mnist_training_loss_1.pdf Graphic file (type pdf)
+
+<use mnist_training_loss_1.pdf>
+Package pdftex.def Info: mnist_training_loss_1.pdf used on input line 1082.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_loss_2.pdf, id=425, 274.626pt x 231.26399pt>
+File: mnist_training_loss_2.pdf Graphic file (type pdf)
+
+<use mnist_training_loss_2.pdf>
+Package pdftex.def Info: mnist_training_loss_2.pdf used on input line 1087.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_loss_3.pdf, id=426, 274.626pt x 231.26399pt>
+File: mnist_training_loss_3.pdf Graphic file (type pdf)
+
+<use mnist_training_loss_3.pdf>
+Package pdftex.def Info: mnist_training_loss_3.pdf used on input line 1092.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_loss_4.pdf, id=427, 274.626pt x 231.26399pt>
+File: mnist_training_loss_4.pdf Graphic file (type pdf)
+
+<use mnist_training_loss_4.pdf>
+Package pdftex.def Info: mnist_training_loss_4.pdf used on input line 1097.
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<mnist_training_sparsity_1.pdf, id=428, 274.626pt x 231.26399pt>
+File: mnist_training_sparsity_1.pdf Graphic file (type pdf)
+
+<use mnist_training_sparsity_1.pdf>
+Package pdftex.def Info: mnist_training_sparsity_1.pdf used on input line 1111.
+
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_sparsity_2.pdf, id=429, 274.626pt x 231.26399pt>
+File: mnist_training_sparsity_2.pdf Graphic file (type pdf)
+
+<use mnist_training_sparsity_2.pdf>
+Package pdftex.def Info: mnist_training_sparsity_2.pdf used on input line 1116.
+
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_sparsity_3.pdf, id=430, 274.626pt x 231.26399pt>
+File: mnist_training_sparsity_3.pdf Graphic file (type pdf)
+
+<use mnist_training_sparsity_3.pdf>
+Package pdftex.def Info: mnist_training_sparsity_3.pdf used on input line 1121.
+
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+<mnist_training_sparsity_4.pdf, id=431, 274.626pt x 231.26399pt>
+File: mnist_training_sparsity_4.pdf Graphic file (type pdf)
+
+<use mnist_training_sparsity_4.pdf>
+Package pdftex.def Info: mnist_training_sparsity_4.pdf used on input line 1126.
+
+(pdftex.def)             Requested size: 119.50157pt x 100.63077pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7 <./devi_accuracy0.pdf> <./devi_accuracy1.pdf
 
 pdfTeX warning: pdflatex (file ./devi_accuracy1.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
@@ -1113,7 +1103,11 @@ dfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./devi_accuracy2.pdf): PDF inclusion: multiple p
 dfs with page group included in a single page
->] [8 <./mnist_testing_accuracy_1.pdf> <./mnist_testing_accuracy_2.pdf
+> <./mnist_testing_accuracy_1.pdf
+
+pdfTeX warning: pdflatex (file ./mnist_testing_accuracy_1.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+> <./mnist_testing_accuracy_2.pdf
 
 pdfTeX warning: pdflatex (file ./mnist_testing_accuracy_2.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
@@ -1125,11 +1119,7 @@ multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./mnist_testing_accuracy_4.pdf): PDF inclusion: 
 multiple pdfs with page group included in a single page
-> <./mnist_training_loss_1.pdf
-
-pdfTeX warning: pdflatex (file ./mnist_training_loss_1.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
-> <./mnist_training_loss_2.pdf
+>] [8 <./mnist_training_loss_1.pdf> <./mnist_training_loss_2.pdf
 
 pdfTeX warning: pdflatex (file ./mnist_training_loss_2.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
@@ -1141,9 +1131,11 @@ tiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./mnist_training_loss_4.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
->] (./hybrid_learning_net.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1305.
- [9 <./mnist_training_sparsity_1.pdf> <./mnist_training_sparsity_2.pdf
+> <./mnist_training_sparsity_1.pdf
+
+pdfTeX warning: pdflatex (file ./mnist_training_sparsity_1.pdf): PDF inclusion:
+ multiple pdfs with page group included in a single page
+> <./mnist_training_sparsity_2.pdf
 
 pdfTeX warning: pdflatex (file ./mnist_training_sparsity_2.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
@@ -1155,24 +1147,26 @@ pdfTeX warning: pdflatex (file ./mnist_training_sparsity_3.pdf): PDF inclusion:
 
 pdfTeX warning: pdflatex (file ./mnist_training_sparsity_4.pdf): PDF inclusion:
  multiple pdfs with page group included in a single page
->]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1305.
+>] (./hybrid_learning_net.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1239.
+ [9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1239.
  (./hybrid_learning_net.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1305.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1305.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1239.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1239.
 
 Package rerunfilecheck Info: File `hybrid_learning_net.out' has not changed.
 (rerunfilecheck)             Checksum: 067D5B025D716661A7B95E576CE8B047;672.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1305.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1239.
  ) 
 Here is how much of TeX's memory you used:
- 8209 strings out of 493013
- 116089 string characters out of 6135683
- 215315 words of memory out of 5000000
- 11462 multiletter control sequences out of 15000+600000
+ 8198 strings out of 493013
+ 115982 string characters out of 6135683
+ 213047 words of memory out of 5000000
+ 11456 multiletter control sequences out of 15000+600000
  54846 words of font info for 125 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,14n,39p,471b,368s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,14n,39p,471b,356s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
@@ -1192,10 +1186,10 @@ hvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on hybrid_learning_net.pdf (9 pages, 698856 bytes).
+Output written on hybrid_learning_net.pdf (9 pages, 698351 bytes).
 PDF statistics:
- 882 PDF objects out of 1000 (max. 8388607)
- 715 compressed objects within 8 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 876 PDF objects out of 1000 (max. 8388607)
+ 709 compressed objects within 8 object streams
+ 82 named destinations out of 1000 (max. 500000)
  196 words of extra memory for PDF output out of 10000 (max. 10000000)
 
