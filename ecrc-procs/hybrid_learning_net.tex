@@ -543,7 +543,7 @@ situation where neurons connected in fully
 connected way, which we call the Fully 
 Connected Neurons(FCN) architecture, we have 
 such an embedding solution as described in 
-Fig.(\ref{fig:1}).
+Figure~\ref{fig:1}.
 
 \begin{figure}
 	\centering
@@ -568,7 +568,7 @@ Fig.(\ref{fig:1}).
 \end{figure}
 
 In the HLN architecture from 
-Fig.(\ref{fig:1}),
+Figure~\ref{fig:1},
 $h(x)$ is an unifying function we proposed for 
 SOMs to convert from pattern disimilarity
 $\|\mathbf{x}-\mathbf{m}_i\|$, into
@@ -657,7 +657,7 @@ multiplication operator,
 	\label{eq:14}
 \end{equation}
 For the computing flow described in 
-Fig.(\ref{fig:1:b}), 
+Figure~\ref{fig:1:b}, 
 $f(\cdot) $ is followed 
 by an activation function, it can be any 
 arbitrary nonlinear function that takes 
@@ -970,9 +970,9 @@ and compare the regression capabilities
 of the two. 
 The FCN and HLN applied in this 
 experiment follow the exact design as 
-in Fig.(\ref{fig:1}) with only a single 
+in Figure~\ref{fig:1} with only a single 
 hidden layer.
-Fig.(\ref{fig:2}-\ref{fig:3}) 
+Figure~\ref{fig:2}-\ref{fig:3} 
 present the comparison results.
 
 \begin{figure}[h]
@@ -1048,7 +1048,7 @@ of training and testing with varied
 random parameter initialization
 for each net with different 
 configurations.
-From Fig.(\ref{fig:2}), easy
+From Figure~\ref{fig:2}, easy
 to see that networks with our HLN 
 architecture win over networks without 
 in all conditions concerned.
@@ -1075,7 +1075,7 @@ very beginning of training. Thus we
 can analyze the robustness of 
 architectures to the parameter
 initialization.
-Fig.(\ref{fig:3}) shows the HLN
+Figure~\ref{fig:3} shows the HLN
 stablize quickly under all conditions,
 however the FCN requires more training
 to get itself stablized. The HLN proves
@@ -1102,7 +1102,7 @@ particularly a max-pooling with the
 kernel $1\times 1$ will keep the original
 input dimension as 784. All networks used
 are based on architectures in 
-Fig.(\ref{fig:1}).
+Figure~\ref{fig:1}.
 
 \begin{figure}[h]
 	\centering
@@ -1197,7 +1197,7 @@ on MNIST with 4 different network models
 	\label{fig:6}
 \end{figure}
 
-Seen from Fig.(\ref{fig:4:a}), 
+Seen from Figure~\ref{fig:4:a}, 
 where a single hidden layer architecture is used,
 the FCN requires about 150-200 epoches to stablize 
 at its best test accuracy of 93\%, the HLN however 
@@ -1216,7 +1216,7 @@ the supervised learning. Each sample for the input
 is more profoundly taken in use, making the HLN
 a much faster learning.
 
-For Fig.(\ref{fig:4:b}) with a deeper architecture,
+For Figure~\ref{fig:4:b} with a deeper architecture,
 the FCN seems fail to learn at all, however our
 HLN remains a fast learning. Though the HLN 
 architecture seems \emph{slow down} a bit for
@@ -1224,7 +1224,7 @@ a double hidden layer net compared to the single
 one's, it satisifies the emprical knowledge: a deeper
 architecture brings a tougher parameter tuning.
 
-For Fig.(\ref{fig:4:c}), 
+For Figure~\ref{fig:4:c}, 
 we use a max-pooling with a kernel of $1\times 1$,
 which equals to original input as in MNIST.
 The input dimension of the net is therefore 4 
@@ -1235,7 +1235,7 @@ While the FCN in this situation fails to learn at
 all either.
 
 Let's focus on  
-Fig.(\ref{fig:4:d}), where the HLN takes about 120
+Figure~\ref{fig:4:d}, where the HLN takes about 120
 epoches to stalize at the best performance and
 the FCN seems never start to learn.
 Compared to the third test, the networks have a
@@ -1248,9 +1248,9 @@ together turns out to be even more harmful to
 the training efficiency as we may expect in a
 linear manner.
 
-Fig.(\ref{fig:5}) further confirms the 
+Figure~\ref{fig:5} further confirms the 
 \emph{facts} 
-drawn from results in Fig.(\ref{fig:4}).
+drawn from results in Figure~\ref{fig:4}.
 The test accuracy is not improved at all
 with training steps for deeper architectures,
 whereas the training loss is dropping, though,
@@ -1260,7 +1260,7 @@ one, the training loss may drop to a level where
 a visible learning expressed by test accuracy 
 improvement at length begins.
 
-Fig.(\ref{fig:6}) shows the neuron activation
+Figure~\ref{fig:6} shows the neuron activation
 sparsity for every hidden layer in networks.
 Notice that a SOM-embedding output in HLNs
 is used as a sparsity mask to control, or more
@@ -1268,7 +1268,7 @@ precisely, to increase the sparsity of every
 hidden layer. It's obvious that networks with 
 the HLN architecture tend to have a higher 
 sparsity than ones without seen from 
-Fig.(\ref{fig:6}).
+Figure~\ref{fig:6}.
 
 \section{Conclusions}
 We proposed a hybrid learning architecture,
