@@ -160,73 +160,61 @@
 %% \dochead can also be used to include a conference title, if directed by the editors
 %% e.g. \dochead{17th International Conference on Dynamical Processes in Excited States of Solids}
 
-\title{Hybrid learning net: a novel architecture for fast learning}
+\title{Hybrid Learning Network: 
+	A Novel Architecture for
+	Fast Learning}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{<author name>}
 %% \address[label1]{<address>}
 %% \address[label2]{<address>}
 
-\author{Ying Liu}
-\author{Chao Xiang}
+\author[u1,u2]{Ying Liu}
+\author[u1]{Chao Xiang}
 
-\address{University of Chinese Academy of Sciences, Beijing 100049, China}
+\address[u1]{School of Computer 
+	and Engineering, University of 
+	Chinese Academy of Sciences, 
+	Beijing, 100190 China}
+\address[u2]{Key Lab of Big Data
+	Mining and Knowledge Management,
+	Chinese Academy of Sciences,
+	Beijing, 100190 China}
 
 \begin{abstract}
 %% Text of abstract
-Currently, neural networks have 
-succeeded in object recognition 
-tasks based on images, natural 
-language translation, and voice 
-recognition, to name a few. 
-However, neural networks are customly 
-built for different applications 
-and vary a lot in achitectures 
-and model hyperparameters like 
-learning rate and parameter 
-initialization, what's worse,
-these hyperparameter settings 
-generally play a big role in 
-performances of training and 
-testing, and the best settings 
-for specific applications are so 
-far only available by manually 
-repeatly trying different 
-configurations which is really 
-huge work. We, thereby, present 
-a novel neural network achitecture,
-called Hybrid Learning Net($\mathbf{HLN}$), 
-with Self Organizing Maps(SOMs) 
-embedded in each layer to learn 
-from samples in $\mathbf{both}$ 
-unsupervised and supervised way, 
-targeting to achieve a much
-$\mathbf{faster}$ net learning for general 
-applications with good robustness
-to a few key hyperparameters such 
-as the parameter initialization
-and the net strcuture variation. 
-We've also experimented our 
-architecture over the MNIST 
-dataset, it has proved the 
-impressive improvement on both 
-training and testing phases
-of general applications, 
-say compared to the traditional
-architecture, our method speed up
-the training process by up to 
-$\mathbf{40}$ times.
-In addition, on big scale
-of input dimension and/or with deeper 
-architecture, where the traditional
-architecture fails to learn at all,
-our method still have a fast learning,
-and can retrieve the same testing 
-accuracy on MNIST.
+There're many efficient architectures 
+of the artificial neural network(ANN).
+For which the training is a hard work.
+The cost for training an ANN increases
+exponentially when the ANN gets deeper 
+or wider. 
+We therefore propose a novel 
+achitecture, the Hybrid Learning
+Network(HLN), to achieve a fast learning 
+with good stablity.
+The HLN can learn from both
+labeled data and unlabeled data
+at the same time in a hybrid
+learning manner.
+It uses a Self Organizing Map unified
+by the specially designed nonlinear
+function as the sparsity mask 
+for a hidden layer to improve 
+the training speed.
+We experiment our architecture on 
+a synthetic dataset to test its 
+regression capability against the
+traditional architecture, the result 
+is promising.
+We also experiment on the well-known
+MNIST dataset, it demonstrates an 
+even more impressive learning efficiency 
+by up to $40\times$ speed-up on training.
 \end{abstract}
 
 \begin{keyword}
-hybrid learning; neural network; sparsity mask; SOM; MNIST; fast learning
+HLN; hybrid learning; neural network; sparsity mask; SOM; MNIST; fast learning
 
 %% keywords here, in the form: keyword \sep keyword
 
@@ -251,189 +239,185 @@ hybrid learning; neural network; sparsity mask; SOM; MNIST; fast learning
 \section{Introduction}
 \label{main}
 Since the first mathematical model 
-of artificial neural network was 
-proposed in 1943\cite{mcculloch1943logical}, 
-the neural network has been 
-designed into many architectures, 
-such as Convolutional Neural 
-Networks(CNNs) for image 
-recognition
+of the artificial neural network(ANN) was 
+proposed in 
+1943\cite{mcculloch1943logical}, 
+lots of different architectures 
+have been proposed
+to develop the model, such as 
+the Convolutional Neural Network(CNN) 
+for image recognition
 \cite{krizhevsky2012imagenet}, 
-Recurrent Convolutional Neural 
-Networks(R-CNNs) for object 
-detection in 
-videos\cite{girshick2015fast}, 
-and Long Short Term Memorys(LSTMs)
+the Recurrent Convolutional Neural 
+Network(R-CNN) for object 
+detection in videos
+\cite{girshick2015fast}, 
+and the Long Short Term Memory(LSTM)
 for speech recognition
-\cite{graves2013hybrid} and many, 
-many more to make it a list. 
+\cite{graves2013hybrid}, etc. 
 These specially designed neural 
-network models are trained by 
-lots of efficient methods with 
-tons of carefully chosen little 
-skills which we may call tricks. 
-Such neural network architectures
+networks are trained by 
+a few efficient methods such as
+the stochastic gradient 
+descent(SGD)\cite{bottou2010large}. 
+Such architectures
 suit well for their specific 
 applications but may have plain 
 or worse performances on others, 
 and their best performances 
-rely heavily on hyperparameter 
-configuration in general. Thus, 
-it is an in-demand job to propose 
+rely heavily on the hyperparameter 
+configuration. Therefore
 a relatively universal 
 architecutre that enables equal 
 or similar performances among 
-varied applications.
+varied applications is in real demand.
 
-We notice that, although there're 
-plenty of choices to train a 
-neural network, literally all 
-these methods can be reduced into
-3 categories, supervised learning
+Although a number of
+different neural network architectures
+have been proposed in the past years,
+literally all of them can be classifed
+into 3 categories, supervised
 \cite{lecun1990handwritten}, 
-unsupervised learning
+unsupervised
 \cite{vincent2010stacked}, 
-and the semi-supervised
+and semi-supervised learning
 \cite{chapelle2009semi}.
 In supervised learning, 
-one can only train a model from 
-labeled samples, however in real 
+one can only train a model on
+labeled samples. However in real 
 applications, labeling a large 
-dataset is a tough and costly 
-task, the unlabeled ones are 
-therefore the primary data 
-available. To make use of the 
-majority unlabeled data, a few 
+dataset is infeasible as a result
+unlabeled samples are 
+the major. To make use of 
+unlabeled data, a few 
 unsupervised training algorithms 
-arose. These unsupervised learning
-methods, denoted as pretraining, 
-attempt to produce an optimized 
+emerged. These unsupervised learning
+methods attempt to produce an optimized 
 parameter initialization
 \cite{le2013building}.
-Thus such unsupervised techniques 
+Thus, such unsupervised techniques 
 can only be applied before the 
-supervised training phase, once 
-the supervised begins, the 
-unsupversied learning will become 
-unavailable for the model.
-While the semi-supervised learning
+supervised training phase. Once 
+the supervised begins, 
+unsupversied learning will quit.
+Semi-supervised learning
 allows the model to learn from
-both labeled and unlabeled samples 
-at the same time, however they use a
-regularizer to embed the semi-supervised
-learner to original optimizing object,
+both labeled and unlabeled samples
+at the same time, where a
+regularizer is embedded in
+the supervised optimizing object,
 and generally a balance constraint is
 required to avoid the trival solution
 \cite{socher2011semi}.
 Such a enhanced learner brings more 
-hyperparameters(say the balance 
+hyperparameters(such as the balance 
 constraint), making it even more 
-difficult to search for best settings
-for current architectures. 
-Additionally, this integration way 
+difficult to search for the best 
+settings for current architectures. 
+Additionally, this integration manner 
 makes it impossible to separate the 
 two learners as the semi-supervised 
 regularizer is built on the supervised 
-learner, and therefore requires an 
+learner, and therefore an 
 early supervised training alone with 
-profound labeled data before the 
-semi-supervised regularizer can be
-applied.
+profound labeled data is necessary
+before the semi-supervised learning 
+starts.
 
-We therefore introduce a new architecture
-that learn in both supervised and 
-unsupervised ways at the same time,
-and requires no extra techniques on
-training. Our architecture, Hybrid
-Learning Networks(HLNs), made of 
-stacked layers, with each hidden
-layer embedded with a Self Organizing
-Map(SOM), training in
-the simplest way of backprop, 
-demonstrate much faster learning
-capability and remain robust to 
-parameter initialization and
-network configuration such as the net
-depth of layer.
+Therefore in the paper, we introduce 
+a new architecture that combines the
+supervised and unsupervised learning
+equiring no extra techniques in
+training. Our architecture, the Hybrid
+Learning Network(HLN), consists of 
+stacked hybrid learning layers, 
+each of which
+embeds a Self Organizing
+Map(SOM). In the similar manner of 
+backpropagation, HLNs
+demonstrate higher learning
+capability and stablity. 
 
 %\subsection{Our contributes}
 The main contributions of our work are:
 \begin{itemize}
 \item
-	We propose HLN, a hybrid learning
+	HLN is proposed as a hybrid learning
 	architecture to learn both unlabeled 
-		and labeled data at the same time.
-		Our architecture HLN overcomes
-the problem brought by traditional 
-semi-supervised learning methods that 
-the semi-supervised learning requires
+		and labeled data simultaneously.
+		HLN overcomes
+the problem of traditional 
+semi-supervised learning methods which 
+requires
 an early standalone training for the
-supervised learner which contradicts
-with the fact: the labeled data is far
-		expensive than the unlabeled.
-\item A SOM-embedding layer strucutre is 
+supervised learner.
+\item A SOM-embedding layer structure is 
 	designed to learn a cluster 
 mapping function from unlabeled data
-		to enable a classified
-thus much faster learning on labeled
+		to speed up the supervised
+		learning from labeled
 data.
-\item We propose a nonlinear function $h(x)$,
-	which measures the whole state of a
+\item A nonlinear function $h(x)$,
+	is proposed to 
+		measure the state of a
 		SOM in each iteration of the 
-		training, to determine a sparsity
+		training, and then determine 
+		a sparsity
 		mask for every hidden layer.
 \end{itemize}
-HLN is implemented in Python and all
+Our proposed HLN is implemented in 
+Python and all
 our code and results of experiments
-in detail are available at
+are available at
 \url{https://github.com/hiroki-kyoto/hybrid-learning-net}.
 
 %\subsection{The organization of this artical}
-The rest of the article is as follows.
-In section 2 we describe existing
+The rest of the paper is organized
+as follows.
+In section 2 we introduce existing
 semi-supervised algorithms for neural
-network models and recall
-the SOM that will be applied in
-our neural network embeddings.
-In section 3, we introduce our novel
-architecture HLN, show how to
+network models and SOM.
+In section 3, we present our novel
+architecture HLN and how to
 embed SOMs into deep architectures of
 neural networks.
-In section 4 we explain the exact 
+In section 4 we explain the 
 training theory for HLNs.
-Section 5 gives experimental
-comparisons between networks with HLN
-architecture and without, and the
-last section concludes.
+Section 5 presents the experimental
+results, and the
+last section concludes our work.
 
-\section{Related work and backgrounds}
+\section{Related work and background
+Knowledge}
 
 \subsection{Semi-supervised learning for
 neural network}
 A key assumption in semi-supervised 
-algorithms developed so far, is the 
+algorithms, is the 
 structure assumption: two samples with 
 similar distribution on the same mapping 
 structure tend to have high probability 
-of belonging to the same class. Based on 
+belonging to the same class. Based on 
 this assumption, one can use large 
 unlabeled data to uncover such 
 structures. There're already a few 
-algorithms dedicated to do this,
+algorithms dedicated to it,
 such as cluster kernels
 \cite{chapelle2003cluster},
 Low Density Separation(LDS)
 \cite{chapelle2005semi},
 label propagation
 \cite{zhu2002learning},
-to name a few.
-In such algorithms, designing a regularizer
-to enable the model to learn the representation
-or structure of raw data, in order to improve
-the supervised learning performance, becomes
-the key point.
+etc.
+In such algorithms, designing 
+a regularizer
+to enable the model to learn 
+the representation
+or structure of raw data
+becomes the key point.
 
-Let's firstly focus on the general algorithm
+Let's firstly focus on the 
+general algorithm
 description of semi-supervised learning.
 Given a set of unlabeled samples,
 $\mathbf{X}=\{\mathbf{x}_1,\cdots,
@@ -441,9 +425,10 @@ $\mathbf{X}=\{\mathbf{x}_1,\cdots,
 and the similarity labels between any
 $\mathbf{x}_i$ and $\mathbf{x}_j$,
 $\mathbf{W}=\{W_{ij}|i,j=1,\cdots,N\}$,
-we're to find the best embedding function, 
-$f(\mathbf{x})$, for each sample $\mathbf{x}_i$, 
-to minimize:
+our goal is to find the best 
+embedding function,$f(\mathbf{x})$, 
+for each sample $\mathbf{x}_i$, 
+in order to minimize:
 \begin{equation}
 \Delta_{f}=
 	\sum^{N}_{i=1}
@@ -455,16 +440,18 @@ to minimize:
 	\right)
 \label{eq:1}
 \end{equation}
-in which,
+where,
 \begin{itemize}[]
-\item $L(\cdot)$ is the loss function of 3 
+\item $L(\cdot)$ is the loss 
+function of 3 
 variables: 
 $\left<
 		f(\mathbf{x}_i),
 		f(\mathbf{x}_j),
 		W_{ij}
-		\right>$, 
-such as 
+		\right>$.
+For example, if Euclidean distance
+is used,
 		$$L\left(
 		f(\mathbf{x}_i),
 		f(\mathbf{x}_j),
@@ -475,20 +462,24 @@ such as
 		f(\mathbf{x}_j)
 		\|-W_{ij}
 		\right)^2$$
-if Euclidean metric is used for the loss.
-\item $f(\mathbf{x})\in\mathbb{R}^n$ is the 
-embedding function, it tries to produce a 
-vector from $\mathbf{x}_i$, similar to that 
-of $\mathbf{x}_j$ with $W_{ij}=0$,
+\item $f(\mathbf{x})\in\mathbb{R}^n$ 
+is the 
+embedding function, 
+trying to produce an output
+vector for $\mathbf{x}_i$, 
+similar to that 
+for $\mathbf{x}_j$ with $W_{ij}=0$,
 and disimilar with $W_{ij}=1$.
-\item $W_{ij}\in \mathbb{R}$ is the similarity 
+\item $W_{ij}\in \mathbb{R}$ is 
+the similarity 
 label of the sample pair
 $\left<
 		\mathbf{x}_i,
 		\mathbf{x}_j
 		\right>$ from $\mathbf{X}$.
 \end{itemize}
-The overall optimization object thus will be
+As a result, the overall optimization 
+object is
 \begin{equation}
 	\arg \min 
 	\sum_i
@@ -498,20 +489,28 @@ The overall optimization object thus will be
 	\right)+
 	\lambda\Delta_f
 \end{equation}
-where $\lambda$ is proposed as the balance 
-coefficient for embedding the semi-supervised 
+where $\ell(\cdot)$ is the loss
+function for supervised learning.
+$\lambda$ is proposed 
+as the balance 
+coefficient to embed
+the semi-supervised 
 regularizer $\Delta_f$.
 
 \subsection{Self Organizing Map}
-The Self Organizing Map(SOM) is an effective 
-software tool for the visualization of 
-high-dimensional data. It can also be used 
-as an automatic clustering method. The SOM
-consists of a two-dimensional regular grid
-of nodes. The models are automatically 
-organized into a meaningful two-dimensional
-order in which similar models are closer to
-each other in the grid than the more dissimilar
+Self Organizing Map is an effective 
+method for the visualization of 
+high-dimensional data. 
+It can also be used 
+as an automatic clustering method. 
+The SOM consists of a two-dimensional 
+regular grid of nodes. 
+The models are automatically 
+organized into a meaningful 
+two-dimensional order in which 
+similar models are closer to
+each other in the grid than 
+the more dissimilar
 ones\cite{kohonen1998self}.
 Rules used to update models are:
 \begin{equation}
@@ -521,8 +520,8 @@ Rules used to update models are:
 	\right)
 	\label{eq:8}
 \end{equation}
-and the learning rate is dynamically determined
-as
+and the learning rate is 
+dynamically determined as
 \begin{equation}
 	h_{c(x),i} = \alpha(t)\exp\left(
 	-\frac{\|\mathbf{r}_i-\mathbf{r}_c\|^2}
@@ -531,31 +530,39 @@ as
 	\label{eq:9}
 \end{equation}
 where $\mathbf{m}_i\in\mathbb{R}^n$ 
-is the $i^{th}$ model vector, 
+denotes the $i^{th}$ model vector, 
 $\mathbf{x}$ is an input pattern,
-$c(x)$ relates to the best match vector index
-in $\mathbf{m}$ for input pattern $\mathbf{x}$,
-and $\alpha(t)$ is a learning rate that 
-decreases with training preceeding.
-$\mathbf{r}$ is the model vector location in 
-the map, and $\sigma(t)$ corresponds to the 
-width of the neighborhood function, which 
-also decreases monotonically with the 
-regression steps.
+$c(x)$ relates to the best match 
+vector index
+in $\mathbf{m}$ for input 
+pattern $\mathbf{x}$,
+and $\alpha(t)$ is a learning rate 
+that decreases as the
+training preceeds.
+$\mathbf{r}$ denotes the model vector 
+location in 
+the map, and $\sigma(t)$ 
+corresponds to the 
+width of the neighborhood 
+function, which 
+also decreases monotonically 
+with the regression steps.
 
-\section{Our architecture: 
-the Hybrid Learning Net}
-We propose the Hybrid Learning Net(HLN) as
-an architecture to enhance arbitrary networks
-on their training efficiency and robustness 
-to some hyperparameters.
-Each layer in the HLN architecture embeds a
-SOM into its original layer, for the simplest
-situation where neurons connected in fully
-connected way, which we call the Fully 
-Connected Neurons(FCN) architecture, we have 
-such an embedding solution as described in 
-Figure~\ref{fig:1}.
+\section{Hybrid Learning Network}
+Hybrid Learning Network is a novel
+architecture aiming at 
+enhancing arbitrary networks
+on their training efficiency
+stablity.
+Each hidden layer in HLN architecture 
+is embedded with a SOM. For the 
+simplest case where neurons are connected 
+with fully connection, the traditional
+architecture, called Fully 
+Connected Network(FCN) architecture,
+is presented in Figure~\ref{fig:1:a}.
+The proposed HLN architecture is
+presented in Figure~\ref{fig:1:b}.
 
 \begin{figure}
 	\centering
@@ -579,49 +586,60 @@ Figure~\ref{fig:1}.
 	\label{fig:1}
 \end{figure}
 
-In the HLN architecture from 
-Figure~\ref{fig:1},
-$h(x)$ is an unifying function we proposed for 
-SOMs to convert from pattern disimilarity
-$\|\mathbf{x}-\mathbf{m}_i\|$, into
+In HLN architecture,
+we propose $h(x)$, 
+an unifying function for 
+SOM, to convert pattern disimilarity
+$\|\mathbf{x}-\mathbf{m}_i\|$ to
 a semi-supervised learning factor for
-different hidden units. The semi-supervised
-learning factors as a whole act as a 
-dynamic neuron activation sparsity mask for 
+different hidden units. 
+The semi-supervised
+learning factors act as a 
+dynamic neuron activation 
+sparsity mask for 
 each hybrid learning layer.
-It works in a way like the Dropout 
+It works in the similar manner  
+as the Dropout 
 technique\cite{srivastava2014dropout}, 
 enabling the neural networks 
-to improve the model robustness and prevent
-overfitting by learning their submodels for 
-each batch. However, the HLN differs from 
-techniques like the Dropout in which, 
-the HLN does not generate sparsity with 
-randomness, it uses the SOM
-to unsupervisedly learn the \emph{static}
-policy of neuron-activation distribution for
-each layer, the net sparsity generator thereby
-will stablize with training steps, and the
-randomness in sparsity will disappear 
-automatically.
-We propose $h(x)$ with the form as followings,
+to improve the model robustness 
+and prevent
+overfitting by learning 
+their submodels for 
+each batch. However, HLN differs from 
+techniques like Dropout because 
+HLN does not generate sparsity with 
+randomness. HLN uses the SOM
+to unsupervisedly learn 
+the \emph{static}
+policy of the neuron-activation 
+distribution for
+each hidden layer, the network 
+sparsity generator thereby
+will stablize with training 
+steps, and the
+randomness in sparsity will 
+disappear automatically.
+We propose $h(x)$ as follows,
 \begin{equation}
 	\delta_{max} = \max_i\left(
 	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
 	\right)
 	\label{eq:10}
 \end{equation}
-$\delta_{max}$ is the maximum disimilarity
-between an arbitrary vector in $\mathbf{m}$
-and the input pattern vector $\mathbf{x}$,
-$\delta_{min}$ is similar,
 \begin{equation}
 	\delta_{min} = \min_i\left(
 	\|\mathbf{m}_i-\mathbf{x}\|+\epsilon
 	\right)
 	\label{eq:11}
 \end{equation}
-and the scale of all disimilarities is
+where $\delta_{max}$ is the maximum 
+disimilarity
+between an arbitrary vector 
+$\mathbf{m}_i$
+and the input pattern vector $\mathbf{x}$,
+$\delta_{min}$ is minimum one.
+The scale of all disimilarities is
 \begin{equation}
 	\delta_{scale} = 
 	\frac{\mathbf{\delta}_{min}}
@@ -629,8 +647,9 @@ and the scale of all disimilarities is
 	\mathbf{\delta}_{min} + \epsilon}
 	\label{eq:12}
 \end{equation}
-Finally we unify the disimilarities and convert
-them into sparsity mask as
+We then unify the disimilarities 
+and convert them into sparsity 
+mask as
 \begin{equation}
 	h(x)|_{x=\|\mathbf{m}_i-\mathbf{x}\|}=
 	\frac{\delta_{max}\cdot\delta_{scale}}
@@ -638,21 +657,26 @@ them into sparsity mask as
 	+\epsilon}-\delta_{scale}
 	\label{eq:13}
 \end{equation}
-in which $\mathbf{m}_i$ and $\mathbf{x}$ is the
-same way defined in equation~(\ref{eq:8}).
-$\epsilon$ is a constant of pretty small value
-like $\epsilon=10^{-5}$ to avoid 
-\emph{division-by-zero} errors that may, 
-though not very likely occur. Notice that
-if any other metric be preferred, we can
-always replace the pattern disimilarity
-$\|\mathbf{m}_i-\mathbf{x}\|$ with its
-corresponding form.
+where $\mathbf{m}_i$ and $\mathbf{x}$ 
+is the same way defined as in 
+equation~(\ref{eq:8}).
+$\epsilon$ is set at a small constant
+value, such as $\epsilon=10^{-5}$,
+to avoid 
+\emph{division-by-zero} errors,
+which rarely happens. 
+Notice that
+if any other metric is preferred, 
+we can
+always replace the pattern 
+disimilarity
+$\|\mathbf{m}_i-\mathbf{x}\|$ with 
+other forms.
 $f(s,o)$ is the function to combine the 
 sparsity mask $s$ generated by $h(\cdot)$ 
 and the fully connected linear summation 
-output $o$. In most cases, we choose the
-multiplication operator,
+output $o$. In most cases, we use the
+simple multiplication as the operator,
 \begin{equation}
 	f(s,o) = s\cdot o = 
 	h\left(
@@ -668,15 +692,20 @@ multiplication operator,
 	+b^{k,i},k>1
 	\label{eq:14}
 \end{equation}
-For the computing flow described in 
-Figure~\ref{fig:1:b}, 
+As shown in Figure~\ref{fig:1:b}, 
 $f(\cdot) $ is followed 
-by an activation function, it can be any 
-arbitrary nonlinear function that takes 
-only one dimension inputs and outputs a 
-single real, such as the sigmoid function, 
-$tanh(x)$ and the ReLU. With the new 
-architecture, we update the forward computing
+by an activation function, which could 
+be any 
+arbitrary nonlinear function that 
+takes 
+only one dimension inputs and 
+outputs a 
+single real value, 
+such as the sigmoid function, 
+$tanh(x)$ and ReLU. 
+With the new 
+architecture, 
+we update the forward computing
 rules as 
 \begin{equation}
 	y_i^k(\mathbf{x})=
@@ -692,6 +721,7 @@ rules as
 	\right), k>1
 	\label{eq:15}
 \end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 and for the first hybrid learning layer,  
 \begin{equation}
 	y_i^1(\mathbf{x})=
@@ -1219,8 +1249,20 @@ we will investigate if our architecture works well
 on more public benchmark datasets.
 
 \section*{Acknowledgements}
-
-These and the Reference headings are in bold but have no numbers. Text below continues as normal.
+This project was partially supported 
+by Grants from Natural Science 
+Foundation of China
+\#71671178/ \#91546201/ \#61202321, 
+and the open project of the Key Lab 
+of Big Data Mining and
+Knowledge Management. 
+It was also supported by Hainan 
+Provincial Department of Science 
+and Technology under Grant 
+No. ZDKJ2016021, and by 
+Guangdong Provincial Science and
+Technology Project 
+20162016B010127004.
 
 %% References
 %%

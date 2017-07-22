@@ -25,6 +25,10 @@ A.~Graves, N.~Jaitly, A.-r. Mohamed, Hybrid speech recognition with deep
   bidirectional lstm, in: Automatic Speech Recognition and Understanding
   (ASRU), 2013 IEEE Workshop on, IEEE, 2013, pp. 273--278.
 
+\bibitem{bottou2010large}
+L.~Bottou, Large-scale machine learning with stochastic gradient descent, in:
+  Proceedings of COMPSTAT'2010, Springer, 2010, pp. 177--186.
+
 \bibitem{lecun1990handwritten}
 Y.~LeCun, B.~E. Boser, J.~S. Denker, D.~Henderson, R.~E. Howard, W.~E. Hubbard,
   L.~D. Jackel, Handwritten digit recognition with a back-propagation network,

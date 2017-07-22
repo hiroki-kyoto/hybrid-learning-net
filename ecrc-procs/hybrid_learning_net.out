@@ -1,8 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Related work and backgrounds}{}% 2
+\BOOKMARK [1][-]{section.2}{Related work and background Knowledge}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Semi-supervised learning for neural network}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Self Organizing Map}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Our architecture: the Hybrid Learning Net}{}% 5
+\BOOKMARK [1][-]{section.3}{Hybrid Learning Network}{}% 5
 \BOOKMARK [1][-]{section.4}{Training the HLNs}{}% 6
 \BOOKMARK [1][-]{section.5}{Empirical Study}{}% 7
 \BOOKMARK [2][-]{subsection.5.1}{Regression capability experiment using small synthetic data}{section.5}% 8
