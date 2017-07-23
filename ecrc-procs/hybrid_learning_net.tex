@@ -389,7 +389,7 @@ last section concludes our work.
 
 \section{Related work and background
 Knowledge}
-
+\label{sec:related_work}
 \subsection{Semi-supervised learning for
 neural network}
 A key assumption in semi-supervised 
@@ -638,7 +638,7 @@ disimilarity
 between an arbitrary vector 
 $\mathbf{m}_i$
 and the input pattern vector $\mathbf{x}$,
-$\delta_{min}$ is minimum one.
+$\delta_{min}$ is the minimum one.
 The scale of all disimilarities is
 \begin{equation}
 	\delta_{scale} = 
@@ -721,7 +721,6 @@ rules as
 	\right), k>1
 	\label{eq:15}
 \end{equation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 and for the first hybrid learning layer,  
 \begin{equation}
 	y_i^1(\mathbf{x})=
@@ -737,29 +736,38 @@ and for the first hybrid learning layer,
 	\right)
 	\label{eq:16}
 \end{equation}
-where $m^k_i$ denotes the $i^{th}$ vector
-in the $k^{th}$ SOM of the net(all indexes
-start from 1), $\sigma$ is a nonlinear 
+where $m^k_i$ denotes the $i^{th}$ 
+vector in the $k^{th}$ SOM of 
+the net(all indexes start from 1), 
+and $\sigma$ is a nonlinear 
 activation function.
 
-\section{Training the HLNs}
-Let's compare the embedding theories between
-HLNs and the ones mentioned in the section of
-\emph{Related work and backgrounds}.
-The existing semi-supervised algorithms
-embed a regularizer into the supervised 
-learner, making it impossible to train both of
-the supervised learner and the unsupervised
-separately. As analyzed before, performances
-of such regularizer solutions depends on the
-standalone supervised pretraining for which
-a profound labeled data is required.
-However, in our architecture HLN, we assign
-each of the learning methods a completely
-separate optimizing object, with no priority
-orders restricted.\\
-For the supervised learning, we may have such
-form of optimizing object as
+\section{HLN Training}
+Let's compare the theories between
+HLN and the general model mentioned 
+in section~\ref{sec:related_work}.
+Existing semi-supervised algorithms
+include a regularizer into the supervised
+learning optimizing object, making it 
+impossible to train both of
+the supervised learner and the 
+unsupervised one
+separatedly. As analyzed before, 
+performance
+of such regularizer solutions depends 
+on the
+standalone supervised pretraining 
+which requires profound labeled data.
+However, in our proposed architecture 
+HLN, we assign
+each of the learning methods a 
+completely
+separated optimizing object, with no 
+priority
+orders restricted.
+
+For the supervised learning, we may 
+have such an optimizing object,
 \begin{equation}
 	\arg \min_g \sum_{i=1}^L\ell\left(
 	g(\mathbf{x}_i),
@@ -767,16 +775,22 @@ form of optimizing object as
 	\right)
 	\label{eq:17}
 \end{equation}
-where $g(\mathbf{x})$ is the function describing
+where $g(\mathbf{x})$ is the
+function describing
 the mapping from the input 
-$\mathbf{x}\in\mathbb{R}^d$ to the output
-$\mathbf{y}\in\mathbb{R}^n$, parameterized with
-the neural connection weights $\mathbf{W}$ and 
-the biases $\mathbf{b}$ for all non-input 
-layer neurons in the HLN architecture.
-This equation~(\ref{eq:17}) may become the 
-following one when Enclidean metric be 
-applied for the loss,
+$\mathbf{x}\in\mathbb{R}^d$ to the 
+output
+$\mathbf{y}\in\mathbb{R}^n$, 
+parameterized with
+the neural connection 
+weights $\mathbf{W}$ and 
+the biases $\mathbf{b}$ for all 
+non-input 
+layer neurons in the HLN 
+architecture.
+Equation~\ref{eq:17} becomes the 
+Equation~\ref{eq:18} when Enclidean 
+metric is applied as the loss function.
 \begin{equation}
 	\arg \min_{\mathbf{W},\mathbf{b}}
 	\frac{1}{2}
@@ -788,7 +802,8 @@ applied for the loss,
 	\right\|^2
 	\label{eq:18}
 \end{equation}
-For the unsupervised learning, the optimizing
+For the unsupervised learning, 
+the optimizing
 objects are
 \begin{equation}
 	\arg \min_{\mathbf{m}^k}
@@ -816,23 +831,32 @@ with the predefined notation:
 \end{equation}
 
 For a net with $M$ hybrid learning layers,
-there should be 1 supervised
+there should be 1 supervised optimizing
+object
 and $M$ unsupervised optimizing objects.
-As we know a multi-objective problem may not 
-have a global solution, however in HLNs,
-each object is optimized on its own isolated
-parameter space, thus each optimizing object
-have its corresponding global optimization 
-solution, they together makes the whole one.
+Although a multi-objective problem 
+may not 
+have a global solution, in HLNs, since
+each object is optimized in its 
+own isolated
+parameter space, 
+each optimizing object
+has its own global 
+optimization 
+solution.
 
-Using the well-known Back Propagation(BP)
-algorithm, we can obtain parameter updating
-rules for training the HLNs. 
-We're only focusing on differences compared to
-original BP algorithm for the FCN model.
-Let's denote the linear summation for $i^{th}$ unit
+Using the well-known Back 
+Propagation(BP)
+algorithm, we can obtain parameter 
+updating
+rules for HLN training.
+We focus on the difference between HLN
+and the original BP algorithm for 
+the FCN model.
+Let's denote the linear summation 
+for $i^{th}$ unit
 in $k^{th}$ layer as $o_i^k$, then
-linear summations of hybrid learning
+the linear summations of hybrid learning
 layers are (with $\mathbf{y}^0=\mathbf{x}$):
 \begin{equation}
 	o_i^k =
@@ -847,8 +871,9 @@ layers are (with $\mathbf{y}^0=\mathbf{x}$):
 	\quad k=1,2,\cdots,M
 	\label{eq:23}
 \end{equation}
-Apply the non-linear activation function
-(taking the sigmoid as an instance),
+Apply the non-linear activation 
+function, for example, the sigmoid
+function:
 \begin{equation}
 	\frac{\partial E}
 	{\partial o_i^k}=
@@ -863,8 +888,9 @@ Apply the non-linear activation function
 	\quad k=1,2,\cdots,M+1
 	\label{eq:24}
 \end{equation}
-Thus the recursive layer gradient computing
-is
+Thus the recursive layer gradient 
+computing is shown in 
+Equation~\ref{eq:25}.
 \begin{equation}
 	\frac{\partial E}
 	{\partial y_i^{k-1}}=\sum_j
@@ -881,7 +907,8 @@ is
 	\label{eq:25}
 \end{equation}
 The partial error gradients for the
-connection parameters $\mathbf{W}$:
+connection parameters $\mathbf{W}$
+are shown in Equation~\ref{eq:27}.
 \begin{equation}
 	\frac{\partial E}
 	{\partial W_j^{k,i}}=\sum_i
@@ -897,7 +924,9 @@ connection parameters $\mathbf{W}$:
 	\quad k=1,2,\cdots,M
 	\label{eq:27}
 \end{equation}
-For the partial error gradients on biases:
+The partial error gradients 
+on biases are presented in 
+Equation~\ref{eq:29}.
 \begin{equation}
 	\frac{\partial E}
 	{\partial b^{k,i}}=
@@ -911,33 +940,34 @@ For the partial error gradients on biases:
 	\quad k=1,2,\cdots,M+1
 	\label{eq:29}
 \end{equation}
-Thus we can iterate recursively along 
-layers with 
-equations~(\ref{eq:23}-\ref{eq:29}) to 
-update all parameters of the supervised 
-training, and the equations corresponding 
-to the unsupervised training refer 
-directly to equations~(\ref{eq:8}) and 
-(\ref{eq:9}).
+Therefore we can iterate 
+recursively along layers using
+Equation~(\ref{eq:23})(\ref{eq:24})
+(\ref{eq:25})(\ref{eq:27})
+(\ref{eq:29}) to 
+update all the parameters of 
+the supervised 
+training, and the corresponding 
+parameter updating rules 
+for the unsupervised 
+training are shown in 
+Equations~(\ref{eq:8})(\ref{eq:9}).
 
 \section{Empirical Study}
-\subsection{Regression capability
-experiment using small synthetic data}
-A synthetic dataset is used. It maps
-2-dimension vectos into 3 classes, where
-$3.5\%$ of the noise is mixed to simulate 
-a real sampling dataset.
-We then apply the data to the HLN(the 
-net with HLN architecture) and the 
-FCN(the net without),
-and compare the regression capabilities 
-of the two. 
-The FCN and HLN applied in this 
-experiment follow the exact design as 
-in Figure~\ref{fig:1} with only a single 
+\subsection{Synthetic data}
+A synthetic dataset is generated. 
+It maps a set of
+2-dimension vectors into 3 classes, 
+where
+$3.5\%$ of the noise is included
+to simulate a real application.
+We then apply the data to an instance
+of HLN and FCN.
+In both networks, we only use a single
 hidden layer.
 Figure~\ref{fig:2}-\ref{fig:3} 
-present the comparison results.
+present the progress of the accuracy 
+as the number of epoches increases.
 
 \begin{figure}[h]
 	\centering
@@ -956,13 +986,14 @@ present the comparison results.
 		\label{fig:2:c}
 	}
 	\caption{
-		Comparison on mean of 
-		accuracy with synthetic data:
+		Mean of 
+		accuracy on the synthetic data:
 		$\mu$ is the mean accuracy for
 		multiple replays with the same
 		configuration.
-		$N_{pre}$ is the unlabeled sample 
-		volume for pretraining, $\eta$
+		$N_{pre}$ is the number of
+		unlabeled samples
+		for pretraining, $\eta$
 		is the initial learning rate,
 		$\alpha$ is the decay factor of
 		learning rate $\eta(t)$.
@@ -987,70 +1018,63 @@ present the comparison results.
 		\label{fig:3:c}
 	}
 	\caption{
-		Comparison on deviation of test
-		accuracy with synthetic data:
+		Deviation of
+		accuracy on the synthetic data:
 		the deviation takes the form as
 		$\delta$ is the deviation of
 		multiple replays with the same
-		configuration as 
+		configuration 
 		$\delta=\sum_1^N(\gamma_i-\mu)/N$
-		, where $\gamma_i$ is $i^{th}$ 
-		replay accuracy.
+		, where $\gamma_i$ is the
+		accuracy of $i^{th}$ replay.
 		}
 	\label{fig:3}
 \end{figure}
 
-An explanation may be helpful:
+In the experiment,
 we split the data into two partitions, 
-one is for the training of two
-architectures and the another is for
-testing, the train/test ratio is 0.8.
+one for the training of two
+architectures and the another for
+testing with the train/test ratio 0.8.
 Considering the possible impact from
-the parameter initialization, 
+the parameter initialization,
 we replay the complete workflow
 of training and testing with varied
-random parameter initialization
-for each net with different 
+random parameter initializations
+for every net with different 
 configurations.
-From Figure~\ref{fig:2}, easy
-to see that networks with our HLN 
+In Figure~\ref{fig:2}, It is evident
+that networks with our HLN 
 architecture win over networks without 
-in all conditions concerned.
-The overall results we may obtain
-from this experiment would be:
+HLN in all cases.
+The experimental results indicate:
 \begin{itemize}
-	\item The HLN architecture 
-		learns much faster than the 
+	\item HLN architecture 
+		learns much faster than
 		FCN.
 	\item The pretraining
 		with unlabeled data does improve 
-		the performance of HLN, however 
-		the improvement is limited.
+		the performance of HLN, though 
+		the improvement in accuracy
+		is not evident.
 	\item A constant learning rate is
-		more advisal than a decreasing 
-		one with steps.
+		more advisable than a varying
+		learning rate.
 \end{itemize}
 
-Each of the net training is repeated for 
-30 times in our experiments, and within
-each training, the net parameters are
-reinitialized and relearned from the
-very beginning of training. Thus we
-can analyze the robustness of 
-architectures to the parameter
+Figure~\ref{fig:3} shows that HLN
+stablized quickly in all cases,
+while FCN requires more training
+to stablize. It indicates that 
+HLN is more robust to parameter
 initialization.
-Figure~\ref{fig:3} shows the HLN
-stablize quickly under all conditions,
-however the FCN requires more training
-to get itself stablized. The HLN proves
-to be robuster to the neural network
-hyperparameter variation of parameter 
-initialization.
-\subsection{Experiments on MNIST}
-Experiments on the well-known MNIST
-benchmark demonstrate greater enhencement
+\subsection{MNIST}
+Our experiments on the well-known MNIST
+benchmark demonstrated even
+greater enhencement
 over the traditional architecture.
-Moreover the advantage of HLN increases 
+Moreover the advantage of HLN is 
+more evident
 with higher input dimension
 and deeper network. 
 To enable the input dimension variation,
@@ -1065,39 +1089,39 @@ leads to a input dimension of 196, and
 particularly a max-pooling with the
 kernel $1\times 1$ will keep the original
 input dimension as 784. All networks used
-are based on architectures in 
+are configured as in 
 Figure~\ref{fig:1}.
 
 \begin{figure}[h]
 	\centering
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_1}
+		\includegraphics[width=60mm]{mnist_testing_accuracy_1}
 		\label{fig:4:a}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_2}
+		\includegraphics[width=60mm]{mnist_testing_accuracy_2}
 		\label{fig:4:b}
 	}
-	\hspace{-7mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_3}
+		\includegraphics[width=60mm]{mnist_testing_accuracy_3}
 		\label{fig:4:c}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_testing_accuracy_4}
+		\includegraphics[width=60mm]{mnist_testing_accuracy_4}
 		\label{fig:4:d}
 	}
 
 	\caption{
-		Comparison of testing accuracy on 
+		Accuracy on 
 		MNIST with 4 different network
 		models: 
-		$196I$ refers to
+		$196I$ denotes
 		the input layer of dimension 196, 
-		$30H$ refers to the hidden layer
-		of dimension of 30, and $10F$ is
+		$30H$ denotes the hidden layer
+		of dimension of 30, and $10F$ 
+		denotes
 		the fully connected output layer 
 		of dimension 10.
 		}
@@ -1107,28 +1131,28 @@ Figure~\ref{fig:1}.
 \begin{figure}[h]
 	\centering
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_1}
+		\includegraphics[width=60mm]{mnist_training_loss_1}
 		\label{fig:5:a}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_2}
+		\includegraphics[width=60mm]{mnist_training_loss_2}
 		\label{fig:5:b}
 	}
-	\hspace{-7mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_3}
+		\includegraphics[width=60mm]{mnist_training_loss_3}
 		\label{fig:5:c}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_loss_4}
+		\includegraphics[width=60mm]{mnist_training_loss_4}
 		\label{fig:5:d}
 	}
 
 	\caption{
-		Comparison of training loss on 
-		MNIST with 4 different network models
+		Training loss on 
+		MNIST with 4 different network 
+		models
 		}
 	\label{fig:5}
 \end{figure}
@@ -1136,117 +1160,146 @@ Figure~\ref{fig:1}.
 \begin{figure}[h]
 	\centering
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_1}
+		\includegraphics[width=60mm]{mnist_training_sparsity_1}
 		\label{fig:6:a}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_2}
+		\includegraphics[width=60mm]{mnist_training_sparsity_2}
 		\label{fig:6:b}
 	}
-	\hspace{-7mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_3}
+		\includegraphics[width=60mm]{mnist_training_sparsity_3}
 		\label{fig:6:c}
 	}
-	\hspace{-7mm}
+	\hspace{-5mm}
 	\subfigure[]{
-		\includegraphics[width=42mm]{mnist_training_sparsity_4}
+		\includegraphics[width=60mm]{mnist_training_sparsity_4}
 		\label{fig:6:d}
 	}
 	\caption{
-		Comparison of neuron activation sparsity 
-on MNIST with 4 different network models
+		Neuron activation sparsity 
+		on MNIST with 4 different 
+		network models: H0 denotes
+		the first hidden layer,
+		H1 denotes the second hideen
+		layer.
 		}
 	\label{fig:6}
 \end{figure}
 
-Seen from Figure~\ref{fig:4:a}, 
-where a single hidden layer architecture is used,
-the FCN requires about 150-200 epoches to stablize 
-at its best test accuracy of 93\%, the HLN however 
-only takes 4-5 epoches to achieve the same test 
-accuracy or a bit higher. 
-It's a $40\times$ speed up 
-on the training without a sacrifice of the
-model capability. The HLN additionally performs
-much higher stablity at all time during the whole
-training process. This may be due to the hybrid 
-learning method used by the HLN, which enables 
-the network to learn the neuron activation 
-clustering maps(the SOMs) of every non-output layer
-especially the input layer at the same time for
-the supervised learning. Each sample for the input
-is more profoundly taken in use, making the HLN
-a much faster learning.
+Observed from Figure~\ref{fig:4:a}, 
+where a single hidden layer 
+architecture is used,
+the FCN requires about 
+150-200 epoches to stablize 
+at its best test accuracy of 
+93\%, however HLN
+only takes 4-5 epoches to achieve 
+the same test 
+accuracy or even higher. 
+Thus it is a $40\times$ speed up 
+on the training without a sacrifice 
+of the
+model capability. 
+The HLN additionally provides
+much higher stablity at all time 
+during the entire
+training process. 
+The reason behind is that
+HLN enables 
+the network to unsupervisedly
+learn the neuron activation 
+clustering map(the SOM) of 
+every non-output layer
+especially the input layer,
+along with
+the supervised learning. 
+Each sample for the input
+is more thoroughly taken in use, 
+making HLN learn much faster.
 
-For Figure~\ref{fig:4:b} with a deeper architecture,
-the FCN seems fail to learn at all, however our
-HLN remains a fast learning. Though the HLN 
-architecture seems \emph{slow down} a bit for
-a double hidden layer net compared to the single
-one's, it satisifies the emprical knowledge: a deeper
-architecture brings a tougher parameter tuning.
+In Figure~\ref{fig:4:b} with 
+a deeper architecture,
+FCN seems fail to learn at all.
+In constrast, HLN keeps a fast 
+learning. Though HLN seems 
+\emph{slow down} a little bit for
+the sake of doubling the hidden layers.
+The observation follows: a deeper
+architecture brings a tougher 
+parameter tuning.
 
-For Figure~\ref{fig:4:c}, 
-we use a max-pooling with a kernel of $1\times 1$,
-which equals to original input as in MNIST.
-The input dimension of the net is therefore 4 
-times larger than that in the first test, however
-the HLN learns as fast as the one of low input
-dimension with stablity held the same strong.
-While the FCN in this situation fails to learn at
-all either.
+In Figure~\ref{fig:4:c}, 
+we use a max-pooling with a kernel 
+of $1\times 1$,
+which equals to the original input as 
+in MNIST.
+The input dimension of the net 
+is therefore 4 
+times larger than that in 
+Figure~(\ref{fig:4:a}).
+However,
+HLN learns as fast as the one 
+with small input
+dimension with equal stablity.
+Again FCN fails to learn.
 
-Let's focus on  
-Figure~\ref{fig:4:d}, where the HLN takes about 120
-epoches to stalize at the best performance and
-the FCN seems never start to learn.
-Compared to the third test, the networks have a
-deeper architecture, making the model more difficult
-to learn as expected.  Compared to the second, 
-networks in the fourth experiment
-have a larger input dimension, which leads to a
-tougher learning too. The two factors putting 
-together turns out to be even more harmful to
-the training efficiency as we may expect in a
-linear manner.
+In Figure~\ref{fig:4:d}, 
+HLN takes about 120
+epoches to stalize at its 
+best performance but
+FCN seems never start to learn.
+Compared to Figure~\ref{fig:4:c}, 
+the networks have a
+deeper architecture, 
+making the model more difficult
+to learn as expected.  
+Compared to Figure~\ref{fig:4:b},
+it has a larger input dimension, 
+which leads to a
+tougher learning too. 
+Putting two factors together
+turns out more harmful to
+the training as we may expect 
+in a linear manner.
 
-Figure~\ref{fig:5} further confirms the 
-\emph{facts} 
-drawn from results in Figure~\ref{fig:4}.
+Figure~\ref{fig:5} further confirms 
+the \emph{facts} 
+observed from Figure~\ref{fig:4}.
 The test accuracy is not improved at all
-with training steps for deeper architectures,
-whereas the training loss is dropping, though,
-at a very slow pace. This may conclude to a guess:
-with the epoch number increasing to a rather larger
-one, the training loss may drop to a level where
-a visible learning expressed by test accuracy 
-improvement at length begins.
-
-Figure~\ref{fig:6} shows the neuron activation
-sparsity for every hidden layer in networks.
-Notice that a SOM-embedding output in HLNs
-is used as a sparsity mask to control, or more
-precisely, to increase the sparsity of every
-hidden layer. It's obvious that networks with 
-the HLN architecture tend to have a higher 
-sparsity than ones without seen from 
-Figure~\ref{fig:6}.
+with deeper architectures,
+whereas the training loss is dropping, 
+though, at a very slow pace. 
+Figure~\ref{fig:6} shows the neuron 
+activation sparsity for every hidden 
+layer in networks.
+Notice that a SOM-embedding output 
+in HLNs is used as a sparsity mask 
+to control, or more
+precisely, to increase the sparsity 
+of every hidden layer. 
+It's obvious that networks with 
+HLN architecture tend to have a higher 
+sparsity than the ones without.
 
 \section{Conclusions}
-We proposed a hybrid learning architecture,
-the HLN, for neural networks to learn from
-labeled and unlabeled data at the same time
-and to achieve a much faster learning with
-fair stablity.
-We showed the solution to training networks of
-the HLN architecture, and also demonstrated 
-the advantages in training speed and robustness
-to some hyperparameter variation by experimenting
-on synthetic data and the MNIST. In the future,
-we will investigate if our architecture works well
-on more public benchmark datasets.
+We proposed HLN, a hybrid learning 
+architecture for ANNs.
+HLN enables ANNs to learn from
+labeled and unlabeled data 
+simultaneously and separatedly.
+We examined experiments on our
+synthetic dataset and the MNIST 
+benchmark dataset.
+As the experiments showed,
+ANNs of HLN architecture 
+proved better performance in
+training efficiency and stablity.
+In the future, we will investigate
+other capabilities of HLN on more
+pulic datasets such as CIFAR-10 and
+CIFAR-100.
 
 \section*{Acknowledgements}
 This project was partially supported 

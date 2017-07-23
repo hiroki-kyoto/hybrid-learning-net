@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  8 JUL 2017 23:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2017.7.5)  23 JUL 2017 12:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -88,6 +88,7 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \@sep=\skip43
 \@@sep=\skip44
 
+(./procs-template-generic.spl)
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
@@ -458,12 +459,13 @@ Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 \rot@float@box=\box32
 \rot@mess@toks=\toks19
 )
-No file procs-template-generic.aux.
+(./procs-template-generic.aux)
 \openout1 = `procs-template-generic.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 130.
 LaTeX Font Info:    Try loading font information for OML+txmi on input line 130
 .
+
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
@@ -646,12 +648,23 @@ Overfull \hbox (16.07999pt too wide) in paragraph at lines 214--214
 [] 
  []
 
-<elsevier-logo-3p.pdf, id=1, 54.08205pt x 59.7432pt>
-File: elsevier-logo-3p.pdf Graphic file (type pdf)
+Package epstopdf Info: Source file: <elsevier-logo-3p.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 511887 bytes
+(epstopdf)             Output file: <elsevier-logo-3p-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:37
+(epstopdf)                    size: 77000 bytes
+(epstopdf)             Command: <repstopdf --outfile=elsevier-logo-3p-eps-conve
+rted-to.pdf elsevier-logo-3p.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+<elsevier-logo-3p-eps-converted-to.pdf, id=1, 54.2025pt x 60.225pt>
+File: elsevier-logo-3p-eps-converted-to.pdf Graphic file (type pdf)
 
-<use elsevier-logo-3p.pdf>
-Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 223.
-(pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
+<use elsevier-logo-3p-eps-converted-to.pdf>
+Package pdftex.def Info: elsevier-logo-3p-eps-converted-to.pdf used on input li
+ne 223.
+(pdftex.def)             Requested size: 54.20236pt x 60.22484pt.
 LaTeX Font Info:    Try loading font information for OT1+txss on input line 223
 .
 
@@ -660,37 +673,93 @@ File: ot1txss.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OT1/txss/m/n' will be
 (Font)              scaled to size 9.49997pt on input line 223.
+Package epstopdf Info: Source file: <svsd-3p.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 304246 bytes
+(epstopdf)             Output file: <svsd-3p-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:41
+(epstopdf)                    size: 13643 bytes
+(epstopdf)             Command: <repstopdf --outfile=svsd-3p-eps-converted-to.p
+df svsd-3p.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
 
-<svsd-3p.pdf, id=2, 160.6pt x 12.64966pt>
-File: svsd-3p.pdf Graphic file (type pdf)
- <use svsd-3p.pdf>
-Package pdftex.def Info: svsd-3p.pdf used on input line 223.
-(pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
+<svsd-3p-eps-converted-to.pdf, id=2, 159.59625pt x 13.04875pt>
+File: svsd-3p-eps-converted-to.pdf Graphic file (type pdf)
 
-<procs_new.pdf, id=3, 111.41624pt x 72.27pt>
-File: procs_new.pdf Graphic file (type pdf)
- <use procs_new.pdf>
-Package pdftex.def Info: procs_new.pdf used on input line 223.
-(pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
+<use svsd-3p-eps-converted-to.pdf>
+Package pdftex.def Info: svsd-3p-eps-converted-to.pdf used on input line 223.
+(pdftex.def)             Requested size: 159.59584pt x 13.0487pt.
+Package epstopdf Info: Source file: <procs_new.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 260725 bytes
+(epstopdf)             Output file: <procs_new-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:42
+(epstopdf)                    size: 9724 bytes
+(epstopdf)             Command: <repstopdf --outfile=procs_new-eps-converted-to
+.pdf procs_new.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
 
-Overfull \hbox (3.91597pt too wide) has occurred while \output is active
+<procs_new-eps-converted-to.pdf, id=3, 110.4125pt x 72.27pt>
+File: procs_new-eps-converted-to.pdf Graphic file (type pdf)
+
+<use procs_new-eps-converted-to.pdf>
+Package pdftex.def Info: procs_new-eps-converted-to.pdf used on input line 223.
+
+(pdftex.def)             Requested size: 110.41222pt x 72.2698pt.
+
+Overfull \hbox (2.91222pt too wide) has occurred while \output is active
 []| [] 
  []
 
-File: elsevier-logo-3p.pdf Graphic file (type pdf)
-<use elsevier-logo-3p.pdf>
-Package pdftex.def Info: elsevier-logo-3p.pdf used on input line 223.
-(pdftex.def)             Requested size: 54.0819pt x 59.74303pt.
-File: svsd-3p.pdf Graphic file (type pdf)
- <use svsd-3p.pdf>
-Package pdftex.def Info: svsd-3p.pdf used on input line 223.
-(pdftex.def)             Requested size: 160.5996pt x 12.64961pt.
-File: procs_new.pdf Graphic file (type pdf)
- <use procs_new.pdf>
-Package pdftex.def Info: procs_new.pdf used on input line 223.
-(pdftex.def)             Requested size: 111.41597pt x 72.2698pt.
+Package epstopdf Info: Source file: <elsevier-logo-3p.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 511887 bytes
+(epstopdf)             Output file: <elsevier-logo-3p-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:37
+(epstopdf)                    size: 77000 bytes
+(epstopdf)             Command: <repstopdf --outfile=elsevier-logo-3p-eps-conve
+rted-to.pdf elsevier-logo-3p.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+File: elsevier-logo-3p-eps-converted-to.pdf Graphic file (type pdf)
+<use elsevier-logo-3p-eps-converted-to.pdf>
+Package pdftex.def Info: elsevier-logo-3p-eps-converted-to.pdf used on input li
+ne 223.
+(pdftex.def)             Requested size: 54.20236pt x 60.22484pt.
+Package epstopdf Info: Source file: <svsd-3p.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 304246 bytes
+(epstopdf)             Output file: <svsd-3p-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:41
+(epstopdf)                    size: 13643 bytes
+(epstopdf)             Command: <repstopdf --outfile=svsd-3p-eps-converted-to.p
+df svsd-3p.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+File: svsd-3p-eps-converted-to.pdf Graphic file (type pdf)
+ <use svsd-3p-eps-converted-to.pdf>
+Package pdftex.def Info: svsd-3p-eps-converted-to.pdf used on input line 223.
+(pdftex.def)             Requested size: 159.59584pt x 13.0487pt.
+Package epstopdf Info: Source file: <procs_new.eps>
+(epstopdf)                    date: 2017-07-15 22:27:16
+(epstopdf)                    size: 260725 bytes
+(epstopdf)             Output file: <procs_new-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-07-17 22:37:42
+(epstopdf)                    size: 9724 bytes
+(epstopdf)             Command: <repstopdf --outfile=procs_new-eps-converted-to
+.pdf procs_new.eps>
+(epstopdf)             \includegraphics on input line 223.
+Package epstopdf Info: Output file is already uptodate.
+File: procs_new-eps-converted-to.pdf Graphic file (type pdf)
 
-Overfull \hbox (3.91597pt too wide) has occurred while \output is active
+<use procs_new-eps-converted-to.pdf>
+Package pdftex.def Info: procs_new-eps-converted-to.pdf used on input line 223.
+
+(pdftex.def)             Requested size: 110.41222pt x 72.2698pt.
+
+Overfull \hbox (2.91222pt too wide) has occurred while \output is active
 []| [] 
  []
 
@@ -700,12 +769,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 
-Overfull \vbox (49.74303pt too high) has occurred while \output is active []
+Overfull \vbox (50.22484pt too high) has occurred while \output is active []
 
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
- <./elsevier-logo-3p.pdf> <./svsd-3p.pdf> <./procs_new.pdf>]
+ <./elsevier-logo-3p-eps-converted-to.pdf> <./svsd-3p-eps-converted-to.pdf> <./
+procs_new-eps-converted-to.pdf>]
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <10> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 231.
 
@@ -713,15 +783,15 @@ Underfull \hbox (badness 10000) detected at line 247
 []
  []
 
-[2] <fx1.pdf, id=30, 92.345pt x 97.86563pt>
+[2] <fx1.pdf, id=29, 274.626pt x 231.26399pt>
 File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
 Package pdftex.def Info: fx1.pdf used on input line 275.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+(pdftex.def)             Requested size: 274.62532pt x 231.26341pt.
 File: fx1.pdf Graphic file (type pdf)
  <use fx1.pdf>
 Package pdftex.def Info: fx1.pdf used on input line 275.
-(pdftex.def)             Requested size: 92.34476pt x 97.86537pt.
+(pdftex.def)             Requested size: 274.62532pt x 231.26341pt.
 
 Overfull \hbox (25.26007pt too wide) in paragraph at lines 280--281
 \OT1/txr/m/n/10 lines and in-for-ma-tion to help you sub-mit high qual-ity art-
@@ -749,46 +819,39 @@ ine 300.
 Package natbib Warning: Citation `inbook-minimal' on page 4 undefined on input 
 line 300.
 
-(./procs-template-generic.bbl
-
-Package natbib Warning: Citation `whole-journal' on page 4 undefined on input l
-ine 20.
-
-)
+No file procs-template-generic.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-[4] (./procs-template-generic.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+[4] (./procs-template-generic.aux) ) 
 Here is how much of TeX's memory you used:
- 3674 strings out of 493013
- 48586 string characters out of 6135683
- 113907 words of memory out of 5000000
- 7100 multiletter control sequences out of 15000+600000
- 56796 words of font info for 137 fonts, out of 8000000 for 9000
+ 3667 strings out of 493013
+ 48563 string characters out of 6135683
+ 113970 words of memory out of 5000000
+ 7081 multiletter control sequences out of 15000+600000
+ 54857 words of font info for 134 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,15n,36p,635b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txf
-onts/txex.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf
--dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/times/utmri8a.pfb>
-Output written on procs-template-generic.pdf (4 pages, 178472 bytes).
+ 39i,15n,39p,635b,295s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dv
+ips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/txfonts/rtxi.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txf
+onts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on procs-template-generic.pdf (4 pages, 380417 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
+ 114 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
