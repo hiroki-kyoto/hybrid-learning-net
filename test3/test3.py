@@ -132,9 +132,9 @@ class PPRN:
                         for k in range(self.dim[i,1]):
                             self.som[i][j,k,:] += self.eta*(self.hid[i][j,k]/m)*\
                             (self.hid[i-1][:,0]-self.som[i][j,k,:])
-            # supervised learning
+            # supervised learning only for last layer
             id_max = np.argmax(self.act[i])
-            if y!=[] and y!=id_max:
+            if i==self.dim.shape[0]-1 and y!=[] and y!=id_max:
                 for k in range(self.dim[i,1]):
                     self.som[i][j,k,:]
                     
@@ -161,7 +161,7 @@ def main():
     test_num = ims_test.shape[0]
     # apply a dataset
     #net.init(np.array([[5, 16, h*w], [numlbl, 8, 5]]), 0.1)
-    net.init(np.array([[numlbl, 8, h*w]]), 0.1)
+    net.init(np.array([[numlbl, 32, h*w]]), 0.1)
     for i in range(10000):
         net.train(ims_train[i,:]/255.0, [])
     print '=== training done ===='
