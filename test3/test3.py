@@ -78,11 +78,13 @@ class PPRN:
     dim : neural network dimension
     hid : hidden layers
     som : parameters, self organizing map
+    act : max activation for each som
     '''
     eta = 0
     dim = []
     hid = []
     som = []
+    act = []
     
     def init(self, dim, eta):
         '''
@@ -94,13 +96,19 @@ class PPRN:
         self.dim = dim
         self.hid = list(range(dim.shape[0]))
         self.som = list(range(dim.shape[0]))
+        self.act = list(range(dim.shape[0]))
         
         for i in range(dim.shape[0]):
             self.hid[i] = np.zeros([self.dim[i,0], self.dim[i,1]])
-            self.som[i] = np.random.rand(self.dim[i, 0], self.dim[i, 1], self.dim[i, 2])
+            self.som[i] = np.random.rand(
+                    self.dim[i, 0], 
+                    self.dim[i, 1], 
+                    self.dim[i, 2]
+                    )
+            self.act[i] = np.zeros(self.dim[i,0])
         print 'init done.'
         
-    def train(self, x):
+    def train(self, x, y):
         '''
         training net with unlabeled data of [x]
         '''
@@ -110,9 +118,11 @@ class PPRN:
                     if i==0:
                         self.hid[i][j,k] = response(x, self.som[i][j,k,:])
                     else:
-                        self.hid[i][j,k] = response(self.hid[i-1][:,0], self.som[i][j,k,:])
-                m = np.max(self.hid[i][j,:])
-                if m > np.random.rand(1): # probalistic activation
+                        self.hid[i][j,k] = response(self.hid[i-1][:,0], \
+                                self.som[i][j,k,:])
+                self.act[i][j] = np.max(self.hid[i][j,:])
+                #if m > np.random.rand(1): # probalistic activation
+                if idx==j:
                     # update all patterns in som according to its response value
                     if i == 0:
                         for k in range(self.dim[i,1]):
@@ -122,11 +132,14 @@ class PPRN:
                         for k in range(self.dim[i,1]):
                             self.som[i][j,k,:] += self.eta*(self.hid[i][j,k]/m)*\
                             (self.hid[i-1][:,0]-self.som[i][j,k,:])
-                    # store the maximum value on first element as hidden activation
-                self.hid[i][j,0] = m
+            # supervised learning
+            id_max = np.argmax(self.act[i])
+            if y!=[] and y!=id_max:
+                for k in range(self.dim[i,1]):
+                    self.som[i][j,k,:]
                     
     def test(self, x):
-        self.train(x)
+        self.train(x, [])
         return np.argmax(self.hid[self.dim.shape[0]-1][:,0])
 
 def main():
@@ -147,12 +160,13 @@ def main():
     [ims_test, h, w, lbs_test] = load_mnist(test_im_path, test_lb_path)
     test_num = ims_test.shape[0]
     # apply a dataset
-    net.init(np.array([[numlbl, 32, h*w]]), 0.1)
-    for i in range(100000):
-        net.train(ims_train[i%100,:]/255.0)
+    #net.init(np.array([[5, 16, h*w], [numlbl, 8, 5]]), 0.1)
+    net.init(np.array([[numlbl, 8, h*w]]), 0.1)
+    for i in range(10000):
+        net.train(ims_train[i,:]/255.0, [])
     print '=== training done ===='
     # test the model
-    for i in range(30):
+    for i in range(20):
         print net.test(ims_train[i,:]/255.0), int(lbs_train[i])
     print '===== test done ======'
     
