@@ -126,6 +126,7 @@ class PPRN:
 		m = np.max(self.act[i])
 		if i==self.dim.shape[0]-1 and y!=[]:
 			while y!=id_max:
+				# update parameters for the winner(supervised winner)
 				if i==0: # first hidden layer
                 			for k in range(self.dim[i,1]):
 						self.som[i][y,k,:] += \
@@ -136,6 +137,13 @@ class PPRN:
 						self.som[i][y,k,:] += \
 						self.eta*(self.hid[i][y,k]/m)*\
 						(self.act[i-1]-self.som[i][y,k,:])
+				# update parameters for the losers(supversied loser)
+				if i==0:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.som[i][j,k,:] += \
+							-self.eta*(self.hid[i][j,k])*\
+							(self.act[i-1]-self.som[i][j,k,:])
 				# update activation state with updated parameters
 				for k in range(self.dim[i,1]):
 					if i==0:
