@@ -71,6 +71,14 @@ def load_mnist(im_path, lb_path):
     )
     return [ims, numRows, numColumns, lbs]
 
+def rev(x):
+	''' reverse a vector constrained in a positive cube
+	'''
+	y = np.zeros(len(x))
+	for i in range(len(x)):
+		y[i] = max(x[i],1-x[i])
+	return y
+
 
 class PPRN:
     '''
@@ -142,16 +150,29 @@ class PPRN:
 					for j in range(self.dim[i,0]):
 						for k in range(self.dim[i,1]):
 							self.som[i][j,k,:] += \
-							-self.eta*(self.hid[i][j,k])*\
-							(self.act[i-1]-self.som[i][j,k,:])
+							self.eta*self.hid[i][j,k]*\
+							(rev(x)-self.som[i][j,k,:])
+				else:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.som[i][j,k,:] += \
+							self.eta*self.hid[i][j,k]*\
+							(rev(self.act[i-1])-\
+							self.som[i][j,k,:])
 				# update activation state with updated parameters
-				for k in range(self.dim[i,1]):
-					if i==0:
-						self.hid[i][y,k] = response(x, self.som[i][y,k,:])
-					else:
-						self.hid[i][y,k] = response(self.act[i-1], \
-						self.som[i][y,k,:])
-				self.act[i][y] = np.max(self.hid[i][y,:])
+				if i==0:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.hid[i][j,k] = \
+							response(x, self.som[i][j,k,:])
+						self.act[i][j] = np.max(self.hid[i][j,:])
+				else:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.hid[i][j,k] = \
+							response(self.act[i-1], \
+							self.som[i][j,k,:])
+						self.act[i][j] = np.max(self.hid[i][j,:])
 				id_max = np.argmax(self.act[i])
 		else:
 			#if m > np.random.rand(1): # probalistic activation
