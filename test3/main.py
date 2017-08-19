@@ -76,7 +76,10 @@ def rev(x):
 	'''
 	y = np.zeros(len(x))
 	for i in range(len(x)):
-		y[i] = max(x[i],1-x[i])
+            if x[i]>1.0-x[i]:
+                y[i] = 0.0
+            else:
+                y[i] = 1.0
 	return y
 
 
@@ -129,65 +132,83 @@ class PPRN:
                         self.hid[i][j,k] = response(self.act[i-1], \
                                 self.som[i][j,k,:])
                 self.act[i][j] = np.max(self.hid[i][j,:])
-		# supervised learning only for last layer
-		id_max = np.argmax(self.act[i])
-		m = np.max(self.act[i])
-		if i==self.dim.shape[0]-1 and y!=[]:
-			while y!=id_max:
-				# update parameters for the winner(supervised winner)
-				if i==0: # first hidden layer
-                			for k in range(self.dim[i,1]):
-						self.som[i][y,k,:] += \
-						self.eta*(self.hid[i][y,k]/m)*\
-						(x-self.som[i][y,k,:])
-				else:
-					for k in range(self.dim[i,1]):
-						self.som[i][y,k,:] += \
-						self.eta*(self.hid[i][y,k]/m)*\
-						(self.act[i-1]-self.som[i][y,k,:])
-				# update parameters for the losers(supversied loser)
-				if i==0:
-					for j in range(self.dim[i,0]):
-						for k in range(self.dim[i,1]):
-							self.som[i][j,k,:] += \
-							self.eta*self.hid[i][j,k]*\
-							(rev(x)-self.som[i][j,k,:])
-				else:
-					for j in range(self.dim[i,0]):
-						for k in range(self.dim[i,1]):
-							self.som[i][j,k,:] += \
-							self.eta*self.hid[i][j,k]*\
-							(rev(self.act[i-1])-\
-							self.som[i][j,k,:])
-				# update activation state with updated parameters
-				if i==0:
-					for j in range(self.dim[i,0]):
-						for k in range(self.dim[i,1]):
-							self.hid[i][j,k] = \
-							response(x, self.som[i][j,k,:])
-						self.act[i][j] = np.max(self.hid[i][j,:])
-				else:
-					for j in range(self.dim[i,0]):
-						for k in range(self.dim[i,1]):
-							self.hid[i][j,k] = \
-							response(self.act[i-1], \
-							self.som[i][j,k,:])
-						self.act[i][j] = np.max(self.hid[i][j,:])
-				id_max = np.argmax(self.act[i])
+	    # supervised learning only for last layer
+	    id_max = np.argmax(self.act[i])
+	    m = np.max(self.act[i])
+	    if i==self.dim.shape[0]-1 and y!=[]:
+                print 'supversied learning'
+		while y!=id_max:
+		    # update parameters for the winner(supervised winner)
+		    if i==0: # first hidden layer
+                        for k in range(self.dim[i,1]):
+                            self.som[i][y,k,:] += \
+			    self.eta*(self.hid[i][y,k]/m)*\
+			    (x-self.som[i][y,k,:])
+		    else:
+		        for k in range(self.dim[i,1]):
+			    self.som[i][y,k,:] += \
+			    self.eta*(self.hid[i][y,k]/m)*\
+			    (self.act[i-1]-self.som[i][y,k,:])
+		    # update parameters for the losers(supversied loser)
+		    if i==0:
+		        for j in range(self.dim[i,0]):
+                            if j!=y:
+			        for k in range(self.dim[i,1]):
+				    self.som[i][j,k,:] += \
+				    self.eta*self.hid[i][j,k]*\
+				    (rev(x)-self.som[i][j,k,:])
+		    else:
+		        for j in range(self.dim[i,0]):
+                            if j!=y:
+			        for k in range(self.dim[i,1]):
+				    self.som[i][j,k,:] += \
+				    self.eta*self.hid[i][j,k]*\
+				    (rev(self.act[i-1])-\
+				    self.som[i][j,k,:])
+		    # update activation state with updated parameters
+		    if i==0:
+		        for j in range(self.dim[i,0]):
+		            for k in range(self.dim[i,1]):
+			        self.hid[i][j,k] = \
+			        response(x, self.som[i][j,k,:])
+			        self.act[i][j] = np.max(self.hid[i][j,:])
+		    else:
+		        for j in range(self.dim[i,0]):
+		            for k in range(self.dim[i,1]):
+			        self.hid[i][j,k] = \
+			        response(self.act[i-1], \
+			        self.som[i][j,k,:])
+			        self.act[i][j] = np.max(self.hid[i][j,:])
+			        id_max = np.argmax(self.act[i])
+	    else: # for unsupervised learning(or middle layer)
+	        #if m > np.random.rand(1): # probalistic activation
+		# update parameters for the winner(supervised winner)
+		if i==0: # first hidden layer
+                    for k in range(self.dim[i,1]):
+			self.som[i][id_max,k,:] += \
+			self.eta*(self.hid[i][id_max,k]/m)*\
+			(x-self.som[i][id_max,k,:])
 		else:
-			#if m > np.random.rand(1): # probalistic activation
-			# update all patterns in som according to its response value
-			if i == 0:
-                        	for k in range(self.dim[i,1]):
-                            		self.som[i][id_max,k,:] += \
-                        		self.eta*(self.hid[i][id_max,k]/m)*\
-					(x-self.som[i][id_max,k,:])
- 			else:
-                        	for k in range(self.dim[i,1]):
-                            		self.som[i][id_max,k,:] += \
-					self.eta*(self.hid[i][id_max,k]/m)*\
-                            		(self.act[i-1]-self.som[i][id_max,k,:])
-
+		    for k in range(self.dim[i,1]):
+			self.som[i][id_max,k,:] += \
+			self.eta*(self.hid[i][id_max,k]/m)*\
+			(self.act[i-1]-self.som[i][id_max,k,:])
+		# update parameters for the losers(supversied loser)
+		if i==0:
+		    for j in range(self.dim[i,0]):
+                        if j!=id_max:
+			    for k in range(self.dim[i,1]):
+				self.som[i][j,k,:] += \
+				self.eta*self.hid[i][j,k]*\
+				(rev(x)-self.som[i][j,k,:])
+		else:
+		    for j in range(self.dim[i,0]):
+                        if j!=id_max:
+			    for k in range(self.dim[i,1]):
+				self.som[i][j,k,:] += \
+				self.eta*self.hid[i][j,k]*\
+				(rev(self.act[i-1])-\
+				self.som[i][j,k,:])
     def test(self, x):
         self.train(x, [])
         return np.argmax(self.hid[self.dim.shape[0]-1][:,0])
@@ -211,12 +232,17 @@ def main():
     test_num = ims_test.shape[0]
     # apply a dataset
     #net.init(np.array([[5, 16, h*w], [numlbl, 8, 5]]), 0.1)
-    net.init(np.array([[numlbl, 32, h*w]]), 0.1)
-    for i in range(10000):
-        net.train(ims_train[i,:]/255.0, [])
+    net.init(np.array([[numlbl, 32, h*w]]), 0.3)
+    # unsupervised learning
+    #for i in range(10000):
+    #    net.train(ims_train[i,:]/255.0, [])
+    # supservised learning
+    for i in range(100):
+        print 'iter', str(i)
+        net.train(ims_train[i,:]/255.0, int(lbs_train[i]))
     print '=== training done ===='
     # test the model
-    for i in range(20):
+    for i in range(30):
         print net.test(ims_train[i,:]/255.0), int(lbs_train[i])
     print '===== test done ======'
     
