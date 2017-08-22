@@ -136,79 +136,75 @@ class PPRN:
 	    id_max = np.argmax(self.act[i])
 	    m = np.max(self.act[i])
 	    if i==self.dim.shape[0]-1 and y!=[]:
-                print 'supversied learning'
-		while y!=id_max:
-		    # update parameters for the winner(supervised winner)
-		    if i==0: # first hidden layer
-                        for k in range(self.dim[i,1]):
-                            self.som[i][y,k,:] += \
-			    self.eta*(self.hid[i][y,k]/m)*\
-			    (x-self.som[i][y,k,:])
-		    else:
-		        for k in range(self.dim[i,1]):
-			    self.som[i][y,k,:] += \
-			    self.eta*(self.hid[i][y,k]/m)*\
-			    (self.act[i-1]-self.som[i][y,k,:])
-		    # update parameters for the losers(supversied loser)
-		    if i==0:
-		        for j in range(self.dim[i,0]):
-                            if j!=y:
-			        for k in range(self.dim[i,1]):
-				    self.som[i][j,k,:] += \
-				    self.eta*self.hid[i][j,k]*\
-				    (rev(x)-self.som[i][j,k,:])
-		    else:
-		        for j in range(self.dim[i,0]):
-                            if j!=y:
-			        for k in range(self.dim[i,1]):
-				    self.som[i][j,k,:] += \
-				    self.eta*self.hid[i][j,k]*\
-				    (rev(self.act[i-1])-\
-				    self.som[i][j,k,:])
-		    # update activation state with updated parameters
-		    if i==0:
-		        for j in range(self.dim[i,0]):
-		            for k in range(self.dim[i,1]):
-			        self.hid[i][j,k] = \
-			        response(x, self.som[i][j,k,:])
-			        self.act[i][j] = np.max(self.hid[i][j,:])
-		    else:
-		        for j in range(self.dim[i,0]):
-		            for k in range(self.dim[i,1]):
-			        self.hid[i][j,k] = \
-			        response(self.act[i-1], \
-			        self.som[i][j,k,:])
-			        self.act[i][j] = np.max(self.hid[i][j,:])
-			        id_max = np.argmax(self.act[i])
+			print 'supversied learning'
+			while y!=id_max:
+				# update parameters for the winner(supervised winner)
+				if i==0: # first hidden layer
+					for k in range(self.dim[i,1]):
+						self.som[i][y,k,:] += self.eta*\
+						(self.hid[i][y,k]/m)*\
+						(x-self.som[i][y,k,:])
+				else:
+					for k in range(self.dim[i,1]):
+						self.som[i][y,k,:] += self.eta*\
+						(self.hid[i][y,k]/m)*\
+						(self.act[i-1]-self.som[i][y,k,:])
+				# update parameters for the losers(supversied loser)
+				if i==0:
+					for j in range(self.dim[i,0]):
+						if j!=y:
+							for k in range(self.dim[i,1]):
+								self.som[i][j,k,:] += self.eta*\
+								self.hid[i][j,k]*\
+								(rev(x)-self.som[i][j,k,:])
+				else:
+					for j in range(self.dim[i,0]):
+						if j!=y:
+							for k in range(self.dim[i,1]):
+								self.som[i][j,k,:] += self.eta*\
+								self.hid[i][j,k]*\
+								(rev(self.act[i-1])-\
+								self.som[i][j,k,:])
+				# update activation state with updated parameters
+				if i==0:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.hid[i][j,k] = response(x, self.som[i][j,k,:])
+						self.act[i][j] = np.max(self.hid[i][j,:])
+				else:
+					for j in range(self.dim[i,0]):
+						for k in range(self.dim[i,1]):
+							self.hid[i][j,k] = response(self.act[i-1],\
+							self.som[i][j,k,:])
+						self.act[i][j] = np.max(self.hid[i][j,:])
+					id_max = np.argmax(self.act[i])
 	    else: # for unsupervised learning(or middle layer)
-	        #if m > np.random.rand(1): # probalistic activation
-		# update parameters for the winner(supervised winner)
-		if i==0: # first hidden layer
-                    for k in range(self.dim[i,1]):
-			self.som[i][id_max,k,:] += \
-			self.eta*(self.hid[i][id_max,k]/m)*\
-			(x-self.som[i][id_max,k,:])
-		else:
-		    for k in range(self.dim[i,1]):
-			self.som[i][id_max,k,:] += \
-			self.eta*(self.hid[i][id_max,k]/m)*\
-			(self.act[i-1]-self.som[i][id_max,k,:])
-		# update parameters for the losers(supversied loser)
-		if i==0:
-		    for j in range(self.dim[i,0]):
-                        if j!=id_max:
-			    for k in range(self.dim[i,1]):
-				self.som[i][j,k,:] += \
-				self.eta*self.hid[i][j,k]*\
-				(rev(x)-self.som[i][j,k,:])
-		else:
-		    for j in range(self.dim[i,0]):
-                        if j!=id_max:
-			    for k in range(self.dim[i,1]):
-				self.som[i][j,k,:] += \
-				self.eta*self.hid[i][j,k]*\
-				(rev(self.act[i-1])-\
-				self.som[i][j,k,:])
+			# update parameters for the winner(supervised winner)
+			if i==0: # first hidden layer
+				for k in range(self.dim[i,1]):
+					self.som[i][id_max,k,:] += \
+					self.eta*(self.hid[i][id_max,k]/m)*\
+					(x-self.som[i][id_max,k,:])
+			else:
+				for k in range(self.dim[i,1]):
+					self.som[i][id_max,k,:] += \
+					self.eta*(self.hid[i][id_max,k]/m)*\
+					(self.act[i-1]-self.som[i][id_max,k,:])
+			# update parameters for the losers(supversied loser)
+			if i==0:
+				for j in range(self.dim[i,0]):
+					if j!=id_max:
+						for k in range(self.dim[i,1]):
+							self.som[i][j,k,:] += \
+							self.eta*self.hid[i][j,k]*\
+							(rev(x)-self.som[i][j,k,:])
+			else:
+				for j in range(self.dim[i,0]):
+					if j!=id_max:
+						for k in range(self.dim[i,1]):
+							self.som[i][j,k,:] += self.eta*\
+							self.hid[i][j,k]*(rev(self.act[i-1])-\
+							self.som[i][j,k,:])
     def test(self, x):
         self.train(x, [])
         return np.argmax(self.hid[self.dim.shape[0]-1][:,0])
