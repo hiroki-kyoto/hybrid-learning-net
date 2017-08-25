@@ -160,7 +160,7 @@
 %% \dochead can also be used to include a conference title, if directed by the editors
 %% e.g. \dochead{17th International Conference on Dynamical Processes in Excited States of Solids}
 
-\title{Hybrid Learning Network: 
+\title{Hybrid Learning Network:\\ 
 	A Novel Architecture for
 	Fast Learning}
 
@@ -211,6 +211,9 @@ We also experiment on the well-known
 MNIST dataset, it demonstrates an 
 even more impressive learning eciency 
 by up to $40\times$ speed-up on training.
+It indicates that our architecture performs
+better on handling larger datasets and 
+tackling larger problems.
 \end{abstract}
 
 \begin{keyword}
@@ -268,7 +271,7 @@ and their best performances
 rely heavily on the hyperparameter 
 configuration. Therefore
 a relatively universal 
-architecutre that enables equal 
+architecture that enables equal 
 or similar performances among 
 varied applications is in real demand.
 
@@ -309,7 +312,7 @@ the supervised optimizing object,
 and generally a balance constraint is
 required to avoid the trival solution
 \cite{socher2011semi}.
-Such a enhanced learner brings more 
+Such an enhanced learner brings more 
 hyperparameters(such as the balance 
 constraint), making it even more 
 difficult to search for the best 
@@ -327,7 +330,7 @@ starts.
 Therefore in the paper, we introduce 
 a new architecture that combines the
 supervised and unsupervised learning
-equiring no extra techniques in
+requiring no extra techniques in
 training. Our architecture, the Hybrid
 Learning Network(HLN), consists of 
 stacked hybrid learning layers, 
@@ -556,8 +559,8 @@ on their training eciency and
 stablity.
 Each hidden layer in HLN architecture 
 is embedded with a SOM. For the 
-simplest case where neurons are connected 
-with fully connection, the traditional
+simplest case where neurons are fully connected, 
+the traditional
 architecture, called Fully 
 Connected Network(FCN) architecture,
 is presented in Figure~\ref{fig:1:a}.
@@ -698,7 +701,7 @@ by an activation function, which could
 be any 
 arbitrary nonlinear function that 
 takes 
-only one dimension inputs and 
+only one dimension input and 
 outputs a 
 single real value, 
 such as the sigmoid function, 
@@ -1080,8 +1083,8 @@ and deeper network.
 To enable the input dimension variation,
 a max-pooling is applied before the input
 of a neural net. The MNIST dataset
-provides 50000 images for training and 
-10000 images for testing, with each image
+provides 50,000 images for training and 
+10,000 images for testing, with each image
 resized as $28\times 28$ of pixels. 
 A max-pooling with the kernel of 
 $2\times 2$
@@ -1235,7 +1238,7 @@ we use a max-pooling with a kernel
 of $1\times 1$,
 which equals to the original input as 
 in MNIST.
-The input dimension of the net 
+The input dimension of the network
 is therefore 4 
 times larger than that in 
 Figure~(\ref{fig:4:a}).
@@ -1265,7 +1268,7 @@ the training as we may expect
 in a linear manner.
 
 Figure~\ref{fig:5} further confirms 
-the \emph{facts} 
+the facts
 observed from Figure~\ref{fig:4}.
 The test accuracy is not improved at all
 with deeper architectures,
