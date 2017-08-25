@@ -137,6 +137,8 @@ class PPRN:
 	    m = np.max(self.act[i])
 	    if i==self.dim.shape[0]-1 and y!=[]:
 			print 'supversied learning'
+			print 'id_max:', id_max
+			print 'm:', m
 			while y!=id_max:
 				# update parameters for the winner(supervised winner)
 				if i==0: # first hidden layer
