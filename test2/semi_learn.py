@@ -104,7 +104,7 @@ def main():
 	net.build_model()
         # supervised training 
         epn = 300
-        labeled_ratio = 0.3
+        labeled_ratio = 0.7
         strain = int(np.floor(train * labeled_ratio))
         snum = strain * epn
         sseq = np.random.randint(0,strain,snum) 

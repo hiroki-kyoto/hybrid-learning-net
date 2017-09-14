@@ -1,0 +1,12 @@
+Hybrid Learning Network: 
+1. Unsupervisedly learn the trainable sparsity mask matrix
+2. Supervisedly learn the trainable weight matrix
+3. For each layer, it the sparsity mask matrix is not stablized,
+   then go on with such process:
+	a.	Supervisedly train weight matrix with small labeled data.
+	b.	Unsupervisedly train sparsity mask matrix with big
+		unlabeled data.
+	c.	if big enough change is made in b, then continue with
+		process a->b->c. Exit this process till condition fails.
+	[*] Easy to see, if network is stacked with layers, then
+		the hybrid training process will be just layer by layer.
