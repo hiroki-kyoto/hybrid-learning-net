@@ -1,4 +1,0 @@
-1. training loss curve comparison
-2. testing accuracy curve comparison
-3. MNIST total accuracy improvements
-

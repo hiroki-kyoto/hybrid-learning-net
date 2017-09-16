@@ -64,6 +64,9 @@ def load_mnist(im_path, lb_path):
 	)
 	return [ims, numRows, numColumns, lbs]
 
+# check training state
+def check_train_state(n, l, tol):
+
 def main():
 	# reading MINST database
 	# load training images
@@ -94,7 +97,7 @@ def main():
 	else:
 		net = BPNN()
         # build net model
-	net_dim = [h*w, 30, numlbl]
+	net_dim = [h*w, 30, 20, numlbl]
 	net.set_net_dim(net_dim)
 	net.set_scale(255.0, 1.0)
 	net.set_bp_eta(0.8)
@@ -104,7 +107,7 @@ def main():
 	net.build_model()
         # supervised training 
         epn = 300
-        labeled_ratio = 0.7
+        labeled_ratio = 1.0
         strain = int(np.floor(train * labeled_ratio))
         snum = strain * epn
         sseq = np.random.randint(0,strain,snum) 
