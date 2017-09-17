@@ -103,34 +103,37 @@ class HLNN:
     # this method only work on single row training or predicting     
     # training or predicting is unified as only one API     
     def drive_model(self, data, feedback):         
-        # check if model is built
+        
         if self.layers<1:
             print "Error: Model is not built yet!"
             return
-        # if input data has label then it is feedback training
-        # else it should be unsupervised learning on SOM model
+        
         if len(data) != self.net_dim[0]:
             print "Error: input data dimension is ILLEGAL!"
             return
-        # run unsupervised learning first
+
         self.inputlayer[0] = data/self.inputscale
-        self.somlayer[0] = np.abs(self.som_conn[0]-self.inputlayer.T).sum(axis=0)/self.net_dim[0]
-        mid = self.somlayer[0].argmin()
-        self.somerror[0] = self.somlayer[0].min()
-        self.somflag[0] = self.somlayer[0].max()-self.somerror[0]
-        # unifying
-        self.somlayer[0] = unify(self.somlayer[0])
-        # circle model updating
-        decline = 1.0
-        for i in range(0, self.som_rad):
-            self.som_conn[0][:,(mid-i)%self.net_dim[1]] += \
-            self.somerror[0]*self.som_eta*decline*(
-                    self.inputlayer[0]-self.som_conn[0][:,(mid-i)%self.net_dim[1]])
-            if i>0:
-                self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
+        
+        if feedback == []:
+            t = self.som_conn[0]-self.inputlayer.T
+            t = np.abs(t).sum(axis=0)/self.net_dim[0]
+            self.somlayer[0] = t
+            mid = self.somlayer[0].argmin()
+            self.somerror[0] = self.somlayer[0].min()
+            self.somflag[0] = self.somlayer[0].max()-self.somerror[0]
+            self.somlayer[0] = unify(self.somlayer[0])
+
+            decline = 1.0
+            for i in range(0, self.som_rad):
+                self.som_conn[0][:,(mid-i)%self.net_dim[1]] += \
                 self.somerror[0]*self.som_eta*decline*(
+                    self.inputlayer[0]-self.som_conn[0][:,(mid-i)%self.net_dim[1]])
+                if i>0:
+                    self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
+                    self.somerror[0]*self.som_eta*decline*(
                         self.inputlayer[0]-self.som_conn[0][:,(mid+i)%self.net_dim[1]])
-            decline *= self.som_dec
+                decline *= self.som_dec
+        # indent to be fixed
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
             self.inputlayer.dot(
@@ -169,7 +172,7 @@ class HLNN:
                 self.bp_conn[self.layers-2]
             ) + self.olayerbias
         )
-        # check if to do feedback procedure
+
         if feedback==[]:
             #print "output: ", self.outputlayer
             return (self.outputlayer*self.outputscale, self.somflag)
