@@ -2,13 +2,12 @@
 # class of Hybrid Learning Neural Network
 
 # class param definition
-#   net_dim: dimensionality of whole net, like [2,100,2] (in circle)
+#   net_dim: dimensionality of whole net, like [2,100,2]
 #   som_eta: learning rate of SOM
 #   som_rad: neighborhood radius
 #   som_dec: decrease rate of correctness
 #   =====================================
 #   bp_eta: BPNN learning reate
-#   bp_coe: BPNN learning rate coefficient[NOT USED]
 
 import numpy as np
 
@@ -125,14 +124,18 @@ class HLNN:
 
             decline = 1.0
             for i in range(0, self.som_rad):
-                self.som_conn[0][:,(mid-i)%self.net_dim[1]] += \
-                self.somerror[0]*self.som_eta*decline*(
-                    self.inputlayer[0]-self.som_conn[0][:,(mid-i)%self.net_dim[1]])
-                if i>0:
-                    self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
+				t = self.som_conn[0][:,(mid-i)%self.net_dim[1]]
+				t = self.inputlayer[0] - t
+				t = self.somerror[0]*self.som_eta*decline*t
+                self.som_conn[0][:,(mid-i)%self.net_dim[1]] += t
+				
+				if i>0:
+					
+					self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
                     self.somerror[0]*self.som_eta*decline*(
                         self.inputlayer[0]-self.som_conn[0][:,(mid+i)%self.net_dim[1]])
                 decline *= self.som_dec
+#### notice : in new version, we need to implement multi-layer unsupervised learning #####
         # indent to be fixed
         # feedforward computing
         self.hiddenlayer[0] = sigmoid(
