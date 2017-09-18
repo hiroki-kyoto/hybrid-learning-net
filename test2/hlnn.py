@@ -62,12 +62,12 @@ class HLNN:
     def build_model(self):
         # check if the dim is legal
         if self.ready==False:
-            print "Network Model Parameter Not Well Set!"
+            print "Network Model Parameter Incomplete"
             return
         self.layers = len(self.net_dim)
         if self.layers<3:
-            print "Network Model Configuration Parameter is ILLEGAL!!!"
-            print "Net layers should be no less than 3"
+            print "Network Model Configuration Error"
+            print "Required: layer depth >= 3"
             return
         self.inputlayer = np.zeros([1, self.net_dim[0]])
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
@@ -85,7 +85,6 @@ class HLNN:
             self.somlayer[i-1] = np.zeros([1, self.net_dim[i]])
             self.hlayerbias[i-1] = np.random.rand(1, self.net_dim[i])
         # build connections
-        # SOM connections
         self.som_conn = range(1, self.layers-1)
         self.bp_conn = range(1, self.layers)
         for i in range(1, self.layers):
@@ -98,11 +97,46 @@ class HLNN:
         self.node_error = range(1, self.layers)
         for i in range(1, self.layers):
             self.node_error[i-1] = np.zeros([1, self.net_dim[i]])
-
-    # this method only work on single row training or predicting     
-    # training or predicting is unified as only one API     
-    def drive_model(self, data, feedback):         
-        
+    
+    def feed(self, x):
+        self.inputlayer[0] = data/self.inputscale
+    
+    def forward(self, il):
+        # flow over som
+        if il==0:
+            t = self.som_conn[il] - self.inputlayer.T
+        else:
+            t = self.som_conn[il] - self.hiddenlayer[il-1].T
+        t = np.abs(t).sum(axis=0)/self.net_dim[il]
+        self.somerror[il] = t.min()
+        self.somflag[il] = t.max()-self.somerror[il]
+        self.somlayer[il] = unify(t)
+        # flow over fcn
+        if il==0:
+            t = np.dot(self.inputlayer, self.bp_conn[il])
+        else:
+            t = np.dot(self.hiddenlayer[il-1], self.bp_conn[il])
+        t = self.somlayer[il]+self.hlayerbias[il]
+        self.hiddenlayer[il] = sigmoid(t)
+        # layer sparsity
+        t = filter(lambda x:x>1e-3, self.hiddenlayer[il][0,:])
+        self.sparsity[il] = 1.0*len(t)/len(self.hiddenlayer[il][0,:])
+    
+    def update(self, il):
+        # update som connections
+        mid = self.somlayer[il].argmin()
+        for i in range(-self.som_rad, self.som_rad+1):
+            t = self.som_conn[il][:,(mid+i)%self.net_dim[il+1]]
+            if il==0:
+                t = self.inputlayer[0] - t
+            else:
+                t = self.hiddenlayer[il-1][0][:] - t
+            decay = np.power(som_dec, np.abs(i))
+            t = self.somerror[il]*self.som_eta*decay*t
+            self.som_conn[il][:,(mid+i)%self.net_dim[il+1]] += t
+        # update fcn connections
+    
+    def drive_model(self, data, feedback): 
         if self.layers<1:
             print "Error: Model is not built yet!"
             return
@@ -111,7 +145,9 @@ class HLNN:
             print "Error: input data dimension is ILLEGAL!"
             return
 
-        self.inputlayer[0] = data/self.inputscale
+        self.feed(data)
+        for i range(0,len(self.net_dim)):
+            self.forward(0)
         
         if feedback == []:
             t = self.som_conn[0]-self.inputlayer.T
@@ -122,19 +158,12 @@ class HLNN:
             self.somflag[0] = self.somlayer[0].max()-self.somerror[0]
             self.somlayer[0] = unify(self.somlayer[0])
 
-            decline = 1.0
-            for i in range(0, self.som_rad):
-				t = self.som_conn[0][:,(mid-i)%self.net_dim[1]]
-				t = self.inputlayer[0] - t
-				t = self.somerror[0]*self.som_eta*decline*t
-                self.som_conn[0][:,(mid-i)%self.net_dim[1]] += t
-				
-				if i>0:
-					
-					self.som_conn[0][:,(mid+i)%self.net_dim[1]] += \
-                    self.somerror[0]*self.som_eta*decline*(
-                        self.inputlayer[0]-self.som_conn[0][:,(mid+i)%self.net_dim[1]])
-                decline *= self.som_dec
+            for i in range(-self.som_rad, self.som_rad+1):
+                t = self.som_conn[0][:,(mid+i)%self.net_dim[1]]
+                t = self.inputlayer[0] - t
+                decay = np.power(som_dec, np.abs(i))
+                t = self.somerror[0]*self.som_eta*decay*t
+                self.som_conn[0][:,(mid+i)%self.net_dim[1]] += t
 #### notice : in new version, we need to implement multi-layer unsupervised learning #####
         # indent to be fixed
         # feedforward computing
