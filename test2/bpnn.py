@@ -44,8 +44,7 @@ class BPNN:
 
     def build_model(self):
         if self.ready==False:
-            print "Network Model Parameter Not Well Set!"
-            return
+            raise NameError("network model incomplete")
         self.layers = len(self.net_dim)
         if self.layers<3:
             print "Network Model Configuration Parameter is ILLEGAL!!!"
