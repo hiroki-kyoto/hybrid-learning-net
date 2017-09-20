@@ -62,41 +62,44 @@ class HLNN:
         self.outputscale = outputscale
 
     def build_model(self):
-        # check if the dim is legal
+
         if self.ready==False:
-            print "Network Model Parameter Incomplete"
-            return
+            raise NameError("model incomplete")
+
         self.layers = len(self.net_dim)
+        
         if self.layers<3:
-            print "Network Model Configuration Error"
-            print "Required: layer depth >= 3"
-            return
+            raise NameError("at least 3 layers required")
+
         self.inputlayer = np.zeros([1, self.net_dim[0]])
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
         self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
         self.hiddenlayer = range(1, self.layers-1)
         self.sparsity = np.zeros(self.layers-2)
-        # each hidden layer has a friend som layer 
-        # to estimate its signal distribution
+        
         self.somlayer = range(1, self.layers-1)
         self.somflag = np.zeros(len(self.somlayer))
         self.somerror = np.zeros(len(self.somlayer))
         self.hlayerbias = range(1, self.layers-1)
+        
         for i in range(1, self.layers-1):
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
             self.somlayer[i-1] = np.zeros([1, self.net_dim[i]])
             self.hlayerbias[i-1] = np.random.rand(1, self.net_dim[i])
-        # build connections
+
         self.som_conn = range(1, self.layers-1)
         self.bp_conn = range(1, self.layers)
+        
         for i in range(1, self.layers):
             self.bp_conn[i-1] = np.random.rand(
                 self.net_dim[i-1], self.net_dim[i])
+        
         for i in xrange(self.layers-2):
             self.som_conn[i] = np.random.rand(
                 self.net_dim[i], self.net_dim[i+1])
-        # node error for each node
+
         self.node_error = range(1, self.layers)
+        
         for i in range(1, self.layers):
             self.node_error[i-1] = np.zeros([1, self.net_dim[i]])
     

@@ -43,62 +43,94 @@ class BPNN:
         self.outputscale = outputscale
 
     def build_model(self):
+
         if self.ready==False:
             raise NameError("network model incomplete")
+        
         self.layers = len(self.net_dim)
+        
         if self.layers<3:
-            print "Network Model Configuration Parameter is ILLEGAL!!!"
-            print "Net layers should be no less than 3"
-            return
+            raise NameError("at least 3 layers required")
+        
         self.inputlayer = np.zeros([1, self.net_dim[0]])
         self.outputlayer = np.zeros([1, self.net_dim[self.layers-1]])
         self.olayerbias = np.random.rand(1, self.net_dim[self.layers-1])
-        # hidden layers
+        
         self.hiddenlayer = range(1, self.layers-1)
         self.sparsity = np.zeros(self.layers-2)
         self.hlayerbias = range(1, self.layers-1)
+        
         for i in range(1, self.layers-1):
             self.hiddenlayer[i-1] = np.zeros([1, self.net_dim[i]])
             self.hlayerbias[i-1] = np.random.rand(1, self.net_dim[i])
-        # build connections
+        
         self.bp_conn = range(1, self.layers)
+        
         for i in range(1, self.layers):
-            self.bp_conn[i-1] = np.random.rand(
-                self.net_dim[i-1], self.net_dim[i])
-    def drive_model(self, data, feedback):
-        # check if model is built
+            m = self.net_dim[i-1]
+            n = self.net_dim[i]
+            self.bp_conn[i-1] = np.random.rand(m, n)
+        
+    def check_model(self):
+
         if self.layers<1:
-            print "Error: Model is not built yet!"
-            return
-        if len(data) != self.net_dim[0]:
-            print "Error: input data dimension is ILLEGAL!"             
-            return         
-        # unifying inputs
-        self.inputlayer[0] = data/self.inputscale
-        # feedforward computing
-        self.hiddenlayer[0] = sigmoid(
-            self.inputlayer.dot(
-                self.bp_conn[0]
-            ) + self.hlayerbias[0]
-        )
-        self.sparsity[0] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[0][0,:]))/len(self.hiddenlayer[0][0,:])
-        for i in range(2, self.layers-1):
-            self.hiddenlayer[i-1] = sigmoid(
-                self.hiddenlayer[i-2].dot(
-                    self.bp_conn[i-1]
-                ) + self.hlayerbias[i-1]
-            )
-            self.sparsity[i-1] = 1.0*len(filter(lambda x:x>1e-3,self.hiddenlayer[i-1][0,:]))/len(self.hiddenlayer[i-1][0,:])
-        self.outputlayer = sigmoid(
-            self.hiddenlayer[self.layers-3].dot(
-                self.bp_conn[self.layers-2]
-            ) + self.olayerbias
-        )
-        if feedback==[]:
-            return (self.outputlayer*self.outputscale, 0) 
+            raise NameError("model incomplete")
+
+    def check_data(self, x):
+          
+        if len(x)!=self.net_dim[0]:
+            raise NameError("bad input dimension")
+
+    def check_feedback(self, y):
+
+        if y==[]:
+            raise NameError("feedback required for training")
+
         if len(feedback) != self.net_dim[self.layers-1]:
-            print "feedback is of wrong dimension!"
-            return
+            raise NameError("bad feedback dimension")
+
+    def feed(self, x):
+        self.inputlayer[0] = data/self.inputscale
+
+    def forward(self, il):
+
+        if il==0:
+            t = np.dot(self.inputlayer, self.bp_conn[il])
+            t = t + self.hlayerbias[il]
+            self.hiddenlayer[il] = sigmoid(t)
+            t = filter(lambda x:x>1e-3,self.hiddenlayer[il][0,:])
+            self.sparsity[il] = 1.0*len(t)/len(self.hiddenlayer[il][0,:])
+
+        elif il==self.layers-2:
+            t = np.dot(self.hiddenlayer[il-1], self.bp_conn[il])
+            t = t + self.olayerbias[il]
+            self.outputlayer = sigmoid(t)
+
+        else:
+            t = np.dot(self.hddenlayer[il-1], self.bp_conn[il])
+            t = t + self.hlayerbias[il]
+            self.hiddenlayer[il] = sigmoid(t)
+            t = filter(lambda x:x>1e-3,self.hiddenlayer[il][0,:])
+            self.sparsity[il] = 1.0*len(t)/len(self.hiddenlayer[il][0,:])
+
+    def error(self, y):
+        
+        return err
+
+    def backward(self, y):
+
+
+    def update(self):
+
+
+    def train(self, data, feedback):
+        self.check_model()
+        self.check_data(data)
+        self.feed(data)
+
+        if feedback==[]:
+            return (self.outputlayer*self.outputscale, 0)
+
         feedback = feedback/self.outputscale
         error = self.outputlayer-feedback
         error = 0.5*(error*error).sum()
@@ -122,6 +154,9 @@ class BPNN:
         return error
     def get_sparsity(self):
         return self.sparsity
+
+    def predict(self, x):
+        
 
 
 # END OF FILE
