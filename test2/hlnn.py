@@ -17,15 +17,15 @@ import numpy as np
 # helper methods
 def sigmoid(x):
     return 1.0/(1.0+np.exp(-x))
+
 def unify(x):
     #return np.ones(len(x))
     x = x + 1e-5
     a = x.min()
     b = x.max()
     t = a/(b-a+1e-5)
-    return b*t/x-t
-#def unify(x):
-#    x =  
+    return 1.0*b*t/x-t
+
 class HLNN:
     def __init__(self):
         self.layers = 0
@@ -58,7 +58,11 @@ class HLNN:
     def set_bp_eta(self, bp_eta):
         self.bp_eta = bp_eta
     def set_scale(self, inputscale, outputscale):
-        self.inputscale = inputscale
+        
+		if inputscale==0 || outputscale==0:
+			raise NameError("input or output scale zero error")
+		
+		self.inputscale = inputscale
         self.outputscale = outputscale
 
     def build_model(self):
@@ -104,7 +108,7 @@ class HLNN:
             self.node_error[i-1] = np.zeros([1, self.net_dim[i]])
     
     def feed(self, x):
-        self.inputlayer[0] = data/self.inputscale
+        self.inputlayer[0] = 1.0*data/self.inputscale
     
     def forward(self, il):
         
@@ -115,7 +119,7 @@ class HLNN:
             else:
                 t = self.som_conn[il] - self.hiddenlayer[il-1].T
             
-            t = np.abs(t).sum(axis=0)/self.net_dim[il]
+            t = 1.0*np.abs(t).sum(axis=0)/self.net_dim[il]
             self.somerror[il] = t.min()
             self.somflag[il] = t.max()-self.somerror[il]
             self.somlayer[il] = unify(t)
@@ -198,7 +202,6 @@ class HLNN:
             self.node_error[il] = t
 
     def error(self, y):
-        y = y/self.outputscale
         error = self.outputlayer-y
         error = 0.5*(error*error).sum()
         
@@ -224,7 +227,7 @@ class HLNN:
         self.check_data(data)
         self.feed(data)
         
-        for i range(0, self.layers-1):
+        for i range(0, self.layers-1, 1):
             self.forward(i)
 
         if feedback==[]:
@@ -237,6 +240,7 @@ class HLNN:
             return self.somflag
         
         else: 
+			feedback = 1.0*feedback/self.outputscale
             self.check_feedback(feedback)
             error = self.error()
             
