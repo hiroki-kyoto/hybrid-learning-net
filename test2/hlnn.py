@@ -37,16 +37,18 @@ class HLNN:
         self.eta_coe = 2.0
         self.inputscale = 1.0
         self.outputscale = 1.0
-        #self.bp_coe = 0.5
-        #print 'Creating new instance of HLNN model'
-
+	
     @property
     def ready(self):
         if self.net_dim==[]:
             return False
         else:
             return True
-
+	
+	@property
+	def type(self):
+		return 'HLNN'
+	
     def set_net_dim(self, net_dim):
         self.net_dim = net_dim
     def set_som_eta(self, som_eta):
@@ -59,7 +61,7 @@ class HLNN:
         self.bp_eta = bp_eta
     def set_scale(self, inputscale, outputscale):
         
-		if inputscale==0 || outputscale==0:
+		if inputscale==0 or outputscale==0:
 			raise NameError("input or output scale zero error")
 		
 		self.inputscale = inputscale
@@ -235,8 +237,6 @@ class HLNN:
             for i range(self.layer-2, -1, -1):
                 self.update(i, 0)
             
-            t = self.outputlayer*self.outputscale
-            
             return self.somflag
         
         else: 
@@ -257,7 +257,12 @@ class HLNN:
         return self.sparsity
 
     def predict(self, data):
-        self.train(data, [])
+		self.check_model()
+        self.check_data(data)
+        self.feed(data)
+        
+        for i range(0, self.layers-1, 1):
+            self.forward(i)
         
         return self.outputlayer*self.outputscale
 

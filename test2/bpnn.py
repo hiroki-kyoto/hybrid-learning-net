@@ -12,19 +12,23 @@ import numpy as np
 
 # helper methods
 def sigmoid(x):
-    return 1.0/(1.0+np.exp(-x))
+	return 1.0/(1.0+np.exp(-x))
 
 def argsig(x):
-    return -1.0*np.log(1.0/x-1)
+	return -1.0*np.log(1.0/x-1)
 
 class BPNN:
-    def __init__(self):
-        self.layers = 0
-        self.net_dim = []
-        self.bp_eta = 0.3
-        self.inputscale = 1.0
-        self.outputscale = 1.0
-
+	def __init__(self):
+		self.layers = 0
+		self.net_dim = []
+		self.bp_eta = 0.3
+		self.inputscale = 1.0
+		self.outputscale = 1.0
+	
+	@property
+	def type(self):
+		return 'BPNN'
+	
     @property
     def ready(self):
 		if self.net_dim==[]:
@@ -40,7 +44,7 @@ class BPNN:
     
     def set_scale(self, inputscale, outputscale):
 
-        if inputscale==0 || outputscale==0:
+        if inputscale==0 or outputscale==0:
 			raise NameError("input or output scale zero error")
 
 		self.inputscale = inputscale
