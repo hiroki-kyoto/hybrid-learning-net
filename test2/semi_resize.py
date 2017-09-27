@@ -14,7 +14,7 @@ def max_pool(ims, h, w, ph, pw):
 	
 	if dim[1] != h*w:
 		raise NameError('image dimension error')
-	    
+	
 	nh = (h-1)/ph + 1
 	nw = (w-1)/pw + 1
 	
@@ -36,10 +36,10 @@ def max_pool(ims, h, w, ph, pw):
 						
 						elif k*pw+t>=w:
 							pool[s*pw+t] = 0
-								
+						
 						else:
 							pool[s*pw+t] = ims[i,(j*ph+s)*w+k*pw+t]
-
+				
 				nims[i,j*nw+k] = np.max(pool)
 	
 	return [nims, nh, nw]
@@ -173,7 +173,7 @@ def main():
 		np.save(uerr_save_path, uerr)
 	
 	print('supervised training...')
-		
+	
 	for i in xrange(0, snum, 1):
 		v = ims1[sseq[i],:]
 		f = np.zeros(numlbl) + 0.2
