@@ -106,7 +106,7 @@ class HLNN:
 			self.node_error[i-1] = np.zeros([1, self.net_dim[i]])
 		
 	def feed(self, x):
-		self.inputlayer[0] = 1.0*data/self.inputscale
+		self.inputlayer[0] = 1.0*x/self.inputscale
 		
 	def forward(self, il):
 		
@@ -150,7 +150,7 @@ class HLNN:
 	def update(self, il, flag):
 		
 		# update som connections
-		if flag==0 || flag==2:
+		if flag==0 or flag==2:
 		
 			if il<self.layers-2:
 				mid = self.somlayer[il].argmin()
@@ -163,12 +163,12 @@ class HLNN:
 					else:
 						t = self.hiddenlayer[il-1][0][:] - t
 					
-					decay = np.power(som_dec, np.abs(i))
+					decay = np.power(self.som_dec, np.abs(i))
 					t = self.somerror[il]*self.som_eta*decay*t
 					self.som_conn[il][:,(mid+i)%self.net_dim[il+1]] += t
 		
 		# update fcn connections
-		if flag==1 || flag==2:
+		if flag==1 or flag==2:
 			
 			if il==0:
 				t = self.inputlayer.T
@@ -191,7 +191,7 @@ class HLNN:
 			t = t*self.outputlayer*(1-self.outputlayer)
 			self.node_error[il] = t
 		
-		if il==self.layers-3:
+		elif il==self.layers-3:
 			t = self.bp_conn[il+1].T
 			t = np.dot(self.node_error[il+1], t)
 			t = t*self.hiddenlayer[il]*(1-self.hiddenlayer[il])
@@ -229,12 +229,12 @@ class HLNN:
 		self.check_data(data)
 		self.feed(data)
 		
-		for i range(0, self.layers-1, 1):
+		for i in range(0, self.layers-1, 1):
 			self.forward(i)
 		
 		if feedback==[]:
 		
-			for i range(self.layer-2, -1, -1):
+			for i in range(self.layers-2, -1, -1):
 				self.update(i, 0)
 			
 			return self.somflag
@@ -242,12 +242,12 @@ class HLNN:
 		else:
 			feedback = 1.0*feedback/self.outputscale
 			self.check_feedback(feedback)
-			error = self.error()
+			error = self.error(feedback)
 			
-			for i range(self.layers-2, -1, -1):
+			for i in range(self.layers-2, -1, -1):
 				self.backward(i, feedback)
 			
-			for i range(self.layer-2, -1, -1):
+			for i in range(self.layers-2, -1, -1):
 				self.update(i, 1)
 			
 			return error
@@ -261,7 +261,7 @@ class HLNN:
 		self.check_data(data)
 		self.feed(data)
 		
-		for i range(0, self.layers-1, 1):
+		for i in range(0, self.layers-1, 1):
 			self.forward(i)
 		
 		return self.outputlayer*self.outputscale

@@ -94,11 +94,11 @@ class BPNN:
 		if y==[]:
 			raise NameError("feedback required for training")
 		
-		if len(feedback) != self.net_dim[self.layers-1]:
+		if len(y) != self.net_dim[self.layers-1]:
 			raise NameError("bad feedback dimension")
 	
 	def feed(self, x):
-		self.inputlayer[0] = 1.0*data/self.inputscale
+		self.inputlayer[0] = 1.0*x/self.inputscale
 	
 	def forward(self, il):
 	
@@ -111,7 +111,7 @@ class BPNN:
 		
 		elif il==self.layers-2:
 			t = np.dot(self.hiddenlayer[il-1], self.bp_conn[il])
-			t = t + self.olayerbias[il]
+			t = t + self.olayerbias
 			self.outputlayer = sigmoid(t)
 		
 		else:

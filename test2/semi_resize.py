@@ -52,6 +52,9 @@ def load_mnist(im_path, lb_path):
 	magic,numImages,numRows,numColumns = \
 		struct.unpack_from('>IIII' , buf , index)
 	index += struct.calcsize('>IIII')
+
+	# for debug use only
+	#numImages = 10
 	
 	if magic!=2051:
 		raise NameError('MNIST TRAIN-IMAGE INCCORECT!')
@@ -127,7 +130,7 @@ def main():
 	print('setting up supervised training process.')
 	
 	sepn = 300 # supervised epoch number
-	ratio = 0.01 # ratio of LABELED/TOTAL
+	ratio = 1.0 # ratio of LABELED/TOTAL
 	snum = train * sepn # supervised sample number
 	
 	# generate random sequence for supervised training
