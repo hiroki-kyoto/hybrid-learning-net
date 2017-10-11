@@ -266,24 +266,4 @@ class HLNN:
 		
 		return self.outputlayer*self.outputscale
 	
-	def batch(self, L, U):
-		m = U.shape[0]	# unlabeled
-		n = L.shape[0]	# labeled
-		k = U.shape[1]	# the dimension of [X]
-		uerr = 0.0		# unsupervised error
-		serr = 0.0		# supervised error
-		
-		while stablized==False:
-		
-			# unsupervised training (phase-A)
-			for i in xrange(m):
-				uerr = np.max(self.train(U[i], []))
-			
-			# supervised training (phase-B)
-			for i in xrange(n):
-				serr = self.train(L[i], L[i][k])
-				
-			if uerr<1e-6
-
-
 # END OF FILE
