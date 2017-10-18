@@ -115,7 +115,7 @@ class BPNN:
 			self.outputlayer = sigmoid(t)
 		
 		else:
-			t = np.dot(self.hddenlayer[il-1], self.bp_conn[il])
+			t = np.dot(self.hiddenlayer[il-1], self.bp_conn[il])
 			t = t + self.hlayerbias[il]
 			self.hiddenlayer[il] = sigmoid(t)
 			t = filter(lambda x:x>1e-3,self.hiddenlayer[il][0,:])

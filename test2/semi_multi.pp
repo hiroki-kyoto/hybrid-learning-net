@@ -110,7 +110,7 @@ def main():
 	
 	if sys.argv[1]=="HLNN":
 		net = HLNN()
-		net_dim = [h*w, 30, 20, numlbl]
+		net_dim = [h*w, 10, 5, numlbl]
 		net.set_net_dim(net_dim)
 		net.set_scale(255.0, 1.0)
 		net.set_bp_eta(0.8)
@@ -121,7 +121,7 @@ def main():
 			
 	else:
 		net = BPNN()
-		net_dim = [h*w, 30, numlbl]
+		net_dim = [h*w, 10, 5, numlbl]
 		net.set_net_dim(net_dim)
 		net.set_scale(255.0, 1.0)
 		net.set_bp_eta(0.8)
