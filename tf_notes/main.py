@@ -20,7 +20,7 @@ def make_hybrid_learning_net(features, labels, mode):
     
     # build hybrid learning conv layer
     with tf.variable_scope('hl_conv_1'):
-        hl_conv_1 = 
+        hl_conv_1_embed = tf.constants
 
 def main():
     # the feed-in layer
