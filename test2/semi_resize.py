@@ -130,7 +130,7 @@ def main():
 	print('setting up supervised training process.')
 	
 	sepn = 50 # supervised epoch number
-	ratio = 0.001 # ratio of LABELED/TOTAL
+	ratio = 1.0 # ratio of LABELED/TOTAL
 	snum = train * sepn # supervised sample number
 	
 	# generate random sequence for supervised training
