@@ -168,21 +168,21 @@ def hlconv(
     fields_polarized = sig_polar(fields_stacked)
     for _i in xrange(kn):
         y[_i] = fields_polarized[_i]*arrivals[_i]
-    return (
-            tf.stack(y, axis=3, name=name+'-hlconv'),
-            make_unsupervised_train_op(
-                uw, 
-                patches, 
-                fields_polarized
-            )
+    y_stacked = tf.stack(y, axis=3, name=name+'-hlconv')
+    utrain_op, energy = make_unsupervised_train_op(
+            uw,
+            patches,
+            fields_polarized
     )
+    return (y_stacked, utrain_op, energy)
 
 # unsupervised optimizing policy for HLConv operator
 __global_learn_rate = 0.01
 # @uw               : variable uw
 # @patches          : tenosr patches
 # @fields_polarized : the polarized fields
-# @ret              : return an unsupervised training operator
+# @ret              : return an unsupervised training 
+#                     operator and an energy level op
 def make_unsupervised_train_op(
         uw,
         patches, 
@@ -201,6 +201,16 @@ def make_unsupervised_train_op(
     for _i in xrange(_n):
         grads[_i] = fields_reshaped[_i]*(patches-uw[_i])
     grads_stacked = tf.stack(grads, axis=0)
-    uw += __global_learn_rate*tf.reduce_sum(grads, axis=(1,2,3))
-    return uw # return updated uw as training operator
+    uw_updated = uw.assign(
+            uw + __global_learn_rate*\
+                    tf.reduce_sum(
+                        grads_stacked, 
+                        axis=(1,2,3)
+                    )
+                )
+    
+    # training energy is the maximum grad norm
+    energy = tf.reduce_max(tf.abs(grads_stacked))
+    
+    return (uw_updated, energy)
 

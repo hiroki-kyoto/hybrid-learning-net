@@ -1,0 +1,2 @@
+model_checkpoint_path: "hlconvnet-0"
+all_model_checkpoint_paths: "hlconvnet-0"

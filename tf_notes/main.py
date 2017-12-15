@@ -6,24 +6,16 @@ import numpy as np
 import os
 import sys
 
+import tf_hlconvnet as hl
+
 # constants for net trival settings
-N_CLASS = 28    # number of classes
-X_FEATURE = 'x' # name of input feature
 
-def make_hybrid_learning_net(features, labels, mode):
-    ''' Building a hybrid learning net'''
-    x = features[X_FEATURE]
-    input_shape = x.get_shape().as_list()
-    
-    # only image dataset allowed: 4D tensor
-    assert len(input_shape)==4
-    
-    # build hybrid learning conv layer
-    with tf.variable_scope('hl_conv_1'):
-        hl_conv_1_embed = tf.constants
 
-def main():
-    # the feed-in layer
-    # using SHIP dataset
-    
+def main(args):
+    net = hl.hlconvnet()
+    net.offline_supervised('/home/hiroki/ships/raw_data/train/')
+    net.offline_unsupervised('/home/hiroki/ships/raw_data/unlabeled/')
+    net.train(1, 1, 1)
+
+tf.app.run()
 
