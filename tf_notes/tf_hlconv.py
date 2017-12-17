@@ -203,7 +203,7 @@ def make_unsupervised_train_op(
     grads_stacked = tf.stack(grads, axis=0)
     uw_updated = uw.assign(
             uw + __global_learn_rate*\
-                    tf.reduce_sum(
+                    tf.reduce_mean(
                         grads_stacked, 
                         axis=(1,2,3)
                     )

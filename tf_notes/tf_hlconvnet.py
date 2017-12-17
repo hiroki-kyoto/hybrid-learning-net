@@ -221,7 +221,24 @@ class hlconvnet(object):
                 )
                 _im = pi.open(_im_path)
                 _im = _im.resize([W,H])
-                self.sx_samples.append(np.array(_im))
+                _x = np.array(_im)
+                # processing for non-3-channel images
+                if len(_x.shape)==2: # gray image
+                    _tmp = np.zeros([H,W,C])
+                    for _ii in xrange(C):
+                        _tmp[:,:,_ii] = _x
+                    _x = _tmp
+                elif len(_x.shape)==3 and _x.shape[2]!=C:
+                    _tmp = np.zeros([H,W,C])
+                    for _ii in xrange(C):
+                        if _ii<_x.shape[2]:
+                            _tmp[:,:,_ii] = _x[:,:,_ii]
+                        else:
+                            _tmp[:,:,_ii] = 0
+                    _x = _tmp
+                elif len(_x.shape)!=3:
+                    raise NameError('unacceptable image format!')
+                self.sx_samples.append(_x)
                 self.sy_samples.append(_i)
                 #pl.imshow(_im)
                 #pl.show()
@@ -266,7 +283,25 @@ class hlconvnet(object):
             )
             _im = pi.open(_im_path)
             _im = _im.resize([W,H])
-            self.ux_samples.append(np.array(_im))
+            _x = np.array(_im)
+            # processing for non-3-channel images
+            if len(_x.shape)==2: # gray image
+                _tmp = np.zeros([H,W,C])
+                for _ii in xrange(C):
+                    _tmp[:,:,_ii] = _x
+                _x = _tmp
+            elif len(_x.shape)==3 and _x.shape[2]!=C:
+                _tmp = np.zeros([H,W,C])
+                for _ii in xrange(C):
+                    if _ii<_x.shape[2]:
+                        _tmp[:,:,_ii] = _x[:,:,_ii]
+                    else:
+                        _tmp[:,:,_ii] = 0
+                _x = _tmp
+            elif len(_x.shape)!=3:
+                raise NameError('unacceptable image format!')
+
+            self.ux_samples.append(_x)
             #pl.imshow(_im)
             #pl.show()
             #break

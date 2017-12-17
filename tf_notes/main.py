@@ -15,7 +15,7 @@ def main(args):
     net = hl.hlconvnet()
     net.offline_supervised('/home/hiroki/ships/raw_data/train/')
     net.offline_unsupervised('/home/hiroki/ships/raw_data/unlabeled/')
-    net.train(1, 1, 1)
+    net.train(10000, 100, 100)
 
 tf.app.run()
 
