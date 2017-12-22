@@ -16,47 +16,28 @@ import sys
 import os
 import time
 
+# configurations
+N_DIGITS = 28
+N, H, W, C = 8, 256, 256, 3
+
 class hlconvnet(object):
-    def __init__(self, **kwargs):
+    def __init__(self):
+        # a batch of images [nbatch, height, width, channel]
         self.graph = tf.Graph()
         self.saver = None
         self.sess = None
-        self.summ = None
-        # configurations
         self.learning_rate = 0.01
         self.stop_level = 0.01
-        self.N_DIGITS = 28
-        self.N = 8 
-        self.H = 256
-        self.W = 256
-        self.C = 3
 
-        # replace default settings with arguments
-        if 'learning_rate' in kwargs: # learning rate
-            self.learning_rate = kwargs['learning_rate']
-        if 'stop_level' in kwargs: # not used now
-            self.stop_level = kwargs['stop_level']
-        if 'N_DIGITS' in kwargs: # class number
-            self.N_DIGITS = kwargs['N_DIGITS']
-        if 'N' in kwargs: # batch size
-            self.N = kwargs['N']
-        if 'H' in kwargs: # image height to resize to be
-            self.H = kwargs['H']
-        if 'W' in kwargs: # image width to resize to be
-            self.W = kwargs['W']
-        if 'C' in kwargs: # image channel required to fill
-            self.C = kwargs['C']
-    
-    def build_graph(self):
         with self.graph.as_default():
             # data feed in and back
             self.x = tf.placeholder(
                     dtype=tf.float32, 
-                    shape=[self.N, self.H, self.W, self.C]
+                    shape=[N, H, W, C]
             )
             self.y = tf.placeholder(
                     dtype=tf.int32,
-                    shape=[self.N]
+                    shape=[N]
             )
 
             # containers for layers and parameters
@@ -122,7 +103,7 @@ class hlconvnet(object):
             # it must contains $N_DIGITS filters
             # to convert the tensor into output shape
             ksizes = [1,1,1,1]
-            n = self.N_DIGITS
+            n = N_DIGITS
             uw, sw = hl.hlconv_make_params(
                     n = n,
                     depth = hlconv.shape.as_list()[3],
@@ -176,10 +157,7 @@ class hlconvnet(object):
                     strides = ksizes,
                     padding = 'VALID'
             )
-            self.logits = tf.reshape(
-                    self.logits, 
-                    [self.N, self.N_DIGITS]
-                    )
+            self.logits = tf.reshape(self.logits, [N, N_DIGITS])
 
 ################### PREDICTION AND TRAINING ##############
 
@@ -190,7 +168,7 @@ class hlconvnet(object):
             # for training, convert from labels into one-hot vector
             self.onehot = tf.one_hot(
                     tf.cast(self.y, tf.int32),
-                    self.N_DIGITS,
+                    N_DIGITS,
                     1,
                     0
             )
@@ -227,14 +205,12 @@ class hlconvnet(object):
         
         # to ensure an absolute mapping from id to label
         self.labels.sort()
-        print 'please record down the list of labels:'
 
         # check datasets
-        assert len(self.labels)==self.N_DIGITS
+        assert len(self.labels)==N_DIGITS
         
         for _i in xrange(len(self.labels)):
             _label = self.labels[_i]
-            print(str(_i) + ' : ' + _label)
             _path = os.path.join(path, _label)
             _files = os.listdir(_path)
             for _file in _files:
@@ -243,17 +219,17 @@ class hlconvnet(object):
                         _file.decode('utf-8')
                 )
                 _im = pi.open(_im_path)
-                _im = _im.resize([self.W,self.H])
+                _im = _im.resize([W,H])
                 _x = np.array(_im)
                 # processing for non-3-channel images
                 if len(_x.shape)==2: # gray image
-                    _tmp = np.zeros([self.H,self.W,self.C])
-                    for _ii in xrange(self.C):
+                    _tmp = np.zeros([H,W,C])
+                    for _ii in xrange(C):
                         _tmp[:,:,_ii] = _x
                     _x = _tmp
-                elif len(_x.shape)==3 and _x.shape[2]!=self.C:
-                    _tmp = np.zeros([self.H,self.W,self.C])
-                    for _ii in xrange(self.C):
+                elif len(_x.shape)==3 and _x.shape[2]!=C:
+                    _tmp = np.zeros([H,W,C])
+                    for _ii in xrange(C):
                         if _ii<_x.shape[2]:
                             _tmp[:,:,_ii] = _x[:,:,_ii]
                         else:
@@ -272,28 +248,25 @@ class hlconvnet(object):
         self.sidx = 0 # current index in sequence
         
         # check if data is enough for a batch
-        if self.svol < self.N:
+        if self.svol < N:
             raise NameError('Samples not enough for a batch!')
 
         # construct supervised batch(x,y)
-        self.sbatch_x = np.zeros(
-                [self.N,self.H,self.W,self.C], 
-                np.float32
-        )
-        self.sbatch_y = np.zeros([self.N], np.int32)
+        self.sbatch_x = np.zeros([N,H,W,C], np.float32)
+        self.sbatch_y = np.zeros([N], np.int32)
 
     # Generate a batch of samples(x,y) to feed the network
     def batch_supervised(self):
-        if self.sidx+self.N > self.svol: # rest samples not enough for a batch
+        if self.sidx+N > self.svol: # rest samples not enough for a batch
             np.random.shuffle(self.sseq)
             self.sidx = 0
 
-        for _i in xrange(self.N):
+        for _i in xrange(N):
             _idx = self.sseq[self.sidx + _i]
             self.sbatch_x[_i] = self.sx_samples[_idx]/255.0
             self.sbatch_y[_i] = self.sy_samples[_idx]
 
-        self.sidx += self.N
+        self.sidx += N
 
     # this will load all samples into memory for 
     # unsupervised training and prediction
@@ -308,17 +281,17 @@ class hlconvnet(object):
                     _file.decode('utf-8')
             )
             _im = pi.open(_im_path)
-            _im = _im.resize([self.W,self.H])
+            _im = _im.resize([W,H])
             _x = np.array(_im)
             # processing for non-3-channel images
             if len(_x.shape)==2: # gray image
-                _tmp = np.zeros([self.H,self.W,self.C])
-                for _ii in xrange(self.C):
+                _tmp = np.zeros([H,W,C])
+                for _ii in xrange(C):
                     _tmp[:,:,_ii] = _x
                 _x = _tmp
-            elif len(_x.shape)==3 and _x.shape[2]!=self.C:
-                _tmp = np.zeros([self.H,self.W,self.C])
-                for _ii in xrange(self.C):
+            elif len(_x.shape)==3 and _x.shape[2]!=C:
+                _tmp = np.zeros([H,W,C])
+                for _ii in xrange(C):
                     if _ii<_x.shape[2]:
                         _tmp[:,:,_ii] = _x[:,:,_ii]
                     else:
@@ -338,26 +311,23 @@ class hlconvnet(object):
         self.uidx = 0 # current index in sequence
         
         # check if data is enough for a batch
-        if self.uvol < self.N:
+        if self.uvol < N:
             raise NameError('Samples not enough for a batch!')
 
         # construct supervised batch(x)
-        self.ubatch_x = np.zeros(
-                [self.N,self.H,self.W,self.C], 
-                np.float32
-        )
+        self.ubatch_x = np.zeros([N,H,W,C], np.float32)
 
     # Generate a batch of samples(x) to feed the network
     def batch_unsupervised(self):
-        if self.uidx+self.N > self.uvol: # rest samples not enough for a batch
+        if self.uidx+N > self.uvol: # rest samples not enough for a batch
             np.random.shuffle(self.useq)
             self.uidx = 0
 
-        for _i in xrange(self.N):
+        for _i in xrange(N):
             _idx = self.useq[self.uidx + _i]
             self.ubatch_x[_i] = self.ux_samples[_idx]/255.0
 
-        self.uidx += self.N
+        self.uidx += N
 
     # @nalt : number of alternation
     # @uepo : unsupervised iterations within an epoch
@@ -414,50 +384,30 @@ class hlconvnet(object):
                 if i%100 == 0 or i==nalt-1:
                     _model = os.path.join(path, 'hlconvnet')
                     self.saver.save(self.sess, _model, global_step=i)
-
-    # @model : the model path
-    def restore(self, model):
-        with self.graph.as_default():
-            if self.saver==None:
-                self.saver = tf.train.Saver()
-            if self.sess==None:
-                self.sess = tf.Session()
-
-            # restore variables to memory
-            model_file = tf.train.latest_checkpoint(model)
-            self.saver.restore(self.sess, model_file)
-            print 'model loaded from files'
-
-            # log down the graph
-            tf.summary.FileWriter(
-                    'logs/',
-                    self.graph
-            )
-
-    # @data : the data path
-    def predict(self, data):
-        # sample volume = integer * batch_size
-        assert len(os.listdir(data))%self.N==0
-        n = len(os.listdir(data))/self.N
-
+    
+    # @model : the trained model path
+    def predict(self, model, data):
         # prepare data for running network
         self.offline_unsupervised(data)
-        print 'test images loaded'
 
         with self.graph.as_default():
-            # run the test and return output
-            preds = []
-            probs = []
-
-            for _i in xrange(n):
-                self.batch_unsupervised()
-                pred, prob = self.sess.run(
+            if self.saver==None:
+                self.saver = tf.Saver()
+            if self.sess==None:
+                self.sess = tf.Session()
+            self.saver.restore(self.sess, model)
+            tf.summary.FileWriter(
+                    'logs/',
+                    self.sess.graph
+            )
+            ret = self.sess.run(
                     [self.pred, self.prob],
                     feed_dict={
                         self.x : self.ubatch_x
                     })
-                preds.append(pred)
-                probs.append(prob)
+            return ret
+
+
+
             
-            return (preds, probs)
 

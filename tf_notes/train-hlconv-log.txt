@@ -1,0 +1,2164 @@
+Training begin...
+models saved in  MODEL_20171217_192011
+2017-12-17 19:20:11.118899: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+Training loss: 22.1821
+Unsupervised energies: [0.99531996, 12.599457]
+Training loss: 28.0407
+Unsupervised energies: [0.99558407, 12.540689]
+Training loss: 28.7051
+Unsupervised energies: [0.99333334, 12.404056]
+Training loss: 27.6172
+Unsupervised energies: [0.99173588, 12.357029]
+Training loss: 29.2005
+Unsupervised energies: [0.98816633, 12.277143]
+Training loss: 25.5696
+Unsupervised energies: [0.98496056, 12.243771]
+Training loss: 26.9386
+Unsupervised energies: [0.98823416, 12.191869]
+Training loss: 12.6631
+Unsupervised energies: [0.98692852, 12.30962]
+Training loss: 10.4628
+Unsupervised energies: [0.98627979, 12.317874]
+Training loss: 9.50305
+Unsupervised energies: [0.98131984, 12.350425]
+Training loss: 8.68387
+Unsupervised energies: [0.97908276, 12.346515]
+Training loss: 7.38645
+Unsupervised energies: [0.97826815, 12.342653]
+Training loss: 9.90802
+Unsupervised energies: [0.98324186, 12.246063]
+Training loss: 25.6177
+Unsupervised energies: [0.97600341, 12.263144]
+Training loss: 25.1266
+Unsupervised energies: [0.97485048, 12.248924]
+Training loss: 23.4365
+Unsupervised energies: [0.96555024, 12.213752]
+Training loss: 23.9132
+Unsupervised energies: [0.9720946, 12.167712]
+Training loss: 23.5516
+Unsupervised energies: [0.9723717, 12.097782]
+Training loss: 15.7772
+Unsupervised energies: [0.97670299, 12.08056]
+Training loss: 13.2564
+Unsupervised energies: [0.97057945, 11.983662]
+Training loss: 13.7672
+Unsupervised energies: [0.9616943, 11.963861]
+Training loss: 17.3546
+Unsupervised energies: [0.93798959, 11.912314]
+Training loss: 29.4188
+Unsupervised energies: [0.97262794, 11.901134]
+Training loss: 23.7663
+Unsupervised energies: [0.95053977, 11.903739]
+Training loss: 16.302
+Unsupervised energies: [0.9594329, 11.762143]
+Training loss: 24.4437
+Unsupervised energies: [0.94760728, 11.900428]
+Training loss: 21.0688
+Unsupervised energies: [0.94695586, 11.962594]
+Training loss: 18.5609
+Unsupervised energies: [0.96328169, 12.022119]
+Training loss: 17.4663
+Unsupervised energies: [0.96144313, 12.075973]
+Training loss: 16.6441
+Unsupervised energies: [0.93982923, 12.132477]
+Training loss: 3.24695
+Unsupervised energies: [0.96487862, 12.125593]
+Training loss: 2.92914
+Unsupervised energies: [0.94701684, 11.93352]
+Training loss: 1.73568
+Unsupervised energies: [0.96348655, 11.943753]
+Training loss: 1.2307
+Unsupervised energies: [0.96248305, 11.871579]
+Training loss: 1.41853
+Unsupervised energies: [0.93087083, 11.736852]
+Training loss: 0.658374
+Unsupervised energies: [0.95317966, 11.737173]
+Training loss: 0.559283
+Unsupervised energies: [0.96015197, 11.685895]
+Training loss: 1.03999
+Unsupervised energies: [0.92848116, 11.61867]
+Training loss: 0.577244
+Unsupervised energies: [0.95484674, 11.547679]
+Training loss: 0.49985
+Unsupervised energies: [0.95098883, 11.443075]
+Training loss: 20.3158
+Unsupervised energies: [0.95332909, 11.525887]
+Training loss: 19.6013
+Unsupervised energies: [0.95013875, 11.539544]
+Training loss: 19.4001
+Unsupervised energies: [0.94986981, 11.549711]
+Training loss: 18.525
+Unsupervised energies: [0.94936639, 11.577307]
+Training loss: 18.4909
+Unsupervised energies: [0.95580643, 11.602423]
+Training loss: 18.5712
+Unsupervised energies: [0.9553712, 11.594568]
+Training loss: 18.188
+Unsupervised energies: [0.94765675, 11.597248]
+Training loss: 18.3353
+Unsupervised energies: [0.94383335, 11.591001]
+Training loss: 17.9899
+Unsupervised energies: [0.95434844, 11.603641]
+Training loss: 17.9284
+Unsupervised energies: [0.94704992, 11.597862]
+Training loss: 17.4817
+Unsupervised energies: [0.94637555, 11.605553]
+Training loss: 20.3702
+Unsupervised energies: [0.94508994, 11.649641]
+Training loss: 19.7417
+Unsupervised energies: [0.94904184, 11.671301]
+Training loss: 19.7858
+Unsupervised energies: [0.94659102, 11.615366]
+Training loss: 19.1567
+Unsupervised energies: [0.92741835, 11.577385]
+Training loss: 9.87849
+Unsupervised energies: [0.9171474, 11.599571]
+Training loss: 17.3876
+Unsupervised energies: [0.94198096, 11.617573]
+Training loss: 21.9086
+Unsupervised energies: [0.94384611, 11.62938]
+Training loss: 17.2355
+Unsupervised energies: [0.94726282, 11.668403]
+Training loss: 3.92615
+Unsupervised energies: [0.93146837, 11.784007]
+Training loss: 2.10776
+Unsupervised energies: [0.94017953, 11.748545]
+Training loss: 6.402
+Unsupervised energies: [0.94050235, 11.747584]
+Training loss: 17.8239
+Unsupervised energies: [0.95002425, 11.711678]
+Training loss: 16.3951
+Unsupervised energies: [0.93870074, 11.698463]
+Training loss: 14.04
+Unsupervised energies: [0.90695083, 11.749278]
+Training loss: 9.84809
+Unsupervised energies: [0.92975587, 11.775677]
+Training loss: 7.72288
+Unsupervised energies: [0.94896793, 11.768497]
+Training loss: 7.26772
+Unsupervised energies: [0.93626416, 11.80505]
+Training loss: 23.9353
+Unsupervised energies: [0.92776221, 11.772635]
+Training loss: 16.94
+Unsupervised energies: [0.93512821, 11.772074]
+Training loss: 5.60557
+Unsupervised energies: [0.93459576, 11.834486]
+Training loss: 2.63919
+Unsupervised energies: [0.92622757, 11.804461]
+Training loss: 2.12795
+Unsupervised energies: [0.93356842, 11.808513]
+Training loss: 1.57062
+Unsupervised energies: [0.89799702, 11.798843]
+Training loss: 1.43985
+Unsupervised energies: [0.94687802, 11.764816]
+Training loss: 1.41747
+Unsupervised energies: [0.93247819, 11.733528]
+Training loss: 1.35621
+Unsupervised energies: [0.93188709, 11.733397]
+Training loss: 8.56204
+Unsupervised energies: [0.9313218, 11.707023]
+Training loss: 13.0948
+Unsupervised energies: [0.93085289, 11.676918]
+Training loss: 9.74404
+Unsupervised energies: [0.94561017, 11.544783]
+Training loss: 10.406
+Unsupervised energies: [0.92978364, 11.630912]
+Training loss: 6.49411
+Unsupervised energies: [0.94502997, 11.248626]
+Training loss: 12.1351
+Unsupervised energies: [0.92889017, 11.578869]
+Training loss: 11.1967
+Unsupervised energies: [0.94449949, 11.538177]
+Training loss: 8.74338
+Unsupervised energies: [0.92790133, 11.518355]
+Training loss: 8.49378
+Unsupervised energies: [0.92751408, 11.487559]
+Training loss: 8.67602
+Unsupervised energies: [0.92709637, 11.480409]
+Training loss: 10.8261
+Unsupervised energies: [0.94334126, 11.456629]
+Training loss: 9.61595
+Unsupervised energies: [0.93916577, 11.431215]
+Training loss: 9.61152
+Unsupervised energies: [0.92603683, 11.427662]
+Training loss: 9.9308
+Unsupervised energies: [0.93959785, 11.423162]
+Training loss: 10.5844
+Unsupervised energies: [0.92512918, 11.402996]
+Training loss: 7.77293
+Unsupervised energies: [0.92490381, 11.406058]
+Training loss: 7.88174
+Unsupervised energies: [0.9260869, 11.385578]
+Training loss: 9.48971
+Unsupervised energies: [0.90845048, 11.345747]
+Training loss: 14.6713
+Unsupervised energies: [0.92949653, 11.317812]
+Training loss: 10.7975
+Unsupervised energies: [0.92358202, 11.294537]
+Training loss: 10.2821
+Unsupervised energies: [0.93296146, 11.285451]
+Training loss: 10.723
+Unsupervised energies: [0.94059736, 11.186817]
+Training loss: 13.7582
+Unsupervised energies: [0.92205995, 11.226452]
+Training loss: 7.38463
+Unsupervised energies: [0.9400748, 11.209138]
+Training loss: 8.18023
+Unsupervised energies: [0.92115951, 11.180691]
+Training loss: 11.2415
+Unsupervised energies: [0.86676824, 11.180263]
+Training loss: 11.5061
+Unsupervised energies: [0.92022353, 11.190696]
+Training loss: 7.98567
+Unsupervised energies: [0.91981632, 11.175501]
+Training loss: 9.79397
+Unsupervised energies: [0.92274749, 11.158225]
+Training loss: 11.9309
+Unsupervised energies: [0.9192214, 11.102847]
+Training loss: 9.45395
+Unsupervised energies: [0.91875511, 11.156749]
+Training loss: 13.6517
+Unsupervised energies: [0.93812251, 11.141536]
+Training loss: 9.281
+Unsupervised energies: [0.9178887, 11.129175]
+Training loss: 11.6256
+Unsupervised energies: [0.91740113, 10.967712]
+Training loss: 7.89613
+Unsupervised energies: [0.93752235, 11.019774]
+Training loss: 7.63719
+Unsupervised energies: [0.91661257, 11.155213]
+Training loss: 7.73915
+Unsupervised energies: [0.91627854, 11.143064]
+Training loss: 10.9413
+Unsupervised energies: [0.93686372, 11.11246]
+Training loss: 9.29925
+Unsupervised energies: [0.91567934, 11.091021]
+Training loss: 9.58502
+Unsupervised energies: [0.84483433, 10.897097]
+Training loss: 12.6069
+Unsupervised energies: [0.92051756, 10.994225]
+Training loss: 9.18679
+Unsupervised energies: [0.93592012, 11.018246]
+Training loss: 7.21335
+Unsupervised energies: [0.901941, 11.028894]
+Training loss: 7.7233
+Unsupervised energies: [0.91345626, 11.016251]
+Training loss: 8.82495
+Unsupervised energies: [0.91305441, 11.011391]
+Training loss: 12.5373
+Unsupervised energies: [0.91272348, 11.016921]
+Training loss: 8.36782
+Unsupervised energies: [0.91218424, 10.973362]
+Training loss: 8.06836
+Unsupervised energies: [0.89153481, 10.982735]
+Training loss: 9.40823
+Unsupervised energies: [0.93448359, 10.884315]
+Training loss: 6.11342
+Unsupervised energies: [0.91086388, 10.949368]
+Training loss: 7.82496
+Unsupervised energies: [0.90286368, 10.924756]
+Training loss: 8.35263
+Unsupervised energies: [0.93380809, 10.90383]
+Training loss: 8.46049
+Unsupervised energies: [0.9097243, 10.884022]
+Training loss: 9.35433
+Unsupervised energies: [0.90943396, 10.87369]
+Training loss: 8.70798
+Unsupervised energies: [0.90909368, 10.826764]
+Training loss: 9.27107
+Unsupervised energies: [0.90872967, 10.820387]
+Training loss: 5.51988
+Unsupervised energies: [0.91709477, 10.730584]
+Training loss: 9.96139
+Unsupervised energies: [0.90801936, 10.788534]
+Training loss: 11.2961
+Unsupervised energies: [0.90789771, 10.754939]
+Training loss: 9.46566
+Unsupervised energies: [0.89574158, 10.737224]
+Training loss: 6.57173
+Unsupervised energies: [0.91225165, 10.721201]
+Training loss: 8.80508
+Unsupervised energies: [0.90980905, 10.331587]
+Training loss: 8.25633
+Unsupervised energies: [0.90631407, 10.699436]
+Training loss: 7.61597
+Unsupervised energies: [0.90602791, 10.711686]
+Training loss: 4.38423
+Unsupervised energies: [0.90577477, 10.705309]
+Training loss: 8.29287
+Unsupervised energies: [0.90548795, 10.682461]
+Training loss: 10.6475
+Unsupervised energies: [0.86198151, 10.665196]
+Training loss: 9.37168
+Unsupervised energies: [0.90480638, 10.646473]
+Training loss: 5.60946
+Unsupervised energies: [0.90448743, 10.620502]
+Training loss: 10.9823
+Unsupervised energies: [0.9300409, 10.615288]
+Training loss: 9.6716
+Unsupervised energies: [0.92984504, 10.528181]
+Training loss: 6.6834
+Unsupervised energies: [0.90337074, 10.562825]
+Training loss: 7.19804
+Unsupervised energies: [0.90310389, 10.604154]
+Training loss: 6.16305
+Unsupervised energies: [0.90274394, 10.56776]
+Training loss: 9.06728
+Unsupervised energies: [0.89197856, 10.62341]
+Training loss: 6.88016
+Unsupervised energies: [0.90208399, 10.591672]
+Training loss: 6.08232
+Unsupervised energies: [0.92865849, 10.530406]
+Training loss: 7.50435
+Unsupervised energies: [0.90495944, 10.550601]
+Training loss: 5.98461
+Unsupervised energies: [0.90125859, 10.341744]
+Training loss: 10.6232
+Unsupervised energies: [0.90106201, 10.523122]
+Training loss: 4.76124
+Unsupervised energies: [0.90075189, 10.504268]
+Training loss: 9.31614
+Unsupervised energies: [0.9003461, 10.47858]
+Training loss: 7.74337
+Unsupervised energies: [0.90006953, 10.437037]
+Training loss: 11.3487
+Unsupervised energies: [0.89181203, 10.288023]
+Training loss: 5.66335
+Unsupervised energies: [0.89944327, 10.362906]
+Training loss: 5.77688
+Unsupervised energies: [0.92686778, 10.411835]
+Training loss: 4.61048
+Unsupervised energies: [0.87928396, 10.33505]
+Training loss: 7.46584
+Unsupervised energies: [0.89833832, 10.391637]
+Training loss: 7.54642
+Unsupervised energies: [0.89808083, 10.374022]
+Training loss: 4.81396
+Unsupervised energies: [0.89768797, 10.396194]
+Training loss: 7.19487
+Unsupervised energies: [0.88568485, 10.340276]
+Training loss: 5.08475
+Unsupervised energies: [0.92559451, 10.360615]
+Training loss: 10.8013
+Unsupervised energies: [0.85440546, 10.308856]
+Training loss: 8.45856
+Unsupervised energies: [0.89624828, 10.314939]
+Training loss: 4.25703
+Unsupervised energies: [0.89604646, 10.283063]
+Training loss: 8.87343
+Unsupervised energies: [0.89574838, 10.290092]
+Training loss: 7.47347
+Unsupervised energies: [0.88376647, 10.299462]
+Training loss: 3.9816
+Unsupervised energies: [0.89526623, 10.27526]
+Training loss: 8.95454
+Unsupervised energies: [0.90466946, 10.260274]
+Training loss: 7.54466
+Unsupervised energies: [0.88247657, 10.228303]
+Training loss: 7.3957
+Unsupervised energies: [0.91603541, 10.254098]
+Training loss: 7.28024
+Unsupervised energies: [0.83175105, 10.247317]
+Training loss: 5.06347
+Unsupervised energies: [0.89423114, 10.247196]
+Training loss: 7.68972
+Unsupervised energies: [0.88607401, 10.186419]
+Training loss: 6.43841
+Unsupervised energies: [0.89374959, 10.235355]
+Training loss: 7.87465
+Unsupervised energies: [0.87585235, 10.213577]
+Training loss: 5.91574
+Unsupervised energies: [0.89324212, 10.193718]
+Training loss: 5.45741
+Unsupervised energies: [0.89283508, 10.188996]
+Training loss: 9.28582
+Unsupervised energies: [0.89267653, 10.189804]
+Training loss: 8.82725
+Unsupervised energies: [0.89252877, 10.181452]
+Training loss: 6.58709
+Unsupervised energies: [0.89229029, 10.141682]
+Training loss: 6.2765
+Unsupervised energies: [0.91772783, 10.126407]
+Training loss: 3.79141
+Unsupervised energies: [0.89174825, 10.142301]
+Training loss: 5.26859
+Unsupervised energies: [0.89157593, 10.136359]
+Training loss: 6.77785
+Unsupervised energies: [0.87816894, 10.126186]
+Training loss: 6.12835
+Unsupervised energies: [0.89748091, 10.074582]
+Training loss: 6.71842
+Unsupervised energies: [0.89037842, 10.113465]
+Training loss: 2.59226
+Unsupervised energies: [0.89003503, 10.086879]
+Training loss: 6.12473
+Unsupervised energies: [0.92032045, 10.055003]
+Training loss: 6.98228
+Unsupervised energies: [0.88928443, 10.037203]
+Training loss: 7.0975
+Unsupervised energies: [0.88908625, 10.025049]
+Training loss: 4.64817
+Unsupervised energies: [0.88880771, 9.9642611]
+Training loss: 6.96632
+Unsupervised energies: [0.88847882, 9.9871197]
+Training loss: 4.81202
+Unsupervised energies: [0.88818717, 9.9772224]
+Training loss: 7.2706
+Unsupervised energies: [0.88787264, 9.9581261]
+Training loss: 7.05087
+Unsupervised energies: [0.88778663, 9.9518461]
+Training loss: 6.33604
+Unsupervised energies: [0.8875643, 9.9467373]
+Training loss: 5.75604
+Unsupervised energies: [0.88727897, 9.8793106]
+Training loss: 4.24927
+Unsupervised energies: [0.87142831, 9.9053211]
+Training loss: 6.25198
+Unsupervised energies: [0.91832763, 9.8847542]
+Training loss: 5.07248
+Unsupervised energies: [0.91811234, 9.8706713]
+Training loss: 5.61301
+Unsupervised energies: [0.88633126, 9.8548851]
+Training loss: 5.34528
+Unsupervised energies: [0.88603508, 9.8206949]
+Training loss: 4.471
+Unsupervised energies: [0.88583499, 9.8286734]
+Training loss: 5.31796
+Unsupervised energies: [0.88567376, 9.8026409]
+Training loss: 5.04426
+Unsupervised energies: [0.85370767, 9.7756462]
+Training loss: 6.88734
+Unsupervised energies: [0.88513219, 9.7749062]
+Training loss: 6.32809
+Unsupervised energies: [0.91679287, 9.7731123]
+Training loss: 3.80318
+Unsupervised energies: [0.87692028, 9.7561302]
+Training loss: 4.49602
+Unsupervised energies: [0.88506627, 9.7337914]
+Training loss: 4.17956
+Unsupervised energies: [0.8840341, 9.7262735]
+Training loss: 5.1083
+Unsupervised energies: [0.88394076, 9.7083092]
+Training loss: 3.8778
+Unsupervised energies: [0.91589701, 9.6743593]
+Training loss: 5.50039
+Unsupervised energies: [0.88388139, 9.662735]
+Training loss: 6.88356
+Unsupervised energies: [0.88377446, 9.6376753]
+Training loss: 4.59314
+Unsupervised energies: [0.8686828, 9.5957479]
+Training loss: 5.44596
+Unsupervised energies: [0.88327789, 9.5537271]
+Training loss: 4.84168
+Unsupervised energies: [0.91102314, 9.627739]
+Training loss: 5.19674
+Unsupervised energies: [0.88284469, 9.6256847]
+Training loss: 5.42949
+Unsupervised energies: [0.89491343, 9.6111107]
+Training loss: 7.07532
+Unsupervised energies: [0.91428167, 9.6102457]
+Training loss: 4.8072
+Unsupervised energies: [0.88216054, 9.5949326]
+Training loss: 5.5658
+Unsupervised energies: [0.88176411, 9.5835934]
+Training loss: 4.25299
+Unsupervised energies: [0.89424181, 9.3956928]
+Training loss: 4.57952
+Unsupervised energies: [0.88112527, 9.3858147]
+Training loss: 4.79489
+Unsupervised energies: [0.88091886, 9.4845495]
+Training loss: 3.38674
+Unsupervised energies: [0.90150982, 9.535141]
+Training loss: 5.00339
+Unsupervised energies: [0.88042903, 9.5394726]
+Training loss: 3.5206
+Unsupervised energies: [0.88010406, 9.5418978]
+Training loss: 4.85345
+Unsupervised energies: [0.90488809, 9.5313501]
+Training loss: 6.17828
+Unsupervised energies: [0.91253263, 9.4997234]
+Training loss: 5.16206
+Unsupervised energies: [0.91232336, 9.5138588]
+Training loss: 4.38584
+Unsupervised energies: [0.87932265, 9.5018101]
+Training loss: 5.43901
+Unsupervised energies: [0.9118824, 9.4982681]
+Training loss: 4.9159
+Unsupervised energies: [0.879287, 9.4767265]
+Training loss: 4.46229
+Unsupervised energies: [0.87891591, 9.4739208]
+Training loss: 4.18569
+Unsupervised energies: [0.89953208, 9.4416656]
+Training loss: 3.0815
+Unsupervised energies: [0.84308809, 9.413517]
+Training loss: 3.14085
+Unsupervised energies: [0.87812907, 9.3699837]
+Training loss: 4.97871
+Unsupervised energies: [0.87803555, 9.4424477]
+Training loss: 4.88547
+Unsupervised energies: [0.87919241, 9.3258657]
+Training loss: 4.87791
+Unsupervised energies: [0.88109148, 9.4177942]
+Training loss: 4.83039
+Unsupervised energies: [0.91021705, 9.4323969]
+Training loss: 6.51934
+Unsupervised energies: [0.9100461, 9.4278154]
+Training loss: 2.72138
+Unsupervised energies: [0.88867587, 9.4172983]
+Training loss: 4.62915
+Unsupervised energies: [0.88218164, 9.4002752]
+Training loss: 2.39762
+Unsupervised energies: [0.86110342, 9.1860304]
+Training loss: 5.79062
+Unsupervised energies: [0.90930057, 9.3889856]
+Training loss: 4.97267
+Unsupervised energies: [0.87645167, 9.3507767]
+Training loss: 3.72297
+Unsupervised energies: [0.87636286, 9.384016]
+Training loss: 3.726
+Unsupervised energies: [0.8763079, 9.3165045]
+Training loss: 5.52046
+Unsupervised energies: [0.88891995, 9.290144]
+Training loss: 6.62475
+Unsupervised energies: [0.87578571, 9.3191576]
+Training loss: 3.33281
+Unsupervised energies: [0.8755874, 9.324604]
+Training loss: 3.45165
+Unsupervised energies: [0.90406513, 9.3388872]
+Training loss: 6.99832
+Unsupervised energies: [0.88039351, 9.323575]
+Training loss: 6.03225
+Unsupervised energies: [0.90763676, 9.2978506]
+Training loss: 4.8745
+Unsupervised energies: [0.87472844, 9.2774973]
+Training loss: 4.20679
+Unsupervised energies: [0.86321312, 9.2700415]
+Training loss: 3.79691
+Unsupervised energies: [0.87463099, 9.2015905]
+Training loss: 5.4294
+Unsupervised energies: [0.85463154, 9.2320967]
+Training loss: 3.09228
+Unsupervised energies: [0.84264129, 9.2550507]
+Training loss: 3.72444
+Unsupervised energies: [0.87387466, 9.221344]
+Training loss: 3.10107
+Unsupervised energies: [0.87353671, 9.2030668]
+Training loss: 5.29727
+Unsupervised energies: [0.87339592, 9.2198811]
+Training loss: 2.90091
+Unsupervised energies: [0.87287414, 9.1061373]
+Training loss: 3.8845
+Unsupervised energies: [0.87270594, 9.1589346]
+Training loss: 5.47758
+Unsupervised energies: [0.84258068, 9.1903028]
+Training loss: 3.69631
+Unsupervised energies: [0.87247944, 9.1754684]
+Training loss: 4.26971
+Unsupervised energies: [0.87229329, 9.1466246]
+Training loss: 6.2526
+Unsupervised energies: [0.90510082, 9.1728783]
+Training loss: 3.09935
+Unsupervised energies: [0.87185526, 9.0060492]
+Training loss: 4.33756
+Unsupervised energies: [0.90468794, 9.1581078]
+Training loss: 3.02603
+Unsupervised energies: [0.83304787, 9.1418324]
+Training loss: 3.7693
+Unsupervised energies: [0.89255536, 9.1182814]
+Training loss: 2.77442
+Unsupervised energies: [0.87095469, 9.1193037]
+Training loss: 3.45992
+Unsupervised energies: [0.87085867, 9.1134787]
+Training loss: 2.60839
+Unsupervised energies: [0.90378118, 9.0866652]
+Training loss: 3.2883
+Unsupervised energies: [0.87046105, 9.0787182]
+Training loss: 3.6749
+Unsupervised energies: [0.87043595, 9.0774889]
+Training loss: 4.90559
+Unsupervised energies: [0.87023836, 8.9929924]
+Training loss: 4.24418
+Unsupervised energies: [0.90300113, 9.0692968]
+Training loss: 3.21661
+Unsupervised energies: [0.8700614, 9.0351496]
+Training loss: 3.15053
+Unsupervised energies: [0.86991507, 8.9425611]
+Training loss: 4.70682
+Unsupervised energies: [0.90236187, 9.0121632]
+Training loss: 5.89044
+Unsupervised energies: [0.90220213, 8.9624119]
+Training loss: 6.04456
+Unsupervised energies: [0.89810067, 9.0106049]
+Training loss: 3.19756
+Unsupervised energies: [0.86943769, 8.8387423]
+Training loss: 5.38303
+Unsupervised energies: [0.86926734, 8.9052601]
+Training loss: 5.27982
+Unsupervised energies: [0.86913466, 8.9857349]
+Training loss: 4.34684
+Unsupervised energies: [0.868963, 8.9778461]
+Training loss: 3.60178
+Unsupervised energies: [0.86859906, 8.9189186]
+Training loss: 3.91972
+Unsupervised energies: [0.86830479, 8.9159117]
+Training loss: 2.94814
+Unsupervised energies: [0.88901317, 8.8876619]
+Training loss: 4.9466
+Unsupervised energies: [0.85238928, 8.9325504]
+Training loss: 2.39719
+Unsupervised energies: [0.90041518, 8.9270153]
+Training loss: 4.39974
+Unsupervised energies: [0.90020502, 8.9176531]
+Training loss: 2.7496
+Unsupervised energies: [0.86781281, 8.8948679]
+Training loss: 3.52685
+Unsupervised energies: [0.86775714, 8.906889]
+Training loss: 5.47964
+Unsupervised energies: [0.86751044, 8.9121828]
+Training loss: 1.90811
+Unsupervised energies: [0.86749572, 8.8951607]
+Training loss: 4.51974
+Unsupervised energies: [0.86733902, 8.8909883]
+Training loss: 3.76891
+Unsupervised energies: [0.89893734, 8.8786373]
+Training loss: 3.76344
+Unsupervised energies: [0.86713237, 8.8559675]
+Training loss: 2.89784
+Unsupervised energies: [0.86717361, 8.8339472]
+Training loss: 3.02807
+Unsupervised energies: [0.86722529, 8.8290615]
+Training loss: 3.21668
+Unsupervised energies: [0.8670578, 8.8144741]
+Training loss: 6.4683
+Unsupervised energies: [0.89788616, 8.8124352]
+Training loss: 3.69264
+Unsupervised energies: [0.89766395, 8.8025723]
+Training loss: 5.07567
+Unsupervised energies: [0.86659122, 8.8064985]
+Training loss: 3.67303
+Unsupervised energies: [0.86636204, 8.7242231]
+Training loss: 2.78764
+Unsupervised energies: [0.86617231, 8.8000937]
+Training loss: 4.30125
+Unsupervised energies: [0.86595362, 8.8049803]
+Training loss: 4.87182
+Unsupervised energies: [0.86584538, 8.7959585]
+Training loss: 4.89403
+Unsupervised energies: [0.86561245, 8.7730484]
+Training loss: 3.8075
+Unsupervised energies: [0.86542606, 8.7853813]
+Training loss: 3.84079
+Unsupervised energies: [0.89624918, 8.7702074]
+Training loss: 4.02728
+Unsupervised energies: [0.87248188, 8.7768335]
+Training loss: 6.43112
+Unsupervised energies: [0.8957988, 8.7669725]
+Training loss: 3.93968
+Unsupervised energies: [0.86498713, 8.7650957]
+Training loss: 4.49523
+Unsupervised energies: [0.87981135, 8.6767693]
+Training loss: 4.60246
+Unsupervised energies: [0.89532191, 8.7674885]
+Training loss: 5.07588
+Unsupervised energies: [0.86435515, 8.768466]
+Training loss: 2.55149
+Unsupervised energies: [0.86426514, 8.7677784]
+Training loss: 3.61948
+Unsupervised energies: [0.89471638, 8.7460136]
+Training loss: 3.64829
+Unsupervised energies: [0.89448148, 8.7315474]
+Training loss: 3.60772
+Unsupervised energies: [0.86432666, 8.7184315]
+Training loss: 4.30398
+Unsupervised energies: [0.86414146, 8.4963884]
+Training loss: 4.55103
+Unsupervised energies: [0.87033457, 8.7100782]
+Training loss: 3.40773
+Unsupervised energies: [0.86375874, 8.5714788]
+Training loss: 2.98363
+Unsupervised energies: [0.89349508, 8.6869907]
+Training loss: 5.01228
+Unsupervised energies: [0.88933641, 8.6669149]
+Training loss: 4.17024
+Unsupervised energies: [0.86368608, 8.5386019]
+Training loss: 4.17835
+Unsupervised energies: [0.89285183, 8.6122541]
+Training loss: 2.99983
+Unsupervised energies: [0.81634462, 8.6206675]
+Training loss: 5.60427
+Unsupervised energies: [0.86314029, 8.6387978]
+Training loss: 3.26479
+Unsupervised energies: [0.85515207, 8.6391554]
+Training loss: 4.60305
+Unsupervised energies: [0.86286998, 8.6355553]
+Training loss: 2.82995
+Unsupervised energies: [0.88402134, 8.62743]
+Training loss: 5.46761
+Unsupervised energies: [0.85511738, 8.4980688]
+Training loss: 5.50046
+Unsupervised energies: [0.88011414, 8.6238117]
+Training loss: 3.81644
+Unsupervised energies: [0.86273026, 8.6082439]
+Training loss: 4.34451
+Unsupervised energies: [0.86260003, 8.6002016]
+Training loss: 4.69418
+Unsupervised energies: [0.89085919, 8.4950171]
+Training loss: 3.3305
+Unsupervised energies: [0.86241746, 8.4835739]
+Training loss: 5.39049
+Unsupervised energies: [0.89041448, 8.5578423]
+Training loss: 3.75856
+Unsupervised energies: [0.89015239, 8.5545321]
+Training loss: 5.51071
+Unsupervised energies: [0.88315064, 8.5635843]
+Training loss: 2.4861
+Unsupervised energies: [0.88976389, 8.5433693]
+Training loss: 2.23948
+Unsupervised energies: [0.8618347, 8.5376663]
+Training loss: 3.93545
+Unsupervised energies: [0.86174279, 8.5243053]
+Training loss: 3.98535
+Unsupervised energies: [0.88914269, 8.5172234]
+Training loss: 2.78494
+Unsupervised energies: [0.85227293, 8.5095015]
+Training loss: 5.26531
+Unsupervised energies: [0.84968531, 8.2958155]
+Training loss: 3.98212
+Unsupervised energies: [0.86122853, 8.5071192]
+Training loss: 3.32409
+Unsupervised energies: [0.86118001, 8.4473181]
+Training loss: 3.90115
+Unsupervised energies: [0.86105597, 8.4722233]
+Training loss: 4.00041
+Unsupervised energies: [0.8879512, 8.4780684]
+Training loss: 3.07967
+Unsupervised energies: [0.86075723, 8.4123898]
+Training loss: 3.19821
+Unsupervised energies: [0.86442327, 8.4674454]
+Training loss: 2.5343
+Unsupervised energies: [0.87552875, 8.4379597]
+Training loss: 3.29486
+Unsupervised energies: [0.86357093, 8.4437122]
+Training loss: 3.93479
+Unsupervised energies: [0.84117889, 8.4208298]
+Training loss: 3.29133
+Unsupervised energies: [0.8867324, 8.4144316]
+Training loss: 3.80621
+Unsupervised energies: [0.86066425, 8.4075317]
+Training loss: 5.48688
+Unsupervised energies: [0.86041117, 8.2245235]
+Training loss: 3.94582
+Unsupervised energies: [0.8200801, 8.3690004]
+Training loss: 3.58022
+Unsupervised energies: [0.81302124, 8.2588301]
+Training loss: 2.32289
+Unsupervised energies: [0.88578898, 8.1822987]
+Training loss: 3.66698
+Unsupervised energies: [0.85990679, 8.3363132]
+Training loss: 4.90845
+Unsupervised energies: [0.86524868, 8.3922548]
+Training loss: 3.66615
+Unsupervised energies: [0.88519818, 8.3892574]
+Training loss: 4.78898
+Unsupervised energies: [0.8819648, 8.3769922]
+Training loss: 3.40346
+Unsupervised energies: [0.84200352, 8.3688526]
+Training loss: 3.50607
+Unsupervised energies: [0.85313642, 8.3645258]
+Training loss: 2.69023
+Unsupervised energies: [0.8686251, 8.2350798]
+Training loss: 3.94555
+Unsupervised energies: [0.85953116, 8.3390369]
+Training loss: 5.65126
+Unsupervised energies: [0.85942131, 8.3227158]
+Training loss: 3.46385
+Unsupervised energies: [0.84859848, 8.2902145]
+Training loss: 2.18372
+Unsupervised energies: [0.85943091, 8.3448458]
+Training loss: 2.88549
+Unsupervised energies: [0.88333249, 8.3350801]
+Training loss: 3.41525
+Unsupervised energies: [0.83783436, 8.3425102]
+Training loss: 3.505
+Unsupervised energies: [0.85917342, 8.3186207]
+Training loss: 3.77371
+Unsupervised energies: [0.85919416, 8.3034315]
+Training loss: 3.76782
+Unsupervised energies: [0.8589884, 8.2247744]
+Training loss: 3.83993
+Unsupervised energies: [0.85891652, 8.300993]
+Training loss: 4.49895
+Unsupervised energies: [0.85889953, 8.2615852]
+Training loss: 4.16391
+Unsupervised energies: [0.85891974, 8.2719736]
+Training loss: 3.88188
+Unsupervised energies: [0.8586818, 8.2502241]
+Training loss: 3.3172
+Unsupervised energies: [0.88133162, 8.2696486]
+Training loss: 4.81824
+Unsupervised energies: [0.85825473, 8.2257223]
+Training loss: 3.06936
+Unsupervised energies: [0.88075745, 8.2663326]
+Training loss: 5.00704
+Unsupervised energies: [0.85803455, 8.2511997]
+Training loss: 2.95766
+Unsupervised energies: [0.88022226, 8.2419796]
+Training loss: 3.70829
+Unsupervised energies: [0.86035073, 8.2324886]
+Training loss: 2.57291
+Unsupervised energies: [0.85808742, 8.2412834]
+Training loss: 2.58999
+Unsupervised energies: [0.87949759, 8.2435665]
+Training loss: 3.56815
+Unsupervised energies: [0.85776383, 8.2378149]
+Training loss: 4.56132
+Unsupervised energies: [0.86331707, 8.2480202]
+Training loss: 2.72214
+Unsupervised energies: [0.86701119, 8.2069874]
+Training loss: 2.74943
+Unsupervised energies: [0.85761261, 8.2510376]
+Training loss: 4.33635
+Unsupervised energies: [0.85256881, 8.2361927]
+Training loss: 4.73963
+Unsupervised energies: [0.83775276, 8.2346773]
+Training loss: 4.86857
+Unsupervised energies: [0.85720712, 8.2214336]
+Training loss: 3.67541
+Unsupervised energies: [0.85706604, 8.2179708]
+Training loss: 3.09693
+Unsupervised energies: [0.86959529, 8.1944189]
+Training loss: 3.51751
+Unsupervised energies: [0.87330633, 8.0940828]
+Training loss: 3.41667
+Unsupervised energies: [0.85691833, 8.1990099]
+Training loss: 3.92852
+Unsupervised energies: [0.87679988, 8.1916113]
+Training loss: 4.25394
+Unsupervised energies: [0.86089802, 8.1905851]
+Training loss: 3.29428
+Unsupervised energies: [0.80953187, 8.1777163]
+Training loss: 5.35303
+Unsupervised energies: [0.8761695, 8.1786528]
+Training loss: 5.5787
+Unsupervised energies: [0.85633934, 8.1728678]
+Training loss: 2.01187
+Unsupervised energies: [0.85629153, 8.0430613]
+Training loss: 6.47312
+Unsupervised energies: [0.85624093, 8.1566467]
+Training loss: 3.60498
+Unsupervised energies: [0.87535954, 8.1351643]
+Training loss: 3.57014
+Unsupervised energies: [0.85619015, 8.1279507]
+Training loss: 4.04036
+Unsupervised energies: [0.87093538, 8.141386]
+Training loss: 3.04864
+Unsupervised energies: [0.8558917, 8.1462784]
+Training loss: 2.68436
+Unsupervised energies: [0.87438709, 8.1206932]
+Training loss: 3.67591
+Unsupervised energies: [0.87417269, 8.1048336]
+Training loss: 3.77768
+Unsupervised energies: [0.82425737, 8.1428537]
+Training loss: 2.80017
+Unsupervised energies: [0.85563076, 8.0668297]
+Training loss: 2.93593
+Unsupervised energies: [0.85549378, 8.1299438]
+Training loss: 2.52099
+Unsupervised energies: [0.87334681, 8.11586]
+Training loss: 3.07225
+Unsupervised energies: [0.855542, 8.0963898]
+Training loss: 2.46407
+Unsupervised energies: [0.85540348, 8.1044998]
+Training loss: 2.48462
+Unsupervised energies: [0.82131964, 8.0974951]
+Training loss: 4.34516
+Unsupervised energies: [0.86858094, 8.0672255]
+Training loss: 5.03578
+Unsupervised energies: [0.87227678, 8.0872355]
+Training loss: 4.5286
+Unsupervised energies: [0.85517824, 8.0755739]
+Training loss: 5.98979
+Unsupervised energies: [0.85522604, 8.0726557]
+Training loss: 2.56259
+Unsupervised energies: [0.86775547, 8.0595341]
+Training loss: 3.78189
+Unsupervised energies: [0.87148762, 7.9522471]
+Training loss: 5.73429
+Unsupervised energies: [0.87129021, 8.0313854]
+Training loss: 4.74407
+Unsupervised energies: [0.87108892, 8.0508385]
+Training loss: 3.29274
+Unsupervised energies: [0.86288494, 8.0552378]
+Training loss: 3.55316
+Unsupervised energies: [0.85041004, 8.0450954]
+Training loss: 2.96558
+Unsupervised energies: [0.85842776, 8.0343142]
+Training loss: 2.84191
+Unsupervised energies: [0.81701094, 7.986536]
+Training loss: 3.13715
+Unsupervised energies: [0.8540203, 8.0089436]
+Training loss: 3.88656
+Unsupervised energies: [0.85394973, 7.9329286]
+Training loss: 4.1885
+Unsupervised energies: [0.8693732, 7.9875431]
+Training loss: 3.27819
+Unsupervised energies: [0.85379809, 7.9814939]
+Training loss: 3.75863
+Unsupervised energies: [0.86885577, 7.98311]
+Training loss: 3.58908
+Unsupervised energies: [0.85369593, 7.9880285]
+Training loss: 5.77054
+Unsupervised energies: [0.86842418, 7.9694862]
+Training loss: 2.93224
+Unsupervised energies: [0.8682937, 7.9488072]
+Training loss: 4.24405
+Unsupervised energies: [0.85336733, 7.9698043]
+Training loss: 3.88166
+Unsupervised energies: [0.85603124, 7.7181239]
+Training loss: 3.35941
+Unsupervised energies: [0.86758798, 7.9755392]
+Training loss: 4.23577
+Unsupervised energies: [0.85302514, 7.9777684]
+Training loss: 3.83315
+Unsupervised energies: [0.86718208, 7.9142952]
+Training loss: 3.50535
+Unsupervised energies: [0.85293168, 7.9643741]
+Training loss: 3.3677
+Unsupervised energies: [0.85316175, 7.9457088]
+Training loss: 3.53724
+Unsupervised energies: [0.86248499, 7.8424401]
+Training loss: 2.90711
+Unsupervised energies: [0.8583287, 7.9476423]
+Training loss: 3.56866
+Unsupervised energies: [0.79626739, 7.9197917]
+Training loss: 4.43022
+Unsupervised energies: [0.85260653, 7.9323678]
+Training loss: 3.35373
+Unsupervised energies: [0.85267156, 7.9105377]
+Training loss: 5.65845
+Unsupervised energies: [0.865264, 7.8957243]
+Training loss: 3.35888
+Unsupervised energies: [0.86502463, 7.8855276]
+Training loss: 4.86925
+Unsupervised energies: [0.86479408, 7.8799558]
+Training loss: 2.86645
+Unsupervised energies: [0.8645665, 7.8694463]
+Training loss: 5.26461
+Unsupervised energies: [0.8643508, 7.8817301]
+Training loss: 4.42199
+Unsupervised energies: [0.84460956, 7.8975782]
+Training loss: 2.82832
+Unsupervised energies: [0.85231638, 7.8859506]
+Training loss: 3.57378
+Unsupervised energies: [0.85207283, 7.8707781]
+Training loss: 2.24727
+Unsupervised energies: [0.86342239, 7.8621922]
+Training loss: 2.50422
+Unsupervised energies: [0.85194373, 7.8588939]
+Training loss: 4.38541
+Unsupervised energies: [0.85183489, 7.7601805]
+Training loss: 4.02487
+Unsupervised energies: [0.85183889, 7.8400178]
+Training loss: 3.56529
+Unsupervised energies: [0.85465574, 7.8357897]
+Training loss: 3.7931
+Unsupervised energies: [0.8543793, 7.8212838]
+Training loss: 2.67358
+Unsupervised energies: [0.86193782, 7.8178043]
+Training loss: 3.82931
+Unsupervised energies: [0.8518725, 7.7891812]
+Training loss: 3.62157
+Unsupervised energies: [0.86144799, 7.8134174]
+Training loss: 5.0268
+Unsupervised energies: [0.86121428, 7.8051381]
+Training loss: 4.10242
+Unsupervised energies: [0.85166341, 7.7708497]
+Training loss: 4.5715
+Unsupervised energies: [0.86076188, 7.7603035]
+Training loss: 3.10316
+Unsupervised energies: [0.86050737, 7.7062273]
+Training loss: 2.55596
+Unsupervised energies: [0.86024445, 7.7555771]
+Training loss: 3.20651
+Unsupervised energies: [0.86006033, 7.7532263]
+Training loss: 3.50621
+Unsupervised energies: [0.85141742, 7.7232656]
+Training loss: 3.66513
+Unsupervised energies: [0.85143268, 7.7466264]
+Training loss: 3.5876
+Unsupervised energies: [0.85135555, 7.7445226]
+Training loss: 3.88463
+Unsupervised energies: [0.85124892, 7.7440386]
+Training loss: 3.34354
+Unsupervised energies: [0.85114932, 7.7458439]
+Training loss: 3.42648
+Unsupervised energies: [0.83435929, 7.7495847]
+Training loss: 3.22028
+Unsupervised energies: [0.85456598, 7.7428913]
+Training loss: 3.12442
+Unsupervised energies: [0.85072201, 7.7468872]
+Training loss: 2.20535
+Unsupervised energies: [0.85074234, 7.7363434]
+Training loss: 2.89265
+Unsupervised energies: [0.85776716, 7.3929563]
+Training loss: 4.14611
+Unsupervised energies: [0.83477443, 7.6908622]
+Training loss: 4.24917
+Unsupervised energies: [0.85718346, 7.7386255]
+Training loss: 4.49343
+Unsupervised energies: [0.8518405, 7.760951]
+Training loss: 2.92669
+Unsupervised energies: [0.85673171, 7.7615128]
+Training loss: 5.2256
+Unsupervised energies: [0.85254622, 7.7480159]
+Training loss: 4.12397
+Unsupervised energies: [0.83469498, 7.7610416]
+Training loss: 4.0915
+Unsupervised energies: [0.85596007, 7.7458372]
+Training loss: 3.20994
+Unsupervised energies: [0.85570109, 7.7371917]
+Training loss: 3.07815
+Unsupervised energies: [0.85043848, 7.7213354]
+Training loss: 5.31892
+Unsupervised energies: [0.85525167, 7.7192144]
+Training loss: 3.08922
+Unsupervised energies: [0.85041535, 7.7165899]
+Training loss: 3.27163
+Unsupervised energies: [0.85476792, 7.6092892]
+Training loss: 3.60475
+Unsupervised energies: [0.85030127, 7.6904154]
+Training loss: 4.51713
+Unsupervised energies: [0.85427439, 7.8074927]
+Training loss: 3.35049
+Unsupervised energies: [0.85404408, 7.6955485]
+Training loss: 3.99575
+Unsupervised energies: [0.85027117, 7.7033205]
+Training loss: 4.39484
+Unsupervised energies: [0.84965748, 7.5822444]
+Training loss: 3.37647
+Unsupervised energies: [0.8499856, 7.6605344]
+Training loss: 3.38984
+Unsupervised energies: [0.85310686, 7.6955328]
+Training loss: 4.6042
+Unsupervised energies: [0.85282254, 7.6571527]
+Training loss: 3.05557
+Unsupervised energies: [0.84973603, 7.6831703]
+Training loss: 2.39646
+Unsupervised energies: [0.8522656, 7.6669593]
+Training loss: 3.11557
+Unsupervised energies: [0.84996945, 7.6649394]
+Training loss: 3.80582
+Unsupervised energies: [0.85178226, 7.6639032]
+Training loss: 4.89112
+Unsupervised energies: [0.85154814, 7.6443648]
+Training loss: 3.53079
+Unsupervised energies: [0.84980315, 7.6611209]
+Training loss: 2.45972
+Unsupervised energies: [0.84962845, 7.5540729]
+Training loss: 5.36137
+Unsupervised energies: [0.85088587, 7.6661854]
+Training loss: 4.15378
+Unsupervised energies: [0.84950566, 7.663034]
+Training loss: 4.23289
+Unsupervised energies: [0.85042387, 7.6528397]
+Training loss: 4.07089
+Unsupervised energies: [0.84939706, 7.5707269]
+Training loss: 3.7348
+Unsupervised energies: [0.84989178, 7.6457019]
+Training loss: 3.35048
+Unsupervised energies: [0.84959805, 7.5676637]
+Training loss: 2.69202
+Unsupervised energies: [0.8493951, 7.6142759]
+Training loss: 3.42477
+Unsupervised energies: [0.84952193, 7.5990782]
+Training loss: 3.07893
+Unsupervised energies: [0.84886986, 7.5745873]
+Training loss: 3.39872
+Unsupervised energies: [0.83481503, 7.5861607]
+Training loss: 3.42583
+Unsupervised energies: [0.84955347, 7.5907092]
+Training loss: 3.4753
+Unsupervised energies: [0.84966648, 7.5583959]
+Training loss: 2.40626
+Unsupervised energies: [0.84951413, 7.5615768]
+Training loss: 3.4327
+Unsupervised energies: [0.84960508, 7.5415053]
+Training loss: 3.30687
+Unsupervised energies: [0.84957898, 7.5172615]
+Training loss: 2.79698
+Unsupervised energies: [0.84942311, 7.5336747]
+Training loss: 4.27027
+Unsupervised energies: [0.84941763, 7.4919353]
+Training loss: 3.29152
+Unsupervised energies: [0.82182425, 7.3689685]
+Training loss: 3.19503
+Unsupervised energies: [0.84924734, 7.5419135]
+Training loss: 3.7961
+Unsupervised energies: [0.84930938, 7.5148764]
+Training loss: 3.13803
+Unsupervised energies: [0.84592766, 7.5129466]
+Training loss: 5.10948
+Unsupervised energies: [0.84803206, 7.5222993]
+Training loss: 3.20214
+Unsupervised energies: [0.8488906, 7.4725862]
+Training loss: 3.641
+Unsupervised energies: [0.84886342, 7.4466143]
+Training loss: 2.53932
+Unsupervised energies: [0.84881604, 7.5130057]
+Training loss: 3.29255
+Unsupervised energies: [0.84871513, 7.4883995]
+Training loss: 2.86442
+Unsupervised energies: [0.84875584, 7.5162921]
+Training loss: 3.1172
+Unsupervised energies: [0.84877056, 7.507679]
+Training loss: 2.94028
+Unsupervised energies: [0.8486703, 7.5192728]
+Training loss: 4.50227
+Unsupervised energies: [0.84862119, 7.4375339]
+Training loss: 2.99824
+Unsupervised energies: [0.81726933, 7.4668846]
+Training loss: 3.2897
+Unsupervised energies: [0.84855294, 7.5021167]
+Training loss: 5.15761
+Unsupervised energies: [0.84869766, 7.4904032]
+Training loss: 3.61016
+Unsupervised energies: [0.84867507, 7.4233179]
+Training loss: 4.09851
+Unsupervised energies: [0.84872597, 7.4834652]
+Training loss: 3.41448
+Unsupervised energies: [0.84880471, 7.4674163]
+Training loss: 2.89057
+Unsupervised energies: [0.80292434, 7.4669957]
+Training loss: 3.54559
+Unsupervised energies: [0.84892559, 7.4271398]
+Training loss: 2.93246
+Unsupervised energies: [0.84900308, 7.3938184]
+Training loss: 3.4892
+Unsupervised energies: [0.84694719, 7.3970456]
+Training loss: 3.34606
+Unsupervised energies: [0.84889489, 7.3819242]
+Training loss: 3.36459
+Unsupervised energies: [0.83313125, 7.3797793]
+Training loss: 3.78846
+Unsupervised energies: [0.84868419, 7.3638272]
+Training loss: 3.53682
+Unsupervised energies: [0.84849203, 7.350409]
+Training loss: 4.49871
+Unsupervised energies: [0.84836113, 7.3763857]
+Training loss: 3.49838
+Unsupervised energies: [0.8483448, 7.3728046]
+Training loss: 3.29277
+Unsupervised energies: [0.83934909, 7.3593445]
+Training loss: 5.14571
+Unsupervised energies: [0.84815615, 7.2601647]
+Training loss: 2.80642
+Unsupervised energies: [0.8482601, 7.3534727]
+Training loss: 4.27559
+Unsupervised energies: [0.84833044, 7.3650956]
+Training loss: 3.28197
+Unsupervised energies: [0.84824395, 7.3557701]
+Training loss: 2.56645
+Unsupervised energies: [0.84829128, 7.3481455]
+Training loss: 5.58396
+Unsupervised energies: [0.84825534, 7.3560009]
+Training loss: 2.64891
+Unsupervised energies: [0.84824401, 7.3426876]
+Training loss: 3.15366
+Unsupervised energies: [0.84809339, 7.3460784]
+Training loss: 3.62966
+Unsupervised energies: [0.8479864, 7.3576903]
+Training loss: 2.93418
+Unsupervised energies: [0.84784967, 7.3597717]
+Training loss: 2.63135
+Unsupervised energies: [0.84790266, 7.3007855]
+Training loss: 4.5348
+Unsupervised energies: [0.84800166, 7.3139715]
+Training loss: 3.68566
+Unsupervised energies: [0.84762704, 7.3072791]
+Training loss: 3.15308
+Unsupervised energies: [0.84794897, 7.3072906]
+Training loss: 3.59224
+Unsupervised energies: [0.84780127, 7.3043008]
+Training loss: 2.56169
+Unsupervised energies: [0.8479501, 7.2951217]
+Training loss: 3.4962
+Unsupervised energies: [0.8477782, 7.2923589]
+Training loss: 3.20857
+Unsupervised energies: [0.84779352, 7.2769217]
+Training loss: 3.4544
+Unsupervised energies: [0.84786165, 7.2980638]
+Training loss: 3.25305
+Unsupervised energies: [0.8279106, 7.2745032]
+Training loss: 3.74489
+Unsupervised energies: [0.84826142, 7.2420921]
+Training loss: 4.45848
+Unsupervised energies: [0.84836674, 7.215322]
+Training loss: 3.04172
+Unsupervised energies: [0.84833658, 7.2198253]
+Training loss: 3.85675
+Unsupervised energies: [0.84836805, 7.1859117]
+Training loss: 3.02755
+Unsupervised energies: [0.82061464, 7.1655693]
+Training loss: 3.71937
+Unsupervised energies: [0.84829026, 7.187211]
+Training loss: 3.16671
+Unsupervised energies: [0.79269981, 7.1821723]
+Training loss: 3.34511
+Unsupervised energies: [0.84418535, 7.3027248]
+Training loss: 3.67576
+Unsupervised energies: [0.84812981, 7.1889391]
+Training loss: 3.6499
+Unsupervised energies: [0.84810412, 7.1865635]
+Training loss: 2.27118
+Unsupervised energies: [0.84819734, 7.1840682]
+Training loss: 3.5008
+Unsupervised energies: [0.84808636, 7.1622081]
+Training loss: 3.6661
+Unsupervised energies: [0.84811944, 7.1878328]
+Training loss: 3.23929
+Unsupervised energies: [0.84811074, 7.1846309]
+Training loss: 3.7498
+Unsupervised energies: [0.8362999, 7.1612606]
+Training loss: 3.10173
+Unsupervised energies: [0.8481034, 7.1861782]
+Training loss: 3.21402
+Unsupervised energies: [0.84802848, 7.1745195]
+Training loss: 2.53944
+Unsupervised energies: [0.84801358, 7.1703768]
+Training loss: 2.87017
+Unsupervised energies: [0.8402822, 7.1637273]
+Training loss: 3.15795
+Unsupervised energies: [0.84810621, 7.1753931]
+Training loss: 3.9484
+Unsupervised energies: [0.84831202, 7.1494141]
+Training loss: 4.04589
+Unsupervised energies: [0.84825099, 7.1692438]
+Training loss: 3.56097
+Unsupervised energies: [0.8482483, 7.1622338]
+Training loss: 2.59542
+Unsupervised energies: [0.84813499, 7.1437855]
+Training loss: 2.72537
+Unsupervised energies: [0.8479659, 7.1484494]
+Training loss: 3.65495
+Unsupervised energies: [0.84788758, 7.1675248]
+Training loss: 3.65404
+Unsupervised energies: [0.84765947, 7.1652412]
+Training loss: 3.41455
+Unsupervised energies: [0.83991271, 7.1489954]
+Training loss: 3.11635
+Unsupervised energies: [0.84805006, 7.1434216]
+Training loss: 2.78722
+Unsupervised energies: [0.84783185, 7.1448879]
+Training loss: 2.75401
+Unsupervised energies: [0.8478322, 7.1390548]
+Training loss: 3.66699
+Unsupervised energies: [0.84784913, 7.1441565]
+Training loss: 3.2631
+Unsupervised energies: [0.8321979, 7.1351757]
+Training loss: 2.82113
+Unsupervised energies: [0.84814155, 7.1276159]
+Training loss: 3.19415
+Unsupervised energies: [0.8478182, 7.1325974]
+Training loss: 3.41408
+Unsupervised energies: [0.84804636, 7.1174235]
+Training loss: 3.3257
+Unsupervised energies: [0.84825146, 7.1129265]
+Training loss: 3.32346
+Unsupervised energies: [0.84798574, 7.0915818]
+Training loss: 2.32064
+Unsupervised energies: [0.84012198, 7.1027436]
+Training loss: 2.7161
+Unsupervised energies: [0.84789443, 7.035264]
+Training loss: 3.85477
+Unsupervised energies: [0.84792215, 7.0853996]
+Training loss: 4.36193
+Unsupervised energies: [0.83973122, 7.0659809]
+Training loss: 2.6232
+Unsupervised energies: [0.84780103, 7.3976612]
+Training loss: 3.77235
+Unsupervised energies: [0.82978106, 7.0353699]
+Training loss: 3.56892
+Unsupervised energies: [0.78090668, 7.0253167]
+Training loss: 2.965
+Unsupervised energies: [0.83212489, 7.0109081]
+Training loss: 2.76148
+Unsupervised energies: [0.84778029, 6.9506583]
+Training loss: 3.27097
+Unsupervised energies: [0.84754974, 6.9792199]
+Training loss: 2.93884
+Unsupervised energies: [0.84754014, 7.0056138]
+Training loss: 3.77201
+Unsupervised energies: [0.83010155, 6.8907886]
+Training loss: 2.97026
+Unsupervised energies: [0.84795612, 6.9699559]
+Training loss: 3.02076
+Unsupervised energies: [0.84751117, 6.9529219]
+Training loss: 3.17055
+Unsupervised energies: [0.84729791, 6.9204063]
+Training loss: 2.71211
+Unsupervised energies: [0.84786755, 6.9515719]
+Training loss: 4.41832
+Unsupervised energies: [0.84734684, 6.7511568]
+Training loss: 3.82272
+Unsupervised energies: [0.84804362, 6.957406]
+Training loss: 3.2455
+Unsupervised energies: [0.84755456, 6.9638329]
+Training loss: 3.33652
+Unsupervised energies: [0.84814215, 6.9472528]
+Training loss: 3.49811
+Unsupervised energies: [0.84749246, 6.889873]
+Training loss: 4.09337
+Unsupervised energies: [0.84733963, 6.9611058]
+Training loss: 3.3855
+Unsupervised energies: [0.83861226, 6.9566212]
+Training loss: 2.46081
+Unsupervised energies: [0.84793693, 6.9272175]
+Training loss: 3.04588
+Unsupervised energies: [0.84796041, 6.9387093]
+Training loss: 3.14028
+Unsupervised energies: [0.84731019, 6.919157]
+Training loss: 3.98816
+Unsupervised energies: [0.84795034, 6.909771]
+Training loss: 4.23795
+Unsupervised energies: [0.81661969, 6.8873277]
+Training loss: 2.98186
+Unsupervised energies: [0.83087569, 6.8725624]
+Training loss: 2.82875
+Unsupervised energies: [0.84786808, 6.8421283]
+Training loss: 2.85178
+Unsupervised energies: [0.84719586, 7.1636963]
+Training loss: 3.82908
+Unsupervised energies: [0.84797263, 6.8831553]
+Training loss: 3.12017
+Unsupervised energies: [0.84782714, 6.8706646]
+Training loss: 3.41374
+Unsupervised energies: [0.83093405, 6.867692]
+Training loss: 3.55018
+Unsupervised energies: [0.84778607, 6.8529558]
+Training loss: 4.43822
+Unsupervised energies: [0.84797728, 6.867003]
+Training loss: 3.97281
+Unsupervised energies: [0.80361396, 6.7986474]
+Training loss: 2.90478
+Unsupervised energies: [0.84794134, 6.8476067]
+Training loss: 4.54461
+Unsupervised energies: [0.84784937, 6.8369694]
+Training loss: 2.98449
+Unsupervised energies: [0.84773409, 7.6175127]
+Training loss: 3.05282
+Unsupervised energies: [0.84751713, 6.8092885]
+Training loss: 4.30596
+Unsupervised energies: [0.81123191, 6.828783]
+Training loss: 2.70132
+Unsupervised energies: [0.84674764, 7.0402913]
+Training loss: 3.08211
+Unsupervised energies: [0.84659868, 7.7741833]
+Training loss: 3.90721
+Unsupervised energies: [0.84752399, 6.7906871]
+Training loss: 4.17464
+Unsupervised energies: [0.84665024, 6.7937059]
+Training loss: 2.68674
+Unsupervised energies: [0.84644508, 6.7941699]
+Training loss: 3.91941
+Unsupervised energies: [0.83843142, 6.7519655]
+Training loss: 3.17925
+Unsupervised energies: [0.84641659, 7.6102762]
+Training loss: 3.35142
+Unsupervised energies: [0.84727228, 6.7860408]
+Training loss: 2.81606
+Unsupervised energies: [0.84723157, 6.7833304]
+Training loss: 2.82272
+Unsupervised energies: [0.84631342, 7.9907885]
+Training loss: 3.76605
+Unsupervised energies: [0.8473534, 6.7930365]
+Training loss: 3.49954
+Unsupervised energies: [0.81169361, 6.7732487]
+Training loss: 3.12123
+Unsupervised energies: [0.84745002, 6.9069548]
+Training loss: 3.26828
+Unsupervised energies: [0.84724617, 7.7378793]
+Training loss: 2.58429
+Unsupervised energies: [0.84613317, 7.9745049]
+Training loss: 2.59124
+Unsupervised energies: [0.83872253, 7.7110152]
+Training loss: 2.97851
+Unsupervised energies: [0.84713912, 6.9004498]
+Training loss: 4.5581
+Unsupervised energies: [0.84609854, 6.7096057]
+Training loss: 2.93999
+Unsupervised energies: [0.83099598, 6.7019491]
+Training loss: 3.06636
+Unsupervised energies: [0.84611273, 6.6460128]
+Training loss: 4.46497
+Unsupervised energies: [0.77126688, 7.7324429]
+Training loss: 3.20105
+Unsupervised energies: [0.84628654, 6.7009592]
+Training loss: 3.0077
+Unsupervised energies: [0.84620821, 6.629642]
+Training loss: 4.45487
+Unsupervised energies: [0.84617609, 6.6907926]
+Training loss: 3.37523
+Unsupervised energies: [0.84615481, 6.6713138]
+Training loss: 4.5548
+Unsupervised energies: [0.84737349, 6.8321471]
+Training loss: 4.22939
+Unsupervised energies: [0.84630311, 7.4406962]
+Training loss: 3.47989
+Unsupervised energies: [0.84773535, 6.7252202]
+Training loss: 3.21427
+Unsupervised energies: [0.84771079, 6.6071315]
+Training loss: 4.05581
+Unsupervised energies: [0.8464632, 8.0100269]
+Training loss: 3.13285
+Unsupervised energies: [0.84652144, 6.5144773]
+Training loss: 2.85256
+Unsupervised energies: [0.84649587, 6.7231808]
+Training loss: 3.40394
+Unsupervised energies: [0.84647834, 6.8759389]
+Training loss: 3.02192
+Unsupervised energies: [0.84642595, 6.6429358]
+Training loss: 3.55758
+Unsupervised energies: [0.84656924, 6.7715859]
+Training loss: 3.00486
+Unsupervised energies: [0.84782404, 6.5762534]
+Training loss: 3.51289
+Unsupervised energies: [0.84661227, 7.4190412]
+Training loss: 3.33953
+Unsupervised energies: [0.80648714, 7.7064705]
+Training loss: 4.54199
+Unsupervised energies: [0.848059, 7.0119171]
+Training loss: 2.80166
+Unsupervised energies: [0.84806913, 7.4646187]
+Training loss: 3.64644
+Unsupervised energies: [0.84792215, 7.9856224]
+Training loss: 2.34953
+Unsupervised energies: [0.84253383, 6.7523885]
+Training loss: 2.81525
+Unsupervised energies: [0.84660703, 7.0685239]
+Training loss: 4.08105
+Unsupervised energies: [0.84657866, 7.9810171]
+Training loss: 3.52675
+Unsupervised energies: [0.84668452, 6.8478875]
+Training loss: 2.92356
+Unsupervised energies: [0.84652656, 7.9009008]
+Training loss: 2.88502
+Unsupervised energies: [0.81346869, 6.6483517]
+Training loss: 3.00008
+Unsupervised energies: [0.84654278, 6.9272394]
+Training loss: 3.45319
+Unsupervised energies: [0.84790987, 6.6593843]
+Training loss: 3.58791
+Unsupervised energies: [0.84653085, 6.6990857]
+Training loss: 2.88122
+Unsupervised energies: [0.8482312, 7.0383315]
+Training loss: 2.95976
+Unsupervised energies: [0.84662992, 7.9930797]
+Training loss: 2.43879
+Unsupervised energies: [0.84662044, 6.6209526]
+Training loss: 3.9337
+Unsupervised energies: [0.84807086, 6.9709091]
+Training loss: 3.02771
+Unsupervised energies: [0.84802645, 7.0190353]
+Training loss: 3.42121
+Unsupervised energies: [0.84647232, 6.6241112]
+Training loss: 3.24816
+Unsupervised energies: [0.80702442, 6.3481636]
+Training loss: 3.65255
+Unsupervised energies: [0.83081877, 6.6580105]
+Training loss: 4.49083
+Unsupervised energies: [0.84013128, 7.666378]
+Training loss: 2.36714
+Unsupervised energies: [0.83326477, 7.3062239]
+Training loss: 3.39815
+Unsupervised energies: [0.81094307, 8.0163889]
+Training loss: 2.44264
+Unsupervised energies: [0.84772563, 6.8483772]
+Training loss: 4.38317
+Unsupervised energies: [0.84618902, 6.9399834]
+Training loss: 3.39364
+Unsupervised energies: [0.84766442, 6.7867169]
+Training loss: 3.97413
+Unsupervised energies: [0.84768927, 7.999104]
+Training loss: 3.15775
+Unsupervised energies: [0.83831966, 6.6276345]
+Training loss: 3.34042
+Unsupervised energies: [0.83455127, 6.7771931]
+Training loss: 3.09294
+Unsupervised energies: [0.84617734, 6.9655061]
+Training loss: 2.68123
+Unsupervised energies: [0.84770817, 7.143786]
+Training loss: 4.06968
+Unsupervised energies: [0.84607458, 7.1235418]
+Training loss: 3.56612
+Unsupervised energies: [0.84760022, 6.7662921]
+Training loss: 2.88488
+Unsupervised energies: [0.84749436, 7.1404076]
+Training loss: 3.41242
+Unsupervised energies: [0.84571785, 6.6214619]
+Training loss: 2.80826
+Unsupervised energies: [0.84738624, 6.8142419]
+Training loss: 3.02458
+Unsupervised energies: [0.83331496, 7.9463573]
+Training loss: 3.87586
+Unsupervised energies: [0.84594971, 6.9044685]
+Training loss: 2.9071
+Unsupervised energies: [0.84599572, 7.2607212]
+Training loss: 3.0714
+Unsupervised energies: [0.83330739, 7.1488614]
+Training loss: 2.25791
+Unsupervised energies: [0.80107939, 7.4803944]
+Training loss: 2.34259
+Unsupervised energies: [0.8456043, 6.9390411]
+Training loss: 3.81813
+Unsupervised energies: [0.82211936, 6.7168407]
+Training loss: 2.83824
+Unsupervised energies: [0.84712368, 7.7611561]
+Training loss: 3.34943
+Unsupervised energies: [0.84510928, 6.7284889]
+Training loss: 3.72841
+Unsupervised energies: [0.77143806, 7.3553576]
+Training loss: 3.51417
+Unsupervised energies: [0.84662867, 7.2204814]
+Training loss: 3.85578
+Unsupervised energies: [0.84488034, 6.8662205]
+Training loss: 3.78596
+Unsupervised energies: [0.84488356, 6.9996042]
+Training loss: 3.1307
+Unsupervised energies: [0.84488761, 6.9367929]
+Training loss: 3.16457
+Unsupervised energies: [0.84653419, 8.0111904]
+Training loss: 3.84732
+Unsupervised energies: [0.83273357, 7.1357646]
+Training loss: 3.91976
+Unsupervised energies: [0.8466211, 7.9769511]
+Training loss: 3.47624
+Unsupervised energies: [0.78995132, 6.6892109]
+Training loss: 3.13579
+Unsupervised energies: [0.84487194, 7.149991]
+Training loss: 3.56735
+Unsupervised energies: [0.84491187, 7.0829458]
+Training loss: 3.23872
+Unsupervised energies: [0.84663433, 7.2073002]
+Training loss: 4.04216
+Unsupervised energies: [0.84476781, 8.002449]
+Training loss: 3.07751
+Unsupervised energies: [0.8408497, 6.8632951]
+Training loss: 2.71322
+Unsupervised energies: [0.84479952, 7.9572382]
+Training loss: 3.55192
+Unsupervised energies: [0.8449015, 7.3050709]
+Training loss: 3.49429
+Unsupervised energies: [0.84657615, 7.9585843]
+Training loss: 3.56757
+Unsupervised energies: [0.84653878, 7.8888092]
+Training loss: 3.04228
+Unsupervised energies: [0.84468615, 7.1805515]
+Training loss: 4.09728
+Unsupervised energies: [0.84472704, 7.916564]
+Training loss: 3.0786
+Unsupervised energies: [0.84656686, 7.2178268]
+Training loss: 3.54658
+Unsupervised energies: [0.84455609, 7.2013459]
+Training loss: 3.48162
+Unsupervised energies: [0.84458876, 7.0455642]
+Training loss: 3.17655
+Unsupervised energies: [0.84631938, 8.006115]
+Training loss: 3.52037
+Unsupervised energies: [0.8465668, 7.3129907]
+Training loss: 2.70086
+Unsupervised energies: [0.83326685, 7.144217]
+Training loss: 2.1614
+Unsupervised energies: [0.84493917, 7.0907307]
+Training loss: 3.98833
+Unsupervised energies: [0.84678453, 7.9747133]
+Training loss: 3.40599
+Unsupervised energies: [0.84507281, 7.6507139]
+Training loss: 3.40996
+Unsupervised energies: [0.8472572, 7.4952621]
+Training loss: 3.57225
+Unsupervised energies: [0.84710664, 7.4390492]
+Training loss: 2.82476
+Unsupervised energies: [0.84521884, 7.4403334]
+Training loss: 2.46777
+Unsupervised energies: [0.8139075, 7.2279062]
+Training loss: 4.88056
+Unsupervised energies: [0.84716958, 7.918149]
+Training loss: 2.9538
+Unsupervised energies: [0.84733695, 7.4511633]
+Training loss: 2.73277
+Unsupervised energies: [0.84734076, 7.4389272]
+Training loss: 2.77594
+Unsupervised energies: [0.84528238, 7.1476521]
+Training loss: 2.74376
+Unsupervised energies: [0.84525424, 7.3093147]
+Training loss: 2.09818
+Unsupervised energies: [0.84541249, 7.2546387]
+Training loss: 3.09671
+Unsupervised energies: [0.84732622, 7.9591312]
+Training loss: 3.119
+Unsupervised energies: [0.84745264, 7.5549865]
+Training loss: 3.45135
+Unsupervised energies: [0.84545434, 7.9154263]
+Training loss: 3.25054
+Unsupervised energies: [0.84741247, 7.9420509]
+Training loss: 3.40755
+Unsupervised energies: [0.84540617, 7.3407907]
+Training loss: 2.78505
+Unsupervised energies: [0.84551054, 7.9526048]
+Training loss: 3.83344
+Unsupervised energies: [0.84760725, 7.472218]
+Training loss: 3.56982
+Unsupervised energies: [0.84547931, 7.950098]
+Training loss: 3.34278
+Unsupervised energies: [0.81907582, 7.878469]
+Training loss: 3.18979
+Unsupervised energies: [0.84538364, 7.2999959]
+Training loss: 3.04587
+Unsupervised energies: [0.83743936, 6.987186]
+Training loss: 3.16224
+Unsupervised energies: [0.84516269, 7.9555635]
+Training loss: 2.56521
+Unsupervised energies: [0.84722435, 7.3210869]
+Training loss: 2.43321
+Unsupervised energies: [0.84506822, 7.629118]
+Training loss: 3.20998
+Unsupervised energies: [0.84730411, 7.8153954]
+Training loss: 4.21337
+Unsupervised energies: [0.84732229, 7.2070003]
+Training loss: 3.08061
+Unsupervised energies: [0.84514856, 7.4418135]
+Training loss: 2.88291
+Unsupervised energies: [0.84531599, 7.306674]
+Training loss: 3.24451
+Unsupervised energies: [0.84533739, 7.8954525]
+Training loss: 2.56005
+Unsupervised energies: [0.84742618, 7.5890265]
+Training loss: 3.22664
+Unsupervised energies: [0.84757954, 7.9351063]
+Training loss: 4.05491
+Unsupervised energies: [0.83482951, 7.8805971]
+Training loss: 3.12695
+Unsupervised energies: [0.84539115, 7.1669579]
+Training loss: 2.80128
+Unsupervised energies: [0.84751385, 7.6252117]
+Training loss: 3.16919
+Unsupervised energies: [0.84531468, 7.4813385]
+Training loss: 3.09451
+Unsupervised energies: [0.84552485, 7.8015513]
+Training loss: 3.62219
+Unsupervised energies: [0.8477208, 7.5434604]
+Training loss: 3.43503
+Unsupervised energies: [0.84156847, 7.4680734]
+Training loss: 3.07089
+Unsupervised energies: [0.84757495, 7.41886]
+Training loss: 3.39945
+Unsupervised energies: [0.84532583, 7.9442873]
+Training loss: 3.23849
+Unsupervised energies: [0.8474378, 7.8600764]
+Training loss: 3.66077
+Unsupervised energies: [0.84520668, 7.3674092]
+Training loss: 3.47213
+Unsupervised energies: [0.84543294, 7.2891746]
+Training loss: 3.11664
+Unsupervised energies: [0.84527975, 7.0229688]
+Training loss: 3.30256
+Unsupervised energies: [0.84752303, 7.9124413]
+Training loss: 2.6739
+Unsupervised energies: [0.84766752, 7.6867242]
+Training loss: 3.50935
+Unsupervised energies: [0.84782231, 7.5488381]
+Training loss: 2.34709
+Unsupervised energies: [0.84576362, 7.3176417]
+Training loss: 4.07034
+Unsupervised energies: [0.84561467, 7.6202669]
+Training loss: 2.97539
+Unsupervised energies: [0.84798539, 7.9071288]
+Training loss: 2.945
+Unsupervised energies: [0.84797388, 7.6695337]
+Training loss: 3.56027
+Unsupervised energies: [0.84824586, 7.640749]
+Training loss: 4.69688
+Unsupervised energies: [0.8460198, 7.9505811]
+Training loss: 3.50482
+Unsupervised energies: [0.82863402, 7.9514771]
+Training loss: 3.72442
+Unsupervised energies: [0.84586883, 7.8366547]
+Training loss: 3.48851
+Unsupervised energies: [0.84582967, 7.6829023]
+Training loss: 2.56722
+Unsupervised energies: [0.84827447, 7.5291085]
+Training loss: 4.70255
+Unsupervised energies: [0.84836471, 7.8146663]
+Training loss: 3.48719
+Unsupervised energies: [0.84598762, 7.6404581]
+Training loss: 3.39645
+Unsupervised energies: [0.84806108, 7.9529119]
+Training loss: 3.31605
+Unsupervised energies: [0.82864583, 7.834301]
+Training loss: 3.26544
+Unsupervised energies: [0.84596479, 7.5673928]
+Training loss: 3.39252
+Unsupervised energies: [0.84606469, 7.9630136]
+Training loss: 3.00078
+Unsupervised energies: [0.84841639, 7.9115386]
+Training loss: 2.88697
+Unsupervised energies: [0.83657944, 7.8072019]
+Training loss: 3.18597
+Unsupervised energies: [0.848364, 7.8601432]
+Training loss: 3.45548
+Unsupervised energies: [0.84840208, 7.698976]
+Training loss: 4.12072
+Unsupervised energies: [0.84838796, 7.5567217]
+Training loss: 3.79947
+Unsupervised energies: [0.83801425, 7.9344358]
+Training loss: 4.01172
+Unsupervised energies: [0.83464187, 7.4465933]
+Training loss: 3.53269
+Unsupervised energies: [0.84803796, 7.8365149]
+Training loss: 4.02992
+Unsupervised energies: [0.84802163, 7.9232001]
+Training loss: 2.68675
+Unsupervised energies: [0.84781283, 7.8533273]
+Training loss: 3.47096
+Unsupervised energies: [0.84543443, 7.7949934]
+Training loss: 2.21349
+Unsupervised energies: [0.84765273, 7.8315644]
+Training loss: 4.16476
+Unsupervised energies: [0.78131914, 7.9158854]
+Training loss: 3.68555
+Unsupervised energies: [0.84761566, 7.7799067]
+Training loss: 2.92877
+Unsupervised energies: [0.84751171, 7.4795914]
+Training loss: 3.26354
+Unsupervised energies: [0.84746784, 7.6059098]
+Training loss: 2.91463
+Unsupervised energies: [0.84748703, 7.6105633]
+Training loss: 2.77282
+Unsupervised energies: [0.8476088, 7.6940465]
+Training loss: 2.95468
+Unsupervised energies: [0.8274259, 7.6402292]
+Training loss: 3.90476
+Unsupervised energies: [0.83590752, 7.4958229]
+Training loss: 2.98478
+Unsupervised energies: [0.84759897, 7.7419333]
+Training loss: 2.79382
+Unsupervised energies: [0.84758383, 7.8034472]
+Training loss: 2.89724
+Unsupervised energies: [0.84503955, 7.5390425]
+Training loss: 3.17259
+Unsupervised energies: [0.84521419, 7.7883892]
+Training loss: 3.42883
+Unsupervised energies: [0.80510652, 7.4556665]
+Training loss: 4.43564
+Unsupervised energies: [0.84540588, 7.4308887]
+Training loss: 3.7343
+Unsupervised energies: [0.84522158, 7.8055515]
+Training loss: 3.43027
+Unsupervised energies: [0.84765226, 7.868783]
+Training loss: 3.9251
+Unsupervised energies: [0.84514642, 7.8288655]
+Training loss: 3.25477
+Unsupervised energies: [0.84757262, 7.7954926]
+Training loss: 3.12584
+Unsupervised energies: [0.84493959, 7.8652291]
+Training loss: 2.95471
+Unsupervised energies: [0.84741926, 7.7068019]
+Training loss: 2.83557
+Unsupervised energies: [0.84477621, 7.7763038]
+Training loss: 3.56077
+Unsupervised energies: [0.84731191, 7.794343]
+Training loss: 3.41947
+Unsupervised energies: [0.84738916, 7.8512459]
+Training loss: 3.81476
+Unsupervised energies: [0.84729928, 7.8002944]
+Training loss: 3.11671
+Unsupervised energies: [0.83805519, 7.795907]
+Training loss: 3.9441
+Unsupervised energies: [0.84759074, 7.7006621]
+Training loss: 2.67334
+Unsupervised energies: [0.84765655, 7.8640614]
+Training loss: 3.41055
+Unsupervised energies: [0.8476184, 7.8671675]
+Training loss: 2.73708
+Unsupervised energies: [0.84517682, 7.8790421]
+Training loss: 4.23666
+Unsupervised energies: [0.84521091, 7.8130836]
+Training loss: 3.01699
+Unsupervised energies: [0.83680177, 7.6680493]
+Training loss: 3.48645
+Unsupervised energies: [0.84788901, 7.7895665]
+Training loss: 4.35871
+Unsupervised energies: [0.8209098, 7.0809345]
+Training loss: 4.2844
+Unsupervised energies: [0.84796208, 7.9207397]
+Training loss: 3.1224
+Unsupervised energies: [0.84546399, 7.8326869]
+Training loss: 2.71393
+Unsupervised energies: [0.84546798, 7.8343987]
+Training loss: 3.07
+Unsupervised energies: [0.82143623, 7.6804829]
+Training loss: 2.30164
+Unsupervised energies: [0.8454206, 7.4212885]
+Training loss: 2.77327
+Unsupervised energies: [0.84804201, 7.8789883]
+Training loss: 3.34028
+Unsupervised energies: [0.84801579, 7.853878]
+Training loss: 3.18459
+Unsupervised energies: [0.84528685, 7.8772964]
+Training loss: 3.30532
+Unsupervised energies: [0.84791434, 7.8278823]
+Training loss: 3.18493
+Unsupervised energies: [0.84511161, 7.7486086]
+Training loss: 2.3621
+Unsupervised energies: [0.84775615, 7.9319167]
+Training loss: 2.79045
+Unsupervised energies: [0.84775656, 7.9712405]
+Training loss: 3.18735
+Unsupervised energies: [0.84771723, 7.8605919]
+Training loss: 3.82115
+Unsupervised energies: [0.84785759, 7.7959714]
+Training loss: 2.78141
+Unsupervised energies: [0.84786999, 7.9982204]
+Training loss: 2.48238
+Unsupervised energies: [0.8477326, 7.424438]
+Training loss: 2.67343
+Unsupervised energies: [0.84794945, 7.8373914]
+Training loss: 3.02611
+Unsupervised energies: [0.82914203, 7.776319]
+Training loss: 3.45516
+Unsupervised energies: [0.84784329, 7.8584914]
+Training loss: 2.28592
+Unsupervised energies: [0.82025838, 7.7660379]
+Training loss: 3.17592
+Unsupervised energies: [0.79816049, 7.8338904]
+Training loss: 3.05353
+Unsupervised energies: [0.84797037, 7.8227162]
+Training loss: 3.21541
+Unsupervised energies: [0.83724004, 7.799932]
+Training loss: 3.24164
+Unsupervised energies: [0.84608215, 7.8500414]
+Training loss: 3.27567
+Unsupervised energies: [0.84778678, 7.8591027]
+Training loss: 3.82608
+Unsupervised energies: [0.84769881, 7.9129834]
+Training loss: 2.86184
+Unsupervised energies: [0.8477639, 7.7090378]
+Training loss: 3.13573
+Unsupervised energies: [0.84773779, 7.9150133]
+Training loss: 3.12829
+Unsupervised energies: [0.84272945, 7.5846844]
+Training loss: 3.74315
+Unsupervised energies: [0.84773517, 7.9952455]
+Training loss: 3.3292
+Unsupervised energies: [0.84779203, 8.1946325]
+Training loss: 3.11919
+Unsupervised energies: [0.81363302, 7.8194542]
+Training loss: 4.34172
+Unsupervised energies: [0.84782398, 7.8575678]
+Training loss: 3.32615
+Unsupervised energies: [0.84780473, 7.7553906]
+Training loss: 3.16739
+Unsupervised energies: [0.84785217, 7.7358823]
+Training loss: 3.92353
+Unsupervised energies: [0.84515339, 7.803143]
+Training loss: 3.35204
+Unsupervised energies: [0.84779561, 7.8088522]
+Training loss: 3.10697
+Unsupervised energies: [0.83704334, 7.796278]
+Training loss: 2.92646
+Unsupervised energies: [0.84485346, 7.650775]
+Training loss: 3.64212
+Unsupervised energies: [0.8363632, 7.8272438]
+Training loss: 3.3562
+Unsupervised energies: [0.84756708, 7.8748178]
+Training loss: 2.66636
+Unsupervised energies: [0.84493738, 7.8111429]
+Training loss: 2.90866
+Unsupervised energies: [0.84773588, 7.7927585]
+Training loss: 2.79718
+Unsupervised energies: [0.84778172, 7.7976532]
+Training loss: 2.98453
+Unsupervised energies: [0.84777904, 7.5657959]
+Training loss: 3.78369
+Unsupervised energies: [0.84523869, 7.7226276]
+Training loss: 3.42893
+Unsupervised energies: [0.84795445, 7.7379518]
+Training loss: 2.61132
+Unsupervised energies: [0.84538436, 7.9106369]
+Training loss: 3.1212
+Unsupervised energies: [0.84537619, 7.8706436]
+Training loss: 3.98088
+Unsupervised energies: [0.82748717, 7.9697518]
+Training loss: 2.32074
+Unsupervised energies: [0.84538293, 7.8182826]
+Training loss: 2.83628
+Unsupervised energies: [0.84544152, 7.7360907]
+Training loss: 2.63349
+Unsupervised energies: [0.8453812, 7.850028]
+Training loss: 2.36155
+Unsupervised energies: [0.84523571, 7.5058928]
+Training loss: 2.53617
+Unsupervised energies: [0.84530717, 7.9884996]
+Training loss: 3.02899
+Unsupervised energies: [0.84520745, 7.7391634]
+Training loss: 3.20497
+Unsupervised energies: [0.82158172, 7.371799]
+Training loss: 3.58004
+Unsupervised energies: [0.80761993, 7.7479124]
+Training loss: 3.24048
+Unsupervised energies: [0.84813416, 8.107317]
+Training loss: 3.66299
+Unsupervised energies: [0.84522313, 7.8503761]
+Training loss: 2.65637
+Unsupervised energies: [0.84794533, 7.9299707]
+Training loss: 3.39888
+Unsupervised energies: [0.8253594, 7.9713635]
+Training loss: 4.05899
+Unsupervised energies: [0.8449614, 7.7504263]
+Training loss: 3.01302
+Unsupervised energies: [0.84493828, 7.8506122]
+Training loss: 2.99442
+Unsupervised energies: [0.81017298, 7.7400699]
+Training loss: 3.24277
+Unsupervised energies: [0.84769869, 8.1028547]
+Training loss: 3.1351
+Unsupervised energies: [0.84487081, 7.7066641]
+Training loss: 4.46484
+Unsupervised energies: [0.84479904, 7.9263883]
+Training loss: 2.6979
+Unsupervised energies: [0.84469527, 8.0188503]
+Training loss: 2.86267
+Unsupervised energies: [0.82894415, 7.8278489]
+Training loss: 2.83411
+Unsupervised energies: [0.84770358, 8.0543747]
+Training loss: 2.20376
+Unsupervised energies: [0.84781289, 8.0100594]
+Training loss: 3.12079
+Unsupervised energies: [0.84758794, 7.9532485]
+Training loss: 3.01779
+Unsupervised energies: [0.84779662, 8.0478306]
+Training loss: 3.51762
+Unsupervised energies: [0.84478265, 7.9790363]
+Training loss: 3.25948
+Unsupervised energies: [0.83694673, 7.8057246]
+Training loss: 2.76275
+Unsupervised energies: [0.84796852, 8.1047258]
+Training loss: 2.71512
+Unsupervised energies: [0.84800982, 8.0226278]
+Training loss: 2.76972
+Unsupervised energies: [0.84814167, 7.7589917]
+Training loss: 3.22013
+Unsupervised energies: [0.84817731, 8.0350266]
+Training loss: 2.5848
+Unsupervised energies: [0.84520537, 7.6752524]
+Training loss: 3.32674
+Unsupervised energies: [0.84364009, 8.054759]
+Training loss: 3.99527
+Unsupervised energies: [0.84839767, 8.0043707]
+Training loss: 2.92988
+Unsupervised energies: [0.84821731, 7.9207077]
+Training loss: 3.87141
+Unsupervised energies: [0.84840012, 8.0370092]
+Training loss: 3.52653
+Unsupervised energies: [0.84554219, 7.8084602]
+Training loss: 3.53793
+Unsupervised energies: [0.84851956, 8.0214539]
+Training loss: 3.09822
+Unsupervised energies: [0.83847684, 7.7713628]
+Training loss: 4.09772
+Unsupervised energies: [0.84528846, 7.7473702]
+Training loss: 3.17432
+Unsupervised energies: [0.84828782, 7.981286]
+Training loss: 4.17215
+Unsupervised energies: [0.84878182, 8.2599049]
+Training loss: 3.15841
+Unsupervised energies: [0.84570736, 7.8405571]
+Training loss: 3.24568
+Unsupervised energies: [0.83079284, 7.7269974]
+Training loss: 3.33685
+Unsupervised energies: [0.81798279, 7.7060113]
+Training loss: 4.01807
+Unsupervised energies: [0.81993657, 7.6994081]
+Training loss: 2.99997
+Unsupervised energies: [0.84836113, 8.1989603]
+Training loss: 2.67591
+Unsupervised energies: [0.84858871, 8.0226879]
+Training loss: 2.65017
+Unsupervised energies: [0.84855396, 8.1518726]
+Training loss: 3.64525
+Unsupervised energies: [0.84853077, 7.9691634]
+Training loss: 3.32354
+Unsupervised energies: [0.82759619, 7.7680559]
+Training loss: 4.10578
+Unsupervised energies: [0.84533566, 7.7272539]
+Training loss: 2.8924
+Unsupervised energies: [0.82191283, 7.934834]
+Training loss: 3.26114
+Unsupervised energies: [0.80768037, 7.9725065]
+Training loss: 4.16345
+Unsupervised energies: [0.84560585, 7.8281131]
+Training loss: 3.30724
+Unsupervised energies: [0.83891392, 7.9847999]
+Training loss: 3.45325
+Unsupervised energies: [0.84411615, 7.758811]
+Training loss: 2.85438
+Unsupervised energies: [0.84834886, 7.7991953]
+Training loss: 3.39504
+Unsupervised energies: [0.84524828, 8.0433989]
+Training loss: 2.46727
+Unsupervised energies: [0.8482995, 8.1675043]
+Training loss: 3.95337
+Unsupervised energies: [0.84830642, 7.9711785]
+Training loss: 3.21285
+Unsupervised energies: [0.8482368, 7.9753852]
+Training loss: 3.6427
+Unsupervised energies: [0.8481105, 7.978951]
+Training loss: 2.83205
+Unsupervised energies: [0.84112847, 7.6209655]
+Training loss: 3.3263
+Unsupervised energies: [0.84502548, 7.998116]
+Training loss: 3.30826
+Unsupervised energies: [0.84806561, 8.2068367]
+Training loss: 3.43605
+Unsupervised energies: [0.84837407, 8.303134]
+Training loss: 4.83468
+Unsupervised energies: [0.84533417, 7.8980255]
+Training loss: 2.63176
+Unsupervised energies: [0.84414083, 7.9978247]
+Training loss: 3.716
+Unsupervised energies: [0.84414625, 7.946413]
+Training loss: 3.42148
+Unsupervised energies: [0.83551437, 7.7100167]
+Training loss: 3.10751
+Unsupervised energies: [0.84829712, 8.3415871]
+Training loss: 2.96245
+Unsupervised energies: [0.80147386, 7.8032613]
+Training loss: 2.90823
+Unsupervised energies: [0.8454929, 8.1888905]
+Training loss: 3.44948
+Unsupervised energies: [0.83198255, 7.8402905]
+Training loss: 2.41721
+Unsupervised energies: [0.83898765, 7.8978763]
+Training loss: 3.1354
+Unsupervised energies: [0.84852928, 8.0498905]
+Training loss: 3.10916
+Unsupervised energies: [0.8392188, 8.1865368]
+Training loss: 3.16966
+Unsupervised energies: [0.84843445, 8.2206745]
+Training loss: 3.28176
+Unsupervised energies: [0.84427488, 7.9251628]
+Training loss: 3.60037
+Unsupervised energies: [0.84530967, 8.1947765]
+Training loss: 3.56082
+Unsupervised energies: [0.84529567, 8.0038824]
+Training loss: 3.9748
+Unsupervised energies: [0.84821457, 8.0658693]
+Training loss: 2.83915
+Unsupervised energies: [0.84820795, 8.1460905]
+Training loss: 3.11228
+Unsupervised energies: [0.84502268, 8.0176773]
+Training loss: 2.79581
+Unsupervised energies: [0.84016997, 8.0433826]
+Training loss: 2.86202
+Unsupervised energies: [0.84527749, 7.9007196]
+Training loss: 3.3288
+Unsupervised energies: [0.84851384, 8.2940016]
+Training loss: 3.93824
+Unsupervised energies: [0.84543449, 8.1010942]
+Training loss: 3.45953
+Unsupervised energies: [0.84873468, 8.3478642]
+Training loss: 3.45576
+Unsupervised energies: [0.84558207, 8.2428083]
+Training loss: 2.69729
+Unsupervised energies: [0.84865773, 7.8277392]
+Training loss: 3.2184
+Unsupervised energies: [0.8489598, 8.2778683]
+Training loss: 2.98547
+Unsupervised energies: [0.84897089, 8.1493931]
+Training loss: 3.11274
+Unsupervised energies: [0.84900743, 8.1693373]
+Training loss: 2.97477
+Unsupervised energies: [0.84895843, 7.8207278]
+Training loss: 3.34289
+Unsupervised energies: [0.83114958, 7.8389378]
+Training loss: 3.06593
+Unsupervised energies: [0.84884489, 8.1171408]
+Training loss: 2.52627
+Unsupervised energies: [0.84875965, 7.9767175]
+Training loss: 3.26688
+Unsupervised energies: [0.84870648, 8.1996937]
+Training loss: 3.60793
+Unsupervised energies: [0.83973581, 8.1298971]
+Training loss: 4.03896
+Unsupervised energies: [0.84894305, 8.2524347]
+Training loss: 3.89078
+Unsupervised energies: [0.84891844, 8.2046347]
+Training loss: 3.04101
+Unsupervised energies: [0.84889048, 8.1902151]
+Training loss: 2.51716
+Unsupervised energies: [0.84892374, 8.0905085]
+Training loss: 2.66336
+Unsupervised energies: [0.8486532, 8.0664873]
+Training loss: 2.59268
+Unsupervised energies: [0.8452521, 8.1059027]
+Training loss: 3.10683
+Unsupervised energies: [0.84518152, 7.781364]
+Training loss: 3.33111
+Unsupervised energies: [0.84858346, 8.3606424]
+Training loss: 2.88607
+Unsupervised energies: [0.84861094, 8.3493185]
+Training loss: 3.02589
+Unsupervised energies: [0.84846616, 8.3251066]
+Training loss: 4.4248
+Unsupervised energies: [0.84856731, 8.3386793]
+Training loss: 3.39166
+Unsupervised energies: [0.83191514, 7.9522715]
+Training loss: 2.9128
+Unsupervised energies: [0.84872377, 8.4161682]
+Training loss: 2.80102
+Unsupervised energies: [0.83421922, 8.1034765]
+Training loss: 3.66116
+Unsupervised energies: [0.8487469, 7.954494]
+Training loss: 2.25087
+Unsupervised energies: [0.84907639, 8.3268986]
+Training loss: 3.03026
+Unsupervised energies: [0.84907794, 7.8652906]
+Training loss: 3.12126
+Unsupervised energies: [0.84569681, 8.0282612]
+Training loss: 3.82164
+Unsupervised energies: [0.84574676, 8.1323013]
+Training loss: 3.5602
+Unsupervised energies: [0.82768524, 8.0907536]
+Training loss: 3.15987
+Unsupervised energies: [0.8245663, 7.8306403]
+Training loss: 3.2392
+Unsupervised energies: [0.84898722, 8.1644888]
+Training loss: 3.47125
+Unsupervised energies: [0.84546608, 7.9903154]
+Training loss: 2.88342
+Unsupervised energies: [0.84548843, 8.0771751]
+Training loss: 3.83522
+Unsupervised energies: [0.84876412, 8.2364569]
+Training loss: 2.77533
+Unsupervised energies: [0.83982652, 7.9419394]
+Training loss: 3.45696
+Unsupervised energies: [0.84533083, 8.1084538]
+Training loss: 3.42944
+Unsupervised energies: [0.84861517, 7.9174409]
+Training loss: 2.49458
+Unsupervised energies: [0.8486414, 8.4658651]
+Training loss: 3.27117
+Unsupervised energies: [0.84859288, 8.2386618]
+Training loss: 2.90163
+Unsupervised energies: [0.84836715, 8.1007109]
+Training loss: 3.37837
+Unsupervised energies: [0.84866935, 8.3611069]
+Training loss: 3.2174
+Unsupervised energies: [0.84866351, 8.0707579]
+Training loss: 4.63503
+Unsupervised energies: [0.83793026, 7.989903]
+Training loss: 4.1386
+Unsupervised energies: [0.8452602, 8.3613253]
+Training loss: 3.28665
+Unsupervised energies: [0.84514397, 8.2559214]
+

@@ -1,0 +1,92 @@
+
+aded from files
+中国-051B-051C型-驱逐舰
+test images loaded
+0.0
+中国-051型-驱逐舰
+/home/hiroki/anaconda2/lib/python2.7/site-packages/PIL/TiffImagePlugin.py:725: UserWarning: Possibly corrupt EXIF data.  Expecting to read 65536 bytes but only got 0. Skipping tag 0
+  " Skipping tag %s" % (size, len(data), tag))
+test images loaded
+0.0909090909091
+中国-052型-驱逐舰
+test images loaded
+0.0
+中国-053H-护卫舰
+test images loaded
+0.1
+中国-053H1-护卫舰
+test images loaded
+0.0
+中国-053H1G型-护卫舰
+test images loaded
+0.0
+中国-053H1Q-护卫舰
+test images loaded
+0.0
+中国-053H2-护卫舰
+test images loaded
+0.0
+中国-053H2G-护卫舰
+test images loaded
+0.0
+中国-053H3-护卫舰
+test images loaded
+0.0
+中国-053K-护卫舰
+test images loaded
+0.0
+中国-054-护卫舰
+test images loaded
+0.0
+中国-054A-护卫舰
+test images loaded
+0.0555555555556
+中国-056-护卫舰
+test images loaded
+0.916666666667
+中国-071型大型船坞登陆舰-登陆舰
+test images loaded
+0.0
+中国-65型-护卫舰
+test images loaded
+0.0
+中国-6601型-护卫舰
+test images loaded
+0.0
+中国-6607型鞍山级-驱逐舰
+test images loaded
+0.0
+中国-中型登陆舰-登陆舰
+test images loaded
+0.0
+中国-反潜舰
+test images loaded
+0.0
+中国-大型登陆舰-登陆舰
+test images loaded
+0.0
+中国-导弹艇
+test images loaded
+0.0
+中国-小型登陆舰-登陆舰
+test images loaded
+0.0
+中国-扫雷舰
+test images loaded
+0.0
+中国-气垫船-登陆舰
+test images loaded
+0.0
+中国-现代级-驱逐舰
+test images loaded
+0.0
+中国-补给舰
+test images loaded
+0.0
+中国-鱼雷艇
+test images loaded
+0.0
+[  2.  11.  10.  10.   7.   2.   1.   3.   3.   7.   1.   2.  18.  24.   3.
+   5.   2.   1.   5.   3.   3.   4.   3.   5.   3.   3.  13.   3.]
+[  0.   6.  13.   5.   0.   0.   0.   0.   0.   6.   0.   0.  26.  97.   0.
+   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   0.   4.   0.]

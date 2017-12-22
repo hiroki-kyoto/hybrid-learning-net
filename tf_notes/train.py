@@ -12,10 +12,11 @@ import tf_hlconvnet as hl
 
 
 def main(args):
-    net = hl.hlconvnet()
+    net = hl.hlconvnet(N=1)
+    net.build_graph()
     net.offline_supervised('/home/hiroki/ships/raw_data/train/')
     net.offline_unsupervised('/home/hiroki/ships/raw_data/unlabeled/')
-    net.train(10000, 100, 100)
+    net.train(10000, 1, 1)
 
 tf.app.run()
 
