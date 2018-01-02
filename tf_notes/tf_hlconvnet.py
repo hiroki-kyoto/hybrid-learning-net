@@ -1,20 +1,20 @@
 # tf_hlconvnet.py
-# Hybrid Learning Convolutional Network implementation
-# Algorithm and implementation are intrinscally authorized
+# Hybrid Learning Convolution Network implementation
+# Algorithm and implementation are intrinsically authorized
 # by Chao Xiang
 
 # -*- coding:utf8 -*-
 
 import numpy as np
 import PIL.Image as pi
-import matplotlib.pyplot as pl
 
 import tensorflow as tf
 import tf_hlconv as hl
 
-import sys
 import os
 import time
+
+import json
 
 class hlconvnet(object):
     def __init__(self, **kwargs):
@@ -22,14 +22,21 @@ class hlconvnet(object):
         self.saver = None
         self.sess = None
         self.summ = None
+        self.name = 'hln'
+        self.model_path = '.'
+        self.log_path = '.'
+
         # configurations
         self.learning_rate = 0.01
         self.stop_level = 0.01
-        self.N_DIGITS = 28
+        self.N_DIGITS = 5
         self.N = 8 
         self.H = 256
         self.W = 256
         self.C = 3
+
+        # internal state
+        self.layer_counter = 0 # the input layer is excluded
 
         # replace default settings with arguments
         if 'learning_rate' in kwargs: # learning rate
@@ -46,12 +53,13 @@ class hlconvnet(object):
             self.W = kwargs['W']
         if 'C' in kwargs: # image channel required to fill
             self.C = kwargs['C']
-    
-    def build_graph(self):
+        if 'name' in kwargs: # name of this network
+            self.name = kwargs['name']
+
         with self.graph.as_default():
             # data feed in and back
             self.x = tf.placeholder(
-                    dtype=tf.float32, 
+                    dtype=tf.float32,
                     shape=[self.N, self.H, self.W, self.C]
             )
             self.y = tf.placeholder(
@@ -65,81 +73,49 @@ class hlconvnet(object):
             self.sws = [] # supervised weights
             self.sbs = [] # supervised biases
             self.uts = [] # unsupervised training ops
-            self.layers = [] # layers 
+            self.layers = [] # layers
             self.energies = [] # unsupervised energies
 
-##################### LAYER #1 ########################
+    def add_hlconv_layer(
+            self,
+            kernel_size=[3,3],
+            num_filter=32,
+            **kwargs
+    ):
+        if 'kernel_size' in kwargs:
+            kernel_size = kwargs['kernel_size']
+        if 'num_filter' in kwargs:
+            num_filter = kwargs['num_filter']
 
-            # generate the first hlconv layer
-            # with kernel size 3x3
-            # with kernel number 16
-            ksizes = [1,3,3,1]
-            n = 16
-            
-            uw,sw = hl.hlconv_make_params(
-                    n = n,
-                    depth = self.x.shape.as_list()[3],
-                    ksizes = ksizes
-            )
-            
-            self.uws.append(uw)
-            self.sws.append(sw)
-            
-            hlconv, utrain_op, energy = hl.hlconv(
-                    x = self.x,
-                    uw = uw,
-                    sw = sw,
-                    ksizes = ksizes,
-                    strides = [1,1,1,1],
-                    padding = 'VALID',
-                    name = 'hlconv-1'
-            )
-            
-            self.hlc.append(hlconv)
-            self.uts.append(utrain_op)
-            self.energies.append(energy)
+        assert len(kernel_size) == 2
 
-            # add bias
-            bias = tf.Variable(
-                    tf.random_uniform(
-                        [hlconv.shape.as_list()[3]]
-                    )
-            )
-            add_bias = tf.nn.bias_add(
-                    hlconv,
-                    bias
-            )
-            self.sbs.append(bias)
+        with self.graph.as_default():
+            self.layer_counter += 1
+            ksizes = [1, kernel_size[0], kernel_size[1], 1]
+            n = num_filter
 
-            # apply activation function
-            apply_act = tf.nn.relu(add_bias)
-            self.layers.append(apply_act)
+            if self.layer_counter == 1:
+                layer_input = self.x
+            else:
+                layer_input = self.layers[-1]
 
-#################### LAYER #2 ########################
-
-            # the final layer is still a hlconv
-            # however it is an inception operator
-            # it must contains $N_DIGITS filters
-            # to convert the tensor into output shape
-            ksizes = [1,1,1,1]
-            n = self.N_DIGITS
             uw, sw = hl.hlconv_make_params(
-                    n = n,
-                    depth = hlconv.shape.as_list()[3],
-                    ksizes = ksizes
+                n=n,
+                depth=layer_input.shape.as_list()[3],
+                ksizes=ksizes
             )
 
             self.uws.append(uw)
             self.sws.append(sw)
 
             hlconv, utrain_op, energy = hl.hlconv(
-                    x = apply_act,
-                    uw = uw,
-                    sw = sw,
-                    ksizes = ksizes,
-                    strides = [1,1,1,1],
-                    padding = 'VALID',
-                    name = 'hlconv-2'
+                x=layer_input,
+                uw=uw,
+                sw=sw,
+                ksizes=ksizes,
+                strides=[1, 1, 1, 1],
+                padding='VALID',
+                name='%s-L%d' % (self.name, self.layer_counter)
             )
 
             self.hlc.append(hlconv)
@@ -148,30 +124,35 @@ class hlconvnet(object):
 
             # add bias
             bias = tf.Variable(
-                    tf.random_uniform(
-                        [hlconv.shape.as_list()[3]]
-                    )
+                tf.random_uniform(
+                    [hlconv.shape.as_list()[3]]
+                )
+            )
+            add_bias = tf.nn.bias_add(
+                hlconv,
+                bias
             )
             self.sbs.append(bias)
-            add_bias = tf.nn.bias_add(
-                    hlconv,
-                    bias
-            )
-            
+
             # apply activation function
             apply_act = tf.nn.relu(add_bias)
             self.layers.append(apply_act)
 
-####################### OUTPUT LAYER #######################
-            # using maxpooling to get the output vector
+    def add_output_layer(self):
+        # A hybrid learning convolution layer is required to
+        # convert the tensor into the shape as [N_DIGITS,...]
+        self.add_hlconv_layer([1,1], self.N_DIGITS)
+
+        with self.graph.as_default():
+            # using max-pooling to get the output vector
             ksizes = [
                     1,
-                    apply_act.shape.as_list()[1],
-                    apply_act.shape.as_list()[2],
+                    self.layers[-1].shape.as_list()[1],
+                    self.layers[-1].shape.as_list()[2],
                     1
             ]
             self.logits = tf.nn.max_pool(
-                    apply_act,
+                    self.layers[-1],
                     ksizes,
                     strides = ksizes,
                     padding = 'VALID'
@@ -181,8 +162,10 @@ class hlconvnet(object):
                     [self.N, self.N_DIGITS]
                     )
 
-################### PREDICTION AND TRAINING ##############
+    def complete_network(self):
+        self.add_output_layer()
 
+        with self.graph.as_default():
             # get predicted label and its probability
             self.pred = tf.argmax(self.logits, 1)
             self.prob = tf.nn.softmax(self.logits)
@@ -209,6 +192,52 @@ class hlconvnet(object):
 
             # the only supervised training operator
             self.st = self.opt.minimize(self.loss)
+
+    # generate graph with given network configuration
+    # configuration json of a network can be like this:
+    # {
+    #       'name'  : 'net-001', # network name
+    #       'hidden': [[3, 3, 16], [1, 1, 8]], # hidden layer design
+    #       'x'     : [5, 5, 3], # input dimension with HWC format
+    #       'y'     : [5] # output dimension with HWC format
+    # }
+    # all tensor shapes are described in NHWC format, which means
+    # conf should be a json object containing 4 required
+    # keyed elements: [name, hidden, x, y]
+    def build_graph(self, conf):
+        if type(conf)==unicode:
+            pass
+        elif type(conf)==str: # turn it into unicode first
+            conf = conf.decode('utf8')
+        else:
+            assert False
+        
+        _conf = json.loads(conf, encoding='utf8')
+        _keys = _conf.keys()
+
+        assert list(_keys).__contains__(u'name')
+        assert list(_keys).__contains__(u'hidden')
+        assert list(_keys).__contains__(u'x')
+        assert list(_keys).__contains__(u'y')
+
+        # reset the network basic settings
+        assert len(_conf[u'x']) == 3 # has to be format HWC
+
+        self.H = _conf[u'x'][0]
+        self.W = _conf[u'x'][1]
+        self.C = _conf[u'x'][2]
+
+        assert len(_conf[u'y']) == 1 # only classification task supported
+        self.N_DIGITS = _conf[u'y'][0]
+
+        assert type(_conf[u'name']) != 'unicode'
+        self.name = _conf[u'name']
+
+        # network body construction
+        for _h in _conf[u'hidden']:
+            self.add_hlconv_layer([_h[0],_h[1]], _h[2])
+
+        self.complete_network()
 
     ################# DATA PREPARATION ##################
     # this will load all samples into memory for 
@@ -359,12 +388,20 @@ class hlconvnet(object):
 
         self.uidx += self.N
 
+    # setting training model save dir and log dir
+    def save_model_at(self, path):
+        self.model_path = path
+
+    def save_log_at(self, path):
+        self.log_path = path
+
     # @nalt : number of alternation
     # @uepo : unsupervised iterations within an epoch
     # @sepo : supervised iterations within an epoch
     def train(self, nalt, uepo, sepo):
         print 'Training begin...'
         path = time.strftime('MODEL_%Y%m%d_%H%M%S')
+        path = os.path.join(self.model_path, path)
         os.mkdir(path)
         print 'models saved in ', path
 
@@ -429,8 +466,13 @@ class hlconvnet(object):
             print 'model loaded from files'
 
             # log down the graph
+            path = time.strftime('LOG_%Y%m%d_%H%M%S')
+            path = os.path.join(self.log_path, path)
+            os.mkdir(path)
+            print 'logs saved in ', path
+
             tf.summary.FileWriter(
-                    'logs/',
+                    path,
                     self.graph
             )
 

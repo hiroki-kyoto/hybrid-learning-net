@@ -9,49 +9,33 @@ import sys
 
 import tf_hlconvnet as hl
 
-label_list = [
-        '中国-051B-051C型-驱逐舰',
-        '中国-051型-驱逐舰',
-        '中国-052型-驱逐舰',
-        '中国-053H-护卫舰',
-        '中国-053H1-护卫舰',
-        '中国-053H1G型-护卫舰',
-        '中国-053H1Q-护卫舰',
-        '中国-053H2-护卫舰',
-        '中国-053H2G-护卫舰',
-        '中国-053H3-护卫舰',
-        '中国-053K-护卫舰',
-        '中国-054-护卫舰',
-        '中国-054A-护卫舰',
-        '中国-056-护卫舰',
-        '中国-071型大型船坞登陆舰-登陆舰',
-        '中国-65型-护卫舰',
-        '中国-6601型-护卫舰',
-        '中国-6607型鞍山级-驱逐舰',
-        '中国-中型登陆舰-登陆舰',
-        '中国-反潜舰',
-        '中国-大型登陆舰-登陆舰',
-        '中国-导弹艇',
-        '中国-小型登陆舰-登陆舰',
-        '中国-扫雷舰',
-        '中国-气垫船-登陆舰',
-        '中国-现代级-驱逐舰',
-        '中国-补给舰',
-        '中国-鱼雷艇'
-]
+import setting as st
 
-def main(args):
+
+def main(argv):
+    if len(argv)!=2:
+        print 'HELP MESSAGE:'
+        print '\t\t', 'python test.py [model_path]'
+        exit()
+    
+    # restore label list from files
+    label_file = open(st.__JSON_LABEL_LIST__,'rt')
+    label_json = label_file.read()
+    label_list = label_json.decode('utf8')
+    
     net = hl.hlconvnet(N=1) # N is the batch
-    net.build_graph()
-    net.restore('/home/hiroki/git/hln/tf_notes/MODEL_20171217_192011/')
+    conf_file = open(st.__JSON_CONF_FILE__, 'rt')
+    conf_json = conf_file.read()
+    net.build_graph(conf_json)
+    net.restore(argv[1])
     
     # for each class, get its accuracy
-    path = '/home/hiroki/ships/raw_data/test/'
+    path = st.__DATA_PATH__%st.__TEST_DIR__
     subdirs = os.listdir(path)
     labels = []
     
     for _subdir in subdirs:
-        labels.append(_subdir.decode('utf-8'))
+        labels.append(_subdir.decode('utf8'))
     
     labels.sort()
     stat_real = np.zeros([len(labels)])
