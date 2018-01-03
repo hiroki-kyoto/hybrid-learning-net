@@ -138,29 +138,110 @@ class hlconvnet(object):
             apply_act = tf.nn.relu(add_bias)
             self.layers.append(apply_act)
 
-    def add_output_layer(self):
-        # A hybrid learning convolution layer is required to
-        # convert the tensor into the shape as [N_DIGITS,...]
-        self.add_hlconv_layer([1,1], self.N_DIGITS)
+    def add_dense_layer(
+            self,
+            num_filters=8,
+            **kwargs
+    ):
+        if 'num_filters' in kwargs:
+            num_filters = kwargs['num_filters']
+
+        assert type(num_filters) == int and num_filters > 0
+        self.layer_counter += 1
+        if self.layer_counter == 1:
+            last_layer = self.x
+        else:
+            last_layer = self.layers[-1]
+
+        # Fully connected layer
+        with self.graph.as_default():
+            current_layer = tf.layers.dense(
+                last_layer,
+                num_filters,
+                tf.nn.relu,
+                True
+            )
+
+        self.layers.append(current_layer)
+
+    def add_pooling_layer(
+            self,
+            kernel_size=[3,3],
+            padding='VALID',
+            type='MAX', # MAX or MEAN
+            **kwargs
+    ):
+        if 'kernel_size' in kwargs:
+            kernel_size = kwargs['kernel_size']
+        if 'padding' in kwargs:
+            padding = kwargs['padding']
+        if 'type' in kwargs:
+            type = kwargs['type']
+
+        assert len(kernel_size)==2
+        assert padding=='VALID' or padding=='FULL'
+        assert type=='MAX' or type=='MEAN'
+
+        self.layer_counter += 1
+        if self.layer_counter == 1:
+            last_layer = self.x
+        else:
+            last_layer = self.layers[-1]
+
+        # auto kernel size
+        _shape = last_layer.shape.as_list()
+        if kernel_size[0]<=0 or kernel_size[1]<=0:
+            kernel_size[0] = _shape[1]
+            kernel_size[1] = _shape[2]
+        if kernel_size[0]>_shape[1] or kernel_size[1]>_shape[2]:
+            kernel_size[0] = _shape[1]
+            kernel_size[1] = _shape[2]
 
         with self.graph.as_default():
-            # using max-pooling to get the output vector
             ksizes = [
-                    1,
-                    self.layers[-1].shape.as_list()[1],
-                    self.layers[-1].shape.as_list()[2],
-                    1
+                1,
+                kernel_size[0],
+                kernel_size[1],
+                1
             ]
-            self.logits = tf.nn.max_pool(
-                    self.layers[-1],
+            if type=='MAX':
+                current_layer = tf.nn.max_pool(
+                    last_layer,
                     ksizes,
-                    strides = ksizes,
-                    padding = 'VALID'
+                    strides=ksizes,
+                    padding=padding
+                )
+            elif type=='MEAN':
+                current_layer = tf.nn.avg_pool(
+                    last_layer,
+                    ksizes,
+                    strides=ksizes,
+                    padding=padding
+                )
+
+        self.layers.append(current_layer)
+
+    def add_output_layer(self):
+        # apply max pooling before dense layer
+        self.add_pooling_layer(
+            kernel_size=[0,0], # 0 means full-size kernel
+            padding='VALID',
+            type='MAX'
+        )
+        # reshape before dense layer
+        with self.graph.as_default():
+            _layer = self.layers[-1]
+            _shape = _layer.shape.as_list()
+            _n = _shape[1]*_shape[2]*_shape[3]
+            current_layer = tf.reshape(
+                    _layer,
+                    [_shape[0], _n]
             )
-            self.logits = tf.reshape(
-                    self.logits, 
-                    [self.N, self.N_DIGITS]
-                    )
+            self.layer_counter += 1
+            self.layers.append(current_layer)
+                    
+        self.add_dense_layer(self.N_DIGITS)
+        self.logits = self.layers[-1]
 
     def complete_network(self):
         self.add_output_layer()
@@ -179,7 +260,6 @@ class hlconvnet(object):
             )
 
             # training loss
-            #self.loss = tf.reduce_sum(tf.square(self.y - feeds))
             self.loss = tf.losses.softmax_cross_entropy(
                     onehot_labels=self.onehot,
                     logits=self.logits
@@ -447,10 +527,9 @@ class hlconvnet(object):
                             feed_dict={
                                 self.x : self.ubatch_x
                             })
-                # every 100 steps to save a copy of the model
-                if i%100 == 0 or i==nalt-1:
-                    _model = os.path.join(path, 'hlconvnet')
-                    self.saver.save(self.sess, _model, global_step=i)
+                # every step to save a copy of the model
+                _model = os.path.join(path, 'hlconvnet')
+                self.saver.save(self.sess, _model, global_step=i)
 
     # @model : the model path
     def restore(self, model):

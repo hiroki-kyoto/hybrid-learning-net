@@ -200,17 +200,13 @@ def make_unsupervised_train_op(
     # compute gradients for parameters
     for _i in xrange(_n):
         grads[_i] = fields_reshaped[_i]*(patches-uw[_i])
+
     grads_stacked = tf.stack(grads, axis=0)
-    uw_updated = uw.assign(
-            uw + __global_learn_rate*\
-                    tf.reduce_mean(
-                        grads_stacked, 
-                        axis=(1,2,3)
-                    )
-                )
+    delta_uw = tf.reduce_mean(grads_stacked, axis=(1,2,3))
+    uw_updated = uw.assign_add(__global_learn_rate*delta_uw)
     
     # training energy is the maximum grad norm
-    energy = tf.reduce_max(tf.abs(grads_stacked))
+    energy = tf.reduce_mean(fields_polarized)
     
     return (uw_updated, energy)
 
